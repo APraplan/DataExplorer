@@ -747,7 +747,7 @@
 			<fileset file="build/misc/DataExplorer.desktop" />
 			<fileset file="build/misc/DevicePropertiesEditor" />
 			<fileset file="build/misc/DevicePropertiesEditor.desktop" />
-			<!-- fileset file="RXTXcomm/src/arm64/librxtxSerial.so" / -->
+			<fileset file="RXTXcomm/src/arm64/librxtxSerial.so" />
 		</copy>
 		<copy todir="${output.raspbian32.program.devices}" flatten="yes">
 			<fileset dir="${basedir}">
