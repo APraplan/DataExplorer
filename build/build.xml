@@ -429,99 +429,99 @@
 
 	<!-- Package -->
 	<target name="package" depends="init">
-		<ant antfile="build.xml" target="package" dir="DataExplorer" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Picolario" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="AkkuMaster" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Simulator" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="UniLog" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="eStation" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="VC800" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="LiPoWatch" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="CSV2SerialAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="WStechVario" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="QC-Copter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="GPS-Logger" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="NMEA-Adapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="UltramatUDP" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="HoTTAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="UniLog2" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="DataExplorer" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Picolario" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="AkkuMaster" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Simulator" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="UniLog" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="eStation" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="VC800" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="LiPoWatch" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="CSV2SerialAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="WStechVario" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="QC-Copter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="GPS-Logger" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="NMEA-Adapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="UltramatUDP" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="HoTTAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="UniLog2" inheritall="false" />
 		<ant antfile="build.xml" target="package" dir="iCharger" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="FlightRecorder" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="JLog2" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="S32" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="JetiAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="IGCAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="GPXAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="IISI Cockpit V2" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="FutabaTelemetry" inheritall="true" />
-		<!-- ant antfile="build.xml" target="package" dir="PowerLab" inheritall="true" / -->
-		<ant antfile="build.xml" target="package" dir="Polaron" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="OpenTxTelemetry" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Akkumatik" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="GigaLogger" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="SkyRC" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Weatronic-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="UniTrend" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Pulsar" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Devo-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="CSVImportAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="ArduPilot" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="LogView-Zero" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Robbe" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Spektrum-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Triangoli" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="Core-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="nextGen" inheritall="true" />
-		<ant antfile="build.xml" target="package" dir="PeakTech" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="FlightRecorder" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="JLog2" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="S32" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="JetiAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="IGCAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="GPXAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="IISI Cockpit V2" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="FutabaTelemetry" inheritall="false" />
+		<!-- ant antfile="build.xml" target="package" dir="PowerLab" inheritall="false" / -->
+		<ant antfile="build.xml" target="package" dir="Polaron" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="OpenTxTelemetry" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Akkumatik" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="GigaLogger" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="SkyRC" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Weatronic-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="UniTrend" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Pulsar" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Devo-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="CSVImportAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="ArduPilot" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="LogView-Zero" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Robbe" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Spektrum-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Triangoli" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="Core-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="nextGen" inheritall="false" />
+		<ant antfile="build.xml" target="package" dir="PeakTech" inheritall="false" />
 		<!-- add new device here -->
 	</target>
 	
 	<!-- none UI Package -->
 	<target name="non_ui_package" depends="init">
-		<ant antfile="build.xml" target="nonui_package" dir="DataExplorer" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Picolario" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="AkkuMaster" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Simulator" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="UniLog" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="eStation" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="VC800" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="LiPoWatch" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="CSV2SerialAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="WStechVario" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="QC-Copter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="GPS-Logger" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="NMEA-Adapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="UltramatUDP" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="HoTTAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="UniLog2" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="DataExplorer" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Picolario" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="AkkuMaster" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Simulator" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniLog" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="eStation" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="VC800" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="LiPoWatch" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="CSV2SerialAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="WStechVario" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="QC-Copter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="GPS-Logger" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="NMEA-Adapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="UltramatUDP" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="HoTTAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniLog2" inheritall="false" />
 		<ant antfile="build.xml" target="nonui_package" dir="iCharger" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="FlightRecorder" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="JLog2" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="S32" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="JetiAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="IGCAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="GPXAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="IISI Cockpit V2" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="FutabaTelemetry" inheritall="true" />
-		<!-- ant antfile="build.xml" target="nonui_package" dir="PowerLab" inheritall="true" / -->
-		<ant antfile="build.xml" target="nonui_package" dir="Polaron" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="OpenTxTelemetry" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Akkumatik" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="GigaLogger" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="SkyRC" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Weatronic-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="UniTrend" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Pulsar" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Devo-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="CSVImportAdapter" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="ArduPilot" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="LogView-Zero" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Robbe" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Spektrum-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Triangoli" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="Core-Telemetry" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="nextGen" inheritall="true" />
-		<ant antfile="build.xml" target="nonui_package" dir="PeakTech" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="FlightRecorder" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="JLog2" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="S32" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="JetiAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="IGCAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="GPXAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="IISI Cockpit V2" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="FutabaTelemetry" inheritall="false" />
+		<!-- ant antfile="build.xml" target="nonui_package" dir="PowerLab" inheritall="false" / -->
+		<ant antfile="build.xml" target="nonui_package" dir="Polaron" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="OpenTxTelemetry" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Akkumatik" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="GigaLogger" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="SkyRC" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Weatronic-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniTrend" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Pulsar" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Devo-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="CSVImportAdapter" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="ArduPilot" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="LogView-Zero" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Robbe" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Spektrum-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Triangoli" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="Core-Telemetry" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="nextGen" inheritall="false" />
+		<ant antfile="build.xml" target="nonui_package" dir="PeakTech" inheritall="false" />
 		<!-- add new device here -->
 	</target>
 
