@@ -1,0 +1,10 @@
+#!/bin/bash
+# ***** script to launch DevicePropertiesEditor ** 27 Jan 2010 WB *****
+
+# determine and switch to the resource directory of the application bundle
+GDE_DIR="$(dirname ${0})/../Resources"
+cd ${GDE_DIR}
+
+echo java -XstartOnFirstThread -d64 -Dfile.encoding=UTF-8  -Xms32m -Xmx512m -classpath ./DataExplorer.jar  gde.ui.dialog.edit.DevicePropertiesEditor
+java -XstartOnFirstThread -d64 -Dfile.encoding=UTF-8 -Xms32m -Xmx512m -classpath ./DataExplorer.jar  gde.ui.dialog.edit.DevicePropertiesEditor
+

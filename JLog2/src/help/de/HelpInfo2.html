@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - Kosmik Ger&auml;tedialog</TITLE>
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>Kosmik von Kontronik</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Namen der Messwerte k&ouml;nnen hier ge&auml;ndert werden, sowie Symbol und Einheit. Sie sollten eindeutig sein.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Kurven die keine sinnvollen Daten enthalten werden ebenfalls automatisch ausgeblendet.
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht, da keine Kurven ohne Aussage angezeigt werden. 
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datendatei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo2_Bild_1.png" NAME="HelpInfo2_Bild_1" ALT="HelpInfo2_Bild_1"></P>
+<P><B>Hinweis: </B>Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn &uuml;ber die Toolbar mittels "importiere Daten" in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+<P>
+Am rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf beginnende Namensgleichheit (Temperatur FET, Temperatur BEC) gepr&uuml;ft. 
+Bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei, bei den Messwerten, die entsprechende Eigenschaft eingesetzt.
+Vorsicht ist trotzdem geboten, da hier aktiv in die Anzeige von Daten und deren Skalensynchronisation eingegriffen wird. 
+Die Vorgabe ist aber soweit vorbereitet, dass das selten n&ouml;tig sein sollte.
+Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit das manuell &uuml;ber den Geratekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<P><B>Hinweis: </B>Werden Einstellungen ge&auml;ndert, f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+Wenn einen Ger&auml;tekonfigurationsdatei 'kaputt' erscheint kann diese einfach im Devices-Verzeichnis gel&ouml;scht werden.
+Sie wird dann beim nächsten Start des DataExplorers wieder hergestellt.
+</P>
+<P>
+Drehzahlen werden vom Regler f&uuml;r einen zweipoligen Motor ausgegeben.
+Anpassungen bez&uuml;glich angezeigter Drehzahlen, entsprechend vorhandener Motorpolzahl und/oder Getriebe, sind im Konfigurationsdialog einzustellen.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo2_Bild_2.png" NAME="HelpInfo2_Bild_2" ALT="HelpInfo2_Bild_2">
+<IMG SRC="HelpInfo2_Bild_3.png" NAME="HelpInfo2_Bild_3" ALT="HelpInfo2_Bild_3">
+</P>
+<P>
+Hier ist es auch m&ouml;glich, die Temperatureinheit entsprechend den Erfordernissen anzupassen.
+</P>
+</BODY>
+</HTML>

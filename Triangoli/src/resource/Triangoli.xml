@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.wb.Triangoli">Triangoli</name>
+        <manufacturer></manufacturer>
+        <manufacturerURL>-</manufacturerURL>
+        <group>logger</group>
+        <image>Triangoli.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+        <UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="250"/>
+        <timeUnit>msec</timeUnit>
+        <preferredDataLocation></preferredDataLocation>
+    </DataBlock>
+    <State>
+        <property name="state_data_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_general" type="TYPE_CONFIG">
+            <Measurement>
+                <name>RfSignal</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>SignalStrength</name>
+                <symbol></symbol>
+                <unit>dbm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>SatFix</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>ServoPulse</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed Ground</name>
+                <symbol>vg</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="do_subtract_first" value="true" type="Boolean" description="Reduktion aller gemessenem Werte durch den ersten Messwert"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>c</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>u</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>ENL</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Pitch</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>           
+            </Measurement>
+            <Measurement>
+                <name>Roll</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude GPS</name>
+                <symbol></symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="do_subtract_first" value="true" type="Boolean" description="Reduktion aller gemessenem Werte durch den ersten Messwert"/>
+            </Measurement>
+            <Measurement>
+                <name>direction</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed Air</name>
+                <symbol>va</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Netto</name>
+                <symbol></symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LD</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed Wind</name>
+                <symbol>vw</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>direction Wind</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="false"/>
+        <property name="analog_tab" value="false"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

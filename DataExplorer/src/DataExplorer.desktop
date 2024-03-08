@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=DataExplorer - explore your measurement data
+Comment[en_US]=DataExplorer - explore your measurement data
+Comment[de_DE]=DataExplorer - erforsche deine Messdaten
+Encoding=UTF-8
+Exec=@GDE_DIR@DataExplorer %f
+GenericName=DataExplorer
+Icon=@GDE_DIR@DataExplorer.xpm
+MimeType=application/x-DataExplorer
+Name=DataExplorer
+Path=@GDE_DIR@
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GTK;Utility;Application;

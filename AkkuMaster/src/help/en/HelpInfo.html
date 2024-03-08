@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="20080223;17323000">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18361139">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>AkkuMaster
+	C4 device dialog introduction</I></FONT></FONT></H2>
+</DIV>
+<P>The AkkuMaster C4 device dialog is to be used to view, adjust and
+gather data from AkkuMaster discharge and charge processes. It is
+possible to configure each outlet independent from the others. A
+configuration which overloads the charger is impossible, since the
+individual loads are accumulated and the resulting total current will
+be displayed. <BR><B>Note : </B>If a data gathering process is
+active, it is not possible to close the dialog. Each outlet channel
+may gather data in parallel and can be displayed individual. To
+switch between outlets will not been possible if device dialog is
+modal adjusted in application preferences. 
+</P>
+<P>A lot of hints are available by tool tips of the dialog itself and
+make this help nearly obsolete. The tool tips are visible by hovering
+the mouse over the fields of interest. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Version information</I></FONT></FONT></H2>
+<P>Afterwards the serial communication is configured using the device
+selection dialog the device version information is gathered in
+background while opening the dialog. This may lead into serial
+communication error, if the configured port can't be opened. The
+device dialog with the actual EPROM version from manufacturer is
+shown in picture 1 displaying version information. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image 1" ALT="Image 1" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Control recording</I></FONT></FONT></H2>
+<P>After selecting an outlet tab only the two radio buttons are
+active. Other senseless buttons are disabled for the moment. 
+</P>
+<UL>
+	<LI>Gather data only 
+	<LI><P>Configured process 
+	</P>
+</UL>
+<P>Such a condition is shown in picture 2. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="Image 2" ALT="Image 2" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Gather data only</I></FONT></FONT></H3>
+<P>If, as usual, the charge/discharge process is started at the
+device, the selection of “Gather data only” the displayed process
+parameters are updated. Additionally the “Start” button gets
+activated to enable the start of the gathering process (picture 3). 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3.png" NAME="Image 3" ALT="Image 3" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<P>After the start button is pushed all the graphics displays are
+updated by the gathering cycle. The stop button gets activated to
+enable stopping of the process for some cases. New data sets get
+created while the device switch between charge and discharge. The
+gathering process stops automatically if the device signals no
+activity anymore.</P>
+<P><B>Note : </B>Stopping the data gathering process will also stop
+the running process of the connected device for safety reasons!</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Configured process</I></FONT></FONT></H3>
+<P>While using “Configured process” the data configuring the
+future process are updated with the actual values depending the the
+current adjusted values of the selected outlet. Afterwards you can
+modify the values according your choice. Since the program must be
+loaded into the devices EPROM before it can be executed the adjusted
+values are written into the selected memory. <BR><BR><BR>
+</P>
+<P><B>Note : </B>Since it is not possible to query data for the
+selected memory, I prefer to do all program configuration direct at
+the device and use “Data gather only” for data gathering.</P>
+<P>If a memory index will be modified from which is red from the
+device the background of the combo box is colored the make this
+change more visible. Such a situation is shown in picture below.<BR><BR><BR>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_4.png" NAME="Image 4" ALT="Image 4" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<P>To close the device dialog is only possible while no gathering
+processes are active. While closing the dialog the serial port is
+closed as well.</P>
+</BODY>
+</HTML>

@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ************************************************************************************* This file 
+	is part of GNU DataExplorer. GNU DataExplorer is free software: you can redistribute it and/or modify 
+	it under the terms of the GNU General Public License as published by the Free Software Foundation, either 
+	version 3 of the License, or (at your option) any later version. GNU DataExplorer is distributed in the 
+	hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+	or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should 
+	have received a copy of the GNU General Public License along with GNU DataExplorer. If not, see <http://www.gnu.org/licenses/>. 
+	Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018 Winfried Bruegmann 2017,2018 Thomas Eickert ************************************************************************************** -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="qualified">
+	<xs:element name="DeviceProperties" type="DevicePropertiesType">
+		<xs:annotation>
+			<xs:documentation>DataExplorer Properties</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="DeviceType">
+		<xs:sequence>
+			<xs:element name="name">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="implementation" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation>specify implementation class if different from name</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="manufacturer" type="xs:string" />
+			<xs:element name="manufacturerURL" type="xs:anyURI" />
+			<xs:element name="group" type="device_types" />
+			<xs:element name="image" type="xs:anyURI" />
+			<xs:element name="usage" type="xs:boolean" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SerialPortType">
+		<xs:sequence>
+			<xs:element name="port" type="xs:string" />
+			<xs:element name="baudeRate" type="baud_rate_types" />
+			<xs:element name="dataBits" type="data_bits_types" />
+			<xs:element name="stopBits" type="stop_bits_types" />
+			<xs:element name="parity" type="parity_types" />
+			<xs:element name="flowControlMode" type="flow_control_types" />
+			<xs:element name="isRTS" type="xs:boolean" />
+			<xs:element name="isDTR" type="xs:boolean" />
+			<xs:sequence>
+				<xs:element name="TimeOut" type="TimeOutType" minOccurs="0" />
+			</xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UsbInterfaceType">
+		<xs:sequence>
+			<xs:element name="interface">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="number" type="xs:integer" use="optional">
+								<xs:annotation>
+									<xs:documentation>specify interface number</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="endPointIn" type="xs:string" />
+			<xs:element name="endPointOut" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="UsbPortType">
+		<xs:sequence>
+			<xs:element name="vendorId" type="xs:string" />
+			<xs:element name="productId" type="xs:string" />
+			<xs:element name="productString" type="xs:string" maxOccurs="1" minOccurs="0"/>
+			<xs:element name="usbInterface" type="UsbInterfaceType" minOccurs="1" />
+			<xs:element name="TimeOut" type="TimeOutType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DevicePropertiesType">
+		<xs:sequence>
+			<xs:element name="Device" type="DeviceType">
+				<xs:annotation>
+					<xs:documentation>Defines device specific global properties</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SerialPort" type="SerialPortType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the serial port configuration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UsbPort" type="UsbPortType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines the USB port configuration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TimeBase" type="TimeBaseType">
+				<xs:annotation>
+					<xs:documentation>Defines the time base used to display the data. A timeStep of -1 means time
+						comes with data block and is not constant over an record set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DataBlock" type="DataBlockType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This describes the data as to be interpreted as input. Nomally this is
+						handled by individual device plug-in
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="State" type="StateType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Defines device processing states</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Channels">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Channel" type="ChannelType" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Defines output channels or configurations</xs:documentation>
+							</xs:annotation>
+							<xs:key name="settlementKey">
+								<xs:annotation>
+									<xs:documentation>Makes persistent history vaults independent from language settings
+									</xs:documentation>
+								</xs:annotation>
+								<xs:selector xpath="Settlement" />
+								<xs:field xpath="@settlementId" />
+							</xs:key>
+							<xs:key name="scoregroupKey">
+								<xs:selector xpath="Scoregroup" />
+								<xs:field xpath="@scoregroupId" />
+							</xs:key>
+							<xs:key name="transitionKey">
+								<xs:selector xpath="Transitions/Transition" />
+								<xs:field xpath="@transitionId" />
+							</xs:key>
+							<xs:key name="referenceGroupKey">
+								<xs:selector xpath="ReferenceGroups/ReferenceGroup" />
+								<xs:field xpath="@referenceGroupId" />
+							</xs:key>
+							<xs:key name="transitionGroupKey">
+								<xs:selector xpath="TransitionGroups/TransitionGroup" />
+								<xs:field xpath="@transitionGroupId" />
+							</xs:key>
+							<xs:keyref name="transitionKeyref" refer="transitionKey">
+								<xs:selector xpath="TransitionGroups/TransitionGroup/*" />
+								<xs:field xpath="@transitionId" />
+							</xs:keyref>
+							<xs:keyref name="referenceGroupKeyref" refer="referenceGroupKey">
+								<xs:selector xpath="Settlements/Settlement/evaluation/*" />
+								<xs:field xpath="@referenceGroupId" />
+							</xs:keyref>
+							<xs:keyref name="referenceGroupKeyrefDivisor" refer="referenceGroupKey">
+								<xs:selector xpath="Settlements/Settlement/evaluation/transitionCalculus" />
+								<xs:field xpath="@referenceGroupIdDivisor" />
+							</xs:keyref>
+							<xs:keyref name="transitionGroupKeyref" refer="transitionGroupKey">
+								<xs:selector xpath="Settlements/Settlement/evaluation/*" />
+								<xs:field xpath="@transitionGroupId" />
+							</xs:keyref>
+						</xs:element>
+						<xs:element name="property" type="ChannelPropertyType" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+					<xs:attribute name="lastUseOrdinal" type="xs:integer" use="optional" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Desktop" type="DesktopType">
+				<xs:annotation>
+					<xs:documentation>Defines miscellaneous visualization properties of the application desktop
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TimeOutType">
+		<xs:sequence>
+			<xs:element name="ReadTimeOut" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>Read timeout value per data chunk in msec</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ReadStableIndex" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>specify number of 1 msec cycles where the receive buffer do not change to
+						detect buffer complete
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WriteCharDelayTime" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>write delay time in msec per char</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WriteDelayTime" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>delay time after write completed in msec</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataBlockType">
+		<xs:sequence>
+			<xs:element name="format" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>TEXT or BINARY</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="inputType" type="input_types" use="required" />
+					<xs:attribute name="formatType" type="format_types" use="required" />
+					<xs:attribute name="size" type="xs:integer" use="required" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="checkSum" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="format" type="format_types" default="BINARY" />
+					<xs:attribute name="type" type="checkSum_types" default="XOR" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="timeUnit" type="time_unit_types" default="msec" minOccurs="0" />
+			<xs:element name="separator" type="comma_separator_types" default="semicolon"
+				minOccurs="0" />
+			<xs:element name="leader" type="xs:string" default="$" minOccurs="0" />
+			<xs:element name="trailer" type="xs:hexBinary" default="0D0A" minOccurs="0" />
+			<xs:element name="preferredDataLocation" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:appinfo />
+					<xs:appinfo>preferred file location if raw data loaded from file</xs:appinfo>
+					<xs:appinfo />
+					<xs:documentation />
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="preferredFileExtention" type="xs:string" default="*.csv" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>specify a file extention (*.abc) if the data file extension is diferent to
+						*.csv
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="histoSamplingTime_ms" type="xs:integer" default="1000" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TimeBaseType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="symbol" type="xs:string" />
+			<xs:element name="unit" type="xs:string" />
+			<xs:element name="timeStep" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>a negative value means variable time step, some devices allow editing, other
+						edit by its configuration
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="avarage_timeStep" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>for backwards compatibility</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UTCdelta" type="xs:integer" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ScoreGroupType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="symbol" type="xs:string" />
+			<xs:element name="unit" type="xs:string" />
+			<xs:element name="active" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>true active for display, false inactive
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="score" type="ScoreType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>for single values.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="label" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="scoregroupId" type="xs:int" use="required" />
+	</xs:complexType>
+	<xs:complexType name="SettlementType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="symbol" type="xs:string" />
+			<xs:element name="unit" type="xs:string" />
+			<xs:element name="active" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>true active for display, false inactive
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="evaluation" type="EvaluationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>procedures for using measurement data.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="trailDisplay" type="TrailDisplayType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="label" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="settlementId" type="xs:int" use="required" />
+	</xs:complexType>
+	<xs:complexType name="MeasurementType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="symbol" type="xs:string" />
+			<xs:element name="unit" type="xs:string" />
+			<xs:element name="active" type="xs:boolean" nillable="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>true can read data, false inactive, null -> calculation = true
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statistics" type="StatisticsType" minOccurs="0" />
+			<xs:element name="property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="trailDisplay" type="TrailDisplayType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="label" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TrailDisplayType">
+		<xs:sequence>
+			<xs:element name="exposed" type="TrailVisibilityType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="disclosed" type="TrailVisibilityType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="discloseAll" type="xs:boolean" use="required" />
+		<xs:attribute name="defaultTrail" type="trail_types"/>
+	</xs:complexType>
+	<xs:complexType name="TrailVisibilityType">
+		<xs:attribute name="trail" type="trail_types"/>
+	</xs:complexType>
+	<xs:complexType name="ChannelType">
+		<xs:sequence>
+			<xs:element name="Measurement" type="MeasurementType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Defines measurement capabilities, it might be calculations depending on
+						measurements
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Settlements" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Settlement" type="SettlementType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Defines calculation capabilities depending on measurements
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReferenceGroups" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ReferenceGroup" type="ReferenceGroupType" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>m:n relationship between measurements and settlements. Also supports
+									referencing settlements from settlements for intermediate calculations.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransitionGroups" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TransitionGroup" type="TransitionGroupType" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>m:n relationship between transitions and settlements</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Transitions" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Transition" type="TransitionType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Defines trigger mechanisms</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ScoreGroups" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Scoregroup" type="ScoreGroupType" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Defines collections of score values calculated. It might be calculations
+									depending on measurements.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="type" type="channel_types" use="required" />
+	</xs:complexType>
+	<xs:complexType name="PropertyType">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="value" use="required" />
+		<xs:attribute name="type" type="data_types" use="required" />
+		<xs:attribute name="description" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="MeasurementMappingType">
+		<xs:attribute name="measurementOrdinal" type="xs:int" use="required" />
+		<xs:attribute name="comment" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="SettlementMappingType">
+		<xs:attribute name="settlementId" type="xs:int" use="required" />
+		<xs:attribute name="comment" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="ReferenceGroupType">
+		<xs:sequence>
+			<xs:element name="MeasurementMapping" type="MeasurementMappingType" minOccurs="0"
+				maxOccurs="unbounded" />
+			<xs:element name="SettlementMapping" type="SettlementMappingType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="referenceGroupId" type="xs:int" use="required" />
+		<xs:attribute name="referenceRule" type="reference_rule_types" use="required" />
+		<xs:attribute name="comment" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="ScoreType">
+		<xs:attribute name="label" type="score_label_types" use="required" />
+		<xs:attribute name="value" use="required" />
+		<xs:attribute name="type" type="data_types" use="required" />
+		<xs:attribute name="description" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="ChannelPropertyType">
+		<xs:attribute name="name" type="channel_property_types" use="required" />
+		<xs:attribute name="value" use="optional" />
+		<xs:attribute name="type" type="data_types" use="required" />
+		<xs:attribute name="description" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="DesktopPropertyType">
+		<xs:attribute name="name" type="desktop_property_types" use="required" />
+		<xs:attribute name="value" type="xs:boolean" use="required" />
+		<xs:attribute name="description" type="xs:string" />
+		<xs:attribute name="target_reference_ordinal" type="xs:integer" />
+	</xs:complexType>
+	<xs:complexType name="DesktopType">
+		<xs:sequence>
+			<xs:element name="property" type="DesktopPropertyType" minOccurs="4" maxOccurs="8" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EvaluationType">
+		<xs:choice minOccurs="1" maxOccurs="1">
+			<xs:sequence>
+				<xs:element name="transitionFigure" type="TransitionFigureType">
+					<xs:annotation>
+						<xs:documentation>calculations based on trigger</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="transitionAmount" type="TransitionAmountType">
+					<xs:annotation>
+						<xs:documentation>calculations based on trigger</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="transitionCalculus" type="TransitionCalculusType">
+					<xs:annotation>
+						<xs:documentation>calculations based on trigger</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:choice>
+		<xs:attribute name="comment" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>comment for documentation purposes</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StatisticsType">
+		<xs:sequence>
+			<xs:element name="trigger" type="TriggerType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="min" type="xs:boolean" use="required" />
+		<xs:attribute name="max" type="xs:boolean" use="required" />
+		<xs:attribute name="avg" type="xs:boolean" use="required" />
+		<xs:attribute name="sigma" type="xs:boolean" use="required" />
+		<xs:attribute name="triggerRefOrdinal" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>references the measurement ordinal where trigger level is set in case of
+					trigger is defined (0=VoltageReceiver;1=Voltage,2=Current, ...)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sumByTriggerRefOrdinal" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>calculates sum of values where trigger level becomes active at referenced
+					triggered measurement ordinal
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sumBySecondaryTriggerRefOrdinal" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>calculates sum of values where trigger level becomes active at referenced
+					primary and secondary triggered measurement ordinal
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="integrateByTrigger" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>integrate values where trigger level becomes active at referenced
+					triggered measurement ordinal
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sumTriggerText" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>this is the text displayed in front of sum value in case of trigger is defined
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="countByTrigger" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>counts the number of events trigger level becomes active at specified trigger
+					type
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="countTriggerText" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>text displayed in front of count value in case of trigger is defined
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>trigger related comment in case of trigger is defined</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sumTriggerTimeText" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>text displayed in front of the time sum value in case of trigger is defined
+					displayed at time row
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ratioRefOrdinal" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>measurement ordinal to calculate the ratio of referenced avg or max value to
+					sumByTriggerRefOrdinal
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ratioText" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>text displayed in front of the calculated ratio case of resolvable
+					dependencies
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="sum" type="xs:boolean" />
+	</xs:complexType>
+	<xs:complexType name="TransitionGroupType">
+		<xs:sequence>
+			<xs:element name="TransitionMapping" type="TransitionMappingType" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="transitionGroupId" type="xs:int" use="required" />
+		<xs:attribute name="comment" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="TransitionMappingType">
+		<xs:attribute name="transitionId" type="xs:int" use="required" />
+		<xs:attribute name="comment" type="xs:string" />
+	</xs:complexType>
+	<xs:complexType name="TransitionType">
+		<xs:attribute name="transitionId" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>identifies the transition, e.g. in calculations
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="refOrdinal" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>minimum time length in seconds of trigger range to filter short time periods
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="classType" type="transition_class_types" use="required">
+			<xs:annotation>
+				<xs:documentation>
+					peak means the trigger fires if the threshold level is exceeded within the
+					threshold time AND the recovery level is reached within the recovery time which starts after
+					the threshold time.
+					pulse means the trigger is ON if the threshold level is exceeded for all
+					measurement values in the threshold time and if there is a recovery period where the
+					measurement values comply to the recovery level and time.
+					level means that the trigger fires
+					whenever the threshold level is exceeded for all measurement values in the threshold time.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="valueType" type="transition_value_types" use="required">
+			<xs:annotation>
+				<xs:documentation>related to the threshold and recovery level values.
+					'absoluteLevel' means that
+					the levels are taken from the thresholdValue and the recoveryValue.
+					'deltaValue' and
+					'deltaFactor' mean that the levels are calculated based on the reference level
+					(e.g.
+					thresholdLevel = referenceLevel + thresholdValue
+					or thresholdLevel = referenceLevel +
+					thresholdValue * referenceLevel ).
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="thresholdValue" type="xs:double" use="required">
+			<xs:annotation>
+				<xs:documentation>value for the threshold level which must be exceeded for all measurements in
+					the threshold time.
+					basis for the comparison are the measurement values in the reference time
+					(absolute in measurement units or relative in percent).
+					A level trigger fires if all the
+					threshold values comply with this delta.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="recoveryValue" type="xs:double">
+			<xs:annotation>
+				<xs:documentation>value for the peak recovery level which must be exceeded for all measurements
+					in the recovery time.
+					basis for the comparison are the measurement values in the reference time.
+					a peak trigger fires if the threshold is correct and if the recovery values comply with this
+					delta.
+					(10% means: all recovery measurement values have to exceed the reference values by at
+					least 10%)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="referenceTimeMsec" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>time length in milliseconds for finding the maximum / minimum reference value. The
+					end of the reference time is the last time step before the trigger fired.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="thresholdTimeMsec" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>time length in seconds of trigger range for finding the maximum / minimum
+					threshold value.
+					Level: if the threshold does not conform perfectly to the threshold level and
+					time minimum, the trigger is cancelled.
+					Peak: once the threshold value is exceeded, the recovery
+					time starts after the end of the threshold time or if the recovery level is constantly exceeded
+					during the rest of the threshold time.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="peakMinimumTimeMsec" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>minimum threshold time length in milliseconds.
+				pls note that the threshold always has at least 2 measurements.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="recoveryTimeMsec" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>time length in milliseconds for finding the maximum / minimum hysteresis value.
+					applicable for peaks only: if the recovery does not conform perfectly to the recovery level and
+					time
+					minimum, the trigger is cancelled.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>trigger related comment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TransitionFigureType">
+		<xs:attribute name="transitionGroupId" type="xs:int" use="required">
+		</xs:attribute>
+		<xs:attribute name="figureType" type="figure_types" use="required">
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TransitionAmountType">
+		<xs:attribute name="transitionGroupId" type="xs:int" use="required">
+		</xs:attribute>
+		<xs:attribute name="amountType" type="amount_types" use="required">
+		</xs:attribute>
+		<xs:attribute name="unsigned" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>take absolute values</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="refOrdinal" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>operand (measurement) for the amount based on threshold values
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="leveling" type="leveling_types" use="required">
+			<xs:annotation>
+				<xs:documentation>procedure how to determine the operand (refOrdinal) value
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TransitionCalculusType">
+		<xs:attribute name="transitionGroupId" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>Specifies which transition group triggers this calculation
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="calculusType" type="calculus_types" use="required">
+		</xs:attribute>
+		<xs:attribute name="unsigned" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>take absolute values</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="referenceGroupId" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>first operand for the calculation based on threshold values
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="leveling" type="leveling_types" use="required">
+			<xs:annotation>
+				<xs:documentation>procedure how to determine the first operand (referenceGroupId) value
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="referenceGroupIdDivisor" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>second operand for the calculation based on recovery values
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="divisorLeveling" type="leveling_types">
+			<xs:annotation>
+				<xs:documentation>procedure how to determine the second operand (referenceGroupIdDivisor) value
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="deltaBasis" type="delta_basis_types" use="required">
+			<xs:annotation>
+				<xs:documentation>delta values are calculated based on the recovery period and / or recovery
+					period values.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TriggerType">
+		<xs:attribute name="level" type="xs:integer" use="required">
+			<xs:annotation>
+				<xs:documentation>describes the value level where statistics
+					calculation is active (4000 == 4A)
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="isGreater" type="xs:boolean" use="required">
+			<xs:annotation>
+				<xs:documentation>true means all values above trigger level will be
+					counted
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minTimeSec" type="xs:integer" use="required">
+			<xs:annotation>
+				<xs:documentation>minimum time length in seconds of trigger range to
+					filter short time periods
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="comment" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>trigger related comment</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="isSecondary" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>mark the trigger as secondary, is only used to extend a primary trigger</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StateType">
+		<xs:sequence>
+			<xs:element name="property" type="PropertyType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="data_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Integer" />
+			<xs:enumeration value="Double" />
+			<xs:enumeration value="Boolean" />
+			<xs:enumeration value="String" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="comma_separator_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="semicolon" />
+			<xs:enumeration value="comma" />
+			<xs:enumeration value="colon" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="decimal_separator_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dot" />
+			<xs:enumeration value="comma" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="delta_basis_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="reference" />
+			<xs:enumeration value="recovery" />
+			<xs:enumeration value="bothAvg" />
+			<xs:enumeration value="inner" />
+			<xs:enumeration value="outer" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="device_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="logger" />
+			<xs:enumeration value="charger" />
+			<xs:enumeration value="multimeter" />
+			<xs:enumeration value="variometer" />
+			<xs:enumeration value="flightrecorder" />
+			<xs:enumeration value="balancer" />
+			<xs:enumeration value="current-sink" />
+			<xs:enumeration value="receiver" />
+			<xs:enumeration value="global-positioning-system" />
+			<xs:enumeration value="power-supply" />
+			<xs:enumeration value="control-unit" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="channel_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TYPE_OUTLET" />
+			<xs:enumeration value="TYPE_CONFIG" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="flow_control_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FLOWCONTROL_NONE" />
+			<xs:enumeration value="FLOWCONTROL_XON_XOFF" />
+			<xs:enumeration value="FLOWCONTROL_HARDWARE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="data_bits_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DATABITS_5" />
+			<xs:enumeration value="DATABITS_6" />
+			<xs:enumeration value="DATABITS_7" />
+			<xs:enumeration value="DATABITS_8" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="stop_bits_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="STOPBITS_1" />
+			<xs:enumeration value="STOPBITS_2" />
+			<xs:enumeration value="STOPBITS_1_5" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="parity_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PARITY_NONE" />
+			<xs:enumeration value="PARITY_ODD" />
+			<xs:enumeration value="PARITY_EVEN" />
+			<xs:enumeration value="PARITY_MARK" />
+			<xs:enumeration value="PARITY_SPACE" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="checkSum_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="XOR" />
+			<xs:enumeration value="ADD" />
+			<xs:enumeration value="OR" />
+			<xs:enumeration value="AND" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="format_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BYTE" />
+			<xs:enumeration value="VALUE" />
+			<xs:enumeration value="BINARY" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="input_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="FILE_IO" />
+			<xs:enumeration value="SERIAL_IO" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="line_ending_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="crlf" />
+			<xs:enumeration value="cr" />
+			<xs:enumeration value="lf" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="baud_rate_types">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="2400" />
+			<xs:enumeration value="4800" />
+			<xs:enumeration value="7200" />
+			<xs:enumeration value="9600" />
+			<xs:enumeration value="14400" />
+			<xs:enumeration value="19200" />
+			<xs:enumeration value="28800" />
+			<xs:enumeration value="38400" />
+			<xs:enumeration value="57600" />
+			<xs:enumeration value="115200" />
+			<xs:enumeration value="128000" />
+			<xs:enumeration value="230400" />
+			<xs:enumeration value="256000" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="measurement_property_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="offset" />
+			<xs:enumeration value="factor" />
+			<xs:enumeration value="reduction" />
+			<xs:enumeration value="do_subtract_first" />
+			<xs:enumeration value="do_subtract_last" />
+			<xs:enumeration value="regression_type" />
+			<xs:enumeration value="regression_type_curve" />
+			<xs:enumeration value="regression_type_linear" />
+			<xs:enumeration value="regression_interval_sec" />
+			<xs:enumeration value="number_cells" />
+			<xs:enumeration value="prop_n100W" />
+			<xs:enumeration value="is_invert_current" />
+			<xs:enumeration value="number_motor" />
+			<xs:enumeration value="revolution_factor" />
+			<xs:enumeration value="scale_sync_ref_ordinal" />
+			<xs:enumeration value="google_earth_velocity_avg_limit_factor" />
+			<xs:enumeration value="google_earth_velocity_lower_limit" />
+			<xs:enumeration value="google_earth_velocity_upper_limit" />
+			<xs:enumeration value="google_earth_within_limits_color" />
+			<xs:enumeration value="google_earth_lower_limit_color" />
+			<xs:enumeration value="google_earth_upper_limit_color" />
+			<xs:enumeration value="google_earth_is_extrude" />
+			<xs:enumeration value="google_earth_is_random_color" />
+			<xs:enumeration value="filter_factor" />
+			<xs:enumeration value="tolerate_sign_change" />
+			<xs:enumeration value="beyond_limit" />
+			<xs:enumeration value="below_limit" />
+			<xs:enumeration value="is_bits" />
+			<xs:enumeration value="is_tokens" />
+			<xs:enumeration value="data_type" />
+			<xs:enumeration value="none_specified" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="channel_property_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="enable_filter" />
+			<xs:enumeration value="text_mode" />
+			<xs:enumeration value="enable_channel" />
+			<xs:enumeration value="number_poles" />
+			<xs:enumeration value="pinion_gear" />
+			<xs:enumeration value="main_gear" />
+			<xs:enumeration value="status_fields" />
+			<xs:enumeration value="time_info" />
+			<xs:enumeration value="outlier_sigma" />
+			<xs:enumeration value="outlier_range_factor" />
+			<xs:enumeration value="none_specified" />
+			<xs:enumeration value="channel_percentage" />
+			<xs:enumeration value="sensor_alt_climb" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="time_unit_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="msec" />
+			<xs:enumeration value="sec" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="desktop_property_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="table_tab" />
+			<xs:enumeration value="digital_tab" />
+			<xs:enumeration value="analog_tab" />
+			<xs:enumeration value="voltage_per_cell_tab" />
+			<xs:enumeration value="utility_garphics_tab" />
+			<xs:enumeration value="utility_device_tab" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="amount_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="min" />
+			<xs:enumeration value="max" />
+			<xs:enumeration value="avg" />
+			<xs:enumeration value="sigma" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="calculus_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="delta" />
+			<xs:enumeration value="delta_permille" />
+			<xs:enumeration value="relative_delta_percent" />
+			<xs:enumeration value="ratio" />
+			<xs:enumeration value="ratio_permille" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="figure_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="time_sum_sec" />
+			<xs:enumeration value="time_step_sec" />
+			<xs:enumeration value="count" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="leveling_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="first" />
+			<xs:enumeration value="last" />
+			<xs:enumeration value="mid" />
+			<xs:enumeration value="avg" />
+			<xs:enumeration value="minmax" />
+			<xs:enumeration value="smooth_minmax" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="score_label_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="duration_mm" />
+			<xs:enumeration value="averageTimeStep_ms" />
+			<xs:enumeration value="maximumTimeStep_ms" />
+			<xs:enumeration value="minimumTimeStep_ms" />
+			<xs:enumeration value="sigmaTimeStep_ms" />
+			<xs:enumeration value="sampledReadings" />
+			<xs:enumeration value="totalReadings" />
+			<xs:enumeration value="totalPackages" />
+			<xs:enumeration value="lostPackages" />
+			<xs:enumeration value="lostPackagesPerMille" />
+			<xs:enumeration value="lostPackagesAvg_ms" />
+			<xs:enumeration value="lostPackagesMax_ms" />
+			<xs:enumeration value="lostPackagesMin_ms" />
+			<xs:enumeration value="lostPackagesSigma_ms" />
+			<xs:enumeration value="sensors" />
+			<xs:enumeration value="sensorVario" />
+			<xs:enumeration value="sensorGps" />
+			<xs:enumeration value="sensorGam" />
+			<xs:enumeration value="sensorEam" />
+			<xs:enumeration value="sensorEsc" />
+			<xs:enumeration value="logDataVersion" />
+			<xs:enumeration value="logDataExplorerVersion" />
+			<xs:enumeration value="logFileVersion" />
+			<xs:enumeration value="logFileBytes" />
+			<xs:enumeration value="logRecordSetBytes" />
+			<xs:enumeration value="logFileRecordSets" />
+			<xs:enumeration value="elapsedHistoRecordSet_ms" />
+			<xs:enumeration value="sensorCount" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="transition_class_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="slope" />
+			<xs:enumeration value="pulse" />
+			<xs:enumeration value="peak" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="transition_value_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="lowerThreshold" />
+			<xs:enumeration value="upperThreshold" />
+			<xs:enumeration value="deltaValue" />
+			<xs:enumeration value="deltaFactor" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="reference_rule_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="avg" />
+			<xs:enumeration value="max" />
+			<xs:enumeration value="min" />
+			<xs:enumeration value="product" />
+			<xs:enumeration value="quotient" />
+			<xs:enumeration value="spread" />
+			<xs:enumeration value="sum" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="trail_types">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="real_avg" />
+			<xs:enumeration value="real_count" />
+			<xs:enumeration value="real_max" />
+			<xs:enumeration value="real_min" />
+			<xs:enumeration value="real_sd" />
+			<xs:enumeration value="real_first" />
+			<xs:enumeration value="real_last" />
+			<xs:enumeration value="real_sum_triggered" />
+			<xs:enumeration value="real_max_ratio_triggered" />
+			<xs:enumeration value="real_time_sum_triggered" />
+			<xs:enumeration value="real_count_triggered" />
+			<xs:enumeration value="real_sum" />
+			<xs:enumeration value="avg" />
+			<xs:enumeration value="max" />
+			<xs:enumeration value="min" />
+			<xs:enumeration value="sd" />
+			<xs:enumeration value="q0" />
+			<xs:enumeration value="q1" />
+			<xs:enumeration value="q2" />
+			<xs:enumeration value="q3" />
+			<xs:enumeration value="q4" />
+			<xs:enumeration value="q_25_permille" />
+			<xs:enumeration value="q_975_permille" />
+			<xs:enumeration value="q_lower_whisker" />
+			<xs:enumeration value="q_upper_whisker" />
+			<xs:enumeration value="first" />
+			<xs:enumeration value="last" />
+			<xs:enumeration value="sum" />
+			<xs:enumeration value="count" />
+			<xs:enumeration value="raw_max" />
+			<xs:enumeration value="raw_bits" />
+			<xs:enumeration value="suite_real_avg_sd" />
+			<xs:enumeration value="suite_real_avg_min_max" />
+			<xs:enumeration value="suite_avg_sd" />
+			<xs:enumeration value="suite_avg_min_max" />
+			<xs:enumeration value="suite_box_plot" />
+			<xs:enumeration value="suite_box_plot_95" />
+			<xs:enumeration value="suite_q0_q2_q4" />
+			<xs:enumeration value="suite_q1_q2_q3" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

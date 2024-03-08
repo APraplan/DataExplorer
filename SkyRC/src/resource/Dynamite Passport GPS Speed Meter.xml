@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.skyrc.GPSLogger">Dynamite Passport GPS Speed Meter</name>
+        <manufacturer>Horizon Hobby</manufacturer>
+        <manufacturerURL>https://www.horizonhobby.com/dynamite/</manufacturerURL>
+        <group>logger</group>
+        <image>Dynamite Passport GPS Speed Meter.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+		<UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="BYTE" size="16"/>
+        <preferredFileExtention>*.3gpl</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_data_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_universal" type="TYPE_CONFIG">
+            <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="Faktor zu einem gemessenem Wert"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude GPS</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="Faktor zu einem gemessenem Wert"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+			<Measurement>
+				<name>trip</name>
+				<symbol>l</symbol>
+				<unit>km</unit>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+			</Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="false"/>
+        <property name="analog_tab" value="false"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

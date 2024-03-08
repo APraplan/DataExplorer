@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.wb.AkkuMonitor">4D-Akkumonitor</name>
+        <manufacturer>4D.control</manufacturer>
+        <manufacturerURL>https://epo-bike.de/?page_id=89</manufacturerURL>
+        <group>logger</group>
+        <image>4d-akkumonitor.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format size="-126" formatType="VALUE" inputType="FILE_IO"/>
+        <timeUnit>sec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.csv</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_CONFIG" name="type_data_recording">
+            <Measurement>
+                <name>T1</name>
+                <symbol>T1</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="false" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>T2</name>
+                <symbol>T2</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="false" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>T3</name>
+                <symbol>T3</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="false" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>trip</name>
+                <symbol>s</symbol>
+                <unit>km</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="Werte in 1/10km"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>gps_longitude</name>
+                <symbol>L</symbol>
+                <unit>° '</unit>
+                <active>false</active>
+                <property name="data_type" value="GPS longitude" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>gps_latitude</name>
+                <symbol>B</symbol>
+                <unit>° '</unit>
+                <active>false</active>
+                <property name="data_type" value="GPS latitude" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>gps_altitude</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <property name="data_type" value="GPS altitude" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>lap</name>
+                <symbol>SP</symbol>
+                <unit>mm:ss,S</unit>
+                <active>false</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="data_type" value="date time" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>Int1</name>
+                <symbol>I1</symbol>
+                <unit>mm:ss,S</unit>
+                <active>false</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="data_type" value="date time" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>Int2</name>
+                <symbol>I2</symbol>
+                <unit>mm:ss,S</unit>
+                <active>false</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="data_type" value="date time" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>Int3</name>
+                <symbol>I3</symbol>
+                <unit>mm:ss,S</unit>
+                <active>false</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="data_type" value="date time" type="String" description="Spezial Datentyp"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol>n</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="Werte in 1/10A"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>Ah</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>kW</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="Werte in 1/10kW"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>kWh</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>total_voltage</name>
+                <symbol>Ugesamt</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>U01</name>
+                <symbol>U1</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+            </Measurement>
+            <Measurement>
+                <name>U02</name>
+                <symbol>U2</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U03</name>
+                <symbol>U3</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U04</name>
+                <symbol>U4</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U05</name>
+                <symbol>U5</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U06</name>
+                <symbol>U6</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U07</name>
+                <symbol>U7</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U08</name>
+                <symbol>U8</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U09</name>
+                <symbol>U9</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U10</name>
+                <symbol>U10</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U11</name>
+                <symbol>U11</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U12</name>
+                <symbol>U12</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U13</name>
+                <symbol>U13</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U14</name>
+                <symbol>U14</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U15</name>
+                <symbol>U15</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U16</name>
+                <symbol>U16</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U17</name>
+                <symbol>U17</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U18</name>
+                <symbol>U18</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U19</name>
+                <symbol>U19</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U20</name>
+                <symbol>U20</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U21</name>
+                <symbol>U21</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U22</name>
+                <symbol>U22</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U23</name>
+                <symbol>U23</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U24</name>
+                <symbol>U24</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U25</name>
+                <symbol>U25</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U26</name>
+                <symbol>U26</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U27</name>
+                <symbol>U27</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U28</name>
+                <symbol>U28</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U29</name>
+                <symbol>U29</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U30</name>
+                <symbol>U30</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U31</name>
+                <symbol>U31</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U32</name>
+                <symbol>U32</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U33</name>
+                <symbol>U33</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U34</name>
+                <symbol>U34</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U35</name>
+                <symbol>U35</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U36</name>
+                <symbol>U36</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U37</name>
+                <symbol>U37</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U38</name>
+                <symbol>U38</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U39</name>
+                <symbol>U39</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U40</name>
+                <symbol>U40</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U41</name>
+                <symbol>U41</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U42</name>
+                <symbol>U42</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U43</name>
+                <symbol>U43</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U44</name>
+                <symbol>U44</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U45</name>
+                <symbol>U45</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U46</name>
+                <symbol>U46</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U47</name>
+                <symbol>U47</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U48</name>
+                <symbol>U48</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U49</name>
+                <symbol>U49</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U50</name>
+                <symbol>U50</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U51</name>
+                <symbol>U51</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U52</name>
+                <symbol>U52</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U53</name>
+                <symbol>U53</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U54</name>
+                <symbol>U54</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U55</name>
+                <symbol>U55</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U56</name>
+                <symbol>U56</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U57</name>
+                <symbol>U57</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U58</name>
+                <symbol>U58</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U59</name>
+                <symbol>U59</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U60</name>
+                <symbol>U60</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U61</name>
+                <symbol>U61</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U62</name>
+                <symbol>U62</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U63</name>
+                <symbol>U63</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U64</name>
+                <symbol>U64</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U65</name>
+                <symbol>U65</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U66</name>
+                <symbol>U66</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U67</name>
+                <symbol>U67</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U68</name>
+                <symbol>U68</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U69</name>
+                <symbol>U69</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U70</name>
+                <symbol>U70</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U71</name>
+                <symbol>U71</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U72</name>
+                <symbol>U72</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U73</name>
+                <symbol>U73</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U74</name>
+                <symbol>U74</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U75</name>
+                <symbol>U75</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U76</name>
+                <symbol>U76</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U77</name>
+                <symbol>U77</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U78</name>
+                <symbol>U78</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U79</name>
+                <symbol>U79</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U80</name>
+                <symbol>U80</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U81</name>
+                <symbol>U81</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U82</name>
+                <symbol>U82</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U83</name>
+                <symbol>U83</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U84</name>
+                <symbol>U84</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U85</name>
+                <symbol>U85</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U86</name>
+                <symbol>U86</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U87</name>
+                <symbol>U87</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U88</name>
+                <symbol>U88</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U89</name>
+                <symbol>U89</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U90</name>
+                <symbol>U90</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U91</name>
+                <symbol>U91</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U92</name>
+                <symbol>U92</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U93</name>
+                <symbol>U93</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U94</name>
+                <symbol>U94</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U95</name>
+                <symbol>U95</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U96</name>
+                <symbol>U96</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U97</name>
+                <symbol>U97</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U98</name>
+                <symbol>U98</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U99</name>
+                <symbol>U99</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U100</name>
+                <symbol>U100</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U101</name>
+                <symbol>U101</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U102</name>
+                <symbol>U102</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U103</name>
+                <symbol>U103</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U104</name>
+                <symbol>U104</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U105</name>
+                <symbol>U105</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U106</name>
+                <symbol>U106</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U107</name>
+                <symbol>U107</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>U108</name>
+                <symbol>U108</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="Werte in 1/100V"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="false"/>
+        <property name="analog_tab" value="false"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

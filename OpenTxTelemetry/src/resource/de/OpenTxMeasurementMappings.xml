@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+  <comment>
+-- DataExplorer Messwert Mapping Datei --
+diese Datei enthaelt Mappings zwischen Wert aus dem Logfile zu Messwertnamen und Einheit
+fehlende Mappings einfach ergaenzen, bitte informieren Sie den Entwickler
+</comment>
+  <entry key="SWR">SWR [%]</entry>
+  <entry key="RSSI">RSSI [%]</entry>
+  <entry key="A1">A 1 [V]</entry>
+  <entry key="A2">A 2 [V]</entry>
+  <entry key="A3">A 3 [V]</entry>
+  <entry key="A4">A 4 [V]</entry>
+  <entry key="Long">Längengrad [°]</entry>
+  <entry key="Lat">Breitengrad [°]</entry>
+  <entry key="Lngengrad">Längengrad [°]</entry>
+  <entry key="Course">Kurswinkel [°]</entry>
+  <entry key="GPS Speed">GPS Speed [km/h]</entry>
+  <entry key="GPS Alt">GPS Höhe [m]</entry>
+  <entry key="GPS Date">GPS Datum [yy-mm-dd]</entry>
+  <entry key="GPS Time">GPS Zeit [HH:mm:ss]</entry>
+  <entry key="GPS.date">GPS Datum [yy-mm-dd]</entry>
+  <entry key="GPS.time">GPS Zeit [HH:mm:ss]</entry>
+  <entry key="Baro Alt">Höhe [m]</entry>
+  <entry key="Vertical Speed">Steigen [m/sec]</entry>
+  <entry key="Air Speed">AirSpeed [km/h]</entry>
+  <entry key="Temp1">Temperatur 1 [°C]</entry>
+  <entry key="Temp2">Temperatur 2 [°C]</entry>
+  <entry key="RPM">Drehzahl [1/min]</entry>
+  <entry key="Fuel">Kraftstoff [%]</entry>
+  <entry key="Cell volts">Spannung [V]</entry>
+  <entry key="Cell 1">ZellenSpannung 1 [V]</entry>
+  <entry key="Cell 2">ZellenSpannung 2 [V]</entry>
+  <entry key="Cell 3">ZellenSpannung 3 [V]</entry>
+  <entry key="Cell 4">ZellenSpannung 4 [V]</entry>
+  <entry key="Cell 5">ZellenSpannung 5 [V]</entry>
+  <entry key="Cell 6">ZellenSpannung 6 [V]</entry>
+  <entry key="Cell 7">ZellenSpannung 7 [V]</entry>
+  <entry key="Cell 8">ZellenSpannung 8 [V]</entry>
+  <entry key="Cell 9">ZellenSpannung 9 [V]</entry>
+  <entry key="Cell 10">ZellenSpannung 10 [V]</entry>
+  <entry key="Cell 11">ZellenSpannung 11 [V]</entry>
+  <entry key="Cell 12">ZellenSpannung 12 [V]</entry>
+  <entry key="Current">Strom [A]</entry>
+  <entry key="Consumption">Kapazität [mAh]</entry>
+  <entry key="Vfas">Spannung [V]</entry>
+  <entry key="AccelX">Accel X [m/sec]</entry>
+  <entry key="AccelY">Accel Y [m/sec]</entry>
+  <entry key="AccelZ">Accel Z [m/sec]</entry>
+  <entry key="Rud">Seitenruder [msec]</entry>
+  <entry key="Ele">Höhenruder [msec]</entry>
+  <entry key="Thr">Gas [msec]</entry>
+  <entry key="Alt">Höhe [m]</entry>
+  <entry key="VSpd">Steigen [m/s]</entry>
+  <entry key="RxBt">SpannungRx [V]</entry>
+  <entry key="TxBat">SpannungTx [V]</entry>
+  <entry key="VFAS">Spannung [V]</entry>
+  <entry key="Curr">Strom [A]</entry>
+  <entry key="Tmp2">Temperatur2 [°C]</entry>
+  <entry key="TFET">TemperaturFET [°C]</entry>
+  <entry key="TBEC">TemperaturBEC [°C]</entry>
+  <entry key="PWM">PWM [%]</entry>
+  <entry key="Cels">SpannungZellen [V]</entry>
+</properties>

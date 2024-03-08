@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.multiplex.FlightRecorder">FlightRecorder</name>
+        <manufacturer>Multiplex Modellsport</manufacturer>
+        <manufacturerURL>https://www.multiplex-rc.de</manufacturerURL>
+        <group>logger</group>
+        <image>FlightRecorder.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>sec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format size="-24" formatType="VALUE" inputType="FILE_IO"/>
+        <timeUnit>sec</timeUnit>
+        <separator>comma</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.csv</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_flight_recording"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_CONFIG" name="type_config_1">
+			<Measurement>
+				<name>latitude</name>
+				<symbol>B</symbol>
+				<unit>°</unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>longitude</name>
+				<symbol>L</symbol>
+				<unit>°</unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>altitude (GPS)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>4????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>5????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>6????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>7????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>8????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>9????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>10????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>11????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>12????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>13????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>14????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>15????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>16????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>17????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>18????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>19????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>20????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>21????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>22????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>23????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="type_config_2">
+			<Measurement>
+				<name>latitude</name>
+				<symbol>B</symbol>
+				<unit>°</unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>longitude</name>
+				<symbol>L</symbol>
+				<unit>°</unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>altitude (GPS)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>4????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>5????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>6????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>7????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>8????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>9????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>10????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>11????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>12????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>13????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>14????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>15????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>16????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>17????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>18????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>19????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>20????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>21????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>22????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>23????</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="false" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

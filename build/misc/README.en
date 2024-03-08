@@ -1,0 +1,76 @@
+﻿******** DataExplorer README ***********  18 Jul 2023 WB
+
+The GNU DataExplorer is free software, please see http://www.gnu.org/philosophy/free-sw.html. It is also available at no
+cost, but without any warranty. Since the implementation is based on Java using the free available libraries RXTXcomm and SWT
+the execution of this program is possible under a number of popular operating systems like 32/64 Bit Windows and GNU/Linux 
+and MAC OS. The only requirement is the installation of a Java run-time of version 8 to Java 17 for the 32 bit versions and 
+Java 11 to 17 for the 64 bit versions, such as IcedTea or open JDK or SUN/Oracles Java Runtime or Java Service Environment. 
+Prefer using Long Term Support (LTS) version.
+For simplicity, the 64 bit versions for Windows and MAC OS are provided with built-in Java run-time. There is no need to 
+install a Java runtime for these cases. Since the MAC OS versions are based on Intel code, DataExplorer runs in the Rosetta 
+emulation layer.
+
+The GNU DataExplorer read data from serial connected devices or text file import and display this data for a 
+various of further analysis. A listing of supported devices can be found http://www.nongnu.org/dataexplorer/index.html.
+
+More device are under construction. Help doing this is very welcome.		
+
+A device API (IDevice) is defined to enable a relative simple adaptation of a new device to work together with the base application.
+		
+Hint: It is planned to use the DataExplorer on different operating systems and share the data files, do not use special characters at all.
+(conversion ISO-8859-1 to UTF-8 and vice versa). File links are different on the supported operating systems. Object related data files don't get duplicated,
+they get referenced using file links. Before you move data files to a different operating system, remove the object related file links and re-create afterwards.
+Please use the preferences dialog with the miscellaneous tab with the related buttons.
+To create DataExplorer.exe a java wrapper,launch4j, get used. If there are startup errors it might be helpful to launch the application
+using "DataExplorer.exe --l4j-debug". This will generate a launch4j.log with meaningful informations.
+
+
+For questions or suggestions for improvement feel free to contact me using the e-mail address at the download page http://www.nongnu.org/dataexplorer/download.html.
+						 
+
+
+Windows:
+
+How to detect the processor architecture: 
+on command prompt : "echo %PROCESSOR_ARCHITECTURE% -> x86 == 32 Bit; AMD64 == 64 Bit or Settings/All Programs -> Control Panel -> System -> System Type
+Correlating to the processor architecture, required for 32 Bit only, the Java runtime should be installed. Please pay attention during download.
+Starting with version 3.06 DataExplorere comes with an installer. The install operations requires administration rights.
+Attention: Do not use special characters in installation path, Java using UTF-8 as default, conversion problems could occur!
+During the first execution of the program the application configuration directories are created at %APPDATA%\DataExplorer.
+Below this directory also application configuration and trace log files are located.
+
+Hint: Is a message similar to "The java class could not be loaded. java.lang.UnsupportedClassVersionError: (gde/GDE) bad major version" 
+is received while executing the Java version (java -version) is to old to execute this program and must be renewed to a version 11 to Java 17.
+
+Depending of the used Windows version and patch level it might be required to install the latest 
+"Microsoft Visual C++ 2008 Redistributable Package" from www.microsoft.com/downloads (desktop icon, object link creation).
+
+
+
+GNU/Linux:
+
+How to detect the processor architecture: 
+at a command shell execute: "uname -a" -> i386/i686 == 32 Bit; x84_64 == 64 Bit
+Correlating to the processor architecture the Java runtime should be installed. Please pay attention during download.
+Installation of the binary distribution is an unpack of the containing DataExplorer directory with its sub directories and files to a directory 
+where execution right exist (tar -xzvf dataexplorer_..).
+For the very first execution use a command shell and change into the just created DataExplorer directory and execute DataExplorer start script.
+During the first execution of the program the application configuration directories are created /home/<user>/.DataExplorer.
+Below this directory also application configuration and trace log files are located.
+
+Hint: Is a message similar to "The java class could not be loaded. java.lang.UnsupportedClassVersionError: (gde/GDE) bad major version" 
+is received while executing the Java version (java -version) is to old to execute this program and must be renewed to a version 11 to Java 17.
+
+
+
+MAC OS X:
+
+MAC OS run always on a 64 Bit processor architecture and supports the execution of 64 Bit Java applications.
+The 64 Bit variant contains a Java runtime environment. A separate Java installation is not required.	
+The download and opened DMG file show up DataExplorer.app which need simply drag to the Applications folder.
+During the first execution of the program the application configuration directories are created /User/<user>/Library/Application Support/DataExplorer.
+Below this directory also application configuration and trace log files are located.
+
+Hint: If the application do not start, use the terminal application and change to /Applications/DataExplorere.app/Contents/MacOS and execute the DataExplorer
+script manually. If a message similar to "The java class could not be loaded. java.lang.UnsupportedClassVersionError: (gde/GDE) bad major version" 
+is received check your installed/configured Java runtime. 

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - Picolario2 Ger&auml;tedialog</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>Picolario2 Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Es k&ouml;nnen die Messwertnamen und Messwertsymbole angepasst werden. 
+Die Messwerteinheiten sind ebenfalls &auml;nderbar, es ist aber wenig sinnvoll hier etwas anzufassen, wenn nicht auch ein passender Messwertfaktor angelegt wird.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht.
+Kurven, wie Längengrad und Breitengrad, die zweidimensional dargestellt wenig Sinn ergeben, k&ouml;nnen ausgeblendet werden.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "Import P2L Datendatei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</BR>
+Kurven die keine sinnvollen Daten enthalten werden automatisch ausgeblendet. 
+Ist z.B. kein GPS angeschlossen, werden die GPS relevanten Daten nicht zur Anzeige angeboten.
+Sind GPS-Daten vorhanden, werden die dadurch resultierenden Exportmöglichkeiten eingeblendet, und es können
+z. B. Google Earth-Dateien (KMZ) exportiert, bzw. direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo2_Bild_1.png" NAME="HelpInfo2_Bild_1" ALT="HelpInfo2_Bild_1"></P>
+<P>Am rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf Namensgleichheit gepr&uuml;ft, bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende
+Eigenschaft eingesetzt. Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit, das manuell &uuml;ber den Geratekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<P><B>Hinweis: </B>Werden Messwertnamen ge&auml;ndert, f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+</P>
+</BODY>
+</HTML>

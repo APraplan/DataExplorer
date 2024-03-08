@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.skyrc.GPSLogger">GSM-015 GNSS Speed Meter</name>
+        <manufacturer>SKYRC</manufacturer>
+        <manufacturerURL>https://www.skyrc.com</manufacturerURL>
+        <group>logger</group>
+        <image>SpeedMeter.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+		<UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="BYTE" size="16"/>
+        <preferredFileExtention>*.3gpl</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_CONFIG" name="type_universal">
+             <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="factor" value="0.001" type="Double" description="Faktor zu einem gemessenem Wert"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude GPS</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="factor" value="0.1" type="Double" description="Faktor zu einem gemessenem Wert"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+			<Measurement>
+				<name>trip</name>
+				<symbol>l</symbol>
+				<unit>km</unit>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+			</Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="false" name="digital_tab"/>
+        <property value="false" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="false" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

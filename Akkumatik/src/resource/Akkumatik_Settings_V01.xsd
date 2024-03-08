@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AM_Settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Dialog-Settings"/>
+        <xs:element ref="Akku-Settings"/>
+        <xs:element ref="Parameter-Settings"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dialog-Settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Active_Channel"/>
+        <xs:element ref="Channel1"/>
+        <xs:element ref="Channel2"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Active_Channel" type="xs:integer"/>
+  <xs:element name="Channel1" type="Active_Setting"/>
+  <xs:element name="Channel2" type="Active_Setting"/>
+  <xs:element name="Akku-Settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Setting"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Setting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SettingType"/>
+        <xs:element ref="Channel"/>
+        <xs:element ref="AccuTyp"/>
+        <xs:element ref="CurrentMode"/>
+        <xs:element ref="Amount"/>
+        <xs:element ref="Capacity"/>
+        <xs:element ref="CellCount"/>
+        <xs:element ref="Program"/>
+        <xs:element ref="Cycle"/>
+        <xs:element ref="ChargeMode"/>
+        <xs:element ref="ChargeStopMode"/>
+        <xs:element ref="ChargeCurrent"/>
+        <xs:element ref="DisChargeCurrent"/>
+      </xs:sequence>
+      <xs:attribute name="Name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SettingType" type="xs:NCName"/>
+  <xs:element name="Channel" type="xs:integer"/>
+  <xs:element name="AccuTyp" type="xs:integer"/>
+  <xs:element name="CurrentMode" type="xs:integer"/>
+  <xs:element name="Amount" type="xs:integer"/>
+  <xs:element name="Capacity" type="xs:integer"/>
+  <xs:element name="CellCount" type="xs:integer"/>
+  <xs:element name="Program" type="xs:integer"/>
+  <xs:element name="Cycle" type="xs:integer"/>
+  <xs:element name="ChargeMode" type="xs:integer"/>
+  <xs:element name="ChargeStopMode" type="xs:integer"/>
+  <xs:element name="ChargeCurrent" type="xs:integer"/>
+  <xs:element name="DisChargeCurrent" type="xs:integer"/>
+  <xs:element name="Parameter-Settings">
+    <xs:complexType/>
+  </xs:element>
+  <xs:complexType name="Active_Setting">
+    <xs:sequence>
+      <xs:element ref="Active_Setting"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Active_Setting" type="xs:integer"/>
+</xs:schema>

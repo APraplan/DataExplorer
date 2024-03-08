@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2015 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - GigaLogger Device Dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Simprop GigaLogger Dialog</I></FONT></FONT></H2>
+</DIV>
+<P>
+The device dialog should be used to configure the visualization of measurements.
+It is possible to update measurement names, symbols and units. 
+The units are contained within the log data and get overwritten while reading.
+It is possible to import data files using the 'import data' button as well.
+</BR>
+Curves without reasonable data do not displayed.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1"></P>
+<P>
+The GigaLogger can only work together with Multiplex Bus.
+Multiplex sensors are to be configured by addresses, the configured address is displayed as measurement name, the units are overtaken.
+The measurement names needs to be assigned to have a meaningful association and a differentiation between the measurement curves.
+If the sensor address keeps unchanged the associated measurement names don't get overwritten.
+There are already two pre-configured measurement configurations to support different sets of sensors and address associations. 
+Using the device properties editor it would be possible to add some more, if this is really required.
+</P>
+<P>At the right hand side of the configuration panel are check boxes which enable a semi automatic scale synchronization.
+While checking measurement name will be compared to previous once and the fitting measurement ordinal will be added to the measurement configuration entry.
+Using scale synchronization will reduce the required space for scales and spend more for the graphics. 
+Overlaying curves in this matter will allow direct comparison without using the curve compare window.
+</P>
+<P>
+Is is reasonable to think about the sequence and usage of the sensors (sample: Current/Voltage/Capacity - motor battery) before capture data.
+Afterwards adapt and save the configuration without loading data.
+The names of curves should be unique for this device if possible, sample CurrentMotor, CurrentRx, VoltageMotor, VoltageRx.
+Please choose the curve names, in case of scale synchronization, in a way that the names starts with the same word, 
+sample Current synchronized to <I>Current</I>Motor, <I>Current</I>Rx, <I>Current</I>Motor2.
+This is the algorithm the semi-automatic synchronization works.
+Using the DevicePropertiesEditor it is possible to synchronize almost every curve to another by configuration.
+Sure, this makes only sense for curves where use somehow matching range of values.
+Now it time to import data and cross check again if the unit, symbol a name matches the requirements.
+Symbols are optional (Current I [A], Voltage U [V], ...).
+Do the curves and data match it is possible to select the synchronization check boxes.
+Finally save the configuration again.
+</BR>
+To archive all capabilities of DataExplorer's statistical calculations refer to <A HREF="../../../help/de/HelpInfo_5.html">Statistic View Window</A>.
+</P>
+<P><B>Hint: </B>While changing curve names, symbols units or synchronization entries the device configuration file gets changed.
+With a later version of DataExplorer the device properties schema might change (DeviceProperties_Vxy.xsd), 
+in this case a backup copy of the complete device configurations will be created (Devices_Vxy-1.xsd) and your change will remain there.
+The out dated device configuration file can be used as template to update the new version.
+</P>
+</BODY>
+</HTML>

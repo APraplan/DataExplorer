@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.graupner.HoTTViewer">HoTTViewer</name>
+        <manufacturer>Graupner</manufacturer>
+        <manufacturerURL>https://www.graupner.com</manufacturerURL>
+        <group>logger</group>
+        <image>HoTTViewer.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+        <UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="100"/>
+        <timeUnit>msec</timeUnit>
+        <preferredDataLocation></preferredDataLocation>
+    </DataBlock>
+    <State>
+        <property name="state_data_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_general" type="TYPE_CONFIG">
+            <Measurement>
+                <name>RXSQ</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature_rx</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb 1</name>
+                <symbol>vh</symbol>
+                <unit>m/sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false" countByTrigger="true" countTriggerText="text_trigger_count">
+                    <trigger level="1500" isGreater="true" minTimeSec="10" comment="comment_trigger_gt_def"/>
+                </statistics>
+            </Measurement>
+            <Measurement>
+                <name>climb 3</name>
+                <symbol>vh</symbol>
+                <unit>m/3sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>climb 10</name>
+                <symbol>vh</symbol>
+                <unit>m/10sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="10" sumByTriggerRefOrdinal="10" sumTriggerText="text_trigger_motor_sum"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol>rpm</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>           
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>fuel</name>
+                <symbol></symbol>
+                <unit>ml</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cells_balance</name>
+                <symbol></symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cells_average</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature 1</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature 2</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="18" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>distance_start</name>
+                <symbol></symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>azimuth</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol></symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol></symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage Tx</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>type_lap_time</name>
+                <symbol>t</symbol>
+                <unit>Sek</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Rx</name>
+                <symbol>rx</symbol>
+                <unit>dbm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>ENL</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>GPS-Fix</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="true" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

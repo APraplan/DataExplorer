@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/JAXB Generator/jaxb-ri-20070917/lib/jaxb-xjc.jar"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<mapAttribute key="org.eclipse.debug.core.preferred_launchers">
+<mapEntry key="[run]" value="org.eclipse.jdt.launching.localJavaApplication"/>
+</mapAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.sun.tools.xjc.XJCFacade"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;C:\Users\USER\git\dataexplorer\DataExplorer\src\resource\DeviceProperties_V34.xsd&quot; &#13;&#10;-d &quot;C:\Users\USER\git\dataexplorer\JAXB Generator\generated&quot; &#13;&#10;-p gde.device"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="JAXB Generator"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DJAXB_HOME=&quot;C:\Users\USER\git\dataexplorer\JAXB Generator\jaxb-ri-20070917&quot;"/>
+</launchConfiguration>

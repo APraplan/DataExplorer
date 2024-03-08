@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>-- DataExplorer GraphicsTemplate --</comment>
+<entry key="0_color">0,0,255</entry>
+<entry key="0_defMaxValue">6.0</entry>
+<entry key="0_defMinValue">4.0</entry>
+<entry key="0_isPositionLeft">false</entry>
+<entry key="0_isRoundOut">true</entry>
+<entry key="0_isStartEndDefined">false</entry>
+<entry key="0_isStartpointZero">false</entry>
+<entry key="0_isVisible">true</entry>
+<entry key="0_lineStyle">1</entry>
+<entry key="0_lineWidth">1</entry>
+<entry key="0_numberFormat">-1</entry>
+<entry key="1_color">0,128,0</entry>
+<entry key="1_defMaxValue">150.0</entry>
+<entry key="1_defMinValue">-10.0</entry>
+<entry key="1_isPositionLeft">true</entry>
+<entry key="1_isRoundOut">true</entry>
+<entry key="1_isStartEndDefined">false</entry>
+<entry key="1_isStartpointZero">false</entry>
+<entry key="1_isVisible">true</entry>
+<entry key="1_lineStyle">1</entry>
+<entry key="1_lineWidth">1</entry>
+<entry key="1_numberFormat">-1</entry>
+<entry key="2_color">255,128,0</entry>
+<entry key="2_defMaxValue">6.0</entry>
+<entry key="2_defMinValue">-3.0</entry>
+<entry key="2_isPositionLeft">false</entry>
+<entry key="2_isRoundOut">true</entry>
+<entry key="2_isStartEndDefined">false</entry>
+<entry key="2_isStartpointZero">false</entry>
+<entry key="2_isVisible">true</entry>
+<entry key="2_lineStyle">1</entry>
+<entry key="2_lineWidth">1</entry>
+<entry key="2_numberFormat">-1</entry>
+<entry key="RecordSet_horizontalGridColor">192,192,192</entry>
+<entry key="RecordSet_horizontalGridLineStyle">2</entry>
+<entry key="RecordSet_horizontalGridRecordOrdinal">1</entry>
+<entry key="RecordSet_horizontalGridType">1</entry>
+<entry key="RecordSet_timeGridColor">192,192,192</entry>
+<entry key="RecordSet_timeGridLineStyle">3</entry>
+<entry key="RecordSet_timeGridType">1</entry>
+</properties>

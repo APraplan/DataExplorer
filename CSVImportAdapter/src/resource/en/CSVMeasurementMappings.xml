@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+  <comment>
+-- DataExplorer Messwert Mapping Datei --
+diese Datei enthaelt Mappings zwischen Wert aus dem Logfile zu Messwertnamen und Einheit
+fehlende Mappings einfach ergaenzen, bitte informieren Sie den Entwickler
+</comment>
+  <entry key="Battery voltage">Battery voltage [V]</entry>
+  <entry key="Battery current">Battery current [A]</entry>
+  <entry key="Battery power">Battery power [W]</entry>
+  <entry key="DC-DC current">DC-DC current [A]</entry>
+  <entry key="DC-DC voltage">DC-DC voltage [V]</entry>
+  <entry key="DC-DC input power">DC-DC power in [W]</entry>
+  <entry key="DC-DC output power">DC-DC power out [W]</entry>
+  <entry key="Fr drive power max">Fr drive power_max [W]</entry>
+  <entry key="Rr regen power max">Rr regen power_max [W]</entry>
+  <entry key="Rr drive power max">Rr drive power_max [W]</entry>
+  <entry key="Nominal full pack">Nominal full pack [-]</entry>
+  <entry key="Nominal remaining">Nominal remaining [-]</entry>
+  <entry key="Energy buffer">Energy buffer [Wh]</entry>
+  <entry key="SOC">SOC [-]</entry>
+  <entry key="Usable full pack">Usable full pack [-]</entry>
+  <entry key="Usable remaining">Usable remaining [-]</entry>
+  <entry key="DC Charge total">DC Charge total [Wh]</entry>
+  <entry key="AC Charge total">AC Charge total [Wh]</entry>
+  <entry key="Charge total">Charge total [Wh]</entry>
+  <entry key="Discharge total">Discharge total [Wh]</entry>
+  <entry key="Regen total">Regen total [Wh]</entry>
+  <entry key="Discharge cycles">Discharge cycles [#]</entry>
+  <entry key="Charge cycles">Charge cycles [#]</entry>
+  <entry key="Battery odometer">Battery odometer [%]</entry>
+  <entry key="Max discharge power">Max discharge power [W]</entry>
+  <entry key="Max regen power">Max regen power [W]</entry>
+  <entry key="Rated range">Rated range [%]</entry>
+  <entry key="Typical range">Typical range [%]</entry>
+  <entry key="Full rated range">Full_rated range [%]</entry>
+  <entry key="Full typical range">Full_typical range [%]</entry>
+  <entry key="Cell temp min">Cell temp min [%]</entry>
+  <entry key="Cell temp avg">Cell temp avg [%]</entry>
+  <entry key="Cell temp max">Cell temp max [%]</entry>
+  <entry key="Cell temp diff">Cell temp diff [%]</entry>
+  <entry key="Cell min">Cell voltage min [V]</entry>
+  <entry key="Cell avg">Cell voltage avg [V]</entry>
+  <entry key="Cell max">Cell voltage max [V]</entry>
+  <entry key="Cell diff">Cell voltage diff [V]</entry>
+  <entry key="LQI">LQI [%]</entry>
+  <entry key="Audio files">Audio files [#]</entry>
+  <entry key="Jeti">Jeti [-]</entry>
+  <entry key="RSSI">RSSI [dBm]</entry>
+  <entry key="HOPPING">HOPPING [-]</entry>
+  <entry key="Altitude">Höhe [m]</entry>
+  <entry key="Distance">Distanz [m]</entry>
+</properties>

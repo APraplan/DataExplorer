@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - HoTTAdapter/HoTTAdapter2/HoTTAdapterM/HoTTAdapter2M Device Dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>HoTTAdapter/HoTTAdapter2/HoTTAdapterM/HoTTAdapter2M Device Dialog</I></FONT></FONT></H2>
+</DIV>
+<P>The device dialog is used to configure the visualization of the displayed data.
+Using the "import HoTT file" button a file selection dialog enable to open new files while applying the current visible
+visualization configuration dialog.
+Start/Stop live data gathering uses the configured serial port.
+Selecting the Baud rate also selects the used protocol type.
+115200 Baud for mx-12(#33112), mx-16(#33116), mx-20(#33124), mc-32(#33032), 19200 Baud for mx-12(#4754), mx-16(#4755), mc-19,22,24(#33300 module, #33301 module, #33302 module).
+The 19200 Baud protocol has support for legacy, as well as new firmware. The new firmware package starts with Smart-Box version 4.0.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image1" ALT="Image1">
+</P>
+<P><B>Hint: </B>Curves will be switched invisible if they contain only zero as data points, even if selected! 
+This might be corrected by re-selecting the curve in this configuration dialog.
+</P>
+<P><B>Attention: </B>The selected setting Channels at the HoTTAdapter tool box or at HoTTAdapter2 the configuration Channels will read all data, every 10 msec.
+Packages, where the value of Rx/Tx = 0 dBm get shown. 
+This packages get called back channel lost packages and get displayed in the curve called Rx->Tx-PLoss.
+The curve exist in HoTTAdapter only while displaying the receiver data.
+HoTTAdapter2 will display this curve always and only the Rx/Tx curves are influenced. 
+Lost packages doesn't look complete regarding transmitted values and get skipped normally.
+Channel data are 16 additional time values which get red while this configuration is active, therefore reading of this data may consume more time.
+</P>
+<P><B>Tip: </B>Since the HoTTAdapter stores GPS data it is possible to load and display such data in Google Earth using KMZ files.
+This files can be exported using the file menu or directly launched to an installed Google Earth application.
+How to do so, refer to <A HREF="../../../help/en/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+Using HoTTAdapter2 all received measurement values are displayed at a single time scale. 
+There are different configurations which result in different statistical analysis for possible measured motor run times and used up batteries capacity.
+</P>
+<P>Using the file transfer tab enables file transfer using the serial connection to the transmitter from and to SD-Card.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="HelpInfo_Image_2" ALT="HelpInfo_Image_2">
+</P>
+<UL>
+<LI>red : shows the creation of model configuration backup files, under a backup-transmitter-type directory, of the transmitter direct out of the transmitter memory.</LI>
+<LI>blue : using the context menu it is possible to convert model configurations to a different target transmitter type.
+It is required to check the converted configuration accurate with your target transmitter.  
+Some functions might not supported at the target transmitter due to lack of control emitter, flight phases or different number of curve points.</LI>
+<LI>green : depending where files are selected the transmit button changes and enable file transfer.
+Think, we have a serial connection and the transfer takes long time for bigger files.</LI>
+</UL>
+<P><B>Hint: </B>Serial communication with transmitter and SD-Card only supported with transmitters using 115200 Baud protocol! 
+Due to the slow transfer rate it is not recommended to transfer big files using this protocol.
+A lot of time would be consumed executing this and the transmitter might be run out of power.
+</P>
+<P><B>Hint: </B>Microcopter GPS Data are stored as decimal degrees (unit of Latitude and Longitude in [°])! 
+For data visualization of Microcopter data, use the HoTTAdapter with trailing 'M', like Microcopter.
+</P>
+<P><B>Hint: </B>Lost reverse channel packets Rx->Tx = (8978) 8559 ~2.3 % (min=0.01 sec; max=0.09 sec; avg=0.01 sec; sigma=0.00 sec) meaning:
+The first value in brackets is the total number of reverse channel packets lost in the log.
+The second number are the packets lost before turning off the receiver, followed by percentage and statistics.
+</P>
+</BODY>
+</HTML>

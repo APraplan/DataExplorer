@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="20080223;17323053">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18424884">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>Picolario-Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der Picolario-Ger&auml;tedialog dient zum Auslesen der im Ger&auml;t
+mitgeloggten Daten. Um die Datenanzeige zu beeinflussen, sind die
+zwei mittleren Dialogtabulatoren da. Hier kann jeder selbst in
+Abh&auml;ngigkeit der vorliegenden Daten Konfigurationen ausw&auml;hlen.
+Zur Auswahl stehen 
+</P>
+<UL>
+	<LI><P ALIGN=LEFT>H&ouml;henwerte nicht anpassen</P>
+	<LI><P ALIGN=LEFT>ersten H&ouml;henwert von den Restlichen abziehen
+	(das ist der Normalfall)</P>
+	<LI><P ALIGN=LEFT>letzten H&ouml;henwert von den Restlichen abziehen
+	(wenn der Datensatz zeitlich zu sp&auml;t beginnt)</P>
+	<LI><P ALIGN=LEFT>H&ouml;henwerte um einen bestimmten Wert anpassen</P>
+	<LI><P ALIGN=LEFT>Berechnungsart der Steigungskurve</P>
+</UL>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Bedienung</I></FONT></FONT></H2>
+<P>Nachdem die serielle Schnittstelle &uuml;ber den
+Ger&auml;teauswahldialog eingestellt ist und der Ger&auml;tedialog
+aufgerufen, kann durch dr&uuml;cken von „Anzahl der
+Aufzeichnungen auslesen“ die aktuelle Anzahl von Aufzeichnungen
+ausgelesen und angezeigt werden (Voraussetzung dazu ist nat&uuml;rlich,
+das der Picolario dazu vorbereitet wurde). Das Resultat ist
+beispielhaft in Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1">
+</P>
+<P>Im zweiten Schritt kann nun im Vorfeld die auf die auszulesenden
+Daten anzuwendende Konfiguration ver&auml;ndert werden. Das kann aber
+auch nach dem Auslesen der Daten geschehen. 
+</P>
+<P>Als dritten Schritt besteht die M&ouml;glichkeit, jeden Datensatz
+&uuml;ber „angew&auml;hlte Aufzeichnung auslesen“ einzeln
+auszulesen. Je nachdem, wie viele Daten gespeichert sind, kann das
+Auslesen einige Zeit in Anspruch nehmen. Deshalb empfiehlt sich fast
+immer den Weg &uuml;ber „alle Aufzeichnungen hintereinander
+auslesen“ zu nutzen. Hierbei wird dann, je nach Einstellung, immer
+wenn ein Datensatz vollst&auml;ndig ausgelesen ist, dieser sofort
+angezeigt. Ist der Ger&auml;tedialog nicht modal eingestellt, kann man
+durch Selektion des Hauptfensters den Ger&auml;tedialog verbergen.
+Das Abholen der Daten passiert in einem separaten Thread, dadurch wird
+die Anwendung selbst nicht beeinflusst. 
+</P>
+<P><B>Tipp: </B>Das Auslesen der Daten kann, nach vorbereitetem Picolario, direkt über die Toolsleiste geschehen.
+</P>
+<P>Ein aktiver Dialog wird im Bild 2 gezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2">
+</P>
+<H2><A NAME="konfiguration"></A><FONT FACE="Arial"><FONT SIZE=4><I>Die Tabulatoren &quot;Konfig 1&quot; und &quot;Konfig 2&quot;</I></FONT></FONT></H2>
+<P>Wie schon in der Einleitung erw&auml;hnt, k&ouml;nnen angezeigte
+Daten durch &Auml;nderung der Konfigurationseinstellung angepasst werden. 
+<BR>
+M&ouml;chte man die H&ouml;henwerte um einen Betrag
+verschieben und die Auswahl bietet nicht den gew&uuml;nschten Wert
+ist auch eine manuelle Eingabe des Wertes m&ouml;glich. 
+<BR>
+Die Steigungsberechnung kann &uuml;ber zwei verschiedene Regressionsarten durchgef&uuml;hrt werden. 
+Eine lineare Regression ergibt eine bessere
+Gl&auml;ttung. Leider ergibt sich dadurch auch eine
+Phasenverschiebung zur H&ouml;henlinie. Diesen Nachteil umgeht man
+mit der nicht linearen Regresssionsvariante, hier der Einfachheit
+halber &quot;Kurve&quot; genannt. <BR>M&ouml;chte man an einer
+bestimmten Stelle die Steigung der H&ouml;henlinie wissen, besteht
+auch die M&ouml;glichkeit, diesen Wert &uuml;ber die Differenzmessung
+zu ermitteln (Kurvenselektor -&gt; H&ouml;he -&gt; Kontextmen&uuml;
+-&gt; Punktdifferenz messen). 
+<BR>
+Da vermutlich zwei Hauptvarianten
+von Konfigurationen zum Tragen kommen, gibt es auch zwei
+Konfigurationstabulatoren, die eine jeweils unabh&auml;ngige
+Einstellung erlauben. 
+<BR>
+M&ouml;chte man nun dauerhaft von einem eingelesenen Datensatz, 
+als Beispiel den letzten H&ouml;henwert von der dargestellten Kurve abziehen, 
+selektiert man einfach den Tabulator und erh&auml;lt die M&ouml;glichkeit, 
+den aktuellen Datensatz in die andere Konfiguration zu &uuml;bertragen. 
+Um die &Auml;nderung zu best&auml;tigen, bekommt man eine Abfrage angezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3.png" NAME="Bild2" ALT="Bild2">
+</P>
+<P>Antwortet man positiv, wird der Datensatz &uuml;bertragen und
+entsprechend aufbereitet. 
+</P>
+<P>Hinweis: Bei jeder Ver&auml;nderung der Konfigurationen wird
+unmittelbar eine Neuberechnung initiiert und die Picolario-Konfigurationsdatei wird gesichert. 
+</P>
+<P>Der wirkliche Sinn hinter den Konfigurationen erschlie&szlig;t sich erst in der Statistikansicht.
+Deshalb sind die Konfigurationen auch umbenannt in Thermik und Motor. 
+In der Motorkonfiguration wird versucht, &uuml;ber die Steigungskurve die Teile herauszufiltern, die für einen laufenden Motor sprechen.
+Die statistischen beziehen sich deshalb auch auf die herausgefilterten Bereiche (siehe Bilder).
+</P> 
+<P ALIGN=CENTER>
+	<IMG SRC="HelpInfo_Bild_4.png" NAME="Bild4" ALT="Bild 4 zeigt did Statistiktansicht für die Thermihkonfiguration">
+	<IMG SRC="HelpInfo_Bild_5.png" NAME="Bild5" ALT="Bild 5 zeigt did Statistiktansicht für die Motorkonfiguration">
+</P> 
+<P> 
+Für später ist geplant, die Werte, die zur statistischen Berechnung f&uuml;hren &uuml;ber den Dialog einstellbar zu machen.
+</P>
+</BODY>
+</HTML>

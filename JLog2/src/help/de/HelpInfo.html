@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - SM JLog2 Ger&auml;tedialog</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18455985">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 von SM-Modellbau</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Namen der Messwerte k&ouml;nnen hier ge&auml;ndert werden, sowie Symbol und Einheit. Sie sollten eindeutig sein.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Kurven, die keine sinnvollen Daten enthalten, werden ebenfalls automatisch ausgeblendet.
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht, da keine Kurven ohne Aussage angezeigt werden. 
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere *.txt Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"></P>
+<P><B>Hinweis: </B>Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn &uuml;ber die Toolbar mittels "importiere Daten" in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+<P>
+Am rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf beginnende Namensgleichheit, (Temperatur 1, Temperatur 2) gepr&uuml;ft. 
+Bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende Eigenschaft eingesetzt.
+Vorsicht ist trotzdem geboten, da hier aktiv in die Anzeige von Daten und deren Skalensynchronisation eingegriffen wird. 
+Die Vorgabe ist aber soweit vorbereitet, dass das selten n&ouml;tig sein sollte.
+Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit, das manuell &uuml;ber den Ger&auml;tekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2">
+<IMG SRC="HelpInfo_Bild_3.png" NAME="HelpInfo_Bild_3" ALT="HelpInfo_Bild_3">
+</P>
+<P>
+Bei Anschluss nicht vorgesehener Sensoren z. B. für Temperatur 1-5, kann es erforderlich sein, einen Faktor oder Offset zu ändern bzw. einzuf&uuml;hren, um den Angeschlossenen Sensor anzupassen.
+Hierzu ist ebenfalls der Ger&auml;teeigenschafteneditor zu bemühen.
+</P>
+<P><B>Hinweis: </B>Werden Messwertnamen ge&auml;ndert f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+Wenn einen Ger&auml;tekonfigurationsdatei 'kaputt' erscheint kann diese einfach im Devices-Verzeichnis gel&ouml;scht werden.
+Sie wird dann beim nächsten Start des DataExplorers wieder hergestellt.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>JLog2-Livedatenaufnahme</I></FONT></FONT></H3>
+<P>
+M&ouml;chte man Daten direkt beim erzeugen aufnehmen, muss ein serieller Port f&uuml;r den JLog2 im Programm konfiguriert sein.
+Ist das bereits geschehen, kann nach Anschluss des USB-Interface-Adapters am System f&uuml;r die serielle Kommunikation mit dem JLog2 die Datenaufnahme &uuml;ber "starte Live-Daten" beginnen.
+Das Programm wartet solange bis Daten verf&uuml;gbar sind und zeigt diese dann sofort an. 
+Wichtig ist, dass der JLog2 und der verbundene Jive-Motorsteller auch wirklich angeschlossen sind und ein Motor angetrieben wird.
+Sonst startet der JLog2 sein eigenes Log nicht. Das Schreiben einer Logdatei auf der SD-Karte kann dabei nicht unterdr&uuml;ckt werden.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>JLog2-Konfiguration</I></FONT></FONT></H3>
+<P>
+Selektiert man den Konfigurationstabulator, wird man nach einer CONFIG.txt Datei gefragt, die normalerweise im Wurzelverzeichnis der SD-Karte liegt.
+Diese Datei wird eingelesen und deren Konfiguration wird angezeigt. Jetzt kann nach Bedarf die Konfiguration verändert werden.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo_Bild_4.png" NAME="HelpInfo_Bild_4" ALT="HelpInfo_Bild_4">
+<IMG SRC="HelpInfo_Bild_5.png" NAME="HelpInfo_Bild_5" ALT="HelpInfo_Bild_5">
+</P>
+<P>
+Erst nach Ver&auml;nderung der Konfiguration, wird ein Sichern m&ouml;glich.
+Die Datei sollte mit gleichem Namen wieder an die Stelle geschrieben werden, von der sie gelesen wurde.
+Danach kann man die SD-Karte entnehmen und wieder in den JLog2 stecken.
+</BR>
+In einigen F&auml;llen, wenn andere Ger&auml;te mit zur Datenaufzeichnung benutzt werden, die auch als Daten in der JLog2-Aufzeichnung refektiert werden, 
+als Beispiel seien hier der GPS-Logger oder ein Akku-BID-Chip genannt, sind die angeschlossenen Ger&auml;te ebenfalls entsprechend anzuschliessen und/oder zu konfigurieren.
+</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 und Telemetrie</I></FONT></FONT></H4>
+<P>
+Es ist die entsprechende Telemetrieeinstellung bei der Konfiguration zu verwenden. 
+Dann werden entsprechend der Beschreibung des JLog Telemetriedaten an den Sender &uuml;bermittelt.
+<P ALIGN=CENTER><IMG SRC="../JLog2_Telemetry.png" NAME="JLog2_Telemetry" ALT="JLog2_Telemetry"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit HiTec-Telemetrie</I></FONT></FONT></H4>
+<P>
+Zur Verwendung mit HiTec-Telemetrie ist der JLog entsprechend mit dem Empf&auml;nger zu verbinden. 
+Dabei auf die &quot;pull-up&quot; Widerst&auml;nde achten, sonst erkennt der Empf&auml;nger die Telemetriedaten nicht auf dem Daten-BUS.
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry.png" NAME="JLog2_HiTec_Telemetry" ALT="JLog2_HiTec_Telemetry"></P>
+<P><B>Hinweis: </B>Es k&ouml;nnen keine weiteren analogen Sensoren angeschlossen werden, der Anschluss von digitalen Sensoren an die COM Schnittstelle ist m&ouml;lich!</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit HiTec-Telemetrie und digitalen Temperatursensoren an COM</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry_Temperature.png" NAME="JLog2_HiTec_Telemetry_Temperature" ALT="JLog2_HiTec_Telemetry_Temperature"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit HV2BEC, HiTec-Telemetrie und digitalen Temperatursensoren an COM</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry_Temperature_HV2BEC.png" NAME="JLog2_HiTec_Telemetry_Temperature_HV2BEC" ALT="JLog2_HiTec_Telemetry_Temperature_HV2BEC"></P>
+<P><B>Hinweis: </B>Ist ein HV2BEC konfiguriert und angeschlossen, &auml;ndert sich die externe Temperatur 1 auf die HV2BEC-Temperatur, 
+externe Temperatur 2 auf externe Temperatur 1 .... externe Temperatur 5 auf externe Temperatur 4!</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit GPS-Logger</I></FONT></FONT></H4>
+<P>
+Soll der GPS-Logger als Unterger&auml;t angeschlossen werden m&uuml;ssen Mutiplex Adresssen konfiguriert werden, damit der GPS-Logger seine Daten, wie vom JLog2 erwartet, bereitstellt.
+<UL>
+<LI>Keine Telemetrie: Speed auf Adresse 14 und Höhe auf Adresse 15
+<LI>HiTec-Telemetrie: Speed auf Adresse 14 und Höhe auf Adresse 15, Vario auf 13, Entfernung auf 12, Strecke auf 11 und Richtung auf 10
+<LI>Multiplex Telemetrie: Nicht die Adressen 2 und 3 seitens JLog als Sensor verwenden! Der Multiplex Empf&auml;nger sollte Spannung und LQI nicht auf den BUS senden. 
+Den GPS-Logger so konfigurieren, dass er Speed auf Adresse 2 und Höhe auf Adresse 3 gibt.
+<LI>Multiplex Telemetrie mit LQI: Nicht die Adresse 1 seitens JLog verwenden. Daf&uuml;r aber den Multiplex Empf&auml;nger auf LQI Adresse 1 setzen. 
+Bei der Empf&auml;ngerkonfiguration ist darauf zu achten, dass kein Adresskonflikt mit der Spannung entsteht, die aber &uuml;bergeben werden sollte.
+</UL>
+</P>
+<P ALIGN=CENTER><IMG SRC="../JLog2_GPS_Logger.png" NAME="JLog2_GPS_Logger" ALT="JLog2_GPS_Logger"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit Robbe BID Chip</I></FONT></FONT></H4>
+<P>
+Soll ein Batterie BID Chip als Unterger&auml;t angeschlossen werden ist auf den korrekten Anschluss zu achten.
+<P ALIGN=CENTER><IMG SRC="../JLog2_BID.png" NAME="JLog2_BID" ALT="JLog2_BID"></P>
+</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit 2 Sensoren (Pulse pro Umdrehung, Temperatursensor)</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_Analog_Sensors.png" NAME="JLog2_Analog_Sensors" ALT="JLog2_Analog_Sensors"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 mit 2 Alarmanschl&uuml;ssen</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_Alarm_Lines.png" NAME="JLog2_Alarm_Lines" ALT="JLog2_Alarm_Lines"></P>
+<P>Weitere Hinweise auf <A HREF="https://j-log.eu">JLog Connections</A></P>
+</BODY>
+</HTML>

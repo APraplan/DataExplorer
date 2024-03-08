@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DataExplorer"/>
+	<classpathentry kind="lib" path="/build/lib/jaxb-api.jar"/>
+	<classpathentry kind="var" path="SWT_JAR_PATH"/>
+	<classpathentry kind="lib" path="/build/lib/juniversalchardet.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

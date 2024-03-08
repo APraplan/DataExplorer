@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Bruegmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H1>Introduction</H1>
+<P>The GNU DataExplorer is a tool to gather, view and analyze data which comes from devices 
+with a serial data port or other like CSV-file or USB port. 
+The application itself runs on several operating system with 32 or 64 bit processor (GNU/Linux, Windows, Mac OS) 
+and is enabled for national language support. 
+Actual English and German is packaged. 
+Devices might be data logger, measurement devices, charging devices or similar. 
+</P>
+<P>A fundamental idea for the development is the system comprehensive thought. 
+For all variants usual computer operating system it should be possible to gather measurement data and present this graphically.
+Calculate statistics on the data as well.
+For instance current and voltage of charging devices, data measurable working with electric motors or back channel data transmitted from radio controlled vehicles.
+This is the reason to base the implementation on Java using the free
+available jSerialComm/RXTXcomm library, for the serial communication and the eclipse
+SWT library for the graphical user interface. For both libraries a
+native interface for Windows, GNU/Linux and Mac OS is available. For
+development the eclipse IDE (integrated development environment)
+together with the Java 6 runtime is used.
+</P>
+<P>What is the naming for serial interfaces on different operating
+systems: 
+<IMG SRC="images/SerialPortAssignements.jpg" NAME="graphics1">
+</P>
+<H2>Why free software using GPL</H2>
+<P>In fundamental there are two reasons. 
+The software follows the freedom of software idea. 
+Using GPL will makes the source code available for every one. 
+Therefore the GNU DataExplorer makes all interfaces for device communication and the data model is freely available. 
+This will finally gives everybody the power to enhance the applications (for own needs) with new functionality, 
+add new devices and fix errors.
+</BR>
+The device specific components are separate
+modules and are bind dynamically during runtime (plug-in). This enables
+developer to develop the device plug-ins disconnected from the main
+application. There is a sample implementation which can be used as entry
+point. To implement a device plug-in three facets are touched: the
+device itself, knowledge how to use the device and a communication
+specification (of course programming knowledge).</P>
+<H2>A few words to Java</H2>
+<P>A Java applications lives within extra for it started
+&quot;Virtual Machine&quot; (VM), this runtime environment is as fist
+approximation equal for all different system platforms. Therefore a Java
+application can be executed everywhere, where a Java runtime exist. The
+VM provides the available memory. Different to an application written in
+C a Java application can only use the memory provided by the JVM what is
+different to the system wide provided memory. This means while starting
+the JVM for an Java application the memory consumption limits must be
+provide (-Xms/-Xmx). If no values are provided, a maximum value of 128
+Mbyte is used as default. A VM sounds like a system sandbox where there
+is no possibility to break through barriers. Would this the truth, there
+would probably no serial communication and no graphics library. Prior to
+announcement of the just in time compilers (JIT) Java applications are
+slow and came with its own visualization skin. Actual Java applications
+are very close to applications written in other programming languages in
+viewpoint of comfort and speed. Using the &quot;Java Native
+Interface&quot; it is possible to communicate direct with hardware
+device drivers. In this area mostly C applications are used to execute
+this job. This is the case with jSerialComm/RXTXcomm and as well SWT. Using Java a
+very big number of freely available libraries are available as well as
+libraries provided by GPL license. All of his can be used in commercial
+applications as well.</P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_01.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

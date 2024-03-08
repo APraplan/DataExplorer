@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name>Picolario2</name>
+        <manufacturer>Renschler</manufacturer>
+        <manufacturerURL>https://www.renschler.de</manufacturerURL>
+        <group>logger</group>
+        <image>Picolario.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="BYTE" size="-64"/>
+        <preferredDataLocation></preferredDataLocation>
+        <preferredFileExtention>*.p2l</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_data_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_thermal" type="TYPE_CONFIG">
+            <Measurement>
+                <name>altitude_relative</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+  				<statistics countTriggerText="text_trigger_count" sumTriggerText="text_trigger_motor_sum" sumByTriggerRefOrdinal="3" sigma="false" avg="false" max="true" min="true"/>
+                <property name="do_subtract_first" value="true" type="Boolean" description="subtract first measurement value from all successors"/>
+            </Measurement>
+            <Measurement>
+                <name>pressure</name>
+                <symbol>p</symbol>
+                <unit>mbar</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.0038" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>V</symbol>
+                <unit>m/s</unit>
+                <statistics min="false" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count">
+                    <trigger level="1000" isGreater="true" minTimeSec="15" comment="comment_trigger_gt_def"/>
+                </statistics>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>°</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>°</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>altitude (GPS)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed (GPS)</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>c</symbol>
+                <unit>mAh</unit>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol></symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature</name>
+                <symbol></symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_motor" type="TYPE_CONFIG">
+            <Measurement>
+                <name>altitude_relative</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" sumByTriggerRefOrdinal="5" sumTriggerText="text_trigger_motor_sum" comment="comment_trigger_ref" ratioRefOrdinal="6" ratioText="text_trigger_ratio_capacity_per_height"/>
+                <property name="do_subtract_first" value="true" type="Boolean" description="subtract first measurement value from all successors"/>
+            </Measurement>
+            <Measurement>
+                <name>pressure</name>
+                <symbol>p</symbol>
+                <unit>mbar</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.01" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.0038" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>V</symbol>
+                <unit>m/s</unit>
+                <statistics min="true" max="true" avg="true" sigma="false" sumTriggerTimeText="text_trigger_time_sum"/>
+                <property name="regression_interval_sec" value="10" type="Integer" description="Regression interval in seconds"/>
+                <property name="regression_type" value="regression_type_curve" type="String" description="Regression arithmetic"/>
+            </Measurement>
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>°</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>°</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>altitude (GPS)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed (GPS)</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="5" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" countByTrigger="true" countTriggerText="text_trigger_count">
+                    <trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def"/>
+                </statistics>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>c</symbol>
+                <unit>mAh</unit>
+                <statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="5" comment="comment_trigger_ref" ratioText="comment_trigger_gt_def"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="5" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol></symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="5" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature</name>
+                <symbol></symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+         </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="analog_tab" value="true"/>
+        <property name="digital_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

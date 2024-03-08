@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - GPXAdapter Ger&auml;tedialog</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18455985">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>GPXAdapter Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Es k&ouml;nnen die Messwertnamen, Messwertsymbole und Messwerteinheiten angepasst werden. 
+Einige Messwerte, wie z. B. L&auml;ngen- und Breitengrad, machen in einer Kurvendarstellung weniger Sinn und können abgew&auml;hlt werden.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen nicht in der grafischen Anzeige. 
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</BR>
+Kurven, die keine sinnvollen Daten enthalten, werden automatisch ausgeblendet. 
+Die GPS-Daten sind als einzige am Anfang festgelegt, da nur über eine feste Zuordnung festgestellt werden kann, ob GPS-Daten anliegen und die dadurch resultierenden
+Exportmöglichkeiten eingeblendet werden können. So z. B. als Google Earth-Dateien (KMZ) exportiert, bzw. direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"></P>
+<P>
+GPX-Dateien enthalten immer GPS-Geokoordinaten. Dagegen sind sogenannte "extensions" nur als Messwertname und Werte, zum Teil kommasepariert, vorhanden. 
+Da es zu den Erweiterungen keine verbindliche Beschreibung gibt, müssen Symbole und Einheiten selbst erg&auml;nzt werden.
+</BR>
+Es gibt zwei vorbereitete Messwertkonfigurationen, die für zwei verschiedene GPS Dateitypen benutzt werden können.
+&Uuml;ber den Ger&auml;teeigenschafteneditor können auch nachträglich weitere Konfigurationen hinzugefügt werden, sollte das einmal erforderlich sein.
+</P>
+<P>Am rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf Namensgleichheit gepr&uuml;ft, bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende
+Eigenschaft eingesetzt. Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit das manuell &uuml;ber den Ger&auml;tekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden, ohne den Kurvenvergleich zu benutzen.
+</P>
+<P>
+&Uuml;ber den Ger&auml;teeigenschafteneditor kann man bei beliebigen Messkurven eine Skalensynchronisation konfigurieren.
+Sinn macht das Ganze aber nur, wenn die Wertebereiche zusammenpassen. 
+Stimmen die Messwerte aus den Sensoren mit den Kurvennamen und Einheiten &uuml;berein, kann mit der Checkbox auf der rechten Seite auf Skalensynchronisation gepr&uuml;ft werden.
+Abschlie&szlig;end die Konfiguration nochmals sichern.
+</BR>
+Um die vollen Möglichkeiten des DataExplorers mit den statistischen Auswertungen auszuschöpfen siehe <A HREF="../../../help/de/HelpInfo_5.html">Fenster &quot;Statistik&quot;</A>.
+</P>
+<P><B>Hinweis: </B>Werden Messwertnamen ge&auml;ndert, f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+</P>
+<P>
+<B>Tipp: </B>Sind umfangreiche Extradaten (extensions) in der GPX-Datei vorhanden, wie zum Beispiel beim Mikrokopter, wurde die M&ouml;glichkeit geschaffen,
+Messwertnamen zu &uuml;bersetzen, Einheiten anzugeben, Skalensynchronisation und Messwertfaktoren anzupassen usw. 
+Bitte in der Textdatei Mappings/GPXAdapter.properties nachsehen, und falls nötig, Anpassungen vornehmen bzw. erg&auml;nzen.
+Die Datei befindet sich unter %AppData%/DataExplorer bzw. Homeverzeichnis/.DataExplorer bzw. Homeverzeichnis/Library/Application Support/DataExplorer.
+Der Inhalt sollte soweit selbsterkl&auml;rend sein. 
+Wird die Datei gel&ouml;scht, wird sie bei der n&auml;chsten Initialisierung des GPXAdapters wieder hergestellt.
+</BR>
+Ist die GPXAdapter.properties-Datei leer, wird die Konfiguration ausschlie&szlig;lich &uuml;ber den Ger&auml;tedialog vorgenommen. 
+Dabei ist zu bachten, dass die Messwertnamen immer durch die Namen aus der GPX-Datei &uuml;berschrieben, die Symbole, Einheiten und Synchronisationsinformation aber beigehalten werden.
+Da Extensions in Anzahl und Namen nicht in definierter Reihenfolge vorliegen, ist immer der Ansatz über die GPXAdapter.properties-Datei vorzuziehen.
+Die Anzahl und Vorkommen von Messwertnamen in dieser Datei spielt keine Rolle.
+Hier darf es also &Uuml;berlappungen mit anderen GPX-Dateien geben, wobei die Anzeige immer individuell f&uuml;r den einzelnen Import bleibt. 
+</P>
+</BODY>
+</HTML>

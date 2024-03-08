@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - SM JLog2 Device dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>SM-Modellbau JLog2</I></FONT></FONT></H2>
+</DIV>
+<P>The device dialog should be used to configure the visualization of measurements by selection.
+Names can be changed as well as symbols and if necessary the unit.
+Unchecked measurement will not be displayed. 
+Curves without reasonable data doesn't get displayed as well.
+This will lead to a more clear representation, curves which are hard to be interpreted in two dimensional way, may be blanked out.
+It is possible to import data files using the 'import *.txt files' button as well.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1"></P>
+<P><B>Hint: </B>The visualization configuration will be applied as well as it is closed in cases where the tool bar button is used to import the data.
+</P>
+<P>At the right hand side of the configuration panel are check boxes which enable a semi automatic scale synchronization.
+While checking measurement name will be compared to previous once and the fitting measurement ordinal will be added to the measurement configuration entry.
+Using scale synchronization will reduce the required space for scales and spend more for the graphics. 
+Anyhow, keep in mind that this has influence to the curve a scale visualization and may corrupt this as well.
+Overlaying curves in this matter will allow direct comparison without using the curve compare window.
+The visualization is prepared to minimize required changes.
+</BR>
+Please choose the curve names, in case of scale synchronization, in a way that the names starts with the same word, 
+sample Current synchronized to <I>Current</I> Motor, <I>Current</I> Rx, <I>Current</I> Motor2.
+This is the algorithm the semi-automatic synchronization is working.
+Using the DevicePropertiesEditor it is possible to synchronize almost every curve to another by configuration.
+Sure, this makes only sense for curves where use somehow matching range of values.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo_Image_2.png" NAME="HelpInfo_Image_2" ALT="HelpInfo_Image_2">
+<IMG SRC="HelpInfo_Image_3.png" NAME="HelpInfo_Image_3" ALT="HelpInfo_Image_3">
+</P>
+<P>
+In cases where other sensors get connected it might be required to adapt a measurement factor or add an offset to adapt sensor capabilities to reality.
+All this can be done by using the DevicePropertiesEditor.
+</P>
+<P><B>Hint: </B>While changing curve names, symbols units or synchronization entries the device configuration file gets changed.
+With a later version of DataExplorer the device properties schema might change (DeviceProperties_Vxy.xsd), 
+in this case a backup copy of the complete device configurations will be created (Devices_Vxy-1) and your change will remain there.
+The out dated device configuration file can be used as template to update the new version.
+If a device configuration file seams to be damaged, just delete it from Devices directory.
+It will be recreated next time DataExplorer gets started.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 Live Data Gathering</I></FONT></FONT></H3>
+<P>
+While the data gets created it is possible to gather them.
+As prerequisite a serial port must be configured for the JLog in this application.
+Is this done and the USB FTDI interface for serial communication is connected to the system and with JLog2 the live data gathering can be started immediately by push the start live data button. 
+The application waits until data can be received and display it as possible.
+Important is to have the JLog2 and the connected Jive motor driver connected with a battery to enable motor activation.
+Otherwise JLog2 will not start its own logging.
+Writing log data to the SD card can not be suppressed.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 Configuration</I></FONT></FONT></H3>
+<P>
+While selecting the configuration tabulator of this dialog a file open dialog gets opened to select a CONFIG.txt file.
+This file is located in the root directory of the SD card. 
+This file will be red and the contained configuration displayed in the dialog.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo_Image_4.png" NAME="HelpInfo_Image_4" ALT="HelpInfo_Image_4">
+<IMG SRC="HelpInfo_Image_5.png" NAME="HelpInfo_Image_5" ALT="HelpInfo_Image_5">
+</P>
+<P>
+After changing some configuration values saving changes will be enabled.
+The CONFIG.txt file should be written to identical location as red before.
+Afterward the SD card can be removed from the system and inserted into the slot of the JLog2.
+</BR>
+While using sub devices which provides data integrated into the JLog2 data log this sub  devices needs to be connected properly and configured as required.
+As example the GPS-Logger or a battery BID chip should be named.
+</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and telemetry</I></FONT></FONT></H4>
+<P>
+It is required to configure the telemetry configurations fitting to the connected sub device.
+According to the description telemetry data get requested by the receiver and transmitted to the radio controller.
+<P ALIGN=CENTER><IMG SRC="../JLog2_Telemetry.png" NAME="JLog2_Telemetry" ALT="JLog2_Telemetry"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and HiTec Telemetry</I></FONT></FONT></H4>
+<P>
+The receiver and JLog2 has to be connected as shown to enable HiTec telemetry.
+Keep in mind to have pull-up resistors, otherwise the receiver do not accept data as telemetry data bus.
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry.png" NAME="JLog2_HiTec_Telemetry" ALT="JLog2_HiTec_Telemetry"></P>
+<P><B>Hint: </B>It is not possible to connect additional analog sensors, only the COM connector enables connection of digital temperature sensors!</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and HiTec Telemetry and Digital Temperature Sensors at COM connector</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry_Temperature.png" NAME="JLog2_HiTec_Telemetry_Temperature" ALT="JLog2_HiTec_Telemetry_Temperature"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and HV2BEC, HiTec Telemetry and Digital Temperature Sensors at COM connector</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_HiTec_Telemetry_Temperature_HV2BEC.png" NAME="JLog2_HiTec_Telemetry_Temperature_HV2BEC" ALT="JLog2_HiTec_Telemetry_Temperature_HV2BEC"></P>
+<P><B>Hint: </B>If a HV2BEC is configured and connected the external temperature changes to HV2BEC temperature, 
+external temperature 2 to external temperature 1 .... external temperature 5 to external temperature 4!</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and GPS-Logger</I></FONT></FONT></H4>
+<P>
+Using the GPS-Logger as sub device it is required to configure Multplex addresses to enable the communication of JLog2 and GPS-Logger.
+<UL>
+<LI>No telemetry: Speed at address 14 und Altitude at address 15
+<LI>HiTec telemetry: Speed at address 14 und Altitude at address 15, Vario at 13, Distance at 12, TripLength at 11 and Direction at address 10
+<LI>Multiplex telemetry: Do not use address 2 and 3 by JLog for a sensor! The Multiplex receiver should not be configured for voltage and LQI to send on the BUS. 
+The GPS-Logger needs to be configured to have Speed at address 2 and Altitude at address 3.
+<LI>Multiplex telemetry with LQI: Do not use address 1 by JLog. On the other hand the Multiplex receiver LQI address needs to be set to 1.
+While configuring the receiver take care do not interfere with addresses, especially voltage, but voltage should be configured to an free address.
+</UL>
+</P>
+<P ALIGN=CENTER><IMG SRC="../JLog2_GPS_Logger.png" NAME="JLog2_GPS_Logger" ALT="JLog2_GPS_Logger"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 Robbe/Futaba BID Chip</I></FONT></FONT></H4>
+<P>
+To connect a battery BID Chip as sub device take care for correct connection.
+<P ALIGN=CENTER><IMG SRC="../JLog2_BID.png" NAME="JLog2_BID" ALT="JLog2_BID"></P>
+</P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and 2 Sensors (Pulse Per Revolution, Temperature)</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_Analog_Sensors.png" NAME="JLog2_Analog_Sensors" ALT="JLog2_Analog_Sensors"></P>
+<H4><FONT FACE="Arial"><FONT SIZE=4><I>JLog2 and 2 Alarm Lines</I></FONT></FONT></H4>
+<P ALIGN=CENTER><IMG SRC="../JLog2_Alarm_Lines.png" NAME="JLog2_Alarm_Lines" ALT="JLog2_Alarm_Lines"></P>
+<P>For additional hints refer to <A HREF="https://62.153.249.80/jlog/jlog2-en/faq/connections">JLog Connections</A></P>
+</BODY>
+</HTML>

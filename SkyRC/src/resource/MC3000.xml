@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.skyrc.MC3000">MC3000</name>
+        <manufacturer>SKYRC</manufacturer>
+        <manufacturerURL>https://www.skyrc.com</manufacturerURL>
+        <group>charger</group>
+        <image>MC3000.png</image>
+        <usage>false</usage>
+    </Device>
+    <UsbPort>
+        <vendorId>0x0000</vendorId>
+        <productId>0x0001</productId>
+        <usbInterface>
+            <interface>0x00</interface>
+            <endPointIn>0x01</endPointIn>
+            <endPointOut>0x81</endPointOut>
+        </usbInterface>
+    </UsbPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>1000.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="64"/>
+        <checkSum format="BINARY" type="ADD"/>
+    </DataBlock>
+    <State>
+        <property name="state_charge" value="0" type="Integer"/>
+        <property name="state_refresh" value="1" type="Integer"/>
+        <property name="state_storage" value="2" type="Integer"/>
+        <property name="state_discharge" value="3" type="Integer"/>
+        <property name="state_cycle" value="4" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_slot 1" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>system_temperature</name>
+                <symbol>Ts</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage avg</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_slot 2" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>system_temperature</name>
+                <symbol>Ts</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage avg</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_slot 3" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>system_temperature</name>
+                <symbol>Ts</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage avg</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_slot 4" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>system_temperature</name>
+                <symbol>Ts</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage avg</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_combination 5" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage 1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage 2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage 3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage 4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>current 1</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>current 2</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>current 3</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>current 4</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>capacity 1</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity 2</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="8" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>capacity 3</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="8" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>capacity 4</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="8" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature 1</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature 2</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="12" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature 3</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="12" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>battery_temperature 4</name>
+                <symbol>Tb</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="12" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>BatteríeRi 1</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>BatteríeRi 2</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>BatteríeRi 3</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>BatteríeRi 4</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>system_temperature</name>
+                <symbol>Ts</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="0.1" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="12" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage avg1</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage avg2</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage avg3</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage avg4</name>
+                <symbol>Ua</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="factor" value="0.001" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+            </Measurement>
+    	</Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

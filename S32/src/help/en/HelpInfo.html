@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - S32 Device dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>S32 from R2Prototyping</I></FONT></FONT></H2>
+</DIV>
+<P>The device dialog should be used to configure the visualization of measurements by selection.
+Names can be changed as well as symbols and if necessary the unit.
+Unchecked measurement will not be displayed. 
+Curves without reasonable data doesn't get displayed as well.
+This will lead to a more clear representation, curves which are hard to be interpreted in two dimensional way, may be blanked out.
+It is possible to import data files using the 'import *.txt files' button as well.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1"></P>
+<P><B>Hint: </B>The visualization configuration will be applied as well as it is closed in cases where the tool bar button is used to import the data.
+</P>
+<P>At the right hand side of the configuration panel are check boxes which enable a semi automatic scale synchronization.
+While checking measurement name will be compared to previous once and the fitting measurement ordinal will be added to the measurement configuration entry.
+Using scale synchronization will reduce the required space for scales and spend more for the graphics. 
+Anyhow, keep in mind that this has influence to the curve a scale visualization and may corrupt this as well.
+Overlaying curves in this matter will allow direct comparison without using the curve compare window.
+The visualization is prepared to minimize required changes.
+</BR>
+Please choose the curve names, in case of scale synchronization, in a way that the names starts with the same word, 
+sample Current synchronized to <I>Current</I> Motor, <I>Current</I> Rx, <I>Current</I> Motor2.
+This is the algorithm the semi-automatic synchronization is working.
+Using the DevicePropertiesEditor it is possible to synchronize almost every curve to another by configuration.
+Sure, this makes only sense for curves where use somehow matching range of values.
+</P>
+<P>
+In cases where other sensors get connected it might be required to adapt a measurement factor or add an offset to adapt sensor capabilities to reality.
+All this can be done by using the DevicePropertiesEditor.
+</P>
+<P><B>Hint: </B>While changing curve names, symbols units or synchronization entries the device configuration file gets changed.
+With a later version of DataExplorer the device properties schema might change (DeviceProperties_Vxy.xsd), 
+in this case a backup copy of the complete device configurations will be created (Devices_Vxy-1) and your change will remain there.
+The out dated device configuration file can be used as template to update the new version.
+If a device configuration file seams to be damaged, just delete it from Devices directory.
+It will be recreated next time DataExplorer gets started.
+</P>
+</BODY>
+</HTML>

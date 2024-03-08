@@ -1,0 +1,47 @@
+How to setup eclipse workspace to build the DataExplorer
+
+== Prepare your system ==
+- Install the JDK (prefer 64-Bit to enable full system heap usage)
+- Install Eclipse
+- Install ant-contrib from http://ant-contrib.sourceforge.net/ or use jar from build/ant folder after project import
+- Make sure that the ANT classpath (Window > Preferences > Ant > Runtime) is correct, containing...
+  - all the jars from Eclipse's org.apache.ant plugin directory
+  - the tools.jar from the JDK's lib directory
+  - the antcontrib.jar
+- Check that the file encoding is set to UTF-8 (Window > Preferences > General > Workspace)
+- install git for your operating system, git contains also ssh functionality to make it easier for WIndows users
+  (for Windows install check-out and commit in UNIX style to enable cross platform development)
+- optional: Make Java sources available: Window > Preferences > Java > Installed JREs  Edit... 
+            in rt.jar Source attachment...: Java/jdk<version>/src.zip
+
+== Setup DataExplorer in Eclipse ==
+- Check out all projects via CVS (https://savannah.nongnu.org/cvs/?group=dataexplorer). Checking out only specific projects won't work, as the build files expect all projects to exist
+- Clone git repository outside on a command shell or bash shell
+  - Create a directory for instance ../git and change directory into it, do not create this directory below your workspace 
+  - Anonymous clone: git clone git://git.savannah.nongnu.org/dataexplorer.git
+  - Member clone:    git clone <membername>@git.sv.gnu.org:/srv/git/dataexplorer.git
+- Eclipse -> Import -> Git -> Projects from git -> existing local repository -> select the folder dataexplorer below your git folder
+  - Import existing projects -> all projects should be automatically selected -> OK
+- Next, configure the needed classpath variable:
+  - Window > Preferences > Java > Build Path > Classpath Variables
+    - Add "SWT_JAR_PATH" with the appropriate path to your system in "build/lib/<OS>/<osarch>/swt.jar"
+    - Add "USB4JAVA_PATH" with the appropriate path to your system in "build/lib/<OS>/<osarch>/libusb4java-1.2.0.jar"
+- Complete Ant libraries if not already done
+- Fix RXTXcomm problem messages: Set Window > Preferences > Maven > Errors/Warnings > Plugin execution not covered by lifecycle configuration to 'Ignore' 
+- Verify Window > Preferences > ... > Workspace "Text File Encoding" to UTF-8 and "New text file line delimiter" to UNIX 
+- Open the properties editor of Eclipse
+  - Enable project specific settings for "Clean Up" and "Formatter"
+    - Import the settings from "build/setup" (code_cleanup_preferences.xml and code_format_preferences.xml)
+  - Java -> Compiler -> Compliance Level -> 11
+- Build and update capabilities
+  - Configure build/build.properties install.dir to your requirements (used by "clean dev-build install" to local directory, take care about permissions)
+  (install.dir.windows=C:/Program\ Files\ (x86) )
+
+== Prepare stuff ==
+- In the "build" project, locate the file "build build.xml clean dev-build.launch"
+  - Right-click on it and choose "Run as"
+    - Select the first entry from the context menu to create all needed directories and files within
+
+== Start the application within Eclipse ==
+- In the DataExplorer project, locate the file "DataExplorer.launch", right-click on it and choose "Debug as > Java Application"
+- Linux user should add -DSWT_GTK3=0 as argument for the launcher

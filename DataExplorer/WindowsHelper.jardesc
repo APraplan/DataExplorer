@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="D:/Temp/WindowsHelper.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/DataExplorer/WindowsHelper.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=DataExplorer/src&lt;de.utils{WindowsHelper.java[WindowsHelper" manifestLocation="/RXTXcomm/META-INF/MANIFEST.MF" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="true">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=DataExplorer/src&lt;de.utils{Library.java"/>
+        <javaElement handleIdentifier="=DataExplorer/src&lt;de.utils{WindowsHelper.java"/>
+    </selectedElements>
+</jardesc>

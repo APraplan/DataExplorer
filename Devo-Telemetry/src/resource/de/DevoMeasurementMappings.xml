@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+  <comment>
+-- DataExplorer Messwert Mapping Datei --
+diese Datei enthaelt Mappings zwischen Wert aus dem Logfile zu Messwertnamen und Einheit
+fehlende Mappings einfach ergaenzen, bitte informieren Sie den Entwickler
+</comment>
+  <entry key="Channel1">Kanal 1 [-]</entry>
+  <entry key="Channel2">Kanal 2 [-]</entry>
+  <entry key="Channel3">Kanal 3 [-]</entry>
+  <entry key="Channel4">Kanal 4 [-]</entry>
+  <entry key="Channel5">Kanal 5 [-]</entry>
+  <entry key="Channel6">Kanal 6 [-]</entry>
+  <entry key="Channel7">Kanal 7 [-]</entry>
+  <entry key="Channel8">Kanal 8 [-]</entry>
+  <entry key="Channel9">Kanal 9 [-]</entry>
+  <entry key="Channel10">Kanal 10 [-]</entry>
+  <entry key="Channel11">Kanal 11 [-]</entry>
+  <entry key="Channel12">Kanal 12 [-]</entry>
+  <entry key="Channel13">Kanal 13 [-]</entry>
+  <entry key="Channel14">Kanal 14 [-]</entry>
+  <entry key="Channel15">Kanal 15 [-]</entry>
+  <entry key="Channel16">Kanal 16 [-]</entry>
+  
+  <entry key="Volt1">Spannung 1 [V]</entry>
+  <entry key="Volt2">Spannung 2 [V]</entry>
+  <entry key="Volt3">Spannung 3 [V]</entry>
+  <entry key="Volt4">Spannung 4 [V]</entry>
+  
+  <entry key="Temp1(C)">Temperatur 1 [°C]</entry>
+  <entry key="Temp2(C)">Temperatur 2 [°C]</entry>
+  <entry key="Temp3(C)">Temperatur 3 [°C]</entry>
+  <entry key="Temp4(C)">Temperatur 4 [°C]</entry>
+  
+  <entry key="Temp1(F)">Temperatur 1 [°F]</entry>
+  <entry key="Temp2(F)">Temperatur 2 [°F]</entry>
+  <entry key="Temp3(F)">Temperatur 3 [°F]</entry>
+  <entry key="Temp4(F)">Temperatur 4 [°F]</entry>
+
+  <entry key="Altitude(m)">GPS-Höhe [m]</entry>
+  <entry key="Altitude(f)">GPS-Höhe [f]</entry>
+  
+  <entry key="Velocity(m/s)">Geschwindigkeit [m/s]</entry>
+  <entry key="Velocity(km/h)">Geschwindigkeit [km/h]</entry>
+  
+  <entry key="Latitude">Breitengrad [° ']</entry>
+  <entry key="Longitude">Längengrad [° ']</entry>
+</properties>

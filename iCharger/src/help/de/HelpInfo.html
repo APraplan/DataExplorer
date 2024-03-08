@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>iCharger seriell und iCharger USB - Akkuladeger&auml;te</TITLE>
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>iCharger 106B, iCharger 206B, iCharger 208B, iCharger 306B, iCharger 3010B - Akkuladeger&auml;te</I></FONT></FONT></H2>
+</DIV>
+<P ALIGN=CENTER>
+<IMG SRC="../../resource/iCharger208B.jpg" NAME="iCharger208B">
+<IMG SRC="../../resource/iCharger306B.jpg" NAME="iCharger306B">
+</P>
+<P>F&uuml;r die iCharger Ger&auml;te von Junsi mit sereiellem Anschluss gibt es keinen Ger&auml;tedialog. 
+Die serielle Verbindung muss lediglich hergestellt werden und es erfolgt sofort die Live-Aufnahme oder das Auslesen aus dem Ger&auml;t.
+</P>
+<P><B>Hinweis: </B>Durch die verwendete Baudrate 128000 k&ouml;nnen keine Daten unter UNIX abgeleiteten Betriebssystemen wie Linux oder MAC OS X eingelesen werden. 
+Diese Datenrate hat keinen geraden Teiler und man kann sie nicht einstellen. Unter Linux h&auml;tte man die M&ouml;glichkeit das Kernelmodul f&uuml;r den seriellen Adapter anzupassen. Im Internet findet man dazu entsprechende Hinweise.
+</P>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>iCharger X6, S6, X8, X12, 406DUO, 308DUO, 4010DUO, DX6, DX8 - Akkuladeger&auml;te</I></FONT></FONT></H2>
+</DIV>
+<P ALIGN=CENTER>
+<IMG SRC="../../resource/iCharger X6.jpg" NAME="iCharger X6">
+<IMG SRC="../../resource/iCharger406DUO.png" NAME="iCharger406DUO">
+</P>
+<P>
+Eine Live-Datenaufnahme kann &uuml;ber den USB Anschluss erfolgen.
+Es ist darauf zu achten, dass der PC dieses USB HID Ger&auml;t erkennt und einrichtet.
+Bei UNIX abgeleiteten Betriebssystemen kann es erforderlich sein Regeln f&uuml;r "udev" oder Kernel-Extensions einzurichten. 
+Hinweise erh&auml;lt man bei der Auswahl des Ger&auml;tes im Ger&auml;teauswahldialog.
+</P>
+<P>
+F&uuml;r den iCharger mit USB HID Anschluss besteht die M&ouml;glichkeit im Ger&auml;t, Mikro SD-Karte, gespeicherte Aufnahmen auszulesen. Das geschied &uuml;ber das Men&uuml; oder "Strg+I".
+Ein Dateiselektionsdialog wird ge&ouml;ffnet und erm&ouml;glicht die Auswahl der Dateien.
+Dazu muss das Ger&auml;t muss als USB Massenspeicher angeschlossensein.
+</P>
+<P>
+Mit der neusten verf&uuml;gbaren Ger&auml;te-Firmware (X&S >= 2.0.8, DUO >= 2.19, DX >= 1.0) gibt es die M&ouml;glichkeit Programm-Speicher &uuml;ber den Ger&auml;te-Dialog hinzuzuf&uuml;gen oder zu ver&auml;ndern.
+Hierzu dient ein folgender Ger&auml;te-Dialog.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.jpg" NAME="HelpInfo_Bild_1" ALT="iChargerUsbDialog"></P>
+<P>
+Wie erstelle ich ein neuen Programm-Speicher?
+<OL>
+<LI>Eintrag mit 'BUILD-IN' vom gew&uuml;nschten Batterie-Typ w&auml;hlen, &uuml;ber Taste "Kopie" wird ein neuer Eintrag "<Batterie-Typ>_Kopie" entstehen.
+<LI>Den gerade erstellten Eintrag "<Batterie-Typ>_Kopie" w&auml;hlen und die Taste "&auml;ndere" dr&uuml;cken. Damit wird der Der Eintrag "<Batterie-Typ>_Kopie" &auml;nderbar
+<LI>Namens&auml;nderung durchf&uuml;hren und als Abschluss Enter-Taste auf der Tastatur dr&uuml;cken. Hierdurch wird der Eintrag rot mit dem Hinweis "VER&auml;NDERT" dargestellt.
+<LI>Taste "Schreibe" benutzen, um den ge&auml;nderten Programm-Speicher zum Ger&auml;t zu &uuml;bertragen.
+<LI>Alle Parameter den W&uuml;nschen entsprechend &auml;ndern und durch "Schreibe" zum Ger&auml;t &uuml;bertragen.
+</OL>
+Grunds&auml;tzlich ist bei den Tasten darauf zu achten, ob sie aktiv geschaltet sind oder nicht. H&auml;lt man die Maus dar&uuml;ber wird Hilfetext zur Funktion ausgegeben.
+<UL>
+<LI>"Kopie" - kopiert einen 'BUILD_IN' Programmspeicher zu einem 'CUSTOM' Programmspeicher mit Namen <Batterie-Typ>_Kopie
+<LI>"&Auml;ndere" - erm&ouml;glicht den Namen von einen ausgew&auml;hlten 'CUSTOM' Programmspeicher zu &auml;ndern 
+</BR>(Ende der Eingabe mit Enter/Datenfreigabe auf der Tastatur abschliessen, &uuml;ber die Drop-Down-Auswahl kann nur ein Eintrag gew&auml;hlt werden)
+<LI>"Schreibe" - wird aktiv, wenn &auml;nderungen vom Namen oder Parameter erkannt werden und schreibt den Programmspeicher ins Ger&auml;t
+<LI>"L&ouml;sche" - erm&ouml;glicht das L&ouml;schen eines 'CUSTOM' Programmspeichers
+</UL>
+Zum ver&auml;ndern der Programm-Parameter gibt es verschiedene M&ouml;glichkeiten:
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.jpg" NAME="HelpInfo_Bild_2" ALT="iCharger Einstellen"></P>
+<OL>
+<LI>Den Schieber direkt mit der Maus selektieren und verschieben, bis der gew&uuml;nschte Wert entsteht
+<LI>hier selektieren ver&auml;ndert den Wert in kleinster Schrittweite
+<LI>hier selektieren ver&auml;ndert den Wert in Schrittweite x 10
+<LI>Zahlenwerte k&ouml;nnen auch einzeln markiert und &uuml;berschrieben werden (markiert man mehrere Zahlen auf einmal und versucht diese zu &auml;ndern geht das meist schief, weil jede &auml;nderung sofort am Schieber reflektiert wird)
+</OL>
+Programm-Ausf&uuml;hrungen k&ouml;nnen direkt &uuml;ber den Dialog gestartet werden. 
+Hierbei wird dann nach Pr&uuml;fung des Status die Datenaufnahme gestartet. 
+Der Dialog muss manuell geschlossen werden oder der Prozess kann noch gestoppt werden.
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18370398">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Ultra Duo Plus Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der Ultra Duo Plus-Ger&auml;tedialog dient zum konfigurieren des Ger&auml;tes selbst, Identifikationsname, Tastenton u.s.w.
+Das Wichtigste ist aber die Konfiguration der Batteriespeicher mit dem Zellentyp, der Kapazität und den Lade-, Entlade- und Zyklusparametern.
+Ausgenommen ist hiervon das Ultra Duo Plus 80.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Bedienung</I></FONT></FONT></H2>
+<P>Nachdem die serielle Schnittstelle &uuml;ber den Ger&auml;teauswahldialog eingestellt ist und dieser Ger&auml;tedialog
+aufgerufen wurde, wird automatisch die Kommunikationsschnittstelle geöffnet und die wichtigsten Daten ausgelesen.
+Hierzu geh&ouml;ren die Basiskonfigurationswerte des Ger&auml;ts selbst.
+Die Auswahl der Batteriespeicher erfolgt durch Auswahl mittels der Dropdownbox. 
+Die Einstellung der Werte selbst erfolgt &uuml;ber die Schieber, oder bei wei&szlig; hinterlegten Feldern durch Tasteneingabe.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1">
+</P>
+<P><B>Hinweis: </B>Wichtig ist einen Ger&auml;tenamen anzulegen, da dieser Name für die Identifikation eines Datencache benutzt wird. 
+Dieser Datencache wird beim erstmaligen &Ouml;ffnen des Dialoges initial gefüllt. Deshalb dauert das erstmalige &Ouml;ffnen auch etwas l&auml;nger.
+Das der Datencache gefüllt ist, kann man an der Aktivierung der Kn&ouml;pfe erkennen, die f&uuml;r die Verwaltung von Sicherungskopien gedacht sind.
+</P>
+<P>Die nachfolgenden Bilder zeigen Lade-, Entlade- und Zyklusparameter für einen NiMH Akkumulator.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2_NiMh.png" NAME="Bild2 Ladeparameter NiMh" ALT="Bild2 Ladeparameter NiMh">
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3_NiMh.png" NAME="Bild3 Entladeparameter NiMh" ALT="Bild3 Entladeparameter NiMh">
+</P></P>
+<P>Hier ein Bild das die Stufenladeparameter zeigt, die nur für NiMH-Akkumulatoren möglich sind.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3a_NiMh.png" NAME="Bild3a Stufenladen NiMh" ALT="Bild3a Stufenladen NiMh">
+</P>
+</P>
+<P>Die nachfolgenden Bilder zeigen Lade-, Entlade- und Zyklus-Parameter für einen LiPo Akkumulator.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_4_LiPo.png" NAME="Bild4 Ladeparameter LiPo" ALT="Bild4 Ladeparameter LiPo">
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_5_LiPo.png" NAME="Bild5 Entladeparameter LiPo" ALT="Bild5 Entladeparameter LiPo">
+</P>
+<P><B>Hinweis: </B>Es werden nur die Parameter zur Einstellung angeboten, die für den gew&auml;hlten Batterietyp Relevanz haben.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Datenaufzeichnung</I></FONT></FONT></H2>
+<P>Die Aufnahme von Datenkurven wird einfach durch Dr&uuml;cken der "Start Aufnahme"-Taste gestartet.
+Dies sollte bei vorbereitetem Ladeger&auml;t geschehen, also Ladeprozess gewählt oder konfiguriert, Akku angeschlossen.
+Erst nach dem Starten der Datenaufnahme vom DataExplorer am Ger&auml;t den Ladeprozess starten.
+Nur so ist gew&auml;hrleistet, dass der komplette Ladevorgang aufgenommen wird.
+Die Umschaltung der Lade- bzw. Entladekurven erfolgt automatisch (sofern im DataExplorer so voreingestellt), da die vom Ger&auml;t gelieferten Daten diese Information enthalten.
+Die Anzeige springt automatisch auf den Datenkanal, der als letztes Daten liefert.
+Im Bild ist ein Ladevorgang eines zusammengeschlossenen LiPo-Akku mit acht Zellen zu sehen.
+Es werden nur die Kurven angezeigt, die auch Daten enthalten, dadurch entsteht der Sprung von &quot;ZellenSpannung 4&quot; nach &quot;Zellenspannung 8&quot;, 
+was den Balancerausg&auml;ngen des Ladeger&auml;tes entspricht.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_6.png" NAME="Bild6 Datenaufnahme LiPo LINK" ALT="Bild6 Datenaufnahme LiPo LINK">
+</P>
+<P>
+Ist das Ger&auml;t &uuml;ber einen gewissen Zeitraum inaktiv, stellt also keinen laufenden Prozess am Ger&auml;t fest, wird der serielle Port geschlossen. 
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Automatische Objektanwahl</I></FONT></FONT></H3>
+<P>Ladegr&auml;te, die Batteriespeicher verwalten k&ouml;nnen, bieten die M&ouml;glichkeit der automatischen Objektanwahl.
+</BR>Als Voraussetzung dazu muss einmal der Konfigurationsdialog benutzt worden sein.
+Hierbei wird eine Konfigurationsdatei als Datencache f&uuml;r das Ger&auml;t mit dem Ger&auml;tenamen zur Identifizierung angelegt.
+Startet man die Datenaufnahme, wird als erstes der Ger&auml;tename ausgelesen, danach dann die Datenaufnahme gestartet.
+Liefert das Ger&auml;t anschie&szlig;end die ersten Daten, steht darin die Speichernummer. 
+Mit der Speichernummer kann nun aus der Ger&auml;tecachedatei der Batteriespeichername ausgelesen werden.
+Der Batteriespeichername wird dazu verwendet, einen passenden Objektnamen zu finden. 
+Wird eine gute &Uuml;bereinstimmung gefunden, wird das Objekt angew&auml;hlt und vorgeschlagen.
+</P>
+<P>Wie wird der Objektname gefunden, wenn er nicht vollst&auml;ndig mit dem Batteriespeichernamen &uuml;bereinstimmt?
+</BR>Der Batteriespeichername wird an Leerzeichen, Bindestrichen und Unterstrichen zerlegt. 
+Die einzelnen Namensfragmente werden dann dazu verwendet, &Uuml;bereinstimmungen zu finden. 
+Der Objektname, der die meisten &Uuml;bereinstimmungen aufweist, wird ausgew&auml;hlt.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="HelpInfo_Bild_7.png" NAME="Bild7 Batteriespeicher - Objektmatch" ALT="Bild7 Batteriespeicher - Objektmatch">
+</P>
+<P><B>Hinweis: </B>M&ouml;chte man diese Eigenschaft f&uuml;r sich ausnutzen, sollte man die Batteriespeichernamen und Objektnamen entsprechend benennen.
+Beide Namen k&ouml;nnen auch nachtr&auml;glich umbenannt werden, falls erforderlich.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Akkuzyklusdaten-Historie</I></FONT></FONT></H3>
+<P>&Uuml;ber den Tabulator Akku-Daten können die Akkuzyklusdaten abgerufen werden. 
+Diese Daten werden dann in einem neuen Tabulator in der Hauptansicht dargestellt.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_8.png" NAME="Bild8 Akkuzyklusdaten" ALT="Bild8 Akkuzyklusdaten"></P>
+<P><B>Hinweis : </B>Es werden nur Daten angezeigt, die innerhalb der letzten zwei Jahre f&uuml;r den ausgew&auml;hlten Akku aufgenommen wurden.
+</P>
+<P>Durch Misskonfiguration des Datums kann es vorkommen, dass es zu Fehleinträgen kommt.
+Wird eine solche Zeitstempelabweichung festgestellt, wird ein kleiner Dialog angezeigt, der hier Korrekturen erm&ouml;glicht.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_9.png" NAME="Bild9 Korrekturdialog" ALT="Bild9 Korrekturdialog"></P>
+<P>Wie kann man die zur &Auml;nderung vorgeschlagenen Zeitstempel mit Lade-/Entlade-Vorg&auml;ngen korrelieren? 
+Beim Einlesen &uuml;berspringt man erst einmal alle &Auml;nderungsvorschl&auml;ge und schaut sich die Tabelle mit den gelesenen Eintr&auml;gen an.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_10.png" NAME="Bild10 Dialog Akkuhistorie" ALT="Bild10 Dialog Akkuhistorie"></P>
+<P>Nun kann man sich die Daten in aller Ruhe ansehen und mittels der gesicherten DataExplorer-Dateien von den in Frage kommenden Einträge, bei einem weiterem Abrufen der Historiendaten, die Korrekturen vornehmen.
+</P>
+</BODY>
+</HTML>

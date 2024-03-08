@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - SM GPS-Logger Ger&auml;tedialog</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18455985">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>SM GPS-Logger Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht.
+Kurven, wie Längengrad und Breitengrad, die zweidimensional dargestellt wenig Sinn ergeben, k&ouml;nnen ausgeblendet werden.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"></P>
+<P><B>Hinweis: </B>Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn &uuml;ber die Toolbar mittels "importiere Daten" in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+<P>
+Wird ein UniLog als Messaufnehmer angeschlossen, werden die drei Analogeingänge mit frei konfigurierbarem Namen und Messsymbol angezeigt.
+Die Einheit wird aus den NMEA Daten &uuml;bernommen.
+Als initiale Vorgaben sind 'Geschwindigkeit', 'Kapazität' und 'Temperatur' eingesetzt, die bei abweichender Einstellung anzupassen sind.
+In der grafischen Anzeige, bzw. dem Kurvenselektor erscheinen die Namen der Messgr&ouml;ssen für UniLog Messwerte immer mit angeh&auml;ngtem '_UL'.
+Sind eigene Messaufnehmer angeschlossen, k&ouml;nnen &uuml;ber den Ger&auml;tekonfigurationseditor Offset sowie Faktor angepasst werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2"></P>
+<P>
+Werden Multiplex-Sensoren angeschlossen, werden die Einheiten aus den NMEA-Daten &uuml;bernommen.
+Die Namen und Symbole der Messwerte m&uuml;ssen entsprechend angepasst werden.
+Die initialen Vorgaben sind her nur beispielhaft eingesetzt.
+In der grafischen Anzeige bzw. dem Kurvenselektor erscheinen die Namen der Messgr&ouml;&szlig;en für M-Link Messwerte immer mit angeh&auml;ngtem '_ML'.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3.png" NAME="HelpInfo_Bild_3" ALT="HelpInfo_Bild_3"></P>
+<P>Auf dem rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf Namensgleichheit gepr&uuml;ft, bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende
+Eigenschaft eingesetzt. Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit das manuell &uuml;ber den Geratekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<H4>Multiplex Sensoren und Kurvennamen</H4>
+<P>
+Sinnvoll ist es sich die Sensorenreihenfolge und deren Verwendungszweck (Beispiel: Spannung/Strom/Kapazit&auml;t - Antriebsakku) zu &uuml;berlegen
+bevor man Daten damit aufnimmt. 
+Danach sollte man dann die Namen, ohnen dass eine Messkurven geladen sind, in dem oben gezeigtem Dialog anpassen und sichern.
+Namen der Kurven sollten m&ouml;glichst eindeutig sein, Beispiel StromAntrieb, StromRx, SpannungAntrieb, SpannungRx.
+Die Kurvennamen sollen so gew&auml;hlt sein, dass im Falle eine gew&uuml;nschten Skalensynchronisation, die Namen mit den gleichen Wort anfangen 
+wie die Kurve auf die synchronisiert werden soll, Beispiel <I>Strom</I> synchronisiert mit <I>Storm</I>Antrieb, <I>Strom</I>Rx, <I>Strom</I>Antrieb2).
+Darauf basiert die halbautomatische Synchronisation. 
+&Uuml;ber den Ger&auml;teeigenschafteneditor kann man bei belibigen Messkurven eine Skalensynchronisation konfigurieren.
+Sinn macht das Ganze aber nur, wenn die Wertebereiche in zusammenpassen. 
+Jetzt kann man Daten importieren und die Namen mit den Einheiten &uuml;berpr&uuml;fen. 
+Hierbei kann man sich dann auch optional ein Symbol dazu schreiben (Strom I [A], Spannung U [V], ...).
+Stimmen die Messwerte aus den Sensoren mit den Kurvennamen und Einheiten &uuml;berien kann mit der Checkbox auf der rechten Seite auf Skalensynchronisation gepr&uuml;ft werden.
+Abschliessend die Konfiguration nochmals sichern.
+</P>
+<P><B>Hinweis: </B>Werden Messwertnamen ge&auml;ndert f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sichereung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1.xsd) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+</P>
+<H3><A NAME="configuration"><FONT FACE="Arial"><FONT SIZE=3><I>Ger&auml;teeinstellung (setup)</I></FONT></FONT></H3>
+<P>Der zweite Tabulator ermöglicht die Ger&auml;tekonfigurationsdatei einzulesen und auch zurückzuschreiben. 
+Beim Wechsel auf diesen Tabulator wird der Dateiauswahldialog angezeigt. Das kann bei Bedarf wiederholt werden oder auch abgebrochen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_4.png" NAME="HelpInfo_Bild_4" ALT="HelpInfo_Bild_4"></P>
+<P>
+Es k&ouml;nnen die entsprechenden Alarme eingestellt und
+bei angeschlossenen Multiplex-Sensoren können die R&uuml;ckkanaladressen hier konfiguriert werden.
+</P> 
+<P><B>Hinweis: </B>Ein voreingestellter Verzeichnispfad kann &uuml;ber den Ger&auml;teeigenschafteneditor in der Sektion, Datenblock - Optionale Einst&auml;ge - Datenpfad, konfiguriert werden.
+Diese Konfiguration ist dazu gedacht den Verzeichnispfad einzustellen, der die Datendateien nach dem einstecken der SD-Karte enth&auml;lt. 
+Zum Laden der Setupdatei ist dann das 'SM GPS-Logger setup' auszuw&auml;hlen.
+</P>
+<P><B>Tipp: </B>Das der GPS-Logger, wie der Name schon sagt, GPS-Daten anzeigt und verarbeitet, k&ouml;nnen diese auch als Google Earth-Dateien (KMZ) exportiert bzw. direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+</BODY>
+</HTML>

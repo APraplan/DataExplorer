@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.nmea.NMEAAdapter">NMEA-Adapter</name>
+        <manufacturer>diverse</manufacturer>
+        <manufacturerURL>https://www.nmea.org</manufacturerURL>
+        <group>logger</group>
+        <image>NMEA-Adapter.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+        <UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="9"/>
+        <checkSum type="XOR"/>
+        <timeUnit>msec</timeUnit>
+        <separator>comma</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.nmea</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+	    <Channel type="TYPE_CONFIG" name="type_universal">
+	        <Measurement>
+	            <name>latitude</name>
+	            <symbol>Phi</symbol>
+	            <unit>°</unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>longitude</name>
+	            <symbol>Lambda</symbol>
+	            <unit>°</unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+                <name>altitude_relative</name>
+	            <symbol>h</symbol>
+	            <unit>m</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>satellites</name>
+	            <symbol></symbol>
+	            <unit>#</unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>PDOP</name>
+	            <symbol></symbol>
+	            <unit></unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>HDOP</name>
+	            <symbol></symbol>
+	            <unit></unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>VDOP</name>
+	            <symbol></symbol>
+	            <unit></unit>
+                <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>velocity</name>
+	            <symbol>v</symbol>
+	            <unit>km/h</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+	            <property type="Double" value="1.4" name="google_earth_velocity_avg_limit_factor"/>
+	            <property type="String" value="255,255,0" name="google_earth_within_limits_color"/>
+	            <property type="String" value="0,255,0" name="google_earth_lower_limit_color"/>
+	            <property type="String" value="255,0,128" name="google_earth_upper_limit_color"/>
+	        </Measurement>
+	        <Measurement>
+                <name>magnetic_variation</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+	            <name>altitude (relativ)</name>
+	            <symbol>h</symbol>
+	            <unit>m</unit>
+	            <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="2" description="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>climb</name>
+	            <symbol>vs</symbol>
+	            <unit>m/s</unit>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>trip</name>
+                <symbol>l</symbol>
+                <unit>km</unit>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>distance</name>
+                <symbol>d</symbol>
+                <unit>m</unit>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>azimuth</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>direction_start</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+	    </Channel>
+	</Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="false" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

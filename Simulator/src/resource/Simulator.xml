@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name>Simulator</name>
+        <manufacturer>WB</manufacturer>
+        <manufacturerURL>-</manufacturerURL>
+        <group>multimeter</group>
+        <image>Simulator.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>5</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="100"/>
+    </DataBlock>
+    <Channels>
+	    <Channel type="TYPE_CONFIG" name="Sinus">
+	        <Measurement>
+	            <name>voltage</name>
+	            <symbol>U</symbol>
+	            <unit>V</unit>
+	            <active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>altitude_relative</name>
+	            <symbol>H</symbol>
+	            <unit>m</unit>
+	            <active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true"/>
+	        </Measurement>
+	    </Channel>
+	    <Channel type="TYPE_OUTLET" name="Standard">
+	        <Measurement>
+	            <name>voltage</name>
+	            <symbol>U</symbol>
+	            <unit>V</unit>
+	            <active>true</active>
+	        </Measurement>
+	        <Measurement>
+	            <name>current</name>
+	            <symbol>I</symbol>
+	            <unit>A</unit>
+	            <active>true</active>
+	        </Measurement>
+	    </Channel>
+	</Channels>
+    <Desktop>
+		<property value="false" name="table_tab"/>
+		<property value="false" name="voltage_per_cell_tab"/>
+		<property value="false" name="analog_tab"/>
+		<property value="false" name="digital_tab"/>
+    </Desktop>
+</DeviceProperties>

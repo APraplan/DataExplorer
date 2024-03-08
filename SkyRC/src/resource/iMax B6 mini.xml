@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.skyrc.IMaxB6USB">iMax B6 mini</name>
+        <manufacturer>SkyRC</manufacturer>
+        <manufacturerURL>https://www.skyrc.com</manufacturerURL>
+        <group>charger</group>
+        <image>iMax B6 mini.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <UsbPort>
+        <vendorId>0x0000</vendorId>
+        <productId>0x0001</productId>
+        <usbInterface>
+            <interface>0x00</interface>
+            <endPointIn>0x01</endPointIn>
+            <endPointOut>0x81</endPointOut>
+        </usbInterface>
+    </UsbPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>1000.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="64"/>
+        <checkSum format="BINARY" type="ADD"/>
+    </DataBlock>
+    <Channels>
+        <Channel name="type_outlet A" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature Ext</name>
+                <symbol>Te</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature Int</name>
+                <symbol>Ti</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="5" type="Integer" description="Skalasynchronisations Messwertreferenz als Zahl"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>balance</name>
+                <symbol>Bal</symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 5</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 6</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="true" target_reference_ordinal="9"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

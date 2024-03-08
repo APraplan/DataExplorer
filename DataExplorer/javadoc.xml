@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="." destdir="doc/javadoc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="gde.io,gde.exception,gde.ui.tab,gde.device,gde.ui.menu,gde.ui.dialog,gde.config,de.ui,gde.log,de.data,gde.utils" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>

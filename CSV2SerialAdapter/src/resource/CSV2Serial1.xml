@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="CSV2SerialAdapter">CSV2Serial1</name>
+        <manufacturer>WB</manufacturer>
+        <manufacturerURL>https://www.nongnu.org/dataexplorer</manufacturerURL>
+        <group>logger</group>
+        <image>CSV2SerialAdapter.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="13"/>
+		<timeUnit>sec</timeUnit>
+		<separator>semicolon</separator>
+		<leader>$</leader>
+		<trailer>0D0A</trailer>
+        <preferredFileExtention>*.csv</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+	    <Channel type="TYPE_CONFIG" name="type_thermal">
+	        <Measurement>
+	            <name>receiver_voltage</name>
+	            <symbol>Ue</symbol>
+	            <unit>V</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	            <property description="mV -&gt; V" type="Double" value="0.001" name="factor"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>altitude_relative</name>
+	            <symbol>h</symbol>
+	            <unit>m</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>motor_current</name>
+	            <symbol>I</symbol>
+	            <unit>A</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>motor_voltage</name>
+	            <symbol>U</symbol>
+	            <unit>mV</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	            <property description="factor to measurement value" type="Double" value="0.001" name="factor"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>motor_battery_capacitiy</name>
+	            <symbol>C</symbol>
+	            <unit>mAh</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="false"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>velocity</name>
+	            <symbol>V</symbol>
+	            <unit>km/h</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>temperature</name>
+	            <symbol>T</symbol>
+	            <unit>°C</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>longitude</name>
+	            <symbol>L</symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	        </Measurement>
+	        <Measurement>
+	            <name>latitude</name>
+	            <symbol>B</symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	        </Measurement>
+	        <Measurement>
+	            <name>gps_altitude</name>
+	            <symbol>h</symbol>
+	            <unit>m</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>gps_speed</name>
+	            <symbol>V</symbol>
+	            <unit>km/h</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>climb</name>
+	            <symbol>Vs</symbol>
+	            <unit>m/s</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	            <property type="Double" value="0.02" name="factor"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>servo_impulse</name>
+	            <symbol>St</symbol>
+	            <unit>µs</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	        </Measurement>
+	    </Channel>
+	</Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        </Desktop>
+</DeviceProperties>

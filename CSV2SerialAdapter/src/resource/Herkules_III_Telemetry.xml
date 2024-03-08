@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.wb.Herkules_III_Telemetrie">Herkules_III_Telemetry</name>
+        <manufacturer>HerSi Electronic GmbH</manufacturer>
+        <manufacturerURL>https://www.andreasbaier.de</manufacturerURL>
+        <group>logger</group>
+        <image>Herkules_III_Telemetrie.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="-22"/>
+        <timeUnit>sec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.txt</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="Logging" value="1" type="Integer" description="Data Logger Active"/>
+    </State>
+    <Channels>
+        <Channel name="Mixed" type="TYPE_CONFIG">
+            <Measurement>
+                <name>runtime</name>
+                <symbol>TR</symbol>
+                <unit>sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>n_motors</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>MotPresentMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>MotFailureMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>V_BAT</name>
+                <symbol>VB</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>I_BAT</name>
+                <symbol>IB</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>I_BAT_PK</name>
+                <symbol>IBP</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_BAT_AVG</name>
+                <symbol>IBA</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>CAPACITY</name>
+                <symbol>CAP</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>TEMP_MAX</name>
+                <symbol>Tmax</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>nESC_TEMP_MAX</name>
+                <symbol>nTmax</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>P_BAT</name>
+                <symbol>PB</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>E_BAT</name>
+                <symbol>EB</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Baro_Temperatur</name>
+                <symbol>Temp_B</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Baro_Altitude</name>
+                <symbol>Alt_B</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Baro_Pressure</name>
+                <symbol>P_B</symbol>
+                <unit>hPa</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb 1</name>
+                <symbol>RC1</symbol>
+                <unit>m/sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb 3</name>
+                <symbol>RC3</symbol>
+                <unit>m/3sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Lowest_Battery_Number</name>
+                <symbol>BAT_LOW</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Lowest_Cell_Number</name>
+                <symbol>CELL_LOW</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Lowest_Cell_Voltage</name>
+                <symbol>VCELL_LOW</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb 10</name>
+                <symbol>RC10</symbol>
+                <unit>m/10sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="16" type="Integer" />
+            </Measurement>
+        </Channel>
+        <Channel name="Status" type="TYPE_CONFIG">
+            <Measurement>
+                <name>runtime</name>
+                <symbol>TR</symbol>
+                <unit>sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>n_motors</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>MotPresentMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>MotFailureMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 01</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 02</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 03</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 04</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 05</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 06</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 07</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 08</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 09</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 10</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 11</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 12</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 13</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 14</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 15</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Status_Mot 16</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+            </Measurement>
+        </Channel>
+        <Channel name="type_current" type="TYPE_CONFIG">
+            <Measurement>
+                <name>runtime</name>
+                <symbol>TR</symbol>
+                <unit>sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>n_motors</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>MotPresentMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>MotFailureMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>I_MOT_MAX</name>
+                <symbol>IMAX</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>n_IMOT_MAX</name>
+                <symbol>nIMOTmax</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 01</name>
+                <symbol>IM01</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 02</name>
+                <symbol>IM02</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 03</name>
+                <symbol>IM03</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 04</name>
+                <symbol>IM04</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 05</name>
+                <symbol>IM05</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 06</name>
+                <symbol>IM06</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 07</name>
+                <symbol>IM07</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 08</name>
+                <symbol>IM08</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 09</name>
+                <symbol>IM09</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 10</name>
+                <symbol>IM10</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 11</name>
+                <symbol>IM11</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 12</name>
+                <symbol>IM12</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 13</name>
+                <symbol>IM13</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 14</name>
+                <symbol>IM14</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 15</name>
+                <symbol>IM15</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>I_Motor 16</name>
+                <symbol>IM16</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+        </Channel>
+        <Channel name="type_temperature" type="TYPE_CONFIG">
+            <Measurement>
+                <name>runtime</name>
+                <symbol>TR</symbol>
+                <unit>sec</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>n_motors</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>MotPresentMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>MotFailureMask</name>
+                <symbol>#</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>TEMP_MAX</name>
+                <symbol>TMAX</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>n_ESC_TEMP_MAX</name>
+                <symbol>nTMAX</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 01</name>
+                <symbol>TM01</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 02</name>
+                <symbol>TM02</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 03</name>
+                <symbol>TM03</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 04</name>
+                <symbol>TM04</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 05</name>
+                <symbol>TM05</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 06</name>
+                <symbol>TM06</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 07</name>
+                <symbol>TM07</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 08</name>
+                <symbol>TM08</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 09</name>
+                <symbol>TM09</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 10</name>
+                <symbol>TM10</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 11</name>
+                <symbol>TM11</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 12</name>
+                <symbol>TM12</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 13</name>
+                <symbol>TM13</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 14</name>
+                <symbol>TM14</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 15</name>
+                <symbol>TM15</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Temp_Motor 16</name>
+                <symbol>TM16</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+        </Channel>
+        <Channel name="type_battery 1,2" type="TYPE_CONFIG">
+            <Measurement>
+                <name>LBN</name>
+                <symbol>LBN</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LCN</name>
+                <symbol>LCN</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LCV</name>
+                <symbol>LCV</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 01</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 02</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 03</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 04</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 05</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 06</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 07</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku01_Cell 08</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 01</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 02</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 03</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 04</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 05</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 06</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 07</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku02_Cell 08</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+        </Channel>
+        <Channel name="type_battery 3,4" type="TYPE_CONFIG">
+            <Measurement>
+                <name>LBN</name>
+                <symbol>LBN</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LCN</name>
+                <symbol>LCN</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LCV</name>
+                <symbol>LCV</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 01</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 02</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 03</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 04</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 05</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 06</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 07</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku03_Cell 08</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 01</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 02</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 03</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 04</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 05</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 06</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 07</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>Akku04_Cell 08</name>
+                <symbol>ac</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+    </Desktop>
+</DeviceProperties>

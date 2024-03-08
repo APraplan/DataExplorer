@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>
+-- DataExplorer Measurement Mapping File --
+this file contains the mapping from measurement values to abbreviations to be displayed during table while measuring
+the abbreviation should have a length of 10 characters together with unit 
+</comment>
+             <entry key="Voltage">Volts  [V]</entry>
+           <entry key="Voltage G">VoltsG [V]</entry>
+           <entry key="Voltage E">VoltsE [V]</entry>
+           <entry key="Voltage M">VoltsM [V]</entry>
+           <entry key="VoltageRx">VoltsRx[V]</entry>
+          <entry key="Voltage Rx">VoltsRx[V]</entry>
+        <entry key="VoltageRx_UL">VoltsRx[V]</entry>
+        <entry key="VoltageRx_ML">VoltsRx[V]</entry>
+         <entry key="Voltage GS1">VoltsG1[V]</entry>
+         <entry key="Voltage GS2">VoltsG2[V]</entry>
+         <entry key="Voltage ES1">VoltsE1[V]</entry>
+         <entry key="Voltage ES2">VoltsE2[V]</entry>
+          <entry key="Voltage_UL">VoltsUL[V]</entry>
+       <entry key="CellVoltage 1">Cell 1 [V]</entry>
+       <entry key="CellVoltage 2">Cell 2 [V]</entry>
+       <entry key="CellVoltage 3">Cell 3 [V]</entry>
+       <entry key="CellVoltage 4">Cell 4 [V]</entry>
+       <entry key="CellVoltage 5">Cell 5 [V]</entry>
+       <entry key="CellVoltage 6">Cell 6 [V]</entry>
+       <entry key="CellVoltage 7">Cell 7 [V]</entry>
+       <entry key="CellVoltage 8">Cell 8 [V]</entry>
+       <entry key="CellVoltage 9">Cell 9 [V]</entry>
+      <entry key="CellVoltage 10">Cell 10[V]</entry>
+      <entry key="CellVoltage 11">Cell 11[V]</entry>
+      <entry key="CellVoltage 12">Cell 12[V]</entry>
+      <entry key="CellVoltage 13">Cell 13[V]</entry>
+      <entry key="CellVoltage 14">Cell 14[V]</entry>
+             <entry key="Balance">Bal   [mV]</entry>
+           <entry key="Balance G">Bal G [mV]</entry>
+           <entry key="Balance E">Bal E [mV]</entry>
+  <entry key="BatteryTemperature">BatTmp[°C]</entry>
+        <entry key="Rx->Tx-PLoss">PLoss  [%]</entry>
+      <entry key="Temperature Rx">TempRx[°C]</entry>
+      <entry key="Temperature G1">TempG1[°C]</entry>
+      <entry key="Temperature G2">TempG2[°C]</entry>
+      <entry key="Temperature E1">TempE1[°C]</entry>
+      <entry key="Temperature E2">TempE2[°C]</entry>
+       <entry key="Temperature M">TempM [°C]</entry>
+               <entry key="Climb">Climb[m/s]</entry>
+             <entry key="Climb 1">Climb  (1)</entry>
+             <entry key="Climb 3">Climb  (3)</entry>
+            <entry key="Climb 10">Climb (10)</entry>
+            <entry key="Latitude">Lat   [°']</entry>
+           <entry key="Longitude">Long  [°']</entry>
+            <entry key="Velocity">Speed km/h</entry>
+         <entry key="Velocity_UL">Speed km/h</entry>
+         <entry key="Capacity_UL">CapUL[mAh]</entry>
+      <entry key="Temperature_UL">TempUL [°]</entry>
+       <entry key="Distance">Dist.  [m]</entry>
+             <entry key="Current">Amps   [A]</entry>
+           <entry key="Current G">Amps G [A]</entry>
+           <entry key="Current E">Apms E [A]</entry>
+           <entry key="Current M">Amps M [A]</entry>
+          <entry key="Current_UL">AmpsUL [A]</entry>
+            <entry key="Power_UL">PowerUL[W]</entry>
+       <entry key="Revolution_UL">RPM[1/min]</entry>
+            <entry key="Capacity">Cap  [mAh]</entry>
+          <entry key="Capacity G">CapG [mAh]</entry>
+          <entry key="Capacity E">CapG [mAh]</entry>
+          <entry key="Capacity M">CapG [mAh]</entry>
+             <entry key="Power G">PowG   [W]</entry>
+             <entry key="Power E">PowE   [W]</entry>
+             <entry key="Power M">PowM   [W]</entry>
+      <entry key="CellVoltage G1">Cell G1[V]</entry>
+      <entry key="CellVoltage G2">Cell G2[V]</entry>
+      <entry key="CellVoltage G3">Cell G3[V]</entry>
+      <entry key="CellVoltage G4">Cell G4[V]</entry>
+      <entry key="CellVoltage G5">Cell G5[V]</entry>
+      <entry key="CellVoltage G6">Cell G6[V]</entry>
+      <entry key="CellVoltage E1">Cell E1[V]</entry>
+      <entry key="CellVoltage E2">Cell E2[V]</entry>
+      <entry key="CellVoltage E3">Cell E3[V]</entry>
+      <entry key="CellVoltage E4">Cell E4[V]</entry>
+      <entry key="CellVoltage E5">Cell E5[V]</entry>
+      <entry key="CellVoltage E6">Cell E6[V]</entry>
+      <entry key="CellVoltage E7">Cell E7[V]</entry>
+      <entry key="CellVoltage E8">Cell E8[V]</entry>
+      <entry key="CellVoltage E9">Cell E9[V]</entry>
+     <entry key="CellVoltage E10">CellE10[V]</entry>
+     <entry key="CellVoltage E11">CellE11[V]</entry>
+     <entry key="CellVoltage E12">CellE12[V]</entry>
+     <entry key="CellVoltage E13">CellE13[V]</entry>
+     <entry key="CellVoltage E14">CellE14[V]</entry>
+          <entry key="Revolution">RPM[1/min]</entry>
+        <entry key="Revolution M">RPM[1/min]</entry>
+          <entry key="Satellites">Satellites</entry>
+      <entry key="Acceleration X">Accele  X </entry>
+      <entry key="Acceleration Y">Accele  Y </entry>
+      <entry key="Acceleration Z">Accele  Z</entry>
+ <entry key="Magnetic Variation">MagVar    </entry>
+</properties>
+

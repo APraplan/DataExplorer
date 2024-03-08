@@ -1,0 +1,11 @@
+# udev rule to make Junsi iCharger USB HID device usable by users of group dialout 
+# which is required for serial communication as well              
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5751", MODE="0666", GROUP="dialout"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5751", MODE="0666", GROUP="dialout"
+#SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device",SYSFS{idVendor}=="0483" , SYSFS{idProduct}=="5751", MODE="0666", GROUP="dialout"
+# Rule: Ignore storage partitions found on /dev/sdb* (USB) devices from Junsi charging devices.
+ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd*", ATTRS{idVendor}=="0483", ENV{UDISKS_IGNORE}="1"
+# Rule: Do not automount any partitions found on /dev/sd* (USB) devices.
+ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="sd*", ENV{UDISKS_AUTO}="0"
+# Monitor udev variables while add/change/remove "sudo udevadm info --attribute-walk /dev/sdb"
+# Reload udev rules "sudo udevadm control --reload-rules" 

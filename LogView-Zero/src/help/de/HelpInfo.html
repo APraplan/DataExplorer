@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - ZeroAdapter</TITLE>
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>ZeroAdapter</I></FONT></FONT></H2>
+</DIV>
+<P>
+Die M&ouml;glichkeit, CSV-Dateien, die dem "LogView OpenFormat Zero" folgen, zu importieren und auszuwerten, werden durch den ZeroAdapter gegeben.
+</P>
+<P>
+Vermutlich wird der Name ZeroAdapter nicht zum Projekt passen.
+Dennoch sollte man seine CSV-Datei, beliebiger Dateiendung, erst einmal mit dem ZeroAdapter einlesen.
+Dadurch wird eine Geräte-Konfigurations-Datei, entsprechend der in der Datei befindlichen Konfiguration, passend zu den Daten, aufgebaut.
+Jetzt kann man das Programm DataExplorer beenden, um weiter Anpassungen für sein Projekt vornehmen.
+</P>
+<P>
+Erst jetzt sollte man den Namen der Ger&auml;te-Konfiguration passend zum Projekt &auml;ndern.
+Die ZeroAdapter.xml Datei befindet sich im Ordner in dem Programmeinstellungen gesichert werden.
+<ul>
+<li>Windows: %APPDATA%\DataExplorer\Devices
+<li>GNU/Linux: /home/Benutzer/.DataExplorer/Devices
+<li>Mac OS X: /Users/Benutzer/Library/Application Support/DataExplore/Devices
+</ul>
+Die Datei ZeroAdapter.xml wird umbenannt in MyZeroDevice.xml, wenn "MyZeroDevice" der Ger&auml;tename sein soll unter die Dateien abgelegt werden sollen.
+Als Beispiel für sinnvolle &Auml;nderungen in der Datei soll folgendes Bild dienen:
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+<P>
+Die Stellen, an denen eine Anpassung sinnvoll erscheint sind markiert. Der Ger&auml;tename muss zum Namen der XML Datei passen.
+</P>
+<P>
+Wird der Name des Ger&auml;tes, hier "MyZeroDevice", ge&auml;ndert, wird sp&auml;ter dieser Name in der Ger&auml;teauswahl angezeigt.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2">
+</P>
+<P>
+Möchte man sein eigenes Symbol bei der Geräteauswahl sehen, kann eine Bilddatei, 235x165 Bildpunkte groß, direkt in den Ordner kopiert werden, in dem sich auch die Ger&auml;te-Konfigurations-Datei befindet.
+Bitte nicht vergessen die Bildreferenz über den Namen in der Ger&auml;te XML anzupassen.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3.png" NAME="HelpInfo_Bild_3" ALT="HelpInfo_Bild_3">
+</P>
+<P>
+Auch der Ger&auml;tedialog wird der Namensgebung folgen.
+Der gezeigte Dialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Es k&ouml;nnten die Messwertnamen, Messwertsymbole und Messwerteinheiten angepasst werden.
+Das macht aber keinen Sinn, da diese Namen durch die Konfiguration innerhalb der Log-Datei vorgegeben werden.
+Lediglich Erg&auml;nzungen könnte man vornehmen.
+Kommen Messwerte, wie z. B. L&auml;ngen- und Breitengrad, vor und man möchte diese in der Kurvendarstellung nicht zeigen, 
+können diese durch den ganz linken Schalter abgew&auml;hlt werden.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dann tempor&auml;r nicht in der grafischen Anzeige. 
+Andererseits, werden Kurven durch fehlende Daten ausgeblendet, kann man das durch zweifache Selektion &uuml;berpr&uuml;fen. 
+</BR>
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</BR>
+Kurven, die keine sinnvollen Daten enthalten, werden automatisch ausgeblendet.
+</BR>
+Bei vorhandenen GPS-Koordinaten werden Exportmöglichkeiten eingeblendet. 
+So z. B. als Google Earth-Dateien (KMZ), bzw. KML k&ouml;nnen direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_4.png" NAME="HelpInfo_Bild_4" ALT="HelpInfo_Bild_4"></P>
+<P>
+Am rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf die ersten vier Buchstaben des Namens, und der Einheiten auf &Uuml;bereinstimmung Gepr&uuml;ft.
+Bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende Eigenschaft eingesetzt. 
+Eine Synchronization bezieht sich immer auf den zuerst gefundenen Messwert und wird durch eine Referenz auf dessen Ordinalzahl gesetzt.
+Die Refernz-Ordinalzahl wird am rechten Rand angezeigt, um zu erkennen auf welchen Messwert synchronisiert wird. 
+Dieser Messwert kann nicht auf sich selbst referenzieren und kann entsprechend auch nicht selektiert werden.
+Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit das manuell &uuml;ber den Ger&auml;tekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden, ohne den Kurvenvergleich zu benutzen.
+</P>
+<P>
+&Uuml;ber den Ger&auml;teeigenschafteneditor kann man bei beliebigen Messkurven eine Skalensynchronisation konfigurieren.
+Sinn macht das Ganze aber nur, wenn die Wertebereiche zusammenpassen. 
+</BR>
+Um die vollen Möglichkeiten des DataExplorers mit den statistischen Auswertungen auszuschöpfen siehe <A HREF="../../../help/de/HelpInfo_5.html">Fenster &quot;Statistik&quot;</A>.
+</P>
+<P><B>Hinweis: </B>Es macht keinen Sinn Messwertnamen zu &auml;ndern. 
+Messwertnamen, Einheit und Symbol kommen ja über die Konfiguration des Datensatzes am Anfang der Openfromat Zero Datei.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und es geht nichts verloren.
+Durch einfaches &auml;ndern der Versionsnummer der Schemareferenz kann man Ger&auml;tekonfigurationsdateien einfach &uuml;bernehmen.
+</BR>
+Hinweise zu LogView OpenFormat Zero findet man im Internet.
+</P>
+<P>
+</BODY>
+</HTML>

@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.wb.AV4ms_FV_762">AV4ms_FV_762</name>
+        <manufacturer>Friedrich Mössinger</manufacturer>
+        <manufacturerURL>https://www.accu-select.de</manufacturerURL>
+        <group>charger</group>
+        <image>AV4ms_Accu-Select.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <SerialPort>
+        <port>-</port>
+        <baudeRate>115200</baudeRate>
+        <dataBits>DATABITS_8</dataBits>
+        <stopBits>STOPBITS_1</stopBits>
+        <parity>PARITY_NONE</parity>
+        <flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+        <isRTS>true</isRTS>
+        <isDTR>true</isDTR>
+        <TimeOut>
+            <ReadTimeOut>390</ReadTimeOut>
+            <ReadStableIndex>5</ReadStableIndex>
+            <WriteCharDelayTime>0</WriteCharDelayTime>
+            <WriteDelayTime>0</WriteDelayTime>
+        </TimeOut>
+    </SerialPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>1000.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format size="-318" formatType="BYTE" inputType="SERIAL_IO"/>
+        <format size="-8" formatType="VALUE" inputType="FILE_IO"/>
+        <timeUnit>msec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.csv</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_cell_therapy"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_CONFIG" name="type_voltage_1">
+            <Measurement>
+                <name>voltage S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>voltage S3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>voltage S4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="type_current_2">
+            <Measurement>
+                <name>current_charge S1</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current_discharge S1</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current_charge S2</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>current_discharge S2</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>current_charge S3</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>current_discharge S3</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>current_charge S4</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>current_discharge S4</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="type_capacity_3">
+            <Measurement>
+                <name>charge_mAh S1</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>discharge_mAh S1</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>charge_mAh S2</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_mAh S2</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_mAh S3</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_mAh S3</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_mAh S4</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_mAh S4</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="type_time_4">
+            <Measurement>
+                <name>charge_time S1</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>discharge_time S1</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>charge_time S2</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_time S2</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_time S3</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_time S3</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_time S4</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_time S4</name>
+                <symbol>t</symbol>
+                <unit>Min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.016666666666666666666666666666667" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="type_energy_5">
+            <Measurement>
+                <name>charge_Wh S1</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>discharge_Wh S1</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>charge_Wh S2</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_Wh S2</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_Wh S3</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_Wh S3</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+            <Measurement>
+                <name>charge_Wh S4</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>discharge_Wh S4</name>
+                <symbol>t</symbol>
+                <unit>Wh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="1" />
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_CONFIG" name="Delta_U_6">
+            <Measurement>
+                <name>delta_voltage S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>delta_voltage S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>delta_voltage S3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+            <Measurement>
+                <name>delta_voltage S4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to input value" type="Double" value="0.0001" name="factor"/>
+                <property name="scale_sync_ref_ordinal" type="Integer" value="0" />
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="false" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

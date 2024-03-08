@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information und Hilfe</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Brügmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information und Hilfe</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H2><A NAME="device_properties_edit"></A>DevicePropertiesEditor</H2>
+<P>
+Using the DataExplorer menu bar or started as standalone application it is possible to create new or modify existing device properties files.
+Doing this the device XML files are touched.
+<IMG SRC="images/DevicePropsEditor_MenuBar.png" NAME="DevicePropsEditor_MenuBar" ALIGN=RIGHT>
+</P>
+
+<P>
+Using the menu bar the device properties file of the actual device will be opened.
+Is that the case, manipulating properties will not directly manipulate all properties of an already loaded and displayed data set. 
+Will the DevicePropertiesEditor started as standalone application, it is possible to type the name of the device directly, if known.
+Is the name unknown to the application and can not be find in the devices directory a new device properties file might be created.
+</BR></BR></BR></BR>
+<IMG SRC="images/DevicePropsEditor_NewDevice.png" NAME="DevicePropsEditor_NewDevice" ALIGN=CENTER>
+</BR>
+A sample files gets extracted and needs to be adapted as required.
+Selecting the button, right hand side, a dialog will opened to enable selection of an existing file.
+</P>
+
+<P ALIGN=CENTER><IMG SRC="images/DevicePropsEditor_Device.png" NAME="DevicePropsEditor_Device" ALIGN=MIDDLE></P>
+
+<P>
+The device tabulator shows how to specify name and manufacturer of an device.
+</P>
+
+<P>
+Switching the implementation active, the implementing device class name has to be configured, optional as full qualified including the package.
+The implementation can always used if an equal device implementation class is already available, and/or if the device name does not fit.
+As an example the CSV2SerialAdapter has several devices using this implementation, differences exist in the data block specification.
+As additional example the several copies of the Bantam charger devices can be named, where differences exist in cover design and device name.
+The captured data should be found under the directory followed the device name, isn't it.
+</BR>
+<IMG SRC="images/DevicePropsEditor_Implementation.png" NAME="DevicePropsEditor_Implementation" ALIGN=MIDDLE>
+</BR>
+If the 'package' is not given, the 'package' gets calculated starting with "gde.device.", followed by the manufacturer name, converted in lower case and hyphen and blanks eliminated.
+The default class name can be calculated by removing blanks and hyphen. 
+capital letter are kept.
+</BR>
+The image name can directly typed if known and it references an existing within the device plug-in.
+If the image gets selected by use of the right hand side button and file selection dialog the selected image guest scaled to 225x165 pixel. 
+In addition it is possible to pack the image directly into the referenced plug-in.
+Modifying the plug-in could only done in the temporary folder where write rights are guaranteed.
+If this option is chosen the modified plug-in must be copied to the application directory, where the plug-in can be added to the class path.
+</BR>
+<IMG SRC="images/DevicePropsEditor_Image.png" NAME="DevicePropsEditor_Image" ALIGN=MIDDLE>
+</BR>
+How to do that will be advised in a message box.
+</BR>
+<B>Hint : </B>This change might be get lost while updating the application.
+A backup might be saved somewhere else by your own.</P>
+</P>
+
+<P>
+The serial port gets configured easily by selecting appropriate values from the combo boxes.
+</BR>
+<IMG SRC="images/DevicePropsEditor_SerialPort.png" NAME="DevicePropsEditor_SerialPort" ALIGN=CENTER>
+</BR>
+<B>Hint : </B>If timeouts guest specified the implementation must be written to use this values.
+</BR>
+The description of the serial port is optional due to the fact that some devices don't use it and read simulated serial data from text files.
+As example the CSV2SerialAdapter devices does not have a serial port specified.
+</P>
+
+<P>
+To configure the time base is simple.
+</BR>
+<IMG SRC="images/DevicePropsEditor_TimeBase.png" NAME="DevicePropsEditor_TimeBase" ALIGN=CENTER>
+</BR>
+A value greater than 0 milli seconds as time step between the measurement points is voted as constant time gap.
+The time step value lower than 0 milli seconds signals that the device gives individual time steps.
+This must not mean that the time steps might not constant.
+The implementation for the particular device must handle this situation.
+</BR>
+<B>Hint : </B>The UniLog, as example, uses an adjustable but constant time step between measurement points.
+Therefore the time step is -1 msec.
+Finally the device implementation must handle the situation and read the time step value for each sequence and use it as constant value for the data.
+</P>
+
+<P>
+<A NAME="device_properties_datablock"></A>
+The next two pictures contrast two different data block configurations.
+The UniLog configuration describes binary data with a constant length of 24 bytes.
+Is 24 bytes the maximum and a shorter length as example 20 bytes possible the configuration must point out -24 as value.
+The data type is BINARY and no separator sign is configurable.
+</BR>
+<IMG SRC="images/DevicePropsEditor_DataBlock1.png" NAME="DevicePropsEditor_DataBlock1" ALIGN=CENTER>
+</BR>
+<IMG SRC="images/DevicePropsEditor_DataBlock2.png" NAME="DevicePropsEditor_DataBlock2" ALIGN=CENTER>
+</BR>
+Is TEXT chosen as data type additionally configuration parameter must be specified.
+The file extension, what is used during file selection, as well as the standard data path, will help to select files faster.
+Both are optional, but help, if data files are delivered by a memory card, like the DataVario from WStech, which will appear with an dedicated path value if inserted into the computer.
+</BR>
+<B>Hint : </B>This configuration are optional. Other implementation might use this parameters in a different way.</P>
+</P>
+
+<P>
+The state tabulator will describe a sequence number to device states. 
+This description makes sense if a device can use more than one state and data are imported by a text file using the CSV2SerialDataAdapter.
+Finally the device implementation use the states and match it somehow with the data.
+</BR>
+<IMG SRC="images/DevicePropsEditor_State.png" NAME="DevicePropsEditor_State" ALIGN=CENTER>
+</BR>
+<B>Hint : </B>If text data are imported using the CSV2SerialDataAdapter the state 1 would be charge ($1;1;time;data;..), and state 2 discharge ($1;2;time;data;..) compared to the sample.</P>
+</P>
+
+<P>
+The tabulator with the name outlet-channel/configuration is the most complex and the biggest one.
+Here, as required or desired, the device outlet as a data channel or different configurations gets described.
+As described two different types of outlet-channel/configurations are available.
+A charger device with only one outlet to connect one battery at a time has only needs to configure only one outlet-channel/configuration from type outlet.
+The sample on right hand side just showing this.
+</BR>
+<IMG SRC="images/DevicePropsEditor_ChannelConfig.png" NAME="DevicePropsEditor_Config" ALIGN=CENTER>
+</BR>
+Underneath the area where the type and the name has to be configured another tabulator describes the individual measurements.
+The measurement configuration is responsible how the data are finally displayed in the various windows including the unit and the statistic mathematics.
+</BR>
+<B>Hint : </B>Is the outlet-channel/configuration type is chosen as configuration (TYPE_CONFIG) different configurations could be combined with identical data set.
+</BR>
+If a copy of an outlet-channel/configuration is necessary it is sense full to complete the measurement configuration which belongs together before do the copy.
+</P>
+
+<P>
+Measurements get described with the name, its unit, its symbol and if the measurement is active captured from the device. 
+Non active measurements are calculated (current * voltage).
+In addition there are optional properties like factor, offset and reduction which influence the view of the (raw) data. 
+</BR>
+<IMG SRC="images/DevicePropsEditor_MeasurementProperty.png" NAME="DevicePropsEditor_MeasurementProperty" ALIGN=CENTER>
+</BR>
+<B>Hint : </B>Are additional properties and/or statistics configuration required, use the context menu to create.
+After a measurement is completely described by properties and statistics it is possible to copy the complete set into a new one using the + button.
+</BR>
+Adding a property is simple since there are a lot of prepared once available and only the value needs to be specified.
+</P>
+
+<P>
+<A NAME="device_properties_statistics"></A>
+This statistics sample showing how to select average minimum and maximum as well as how to configure an trigger.
+A trigger is described by a value and a time to be specified as a limit. All average, minimum, maximum and deviation are related to this trigger now.
+In addition it is shown how to configure that the time where the trigger is active gets summarized.
+This might calculate the real motor runtime.
+It is also possible to count the trigger events.
+</BR>
+<IMG SRC="images/DevicePropsEditor_MeasurementStatisitcs1.png" BORDER="1" NAME="DevicePropsEditor_MeasurementStatisitcs1" ALIGN=CENTER>
+</BR>
+<B>Hint : </B>It is possible to add comments to the most of trigger or trigger related statistics. 
+This helps to identify which statistic value relates to an adjusted trigger and which not (<A HREF="HelpInfo_5.html">Statistics Window</A>).
+</P>
+
+<P>
+The next sample is showing how a already defined trigger can be used to calculate related statistics data.
+In the sample, while "sumByTriggerRef" is selected, the height gets summarized over the trigger period only to count the total height by motor runtime.
+This will help to identify the best propeller to motor adaption in comparison to other combinations.
+</BR>
+<IMG SRC="images/DevicePropsEditor_MeasurementStatisitcs2.png" BORDER="1" NAME="DevicePropsEditor_MeasurementStatisitcs2" ALIGN=CENTER>
+</BR>
+In addition a proportionality gets calculated to show the used battery capacity versus the height during motor runtime.
+This allows judgments how effective the available power is used up.
+</BR>
+For special purpose integration of measurement values by trigger time is possible while a reference to trigger is given.
+For example, this enables to calculate power in Wmin.
+</BR>
+<B>Hint : </B>Additional configuration samples can be found in UniLog or DataVario device property files.</P>
+</P>
+
+<P>
+At least the description follows about the application visualization.
+At this point it is initially configured which tabulator is active and visible.
+Active relates to visibility and calculation time for the content to be displayed within the window behind.
+</BR>
+<IMG SRC="images/DevicePropsEditor_Desktop.png" NAME="DevicePropsEditor_Desktop" ALIGN=CENTER>
+</BR>
+<B>Hint : </B>Initial means that the application device selection dialog itself allows to modify this, refer to <A HREF="HelpInfo_2.html#device_selection_desktop">Device selection dialog</A>.
+</P>
+
+<P ALIGN=LEFT><A HREF="HelpInfo_A.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_B.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>
+SS

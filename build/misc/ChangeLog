@@ -1,0 +1,2144 @@
+Development history / change log, please read from bottom up
+
+Version 3.8.5 - 5 Mar 2024
+Generic changes/fixes 
+	* fix startup problem after clean new install
+	
+Device specific changes/fixes
+	* HoTTAdapter* - *.log reader, use block sequence number to track log time step
+	* PeakTech* - correct device XML names
+
+Version 3.8.4 - 28	Feb 2024
+Generic changes/fixes 
+	* enable update device XML without changing XSD
+	* add new update information message box
+	* update integrated Java runtime used by installer to build 17.0.10+11-LTS-240
+	
+Device specific changes/fixes
+	* HoTTAdapter - enable 32 Tx channels using new XML
+	* HoTTAdapter2 - enable 32 Tx channels using new XML
+	* OpenTx-Telemetrie - enable empty GPS coordinates (no GPS fix)
+	* Akkumatik - fix byte array preparation for transfer
+	* PeakTech* - add support PeakTech2025 multimeter (RS232/USB)
+	
+Version 3.8.3 - 02 Dec 2023
+Generic changes/fixes 
+	* refine speed calculation based on GPS coordinates and altitude change
+	* remove not required curves update switching data set 
+	* update SWT library for aarch64
+	
+Device specific changes/fixes
+	* IGCAdapter - refine 3D speed calculation
+	* iChargerUSB* - fix PB number of cells, cell target voltage and charge end current
+	* iChargerUSB* - enable setting of charge end current while Li balancer is switched off
+	* iChargerUSB* - fix configuration setting digital power voltage and current max value
+	* iChargerUSB* - fix charge/discharge slider end values
+	* iChargerUSB* - fix device language selection
+	* ZeroAdapter - fix date/time parsing
+	* OpenTX-Telemetry - make repeating error visible on message box
+	* HoTTAdapter* - add ESC1..ESC4 reading capability
+	* HoTTAdapter* - skip rx sensitivity data
+	* UniLog - adjust dialog group sizes macOS
+
+
+Version 3.8.2 - 27 Oct 2023
+Generic changes/fixes 
+	* fix record scale position while some records contains zero values only
+	
+Device specific changes/fixes
+	* iCharger DX12 - add device
+	* iCharger4512DUO - add device
+	* IGCAdapter - add sink speed calculation 
+	* HoTTAdapter* - fix parsing package loss in OSD while history analysis
+
+
+Version 3.8.1 - 20 Sep 2023
+Generic changes/fixes 
+	* export CSV following zoomed area
+	* add two point measurement method to calculate value average and median
+	* fix raw export time stamp
+	* fix CSV export header line according configured time stamp
+	* adjust possible triangle altitude according maximum altitude of flight
+	* update Java runtime to 17.0.8 if packaged 
+	
+Device specific changes/fixes
+	* IGCAdapter - fine tune mysterious value deviations which get logged
+	* IGCAdapter - enhance traces with speed values with and without index, glide ratio
+	* iMax B8+ - add device from SkyRC
+
+Version 3.8.0 - 09 Aug 2023
+Generic changes/fixes 
+	* while installing on Windows register MIME type can be skipped
+	* fix code setting line color from time grid context menu
+	* check Junit HistoSuite
+	
+Device specific changes/fixes
+	* HoTTAdapter* - fix data transfer tab content MacOS
+	* HoTTAdapter - fix error in history bin reader none receiver data
+	* iChargerUSB* - fix balancer start configuration capabilities
+	* IGCAdapter - remove break conditions for altitude values
+
+Version 3.7.9 - 18 Jul 2023
+Generic changes/fixes 
+	* README files updated
+	
+Device specific changes/fixes
+	* Snipe - add CSV log import for analysis
+	* IGCAdapter - add 2 more extension values
+	* IGCAdapter - allow existing speed record
+
+Version 3.7.8 - 27 May 2023
+Generic changes/fixes 
+	* Java runtime update 17.0.7+8-LTS-224
+	
+Device specific changes/fixes
+	* HoTTAdapter - history analysis *.bin error sensor data fixed
+
+Version 3.7.7 - 10 May 2023
+Generic changes/fixes 
+	* delay update check to make sure UI is set up
+	* Java runtime update 17.0.6+9-LTS-190
+	
+Device specific changes/fixes
+	* Akkumatik - add configuration dialog
+	* Akkumatik - add help page with short dialog introduction
+	* GPS-Logger* - correct method comment, add exception log, tolerate wrong position of speed with glide ratio
+	* OpenTx-Telemetry - update to tolerate Ethos logs
+	* Snipe - add capability to read Snipe CSV log files
+
+Version 3.7.6 - 19 Mar 2023
+Generic changes/fixes 
+	* fix missing scale of another synchronized record in history graphics
+	* update data table according zoomed data
+	
+Device specific changes/fixes
+	* HoTTAdapter correct total package loss calculation
+	* HoTTAdapterX update package loss calculation
+	* Dynamite Passport Speed Meter - usage property corrected
+	* Akkumatik fix encoding problem splitter string ended in index out of bounds on Windows
+	* Akkumatik fix update visibility status suppressing measurement which has no reasonable data
+	* iCharger 456/8DUO correct regenerative to channel voltage and current limits
+	* IGCAdapter tolerate big time step once
+		
+Version 3.7.5 - 05 Feb 2023
+Generic changes/fixes 
+	* extend IDevice interface to enable device individual file comment synchronization
+	* enable file comment synchronization
+	* put check for update in a separate thread to avoid blocking UI while download URL not available
+		
+Device specific changes/fixes
+	* HoTTAdapter* change "ServoImpuls GPS" received from SM GPS-Logger to %
+	* HoTTAdapter* synchronize initial file comment date with start time stamp of log
+	* HoTTAdapter* synchronize file comment after edit/change
+	* HoTTAdapter* tune Lat/Long initial filter, fix wrong speed reference
+	* HoTTAdapter* lost reverse channel packets calculation correction
+	* HoTTAdapter* support ASCII log import (MZ-16/32)
+	* HoTTAdapter* harmonize detecting sensors *.log with *.bin
+	* HoTTAdapter* detect transmitter initialize time *.log before data analyze 
+	* HoTTAdapter* support history analyze direct from *.log
+	* HoTTAdapter* correct sigma calculation Rx->Tx PLoss
+	* iChargerUSB* enhance displaying error in configuration dialog 
+	* AVm4s_FV_762 synchronize file comment after edit/change
+	* Herkules III Telemetrie synchronize file comment after edit/change
+	* S32 synchronize file comment after edit/change
+	* iChargerUSB* refine udev rules to ignore HID storage
+	* iChargerDX* correct max charge power per channel
+	* iChargerUSB* add interface to differentiate between power per channel and total device power
+
+Version 3.7.4 - 20 Dec 2022
+Generic changes/fixes 
+	* add missing update while switch visibility of record comment in graphics composite
+	* fix scale synchronization problem while synchronization master record contains only zero values
+		
+Device specific changes/fixes
+	* HoTTAdapter2 - *.log import, correct dependency migrating GAM data
+	* HoTTAdapter* - *.log import, display detected sensors independent of log entry
+	* HoTTAdapter2* - import, add altitude/climb selected sensor to dataset comment
+	* HoTTAdapter* - live-data, add capability recording channel data, add used protocol to description
+	* HoTTAdapter2 - live-data, suppress curve selector update while number of display able records doesn't changed
+	* HoTTAdapter* - fix persistence of channel unit selection
+	* HoTTAdapter* - add Channel as sensor to sensor list, while import or live-date 115200 Baud
+	* HoTTAdapter* - fix visibility of Channels, display all as long as values available
+	* HoTTAdapter* - harmonize RPM parsing to unsigned short value
+	* iChargerUSB* - fix missing update switching async/sync dual channel devices
+	* iChargerUSB* - update some adjustment limit values to latest specification
+	* iCharger458/456DUO - add initial implementation 
+	* iCharger* - suppress curve selector update while number of display records doesn't changed
+	* Ultramat* - suppress curve selector update while number of display records doesn't changed
+	* UltraDuoPlus* - suppress curve selector update while number of display records doesn't changed
+	* Polaron* - suppress curve selector update while number of display records doesn't changed
+	* Akkumatik* - suppress curve selector update while number of display records doesn't changed
+	* eStation* - suppress curve selector update while number of display records doesn't changed
+	* Pulsar3 - suppress curve selector update while number of display records doesn't changed
+	* 4D-Akkumonitor - suppress curve selector update while number of display records doesn't changed
+	* AV4ms_FV_762 - suppress curve selector update while number of display records doesn't changed
+	* CSVSerial* - suppress curve selector update while number of display records doesn't changed
+	* Herkules_III_Telemetry - suppress curve selector update while number of display records doesn't changed
+	* *SpeedMeter - replace device picture to avoid legal problems, no answer from SkyRC
+	
+
+Version 3.7.3 - 26 Nov 2022
+Generic changes/fixes 
+	* enable modification of UTC delta value for GPS devices which does not define such value
+	* make GPX export more tolerant
+	* update Java runtime to 17.0.5
+	* fix setRTS(false) while using jSerialComm
+	* fix freeze while quit with running device thread
+	* add missing update of port related tool bar and menu while gatherer thread is running
+	* update cell voltage adjustment dialog
+	* add module jdk.xml.dom to version where runtime includes to fix MDL Viewer PDF export
+	* fix statistics description update, clear loading new file
+		
+Device specific changes/fixes
+	* Dynamite Passport GPS Speed Meter - add plug-in
+	* GSM-015 GNSS Speed Meter - add plug-in
+	* HoTTAdapter* - update error handling live gatherer
+	* HoTTAdapter* - update GPS detection for SM GPS-Logger & RCE Sparrow/Swift live gatherer
+	* HoTTAdapter* - synchronize filter with binary parser live gatherer
+	* HoTTAdapter* - fix several indexing values GAM EAM
+	* HoTTAdapter - fix VoltageRx_min and TemperatureRx while live-data gathering
+	* HoTTAdapter2 - enable altitude/climb value sensor by drop down selection live gatherer
+	* HoTTAdapter2 - add altitude/climb value sensor to record set description
+	* UT61E - add additional data query to suppress dirty bytes
+
+
+Version 3.7.2 - 01 Nov 2022
+Generic changes/fixes 
+	* refine ARM processor architecture query
+	* update patched SWT for Windows 64 bit to have correct visualization below Win10&11 as well as correct function of FileDialog.setFilterPath()
+		reference https://bugs.eclipse.org/bugs/show_bug.cgi?id=577190 
+		
+Device specific changes/fixes
+	* HoTTAdapter* - enable HoTTlogReader* inheritance
+	* iChargerUSB* - fix dynamically setting of timeout in dependency of program memory log interval
+	* iChargerUSB* - fix wrong memory head index selection
+	* iChargerUSB* - fix missing update memory configuration dialog switching to Li battery type
+	* iChargerDX*  - fix wrong number of program memories
+	* iCharger*X*  - fix removal of channel modus power setting
+	* iChargerUSB* - fix missing disable of delete button while BUILD IN memory selected
+
+Version 3.7.1 - 23 Sep 2022
+Generic changes/fixes
+	* replace SWT Windows 64 Bit to version 4950 to make file dialog follow filter path
+
+Version 3.7.0 - 20 Sep 2022
+Generic changes/fixes
+	* export https.protocolls to enable personal build Java runtime
+	* export file.encoding=UTF-8 internally
+	* add 1 to GPS data start index to make altitude level more stable
+	* prepare binary build MAX OS X Intel 64 and Windows 64 using self contained JRE
+	* update SWT to 4.25 64 bit only
+	* update JRE check to allow Java 8 for 32 bit OS and 11 to 17 for 64 bit OS including ARM
+	 
+Device specific changes/fixes
+	* OpenTx-Telemetry - add measurement named 'Alt' to enable Record.DataType.GPS_ALTITUDE which is required to KMZ export 
+	* OpenTx-Telemetry - fix manual KMZ export method
+	* iCharger* - fix cell voltage number decimal format while displaying in table as well during export
+
+
+Version 3.6.2 - 20 Jul 2022
+Generic changes/fixes
+	* update build to use Java 11 for build, setting release=8 to enable execution using Java 8 runtime
+	* fix update download ARM architecture
+	* correct trigger reference handling, use primary and secondary if both referenced
+	* enable capability to start data collection right after application startup
+	 
+Device specific changes/fixes
+	* IGCAdapter - simplify code, allow 3 minutes without sat fix b00000000000..
+	* Spektrum-Telemetry - open message dialog while problems during log parsing occur
+	* iChargerUSB - handling while time difference of two read attempts is zero corrected
+	
+Version 3.6.1 - 18 Jun 2022
+Generic changes/fixes
+	* fix message dialog overlap while pointing out Java version outside specification
+	 
+Device specific changes/fixes
+	* iChargerDX* - fix missing anti spark system setting
+	* HoTTAdapter2* - fix error while opening OSD
+	* HoTTAdapter* - add ESC extension CS-Electronics
+	* iChargerUSB* - add check for unsaved data before import
+	* OpenTx-Telemetry - fix wrong record assignment during KMZ export 
+	* IGCAdapter - add some GPS-Triangle related statistics to trace
+
+
+Version 3.6.0 - 20 May 2022
+Generic changes/fixes
+	* fix trigger analysis while a secondary is defined but no values available
+	* fix error displaying curve compare while 10 spacings on scale
+	* fix time error in curve compare displaying curves different size or different time step
+		
+Device specific changes/fixes
+	* HoTTAdapter2* - fix visualization of warning in configuration channels, sync with HoTTAdapter*
+	* HoTTAdapter* - find date and time deviations Sparrow/Swift
+	* HoTTAdapter* - add extended ESC values (YGE)
+	* IGCAdapter - add support Swift IGC format
+	* IGCAdapter - find high deviations in time 
+	* IGCAdapter - add some error handling
+	* ZeroAdapter - fix StatisticsType.fromString("min=true max=true avg=true sigma=false")
+
+Version 3.5.5 - 07 Apr 2022
+Generic changes/fixes
+	* add Raspbian 64 bit build as compressed ARM tarball
+	* synchronize record data types with Android version
+	* update SWT, only 64 Bit will be maintained
+		
+Device specific changes/fixes
+	* GPS-Logger3 - reuse ValueCollector to calculate average values at dedicated AirSpeed and TEC pressure
+	* GPS-Logger3 - update ValueCollector to find avg with equal entry count, remove AirSpeed constrain 
+	* OpenTx-Telemetry - add warning trace log while skipping record set due to less log entries 
+	* Unilog - fix class cast exception
+	* HoTTAdapter2* - fix *.log parsing channel data
+	* Graupner UDP40 - fix reading program memories
+	* Graupner UDP40/45 - fix cell count
+	* Graupner UDP - remove time criteria of battery history stored within device
+
+Version 3.5.4 - 14 Feb 2022
+Generic changes/fixes
+	* update MacOS info.plist as well as start shell script
+	* add building md5 hash for download verification
+	* make KML/KMZ export time step adjustable
+	* remove unused IGCDLL handling
+		
+Device specific changes/fixes
+	* GPS-Logger2/3 - fix error for Android saved OSD files
+	* GPS-Logger3 - define AirSpeed tolerance and  static pressure to calculate offset between pressure sensors
+	* GPS-Logger3 - enhance pressure offset calculation using pressure values of equal value
+	* HoTTAdapter* - change log level of Sensor and block number to INFO
+	* HoTTAdapter2* - fix wrong GPS time synchronization, wrong record ordinal
+	* JetiAdapter - remove interpolation of values excluding GPS coordinates 
+	* JetiAdapter - find start index of GPS data to avoid interpolation which disturb GPS track visualization
+	* JetiAdapter - parse time and date and use for synchronization
+	* Core-Telemetry - make GPS coordinates homogeneous to GDE data model
+
+
+Version 3.5.3 - 20 Jan 2022
+Generic changes/fixes
+	* add base directory to Linux start scripts
+	* fix a possible error when displaying history graphs calculations with an empty trail record set
+	* cleanup senseless log level OFF or change to level INFO
+	* fix grid line alignment error while toggle to 10 grid lines
+	* update Java version check to allow Java 17
+		
+Device specific changes/fixes
+	* Junsi iChargerUSB - add message box signaling timeout while initializing program memories for dialog
+	* Junsi iChargerDX6,S6 - cleanup duplicated BatteryTypesX definition
+	* Junsi iChargerDX* - fix partially wrong program memory, PB, Ni* max cells
+	* Junsi iChargerDX* - update LiHV maximum charging voltage to 4.45 V
+	* HoTTAdapter*2 - cleanup possible clash AirSpeed Vario, sync update variable Vario/GPS dependencies
+	* GPS-Logger2/3 - update configuration capability Jeti, MPX, HoTT
+
+Version 3.5.2 - 23 DEC 2021
+Generic changes/fixes
+	* correct statistic value formating while two triggers are defined
+	* correct average calculation while two triggers are defined
+	* update jSerialComm to version 2.7.0 to support MAC OS X ARM architecture
+	* update formatting GPS coordinates
+	* update XSD to enable device based request as byte hex array to be written before reading from serial port
+	
+Device specific changes/fixes
+	* Junsi iChargerUSB - correct energy calculation for continuous recorded data while loading from OSD
+	* Junsi DX* - correct input power values
+	* Junsi DX* - correct system parameter dialog according updated specification
+	* Junsi DX* - add graphics templates
+	* Junsi iChargerDuo* - add missing input source power configuration
+	* Junsi iCharger* - update help documentation related to DX devices
+	* GPS-Logger3 - calculate offset of both pressure sensors while calculating pressure ∆TEC
+	* GPS-Logger3 - calculate average pressure ∆TEC for 40 km/h and 70 km/h and average AirSpeed for pressure ∆TEC 1,0 hPa
+	* HoTTAdapter2 - update graphics template files to have voltage in blue, current in red, ...
+	* OpenTx-Telemetry - correct parsing of GPS tag with coordinates in degree with different decimals
+	* Schulze next - initial implementation (not tested with real hardware)
+	* CSV2SerialAdapter - add capability to write request each time before reading data
+
+
+Version 3.5.1 - 25 Oct 2021
+Generic changes/fixes
+	* adapt NMNEA parsing supporting GNS sentence
+	* fix trigger calculation using trigger smaller as a value
+	* enhance trigger capabilities to AND or OR trigger ranges
+	* enhance trigger referencing primary and secondary trigger -> XSD update
+	* make merge ranges merge results visible in trace log
+	* enhance filling out trigger comments
+	* enhance junit test checking record set time step errors
+	
+Device specific changes/fixes
+	* HoTTAdapter* - display always given GPS version value, even if this does not match known measurement placements
+	* HoTTAdapter* - evaluate byte, byte, byte, short, short, short, byte for unknown GPS (version 2,3,5 - 99)
+	* HoTTAdapter* - evaluate AirSpeed provided by SM MicroVario, SM GPS-Logger3
+	* HoTTAdapter2* - fix scale synchronization reference channels from 82 to 87
+	* HoTTAdapter2* - synchronize scale GPS-Speed and AirSpeed
+	* Core-Telemetry - fix assignment of parsed data with modified name (duplication)
+	* Weatronic-Telemetry - add error handling for corrupt log files
+	* GPS-Logger3 - add HoTT speed type configuration
+	* GPS-Logger3 - calculate pressure delta TEC instead of pressure TEC
+	* GPS-Logger2/3 - take real GPS altitude from SMGPS instead of value from GNS/GGA
+	* GPS-Logger* - fix parsing RMC sentence while status V 
+	* Junsi iChargerUSB* - fix time stamp error while opening OSD with time span of > 3 days
+	* Junsi DX6/8 - add initial support
+
+Version 3.5.0 - 13 Sep 2021
+Generic changes/fixes
+	* fix file comment tab update
+	* fix missing update device selection dialog, port selection combo
+	* fix missing hint for udev rule or dummy driver while using USB native communication
+	* fix DevicePropertiesEditor opening measurement item context menu
+	* update DeviceProperties XSD to exchange device XML (add measurements HoTTAdapter*)
+	
+Device specific changes/fixes
+	* HitecX1Red - change voltage parsing to unsigned
+	* iMAX BC6 - fix firmware message 
+	* Core-Telemetry - update log reader
+	* Modster200 - add initial support
+	* Modster600 - add initial support outlet A only
+	* HoTTAdapter* - add SM MicroVario acceleration values
+	* GPS-Logger* - prepare GNS sentence for firmware >= 1.28
+
+Version 3.4.9 - 14 Jun 2021
+Generic changes/fixes
+	* remove property enumeration value="tolerate_sign_change"
+	* add log output detecting possible corrupt file creating history
+	* codesign Mac OS X - add time stamp and identifier to dmg
+	* Schema update (V43) to reflect removed property as well as updated device XML
+	* add IDevice method to correct channel if required (simplified OSD from GDE Android)
+	
+Device specific changes/fixes
+	* HoTTAdapter* - remove dependency to property using North/South hemisphere, as well as East/West of meridian
+	* HoTTAdapter* - rename variable GPS values in XML to propagate to history analysis
+	* HoTTAdapter* - correct offset MSL altitude if contained in GPS in *.log
+	* HoTTAdapter* - correct factor home direction, enable translation for HomeDirection
+	* HoTTAdapter* - refactor method updating GPS type dependent records
+	* HoTTAdapter* - update GPS type dependent records while loading from OSD
+	* HoTTAdapter* - harmonize temperature offset to fix scale sync problem in HoTTAdapter2
+	* HoTTAdapter2 - fix GPS data import single sensor
+	* IGCAdapter - add missing unit in device XML
+	* GPS-Logger3 - additional measurements added with 1.26 (NMEA Import)
+	* GPS-Logger* - update configuration according 1.26
+	* GPS-Logger* - fix visualization dialog
+
+Version 3.4.8 - 24 Apr 2021
+Generic changes/fixes
+	* enable record based scale sync property updates (outside device XML)
+	
+Device specific changes/fixes
+	* HoTTAdapter* - fix scale synchronization, formatting, unit and factor to support different GPS data source
+	* HoTTAdapter* - change SM GPS-Logger names from gyro to acceleration
+	* HoTTAdapter* - change GPS time and year to more readable format
+	* HoTTAdapter2 - fix parsing altitude,climb values while EAM is configured as primary
+	* HoTTAdapter2 - fix missing GAM, EAM, ESC parsing while no known GPS is connected
+	* HoTTAdapter2 - enable simple GPS type detection while reading through 19200 Baud protocol
+	* Triangoli - add initial support
+
+Version 3.4.7 - 27 Mar 2021
+Generic changes/fixes
+	* update copyright 2021
+	* update dialog sizes to support uneven Windows scaling 
+	* fix error while editing FileComment tab while focus lost
+	* fix error in setting returning initial wrong decimal separator
+	* make tolerant missing symbols in OSD (variable measurement size written by Android app) 
+	* fix scroll problem file comment window record comment table
+	
+Device specific changes/fixes
+	* JetiAdapter - fix check GPS data to enable Google Earth export
+	* IGCAdapter - fix support configuring speed or others in KML/KMZ export
+	* HoTTAdapter* - fix unit of GPS vibration
+	* HoTTAdapter* - detecting GPS type to sort and re-name measurements
+	* HoTTAdapter* - fix missing ESC while importing *.log
+	* GraupnerUDP* - fix update step charge tabulator
+	* GraupnerUDP* - fix update step charge min capacity/current
+	* IGCAdapter - fix loading older OSD file
+	* IGCAdapter - enable missing color and record dependency configuration
+	* iCharger* - fix energy calculation
+	* iChargerDuo* - fix max power setting channel 2
+	* iCharger206B - add support opening *.lov
+
+Version 3.4.6 - 26 Dec 2020
+Generic changes/fixes
+	* update XSD version to force device properties replacement
+	* reduce flicker while measuring on Windows
+	* fix error in history analyze while defined time outside existing file dates
+	* fix adding wrong histoVault while picking vaults
+	
+Device specific changes/fixes
+	* Weatronic-Telemetry - add error handling for cases buffer offset zero
+	* HoTTAdapter* - add missing GPS values home direction - version
+
+Version 3.4.5 - 17 Dec 2020
+Generic changes/fixes
+	* fix graphics update problem initiated by MAC OS update
+	
+Device specific changes/fixes
+	*
+
+Version 3.4.4 - 16 Nov 2020
+Generic changes/fixes
+	* fix statistics text position in description group to enable scroll
+	* update DeviceProperties XSD V41
+	* add manual setting to enable MAC OS touch bar support
+
+Device specific changes/fixes
+	* OnLineCommander - fix loading resource bundle
+	* PolaronEx - fix exception while processing channel 2
+	* Polaron* - fix processing detection channel 2
+	* Core-Telemetry - initial release
+	* JetiAdapter - update dialog width Windows
+	* Pulsar3 - fix energy calculation
+	* IGCAdapter - consider TDS entries if exist 
+	* IGCAdapter - add 3D speed calculation
+
+Version 3.4.3 - 09 Sep 2020
+Generic changes/fixes
+	* fix display problem of geo-coordinates in degree curve compare
+	* update several naming
+	* KMZ export, remove definition of relative altitude start point out of definition of LookAt
+
+Device specific changes/fixes
+	* OnLineCommander - add initial support
+	* iChargerUSB - fix some possible exception in charger dialog reading data from connected device
+	* HoTTAdpter2* - add missing property reduction/offset to Temperature Rx
+	* IGCAdapter - fix flight number parsing, parsing F record, record naming
+
+Version 3.4.2 - 04 Aug 2020
+Generic changes/fixes
+	* fix cell voltage dialog adjusting value position
+	* remove guava-jre, joda-time dependency
+	* add several missing license files
+	* add option to force 10 major scale ticks while rounding graphics end values
+	* enable class based log level configuration device sub packages (p.e. gde.device.junsi.modbus)
+	* enable USB HID device selection while devices with almost identical characteristics connected
+	* enable secondary trigger range in properties editor (functional added in 3.4.0)
+	* add JAVA_IO_TMPDIR GDE cleanup tree (exported help files)
+	* macOS build - add code signing app and dmg to fulfill gatekeeper requirements
+	* add Java version check, detect run time version out of specified range
+	* update jSerialComm to version 2.6.2
+	* use system cursor for measuring to avoid misplaced cursor while sized desktop
+	* documentation update
+	* remove leading blanks while CSV relative time export
+	* fix GPS export make LookAt section related
+	* fix display problem of geo-coordinates in curve compare
+	* add macOS touch bar support
+	* documentation update
+	
+Device specific changes/fixes
+	* iChargerUSB - enable program memory control
+	* iChargerUSB - correct power/energy calculation for opened files (*.osd)
+	* iChargerUSB - add system info string to recording
+	* iChargerUSB - fix parsing error battery voltage > 25,4 Volts
+	* iCharger S6/X12 - add support
+	* GPS_Logger* - fix latitude, longitude unit which caused display problem while activated
+	* Spektrum-Telemetry - make frame loss and holds always visible, even no reasonable data
+	* UniSens-E - enable live data gathering
+	* iMax B6* - fix missing energy calculation Ni battery type outside cycle
+	* MC3000 - fix to short wait time for possible adjustable rest time
+	* UniLog(1) * fix raw CSV export/import
+	* UniLog* * enable special efficiency calculation while n100W 99999, A1 torque input [Ncm]
+	* JetiAdapter - fix measurement name and unit related data type parser "Geschwindigkeit [kmh]"
+	* HoTTAdapter* - add missing GPS values (satellites, 3D-fix) live data gathering 
+	* HoTTAdapter* - adapt GPS fix values '-'=0, '2'=2, '3'=3, 'D'=4, unknown char=1
+	* HoTTAdapter* - adjust and synchronize Vario climb10 filter
+	* HoTTViewer - add measurement ENL, satellites, GPS-Fix
+
+Version 3.4.1 - 03 Feb 2020
+Generic changes/fixes
+	* add control listener to handle size changes after modifying menu cool bar
+	* uniform build execution environment to Java 8 compatible byte code
+	* split build in OS dependent steps (future MAC OS does not support 32 bit makensis processing)
+	* update swt.jar for Linux 64 bit to fix webkit problems
+	* add time stamp of min/max value evaluated
+	* update swt.jar for available OS to support future Java versions (new SWT libs available for 64 bit only)
+	* update cell voltages for the known different cell types
+	* fix missing synchronization between cell voltages and active record set
+	* update software widget toolkit (swt) for 64 bit systems to enable support for newer Java run times 
+
+Device specific changes/fixes
+	* LiPoWatch - adapt clear memory button position for MAC OS X and Linux
+	* Robbe PowerPeak IV - initial implementation
+	* HoTTAdapter2 - reset min/max values while detecting valid values
+	* SpektrumCSV - simple sample to be used with exports from TLM Viewer
+	* Spektrum-Telemetry - add initial implementation
+
+Version 3.4.0 - 10 Nov 2019
+Generic changes/fixes
+	* update launch4j Windows executable wrapper supporting java PATH entries in addition to registry
+	* enable secondary trigger to extend primary trigger range -> require XSD upgrade
+	* add additional comment placeholder for motor capacity for cases with sumByTriggerReferenceOrdinal.
+
+Device specific changes/fixes
+	* JetiAdapter - fix backward compatibility skipping sensor parameter without unit, result as missing measurement
+	* JetiAdapter - enhance Tx->Rx statistics
+	* GPS-Logger2 - enable secondary trigger definition for combinations with UL2 data (UniLog2 or UniSensE)
+	* HoTTAdapterD - correct indexing parse EAM *.log
+	* HoTTAdapter2/D - enable selection of altitude/climb values source sensor *.log
+	* HoTTAdapter2 - enable secondary trigger range for GAM and ESC as example
+	* PolaronACDC - fix data capturing channel 2
+	* Open-Tx - enable log time step > 1000 msec 
+	* iChargerUSB* - enable additional special states used for internal data evaluation
+
+Version 3.3.9 - 25 Aug 2019
+Generic changes/fixes
+	* update measurement properties XML containing [] by mistake
+	* correct average calculation using trigger ranges
+	* fix makensis languages.nsh encoding
+	* add capability to integrate values by trigger (require XSD update)
+	* update device properties editor to support capability to integrate values by trigger
+	* update documentation
+	
+Device specific changes/fixes
+	* HottAdapter* - correct trigger description text in XML
+	* HoTTAdapter* - *.log remove evaluation of transmitter event and warning to avoid end user confusion
+	* HottAdapter2 - fix channel zoom problem
+
+Version 3.3.8 - 04 Aug 2019
+Generic changes/fixes
+	* catch possible IndexOutOfBoundsException while updating cell voltage window
+	* 32 bit Linux lack of updates and seams still better compatible with GTK-2, use export SWT_GTK3=0 force using GTK-2 libs
+	* update XSD to version 37 to enable sensor selection for altitude/climb values
+	* update History analysis to use auto sensor selection for altitude/climb values 
+	
+Device specific changes/fixes
+	* HoTTAdapterD - update Vario/ESC filter to synchronize with HottAdapter2
+	* HoTTAdapterD - enable suppressing of lab calculation by smoothing value Rx dbm
+	* HoTTAdapter2/D - enable selection of altitude/climb values source sensor
+	* HoTTAdapter2 - fix power calculation while importing *.log EAM
+	* HoTTAdapter2 - fix missing ESC parsing while configuration channels selected
+	* HoTTAdapter* - fix/enable again capability to analyze log files written in SD-Format with 64 byte blocks  
+	* CellLog8S - fix cell voltage display, correct index
+	* iCharger* - fix index temperature intern/extern for serial connected once only
+	
+	
+Version 3.3.7 - 14 Apr 2019
+Generic changes/fixes
+	* make none active measurement visible while history exploring
+	* fix wrong naming replacement direction_start
+	* add a check while user tries to create OSD-file direct in object directory to prevent overwriting data file with file link
+	* update XSD version to force device xml replacement due to xml changes for several devices
+	* add DataExplorer.cmd script to Windows installation to be used while openJDK is installed and java.exe in PATH
+	* add news URL while update check detected new version
+	
+Device specific changes/fixes
+	* HoTTAdapter* - enable channel values in % configurable using device dialog
+	* iCharger X6/X8 - adapt parsing algorithm to support FW 207 beta 2
+	* iChargerUSB - add scale synchronization cell Ri sum to pack Ri
+	* NMEA-Adapter - correct measurement name direction to direction_start (direction relative to start point),
+    * NMEA-Adapter - reduce one none necessary call to updateVisibilityStatus
+    * GPS-Logger* - remove generated glide ratio and exchange with azimuth instead
+    * GPS-Logger3 - correct time stamp evaluation, it has only two digits instead of three
+    * GPS-Logger3 - fix parsing error while invalid data
+    * GPS-Logger3 - fix time calculation adding DST offset if required
+    * GPS-Logger3 - enable log evaluation without GPS-fix while UniLog injects time stamp
+	
+Version 3.3.6 - 12 Mar 2019
+Generic changes/fixes
+	* use char instead of string const. while string operations for performance reasons
+	* update SWT to version 4.9, last version 32 bit versions distributed
+		* new SWT Linux libraries prefer to use GTK3 libraries
+	* update copyright to 2019
+	* update all http URLs to https if possible
+	* update jaxb jars and remove disabling of optimization statement
+	* remove/reset unnecessary smoothVoltageCurve entry from devices
+	* fix visualization of serial port selection 
+	* enable curve compare independent of selected measurement unit, but warn about this fact
+	* fix Windows Java 11 serial communication add jSerialComm implementation 
+	* enable enhanced delta ratio measurement on altitude while supported by selected device
+	* fix IllegalParameterException on Linux while initiating main UI
+	* remove usb4java jar version numbers to enable update
+	* update usb4java to version 1.3.0
+	* UsbPortImpl cleanup code, remove unchecked warning, add dump methods
+	* add LibUsb library code which is closer to hardware and enable use of productString as additional USB-HID constrain
+	* update XSD to enable additional UsbPort productString
+	* refine semi automatic detection of scale synchronization reference
+	* update Mac OS kernel extensions for SkyRCand Junsi USB-HID hinting kext utility
+
+Device specific changes/fixes
+	* Graupner Polaron* - adapt number of transfered bytes to latest specification (Firmware 2.x required)
+	* Graupner Ultra Duo Plus - fix missing update while reading battery data using device dialog
+	* Graupner HoTT MDL Viewer plug-in update 9.4
+	* Graupner HoTTAdapter2 - add missing call parsing GAM data while only a GAM is connected to receiver 
+	* Graupner HottAdapter* - *.bin fix sensor detection while seeking position in file stream
+	* Junsi iCharger X6 - add initial release
+	* Junsi iCharger X8 - add initial release
+	* Junsi iCharger 406Duo - add initial release
+	* Junsi iChargerUSB* - prepare for upcoming FW release enabling Ri logging
+	* Junsi iChargerUSB* - make import and data gathering using log time stamp -> variable log interval
+	* Junsi iChargerUSB* - update supported battery type (chemistry)
+	* GPS-Logger2 - update device selection picture
+	* GPS-Logger3 - update device selection picture
+	* ZeroAdapter - initial release to support LogView OpenFormat Zero log file evaluation
+
+Version 3.3.5 - 20 Dec 2018
+Generic changes/fixes
+	* fix setting foreground color of status message
+	* fix exception while copy curve into compare window
+	* fix exception while cutting curve edges
+	* fix hanging application shutdown while executing device thread
+	* add migration hint for custom devices to add <device-name>*0 to device _use list
+	* add hint if device folder creation fails
+	* fix missing error message disabling device due to invalid XML
+	* fix MAC OS copy to clip board capability
+	* fix partial data table calculation for several devices 
+	* fix reset measurement selection in curve selector context menu
+	* fix measurement formatting based on record decimal format
+	* fix measurement based on calculated record index
+	* fix Windows missing color change with swt library update
+
+Version 3.3.4 - 30 Nov 2018
+Generic changes/fixes
+	* fix ratio calculation triggered used capacity to reached motor altitude
+	* update Java download URLs in Windows launcher
+	* new device xsd version
+	* make ready to execute using JRE 8 to 10
+	* fix [sr #109555] CSV Export does not use decimal point separator
+	* fix raw csv export 
+	* fix exception while moving scaled curve display around start time stamp
+	* fix adding KMZ export menu on device level
+	* fix graphics header update while switching record set
+	* update device selection dialog devices overview tab
+	* reduce extracted device properties XMLs to the devices selected
+	* user interface polish enabling different color schema
+	* remove never used global serial port from settings dialog
+	
+Device specific changes/fixes
+	* HottAdapter* -  fix error message GDE_MSGW2404 appearing only at the first import, Fix missing tab activation after import
+	* HottAdapter* -  fix start time stamp calculation while special case receiver data only analysis
+	* HottAdapter - fix wrong sensor sequence reference while import *.bin with single ESC sensor module connected.
+	* Hitec DRX1 - add support (identical Hitex RDX1 Pro is the 100W version)
+	* Hitec X1 Red - add support
+	* iMax B6 mini - add support (iMax B6 AC V2)
+	* PolaronPro - fix cell voltage update
+	* Polaron* - fix measurement index position reference (according available specification)
+	* GPS-Logger2 - fix device visualization dialog
+	* GPS-Logger* - update behavior selecting configuration while import, 
+		switch to UniLog2 only if $UL2 entry found, respective to UniLog if $UNILOG entry found, else keep the previous selected configuration 
+	* ArduPilot - initial implementation based on LogStructure.h
+	* CSV2SereilAdapter - fix potential invalid thread access while updating GPS related menu entries
+	* Weatronic-Telemetry - fix potential OSD file reading with lower number of records compared to actual device measurement structure
+	
+History analysis
+	# Flexibility
+	.. OpenStreetMap GeoCodes (now prioritized over GoogleMaps)
+	      ! -> Clear the location cache via the 'Clear cache' button
+    .. Add warning and event bits support to HoTTAdapter1/2
+	.. Facilitate using the jars in other systems
+		- Add support for DataExplorer instantiation without UI
+	# Performance
+	.. Leverage multicore processors
+		- threadsafe histo functionality
+	.. Boost HoTTAdapter2 import speed
+		- Fix the excessive sampling rate with native imports and HoTTAdapter2
+		- Reduce the oversampling rate with native imports and HoTTAdapter2
+	.. New histo cache version with accelerated read access
+		- Enhance performance via threadsafe HoTTbinHistoReaders
+		- Add settings entry for xml cache
+	.. diverse optimizations
+		- Avoid synchronized method performance penalty
+		- Enhance the Quantile classes for better performance
+		- Enhance removing constant outliers from the quantile population
+	# Processing
+	.. Fix start timestamp calculation for HoTT native logs
+	.. Fix measuring illegal argument exception for measuring with null values
+	.. numerous improvements 
+		- Harmonize the scores dealing with sensors V34
+		- Harmonize the sensor score value
+		- Fix Junit channel number setting not detected by some readers
+		- Add 'receiver' to getSensorNames acc. to *.log file pattern
+		- Remove static initializer acc to WB advice
+		- Remove creating a temporary SDLog file preceeded by ~
+		- New HoTTbinReader header map entry 'SD_FORMAT'
+		- Fix uppercase import file endings problem
+		- Make histo processing independent from the internal UI 
+		- Prepare support for additional roaming data sources 
+		- Fix potential NPEs
+		- Add Junit test cases
+		- Enhance the TestSuperClass
+		- Change JUNIT initialization to use the dataFilesTestSamples
+		- Fix sporadic Junit assert failures
+		- Harmonize device configuration thread waiting procedures
+		- Harmonize channels setup
+		- Fix rare UnsupportedOperationExceptions while reading OSD files
+
+Version 3.3.3 - 10 Aug 2018
+Generic changes/fixes
+	* fix recursion synchronizing compare set while adding curve to compare set
+	* handle device base directory by interface method to enable device specific directories
+	* enhance calculation of synched scale label 
+	* Reduce DataExplorer startup duration
+	* Ask user for confirmation prior to purging an object key
+	* fix channel object key handling, channels of type outlet (chargers) might have different object key, update object selector accordingly
+	* fix unsaved reason entry for changed comment
+	* fix regression renaming object key scenario
+Device specific changes/fixes
+	* HoTTAdapter* - fix 19200 Baud protocol live data, skip Rx query while other sensors detected, Rx data in sensor data contained
+	* HoTTAdapter* - add file selection hint for *.bin;*.log 
+	* HoTTAdapter2 - fix statistics calculation while capacity doesn't start at zero 
+	* S32 - fix factor to correct external temperatures
+	* S32_2 - initial release for S32 as version 2 displaying all measurement values on a single time line
+	* S32 - fix measurement synchronization references (need device XML replacement)
+	* S32 - fix external temperature factor according customer feedback
+	* Ultramat* single channel charger - fix possible NullPointerException
+	* OpenTx-Telemetry - fix potential exception, add some more mapping parameter, enable visualization control and help
+	* OpenTx-Telemetry - split log according time entries into separate record sets
+	* Futaba-Telemetry - fix parsing exception "---", enable visualization control and help
+	* Futaba-Telemetry - fix EOFException saving OSD with record set different real size
+	* Hitec X1 Red - add initial support (alpha), looking for user of this device interested collection data using DataExplorer
+	* WSTech DataVario - replace German description with supposed key
+	* UltraDuoPlus* - refine object key selection by memory name
+
+History analysis
+	* Enhance UI
+		>> Add support for triggered values (e.g. motor runtime height)
+		>> Add refresh menu item and shortcut
+		>> Add object key wizard (if accessing new directories) 
+		>> Remove MessageBox "No log files"
+		>> Enhance toggling 'Smart values' by preserving the user selections
+		>> Fix importing from histo table with reversed x axis opens wrong file
+		>> Fix InvalidPathException@_SupplementObjectDirs
+		>> Fix wrong decimal places if switching from histo graphics to histo table
+	* Remove searching in the current import path (is obsolete due to remote log file support)
+	* Enhance performance
+	 	>> Memory cache for aggregated histo data 
+	 	>> Optimized directory scans for graphics refresh 
+	 	>> Avoid multiple vault re-reading from the source log files
+	 	>> Code optimizations to avoid materialization
+	 	>> Remove syncing slave records for incomplete master records
+	 	>> Avoid multiple sha1 hashing
+	 	>> Remove method synchronizing keyword for methods not used in threads
+ 	* Support new file extensions separator
+ 	* Get geocodes from OpenStreetMap prioritized over Google (clear the location cache via the 'Clear cache' button)
+
+Version 3.3.2 - 15 Apr 2018
+* fix illegal formatting option in ParameterControl used for Graupner UDP charger
+* fix HoTTAdapter wrong data block number detection
+* fix empty template file name if user cancels loading a template
+* fix some issues when adding / editing object keys
+* fix wrong interpretation and display of geo-coordinates received as degree with decimal digits
+* fix parsing error with values coming with comma as separator to decimal places
+* fix setting of time grid building new template
+* fix circular UI update calls
+* fix/tolerate Jeti new alarm protocol 
+* context menu texts (graphics / data table tabs)
+* add initial support for Junsi iCharger 106B
+* add initial support for ELV WDE (Wetter-Daten-Empfänger)
+* add initial support for a generic CSV import (using Tesla Battery sample CSV file as source)
+* add initial support for Graupner GeniusWizard log files
+* update MDLViewer plug-in to 9.3
+* copyright update
+
+History analysis
+	* New summary chart in the history graphics window
+	* Enhance graphics template support
+	 	>> new default templates per object key
+	 	>> new histo templates format: pls load, check and re-save user histo templates!
+	 	>> show a non-default template name in the status bar
+	 	>> fix record mapping for the default graphics template 
+	 	>> fix saving the last template instead of saving the default
+	 	>> fix empty template file name if user cancels loading a template
+	* Enhance graphics chart
+	 	>> background colors selection
+	 	>> initial vertical lines positions in delta measurement mode
+	 	>> fix non-replaced measuring record names in recordset comment / status text
+	 	>> fix unlimited scale for cell voltages if some logs do not hold cell voltages
+	 	>> fix rare boxplot whisker length deviations
+	 	>> fix missing timescale entries in case of many entries
+	* New remote log file access
+		>> new supplementary folder for import files and archived files
+		>> new log file mirroring for offline use
+		>> new properties entries for external or network folders or mirror source folders
+	* Fix table issues
+	 	>> column values for non-reversed timestamp sequence
+	 	>> GPS location was not shown sometimes
+	 	>> row 'Directory paths' now shows abbreviated paths
+	* Enhance UI
+	  	>> make object key adding / editing more intuitive
+	  	>> new tool tip texts
+	 	>> new key shortcuts
+	 	>> new menu entries
+	 	>> fix unchecked curve survey menu entry after restart
+	* Fix processing issues
+	 	>> rare value differences for HoTT module log analysis and device settings changes
+	 	>> values for channel items with relative data (based on first log value)
+	 	>> log data caching in case of user changes to device settings
+	 	>> rare exceptions in histo graphics
+	 	>> creating empty directories in case of unknown objects or devices
+	* New columns for settlement values in the data table tab (optional)
+	* Enhance performance
+	 	>> redraw graphics
+	 	>> avoid double synchronizing of scales
+	 	>> scan log file folders
+	 	>> read osd / bin
+	 	>> switch channel
+	* Enhance coding
+	 	>> prepare histo kernel for forthcoming *.log files
+	 	>> enhance history module code base segregation from the application kernel 
+
+Version 3.3.1 - 17 Oct 2017
+* fix retrieving working state from XML (iCharger and others) 
+* fix NullPointerException while KMZ export having a not completely initialized object
+* fix object initialization using wrong object key
+* fix serial connected iCharger live gatherer tolerating timeouts
+* fix object update problem while removing objects
+* fix HoTTAdapter* GAM capacity filter null value
+* fix GraphicsTemplate save problems
+* reduce graphical display changes to force unsaved hint
+* remove LogView files to be written as CSV export during junit test
+* enhance Windows port enumeration for BT serial ports (enumeration falls back while BT switched on)
+HoTTAdapter*
+	* add missing measurements (GAM,EAM) and events(preliminary use inverse bits) to HoTTAdapter
+	* add missing measurements (GAM,EAM) and events(preliminary use inverse bits) to HoTTAdapter2
+	* add inverse bit alarms and warning
+	* add initial support for new log data format (*.log)
+Pulsar3
+	* add initial support, import and LogView
+Devo-Telemetry
+	* add initial support CSV import converted log data files
+
+Version 3.3.0 - 01 Jul 2017
+OVERVIEW:
++ add UT16E multimeter support
++ add D100 charger support
++ enhance HoTTAdapter support
++ enhance NMEA-Adapter support
++ enhance MC3000 & Q200 support
++ enhance VC820 & VC840 support
++ enhance History analysis to full functional beta version (pls enable in preferences)
++ enhance serial port detection for virtual serial ports
++ enhance SM GPS-Logger support
++ enhance SM UniLog2 support 
++ update documentation
+
+DETAILS:
+- fix analog display of synchronized master record
+- support UTC time formatting
+- enhance GPS coordinates support (langitude / latitude)
+	- formatting in degrees/minutes or decimal degrees based on unit settings in the device
+- keep selected channel after opening an OSD file
+- update Copyrights
+- add history graphics template support (no default set of templates get delivered) 
+- fix STM virtual serial port enumeration problem (Graupner MC-28)
+- fix device XML migration problem with devices using USB
+- simplify device XMLs to language neutral version to reduce maintenance effort
+- add MDL converter functionality for MC-28/MC-26 from/to MC-32,MC-20,MX-20,MC-16
+
+HoTTAdapter*
+	- fix start time stamp using last modified of log file
+	- fix header in graphics window displaying consistent actual date, this is independent of the log file date
+Junsi iCharger (serial communication only)
+	- fix problems with received strings which are not a valid status
+MC3000
+	- add support for Lithium-Titanate Akku (BATT TYPE: LTO) FW 1.14
+NMEA-Adapter
+	- fix NMEA-Adapter parser to handle not supported NMEA sentence at begin
+UT16E multimeter
+	- add support
+S32, latest and greatest JLog
+	- correct RPM factor
+SM GPS-Logger (1+2) 
+	- update configuration capability to FW 1.19
+SM UniLog2
+	- update configuration capability to FW 1.14
+VC820, VC840
+	- fix table update problem while starting new recording in table view
+History analysis
+	- add context menu support
+		- graphics template support (no default set of templates get delivered) 
+		- analyze values in detail in the measurement mode (absolute / delta)
+		  - measurements table
+		  - delta measurements with regression and boxplot
+		- right click on a source file in the history graph / table and 
+			- open it in the graphics tab for detailed analysis
+			- exclude / reintegrate it in the history analysis (e.g. preflight tests)
+			- delete it permanently (e.g. unintentional recordings)
+	- user interface enhancements
+		- identify the source files via x-axis tool tips showing the filename
+		- show source directories in the graphics header tooltip
+		- enhance smart statistics (quantiles, boxplots) and outlier identification
+		- show the GPS location in a human readable text in the history table
+		  (requires internet access)
+	- minor enhancements
+		- support print and screen capturing
+		- integrate files from subdirectories (maximum directory level setting) 
+		- some additional measurements have been stripped off (e.g. file size, CPU time)
+		- fix package loss unit (was per mille)
+		- update DeviceProperties schema to V31 to enable updates regarding history analysis
+	
+Version 3.2.9 - 26 Jan 2017
++++++ important update Java Runtime Version prerequisite to 1.8 +++++
++++++ important update Java 32 Bit -Xmx1024m, 64 Bit -Xmx3096m  +++++
+- fix early rounding while importing CSV data
+- fix CSV import capability using relative time stamp
+- fix table window flickering while continuous adding entries
+- add Raspbian 32 ARM support 
+- add history analysis as beta support (need to be enabled in preferences)
+HoTTAdapter2
+	- fine tune capacity filter for cases value start != 0
+S32 (JLog3)
+	- add support
+SM GPS-Logger 1+2 
+	- update configuration support firmware 1.16
+	- enhance load/save setting path algorithm
+SM UniLog 2 
+	- minor code update configuration support FW 1.12
+	- enhance load/save setting path algorithm
+MC3000 SkyRC
+	- switch to continuous data gathering for all slots by selecting MC3000-Set
+	- remove automatic program start/stop, form now gathering rely on manual start/stop of processing
+	- fix continuous record to gather pausing data
+	- fix missing end of processing and create each second a new record set
+Q200 SkyRC 4 channel charger 
+	- support up to 4 individual batteries added by Q200
+	- support for a set up to 4 batteries added by Q200-Set
+
+Version 3.2.8 - 05 Oct 2016
+- remove the restriction re-naming compressed OSD-Files
+- exchange the default value of data file path to user.home instead of using root, root causes errors for most OS due to no permissions
+MC3000
+	- fix setting slot programs with capabilities of FW >= 1.12
+	- add device XML with TYPE_CONFIG as MC3000-Set to enable single file for all 4 slots, all batteries are a set
+	- fix handling with different temperature units and unit switch
+	- extend help info to describe difference between MC3000 and MC3000-Set
+GPS-Logger2
+	- correct maximal number of measurements using file I/O data block -52
+HoTTAdapterX
+	- refine log content analyze to distinguish between HoTT V2 and the normal HoTT V4 content
+HoTTAdapter*
+	- enable reading 'GRAUPNER SD LOG8' which contains normal HoTT V4 sensor data 
+Futaba-Telemetry
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+GigaLogger
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+IISI-Cockpit V2
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+JetiAdapter
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+NMEAAdapter
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+OpenTxTelemetry
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+Weatronic-Telemetry
+	- correct error in getGPS2KMZMeasurementOrdinal used to set up the Google Earth configuration dialog
+
+Version 3.2.7 - 11 Sep 2016
+- correct statistics calculation in regard of using max or average calculated using measurement reference ordinal
+- add some error handling if device XML is corrupt in <DataBlock>
+- enable CSV export using UTF-8 encoding (HoTTAdapterM2 for DashWare)
+- fix error not writing OSD file if date as file name leader is not set
+- reduce message in unsaved waring message box
+- enable builds using Windows 10
+- fix problem displaying help after language switch
+FlightRecorder
+	- make Google Earth auto export more configurable, extrude, select some record
+FutabaTelemetry
+	- make Google Earth auto export more configurable, extrude, select some record
+GigaLogger
+	- make Google Earth auto export more configurable, extrude, select some record
+GPS-Logger*
+	- make Google Earth auto export more configurable, extrude, select some record
+GPXAdapter
+	- make Google Earth auto export more configurable, extrude, select some record
+HoTTAdapter*
+	- fix live data gathering of missing ESC values
+	- add ESC missing measurement values Temperature2, Voltage min, Current max, RPM max, Temperature1 max, Temperature2 max
+	- enhance sensor detection in transmitter logs mainly needed while high Rx->Tx PLoss (pupil transmitter logs)
+	- remove statistics properties from minimal and maximal measurements
+HoTTAdapter2
+	- correct device XMl in regards of ESC statistics calculation capacity/altitude  
+	- add default filter settings to device XML
+	- correct trigger references in XML
+	- make Google Earth auto export more configurable, extrude, select some record
+	- enable lab time evaluation based on Rx dbm and/or distance from start in separate configuration
+HoTTViewer Adapter
+	- add Rx dbm measurement value
+iCharger 308 DUO
+	- add live data gathering support
+iCharger 308/4010 DUO
+	- correct energy value calculation for import
+IISI-Cockpit V2
+	- make Google Earth auto export more configurable, extrude, select some record
+JetiAdapter
+	- make Google Earth auto export more configurable, extrude, select some record
+MC3000
+	- add new system temperature measurement value
+	- add RAM cell type support
+	- correct NiZn program modus 
+	- adapt to FW 1.05+, power and energy retrieved directly from device
+	- fix problem while closing application with running data gatherer thread
+	- enable set charge programs to slots
+OpenTxTelemetry
+	- make Google Earth auto export more configurable, extrude, select some record
+Polaron Sports/ACDC
+	- correct English device XML
+WeatronicTelemetry
+	- make Google Earth auto export more configurable, extrude, select some record
+WStechVario*
+	- make Google Earth auto export more configurable, extrude, select some record
+
+Version 3.2.6 - 06 May 2016
+fix - Linux adaptation for incompatible but working SWT SashForm.setWeights
+MC3000 
+	- add warning message selecting continuous data recording in combination with reduced without pause,..
+	- add capability to data capture finish for 15 minutes
+	- change energy calculation method
+iCharger* 
+	- handle state property exception while receiving incomplete data 
+	- remove checksum calculation
+iCharger4010DUO
+	- enable USB live data gathering
+Weatronic-Telemetry
+	- handle not initialized measurement symbols which are sometimes displayed as string null
+Polaron EX1400
+	- add support
+HoTTAdapter 
+HoTTAdapter*
+UniLog2
+	- adapt configuration capabilities to FW 1.12
+
+Version 3.2.5 - 06 Mar 2016
+SkyRC MC3000 
+- fix gatherer timing problem
+- set activation wait timer 15 minutes
+- add start stop message
+- fix pause reduction in combi record set
+eStation BC6 
+- fix missing Balance while loading data from file
+adapt font used by MAC OS X 10.11
+update windows NSIS installer
+update Copyright including 2016
+add Weatronic-Telemetry support
+add iMax B6 support
+HoTTAdpter* 
+- fix setting filter properties
+FutabaTelemetry 
+- correct error message
+- add plausibility check to altitude data to better succeed while KMZ export.
+OpenTxTelemetry 
+- correct error message
+fix - runtime error in GraphicsComposite in focus lost listener
+fix - keep record formating while cut edge (add missing copy fields in copy constructor)
+fix - CSV export remove blank character after time column
+update OSD file version to support huge number of measurements
+- enhance scaling for large values
+- enhance OSD reader/writer for large number of measurements
+- enhance set measurement to add new if above of existing
+- enhance IDevice interface to support device which creates measurement dynamically
+- enhance scale naming while synchronized names
+- enhance record coloring if color not available in template
+- enhance store statistics, actually not restored
+- enhance restore statistics configuration for devices declaring "statistics" in getUsedPropertyKeys()
+
+
+Version 3.2.4 - 23 Dec 2015
+add support for native USB communication
+add support for SkyRC MC3000 single cell charger
+JetiAdapter - increase number of initial supported measurements to 50
+iCharger - implemented checksum checking for serial communication 
+JetiAdapter - add Rx->Tx time delta statistics (not differentiating over sensors)
+JetiAdapter - fix intermittent find best fit of time step which end up in less display points
+JetiAdapter - fix inconsistent detection of Speed record which leads to unusable color configuration while Google Earth KMZ export.
+HoTTAdapterX - HoTT V2 enable data visualization for external voltage and temperature
+implement feature request to edit single cell in table
+fix problem while measuring due to missing scale end value synchronization when scale synchronized measurement visibility toggled
+fix problem while GPS coordinates are available, but speed record ordinal can not be identified
+fix CSV export Time unit to [hh:mm:ss.SSS]
+fix font size dialog while using high resolution
+SWT update to 4.5
+
+Version 3.2.3 - 09 Nov 2015
+HoTTViewer - add support to open and display saved OSD-files with Graupner/SJ HoTT Viewer App
+GigaLogger - add support
+Herkules III Telemetry - add support
+HoTTAdapterX - enable live logging (needs device XML to be replaced)
+fix - clean data model while importing CSV where record set number follow channel number 
+HoTTAdapter* - adapt filter GPS data parsing for import bin log data
+fix - scale number calculation error while display area is greater than 1500 pixels.
+
+Version 3.2.2 - 19 Jul 2015
+fix exception while record clone operation (cut)
+fix minor errors in automated test
+LiPoWatch - small correction of the serial communication to keep LEDs off
+HoTTAdapter2* - fix error while opening OSD file with channels from earlier release
+
+Version 3.2.1 - 21 Jun 2015
+add current/voltage smoothing algorithm to be used for very short drop peaks
+enhance device interface for charger to adapt curve smoothing according device needs 
+HoTTAdapter* - refine sensor detection - to increase chance not in text-modus segment
+HoTTAdapter* - correct channel time unit to µsec
+HoTTAdapter* - adapt ESC Capacity filter
+HoTTAdapter2* - fix problem missing receiver data not using Channel configuration
+GraupnerUDP* - some adaptations to device internal behavior
+Akkumatik - add support
+HoTTAdapterX - add support with receiver and ESC data, rounds statistics (X-N8, X-4S)
+
+Version 3.2.0 - 01 Mar 2015
+fix initial synchronization of measurements
+fix Junsi iCharger 206, 208, 306, 3010 constant time step to 2 seconds
+fix problem while copy graphics into clip board several time in sequence
+fix JLog2 context help page selection 
+fix JLog2 configuration dialog - set drop downs to editable false since this event wasn't handled and does not activate save button
+fix error not loading color from OSD file some colors (1,1,1)
+CSV2SerialAdapter - fix error handling of missing status 
+HoTTAdapter - fix receiver only with channels times 10 error 
+HoTTAdapter* - adapt capacity filter according actual power
+HoTTAdapter* - adapt current filter
+HoTTAdapter2* - correct scale sync reference in configuration Channels and SpeedControl
+GPS-Logger* - enable GPX export (Garmin Virb)
+UniLog2 - fix missing parsing of M-Link data
+UniLog2 - fix configuration of symbol and unit for M-Link measurements
+add Junsi iCharger 4010 Duo support (read log from SD storage)
+add port enumeration ttyACM* Linux CDC ACM devices
+
+Version 3.1.9 - 31 Dec 2014
+enable absolute time for graphics time line
+enable to set the font size of measurement values on digital display
+several processing optimizations
+fix caching algorithm to enable scale text color updated by color change 
+fix Linux GTK3 incompatibility by exporting SWT_GTK3=0 in start scripts
+IISI-Cockpit V2 - add statistics definition 
+JetiAdapter - fix time step calculation for very short logs in respect of time
+JetiAdapter - fix record naming while repeating measurement names with different sensors
+HoTTAdapter* - update HoTTMdlViewer to latest 0.8 snapshot
+HoTTAdapter* - fine tune some more filter settings
+HoTTAdapter* - add measurement voltage Rx min and make EAM rpm to an extra measurement
+HoTTAdapter2 - fix missing update visibility status while switching record sets in display
+UniLog2 - fix live data gathering capability
+Futaba-Telemetry - fix english device properties file
+OpenTx-Telemetry - add telemetry data support
+
+Version 3.1.8 - 19 Okt 2014
+fix Kosmik rounding issue
+fix HoTTAdapter* text mode initialization
+fix JetiAdapter missed parsing data from sensor without unit
+fix JetiAdapter GPS-Altitude and GPS-Speed detection
+fix time formating in statistics window
+fix GPS-Logger2 speed parsing from SMGPS instead VTG sentence
+JetiAdapter - display events as a curve, repeating events add up the counter
+
+Version 3.1.7 - 18 Sep 2014
+fix GPXAdapter altitude parsing
+fix IISI Cockpit V2 to tolerate empty values and display a warning message
+fix IISI Cockpit V2 GPS value handling
+fix Futaba-Telemetry number of maximum measurements
+fix HoTTAdapter EAM RXSQ curve parsing correct buffer
+fix Kosmik, missing gear ratio related configuration update 
+enable HoTTAdapter* text modus filter configuration
+add Polaron charger support
+add Ultra Quick 70 charger support
+add Ultramat Ac/Dc EQ charger support
+add eStation BC6 80W (BC6dx/Pichler P60 80W) support
+
+Version 3.1.6 - 24 Jul 2014
+Update to latest SWT drop due to problems reported for Linux
+enable reduced data table by selected records for all devices, enablement via context menu
+add 230400 Baud entry in device properties XSD to enable workaround for Junsi charger at UNIX operating systems
+enable always to left cut and right cut permanent
+display selected measurement values in comment area while measuring
+enable to set record set start time stamp manually
+fix display for GPS coordinates in several tabs
+fix time display in statistics
+update MdlViewer to 0.8
+HoTTAdapter* - detect switching into text modus where no readable telemetrie values are available
+HoTTAdapter* - adapt binary log reader to protocol introduced last year to reduce telemetry value errors
+iCharger*B - fix power calculation
+GPXAdapter - fix to tolerate GPX files without extension data
+Kosmik - fix import problem with modified file name
+add iCharger308Duo support to import data from device (actually no support for live data)
+add IISI Cockpit V2 support
+add FutabaTelemetry support
+
+
+Version 3.1.5 - 04 May 2014
+Update to latest SWT drop due to solved problems reported for Mint-Linux
+HoTTAdapter* - synchronize capacity filter
+HoTTAdapter2 - fix height curve data if overlayed from different sensors
+HoTTAdapter* - optimize import for receiver data only
+HoTTAdapter* - update import algorithm to fit log sensor fingerprint of new receivers
+HoTTAdapter* - update filter settings speed
+UltraDuoPlus50/60 - add step charge configuration tabulator
+UltraDuoPlus* - refine several default values depending on capacity as well as on charge current 
+VC820/VC840 - fix mapping while resistance measurement
+GPS-Logger2 - add support for GPS-Logger2 extended measurement value set from SM-Modellbau
+IGCAdapter - update to enable extension data for 4 additional values
+Kosmik - fix initialization error
+tune auto number formatting 
+enable optimized data sets load of DataExplorer for Android saved osd files
+enable reduced data table by selected records (actually for HoTTAdapter* only)
+remove export capability for IGC files (IGC files must be generated while data creation and secured)
+documentation update
+
+
+Version 3.1.4 - 02 Feb 2014
+update build to make sure compiled classes target 1.6
+update height of device properties editor to enable proper display of scroll bar in channel- configuration tabulator
+enable record color usage configuration for scale, scale numbers and record name
+enable configuration of outlet- configuration name usage in curve compare
+Junsi iCharger - fix data capture capability
+FlightRecorder - fix using name and unit from setup
+HoTTAdapter* - fix file transfer count down/up signature
+HoTTAdapter* - fix file transfer initial PC folder update
+HoTTAdapter* - fix fuel to ml, was fuel level in % (requires manual replacement of device XML if used)
+HoTTAdapter* - fix Rx->Tx PLoss first value by setting to 0
+HoTTAdapter2 - add evaluation of EAM RPM (as GAM RPM value)
+UltraDuoPlus - correct several adjustment parameters 
+4D-Akkumonitor - correct time calculation, adapt device XML, adapt template XML
+documentation update
+
+
+Version 3.1.3 - 15 Dec 2013
+fix bug in clone time steps while time step is constant
+add capability to globally configure time format for table, measurement, start time while zooming/oscilloscope 
+add capability to smooth voltage curves to be used if pulsed or similar (result depends on frequency and is actual not adjustable) 
+add capability to capture charge cycles in a single record set
+add capability to suppress data collection during pause, balancing if not already done by device
+Scope-Mode - add more entries to enable more flexibility about the view range
+Graphics - enable measurement names in curve color at scale
+Timeline - tick mark correction
+Junsi CellLog 8s - add support
+JetiAdapter - adapt data parser to tolerate string messages like alarm and signal loss (actual written to log)
+LiPoWatch - correct calculation of total voltage 
+HoTTAdapter* - add Rx->Tx PLoss statistics
+HottAdapter2 - fix import skipping adding some packages for channel 
+UltraDuoPlus* - fix sorting of battery history output
+
+Version 3.1.2 - 24 Aug 2013
+all devices mainly importing data - write filename after import to record set description
+HoTTAdapter* - fix sensor mash up due to newly introduced sensor scan
+HoTTAdapter* - fix balance calculation while import from bin
+HoTTAdapter* - fix switch off filter capability for current GAM/EAM
+HoTTAdapter* - adapt filter current, allow 255 A max
+HoTTAdapter* - adapt filter
+fix IGC export file error
+add name of import file to description for all devices receiving data via import
+add Ultra Duo Plus 80 (Graupner) dual channel 1000W charger
+JetiAdapter - add import progress display
+documentation update
+
+Version 3.1.1 - 22 Jul 2013
+fix problem while target reference ordinal of cell voltage is not returned from device
+HoTTAdapter* - adapt GPS filter
+HoTTAdapter* - adapt ESC filter
+HoTTAdapter* - updates for HoTTViewer tab
+HoTTAdapter* - add SD Log version 1 which appears after firmware update MX20
+add Junsi iCharger3010B
+enable extended special record data types 
+enable device specific data parser
+add 4D-Akkumonitor 
+update SWT to 4.2.2 final stable release
+fix import/export of generic CSV data
+fix statistics value display if trigger configured but no occurrence
+
+
+Version 3.1.0 - 20 May 2013
+add some logs to check UI initialization to prevent initialization exceptions
+UniLog2 - fix problem interpreting UTC-offset which does not exist
+UniLog2 - fix problem day skip while reading big data files > 24 hours
+HoTTAdapter2 - correct EAM current
+HoTTAdapter* - update filter
+HoTTAdapter* - integrate HoTTMdlViewer with actual version
+
+Version 3.0.9 - 05 May 2013
+AV4ms_FV_762 - fix problem importing data
+HoTTAdapter*, DataVario*, LinkVario* - fix/adapt UI in combination with new SWT release
+HoTTAdapter* - calculate CRC for mx-21<->mx16 converter instead of static update
+HoTTAdapter* - adapt data reader *.bin and live data of ESC according firmware update 
+HoTTAdapter* - enable MDL Viewer tabulator
+fix [bug #38250] Feature: Use keyboard for zooming
+fix [bug #38251] Feature: Improved update check
+fix bug - in startup sometimes an error "null" (NullPointerException) occurs
+graphics templates - remove defined end points from graphics templates while potential value end points may outside this range
+UniLog2 - adapt to latest firmware 1.09
+GPS-Logger - adapt to latest firmware 1.10
+
+Version 3.0.8 - 03 Apr 2013
+add Renschler Picolario2 support
+add Kontronik Kosmik support
+update SWT to version 4.2.1
+add IGCAdapter support for short naming
+fix bug #38246 - Multiple actions when right-clicking into graphic
+fix bug #38245 - Allow editing of commentary in table "File comment"
+fix bug #38247 - Progress bar not reset after loading files
+fix RFE #38248 - Feature: Copy function for data table
+HoTTAdapter* - change/correct Rx->Tx-PLoss measurement name
+HoTTAdapter* - change algorithm sending commands during live data gathering
+HoTTAdapter* - update Rx->Tx-PLoss calculation, integrate package loss over 1 second period
+HoTTAdapter* - update to latest firmware (ESC)
+HoTTAdapter* - fix bug in mx-12 <-> mx-16 MDL converter
+Jlog2 - update support firmware 4.0.0
+documentation update
+
+Version 3.07 - 11 Feb 2013
+HoTTAdapter(2) - live data, display detected sensors, optimize performance 
+add IGCAdapter - enable import of IGC log files to verify before upload
+add GPXAdapter - enable import of GPX files, analyze geo coordinates as well as other data
+fix bug #37976: installer.nsi is missing, not required, changed build target
+fix bug #37991: Prefix is not recognized, changed target directories to prefix if in use
+fix bug in HoTTAdapter saving modified filter data
+fix bug HoTTAdapter2 reading channel data 9-12
+fix bug HoTTAdapter2 displaying cell voltage values
+fix bug HoTTAdapter* reading HF data
+fix bug HoTTAdapter* converting mx-20 to mc-20 and vice versa
+fix bug HoTTAdapter* converting mc-32 to m*-20 
+fix bugs in JetiAdapter - exporting KMZ/KML/IGC
+fix bug in GPS color and velocity configuration dialog
+fix DevicePropertiesEditor - statistics type and property types doesn't persist after change
+add HoTTAdapter* mc-16 converter capabilities
+add HoTTAdapter* TX-Rx-VPack curve
+update UniLog2 configuration to support HoTT sensor type selection 
+update device XSD to simplify timeout configuration 
+
+Version 3.06 - 11 Dec 2012
+add JetiAdapter to analyze flight record data from Jeti transmitters
+add AV4ms_FV_762 charger for AA and AAA size cells
+change time line behavior, start showing day > 72 hours
+enable auto-save of a temporary file(s) each 5 minutes
+enable gestures for zooming and panning
+CSV2SerialAdapter - enable file import via menu in parallel to configured serial input
+integrate MAC OS standard menu bar actions
+fix Google Earth export in respect of line gaps due to velocity change
+fix HoTTAdapter data import in respect of rest after telemetry data package loss
+build Windows NSIS installer
+build MAC OS disk images for install
+
+
+Version 3.05 - 18 Oct 2012
+HoTTAdapter(2) - correct device XMLs to support current related statistics (number motor climbs vs gained height)
+HottAdapter(2) - enable filter for current drops to zero above 10A (this hurts statistics calculation regarding trigger usage)
+DevicePropertiesEditor - fix problem killing application due to SWT out of handles
+HottAdapter(2) - enable/refine mx20, mc20 <-> mc32 model configuration files conversion 
+HottAdapter(2) - fix time difference in table view to Firmware_Upgrade_grStudio
+HottAdapter(2) - fix live data gathering receiver only
+HottAdapter2 - fix reading channel data from bin while multiple sensors attached
+UniLog - fix capacity calculation
+GPS-Logger - fix UniLog2 sentence detection, UniLog may lazy start relative to GPS-Logger
+Implement support for zip compression of OSD files
+fixed [bug #37464] Title bar of "Device Properties Editor" shows "&"
+fixed [bug #37302] File comment is reset when I move the mouse
+fixed [bug #37460] DataExplorer triggers Microsoft Security Essentials
+fixed [bug #37465] Keep selection in curves selector after pressing space
+fixed [bug #37487] Strange bug when editing in the file comment tab, if deleted within the line
+fixed [bug #37463] Close all dialogs with ESC key
+fixed [bug #37462] Add shortcuts like e.g. Ctrl+s to save
+fixed [bug #37568] Object characteristics doesn´t remember last used directory
+fixed [bug #37466] Cursor handling in Table view
+all devices importing data - refine import path handling, enable configuration using preferences
+refine zoom handling, support left to right zooming, right to left reset and mouse wheel support
+enable migration of device usage, port, import path, channel/configuration usage while updating device configuration XMLs
+enable switch off all curves at once, Strg+L will apply default graphics template again 
+documentation update
+
+Version 3.04 - 21 Sep 2012
+JLog2 - establish workaround for maximum recording time of 54 minutes, accept all follow on measurements with a default time step
+HoTTAdapter(2) - add filter methods for receiver data
+HoTTAdapter(2) - add support for motor driver (speed control)
+MAC OS Mountain Lion - fix graphics refresh problem
+HoTTAdapter - fix Problem saving channel enable selection
+HoTTAdapter(2) - fix latitude/longitude curve display for data with full degree overflow
+HoTTAdapter(2) - fix GAM, EAM detection problem while only temperature sensor is connected
+HoTTAdapter(2) - correct names mc-20 model memory backup
+
+Version 3.03 - 30 Jul 2012
+Refine import path including object selection, refine default import path handling for all device importing data
+fix several reported minor bugs
+add HoTTAdapterM/HoTTAdapter2M as HoTT device where GPS coordinates are logged as decimal degrees instead of degree and decimal minutes (Mikrokopter) 
+GPS-Logger - update to firmware version 1.07 and supported features
+GPS-Logger - correct unit of receiver voltage (manual delete device XML required)
+UniLog2 - update to firmware version 1.05 and supported features
+HoTTAdapter(2) - set "tolerate sign change" to false as default
+Enable menu character accelerator for supporting operating systems
+SWT update to release 3.7.2
+Workaround Linux Unity overlay scroll bar problem
+Documentation update
+
+Version 3.02 - 01 Jul 2012
+fix performance problem while in zoom mode and update statistics data
+UniLog2 - remove not supported 50Hz logging rate adjustment
+HoTTAdapter - enable serial file transfer
+JLog2 - refine default import path handling
+DeviceProperties_V17 -> DeviceProperties_V18 due to HoTTAdapter
+HoTTAdapter - toggle import of channel deflection via device dialog
+HoTTAdapter(2) - correct signal strength calculation 
+HottAdapter(2) - add support for serial file transfer
+HottAdapter(2) - add support for model data backup
+HottAdapter(2) - add support for simple model data conversion
+HoTTAdapter2 - add channel-configuration displaying all available data including channels
+HoTTAdapter(2) - adopt evaluation of incoming Latitude and Longitude by given unit
+GPS-Logger - use speed data from RMC sentence which contains height difference adapted speed values
+
+Version 3.01 - 21 May 2012
+fix scale synchronization problem while change zoom
+fix problem zoomed graphics versus table view with lazy update
+fix record length created by regression calculation
+fix problem synchronizing record scales for records with different measurement factors
+JLog2 - correct measurement names, and units
+Jlog2 - fix configuration 
+Jlog2 - fix time step error
+HoTTAdapter(2) - enable GPS data filter access in device dialog
+HoTTAdapter - add channel configuration to display channel data
+update Linux cp210x kernel module for kernel 3.2.0.24
+documentation update
+
+
+Version 3.00 - 23 Apr 2012
+reduce scan depth while searching files and directories
+update CSV data parser
+UniLog2 - fix error restart live gathering not possible if stopped while dialog is closed
+HottAdapter2 - fix GPS data detection to enable Google Earth visualization
+HottAdapter(2) - fix Receiver detection and add data error correction 
+HottAdapter(2) - add filter to filter Latitude/Longitude spikes, adjustable through device configuration filter_factor
+UniLog2 - live data gathering keep already gathered data in case of an error
+UniLog2 - live data gathering enable loop to reset live gathering
+add Multiplex FlightRecorder support
+add SM Modellbau JLog2 support
+fix error cut curves with constant time step
+fix error open help dialog Linux
+update device properties schema to enable extended configuration
+update device properties editor to reflect schema updates
+UltraDuoPlus 50 - fix error to enable curve recording
+UltraDuoPlus 50 - enable dialog to manage battery memory and retrieve battery history 
+SWT update to 7.2.2 final
+update Linux cp210x kernel module for kernel 3.0.0.17
+update documentation
+
+
+Version 2.96 - 24 Feb 2012
+VC8x0 - add warning message while error limit is reached. 
+VC8x0 - refine timeout error handling
+HottAdapter - General-Air-Sensor 115200 protocol, fix several error value display
+HottAdapter - correct sign of dBm gauge values
+HottAdapter - refine sensor detection while slave modus
+HottAdapter - refine binary log version detection
+HoTTAdapter2 - have all possible sensor values on identical time line
+UniLog2 - make live data gathering more robust
+update Linux cp210x kernel module for kernel 3.0.0.16 
+Documentation update
+
+Version 2.95 - 28 Jan 2012
+HoTTAdapter - filter misplaced measurements while loading or gathering data from multiple sensors
+HoTTAdapter - change record set naming and numbering, all of one import starts identical
+HoTTAdapter - adapt to latest firmware version
+HoTTAdapter - make query sensor sequence more efficiency
+HoTTAdapter - enable detection of missed query sensor writes
+HoTTAdapter - 19200 Baud slave-modus, refine error handling while switch sensor/receiver 
+fix error removing absolute time stamp while cutting curve from begin
+HoTTAdapter - enable IGC export format while GPS data available
+NMEAAdapter - enable IGC export format
+SM GPS-Logger - enable IGC export format
+WStech DataVario/LinkVario - enable IGC export format while GPS data available
+VC8x0 - fix error displaying integer values 
+VC8x0 - enable changeable time steps value for long term measurements
+Documentation update
+
+Version 2.95 - 20 Dec 2011
+DevicePropertyEditor - fix out of handles problem
+DevicePropertyEditor - fix problem displaying wrong measurement names while adding sync reference in cases with different measurement sets per channel
+HottAdapter - fix SWT error while live data gathering and closed dialog
+HottAdapter - implement 19200 new protocol master and slave mode
+HottAdapter - enable multiple connected sensors
+HoTTAdapter - fix data parsing error 115200 protocol temperature > 127 °C
+Linux kernel module update for cp210x SiliconLabs USB2Serial
+Documentation update
+
+Version 2.93 - 23 Oct 2011
+Picolario - read all available record sets with single click
+Add absolute date/time in data table for long term measurements via context menu
+CSV2SerailAdapter consider absolute date and time from file modification stamp
+WStech DataVario/LinkVario consider absolute date and time from file modification stamp
+HoTTAdapter consider absolute date and time from file modification stamp
+NMEA-Adapter consider absolute date and time from containing sentences
+SM GPS-Logger consider absolute date and time from containing NMEAD sentences
+SM UniLog 2 consider absolute date and time from containing sentence
+SM UniLog 2 fix sticky dialog
+SM UniLog 2 enable live data gathering
+
+Version 2.92 - 03 Sep 2011
+GPS-Logger, UniLog 2, WStech varios, NMEAAdapte, CSV2SerialAdapter, HoTTAdapter - modify code to save last used data load path
+GPS-Logger, UniLog 2 - modify code to switch into setup directory
+UniLog 2 correct time calculation
+UDP60, UDP45 correct dates in header in battery history
+UDP60, UDP45 correct behavior while no device XML exist
+
+Version 2.91 - 03 Aug 2011
+add HoTTAdapter implementation for 115200 Baud transmitter
+HoTTAdapter live data gatherer detecting sensor type automatically
+add UniLog2 device implementation
+adapt GPS-Logger to accept UL2 sentences
+new version of device properties schema to deliver updated GPS-Logger device configuration files
+
+
+Version 2.90 - 12 Aug 2011
+update SWT to 3.7 final stable release
+make bluetooth serial ports recognition configurable
+update device properties XSD to version 14
+add HoTTAdapter implementation
+fix measurement function for synchronized measurement data
+fix update problem of digital display tabulator while changing curve selection
+documentation update
+
+Version 2.84 - 04 Jul 2011
+
+fix error in UltraDuoPlus dialog restore of backup functionality
+fix error in UltraDuoPlus dialog while sync date PC-Device
+enable deletion of application settings
+documentation update
+
+Version 2.83 - 20 Jun 2011
+
+refine time line to support days, month and years as period
+update UltraDuoPlus dialog to read battery cycle data
+update UltraDuoPlus dialog to read battery graphics
+enable data correction of red battery cycle data
+circumvent java 1.6 update 26 problem with splash and file dialog
+correct copying graphics content to clipboard
+update documentation
+
+
+
+Version 2.82 - 03 Jun 2011
+
+UltramatTrioPlus devices fix bug while data gathering output channel 3
+Ultramat16/16S/18 correct sycnc_ref_ordinal typo in English config XML 
+add UltraDuoPlus40
+add UltraDuoPlus50
+QC-Copter fix problem adding new data set while data gathering
+UniLog/LiPoWatch update code to prevent mixing record sets sequence 
+UniLog refine efficiency calculation, fix typo in device XML
+ - correct UniLog mA/m calculation  
+ - fix UniLog dialog parameter update problems
+fix menu cool bar order problem
+while data gathering and creating new record sets take over visualization properties from previous active record set
+update device XMLs to reflect difference between Altitude and Height (English only)
+enable back level version usage parallel installation in respect of configuration XMLs update (future versions only)
+fix error handling record properties, used by UniLog and Picolario
+
+
+
+Version 2.81 - 15 May 2011
+
+update Graupner Ultra Duo Plus 60 to select object key in dependency of battery memory
+add Graupmer Ultramat 12
+add Graupmer Ultramat 16
+add Graupmer Ultramat 16S
+add Graupmer Ultramat Trio Plus 14
+add Graupmer Ultramat Trio Plus 16S
+add Graupmer Ultramat 18
+add Graupmer UltraDuoPlus 45
+eStations fix do not display empty balance curve 
+enable smooth curves at current drop in context menu
+fix - problem while updating/switching object image
+fix - make battery type record dependent
+enable battery memory to object key matching for devices with battery memory management
+detect and switch wrong Ultramat device 
+update data table time format to HH:mm:ss
+update SWT to 3.7M7 (solving Mac OS 10.6.x update problem)
+make UNIX USB2Serial driver visible
+update documentation 
+
+
+Version 2.80 - 15 Apr 2011
+
+add Graupner Ultra Duo Plus 60
+fix launching problem of external device properties editor
+add GPS-Logger firmware >= 1.03 support
+circumvent Google Earth relativ2ground visualization problem
+
+Version 2.74 - 12 Mar 2011
+
+enable device specific action tool tip (serial port/import) 
+use xdg-open to execute google earth with KMZ GNU/Linux
+prevent potential error while renaming records
+add clampToGround altitude mode for GPS export data
+
+
+Version 2.72 - 23 Feb 2011
+
+documentation update
+fix error while saving object data without GPS speed configuration
+correct wrong synchronization reference GPS-Logger measurement Height (relative)_UL in device properties XML
+enhance and combine KML/GPX export to KMZ
+fix problem setting horizontal grid in compare window
+fix problem while printing graphics without header/comment text visible
+fix selection problem in print configuration dialog Mac OS 
+fix wrong display of GPS values in table view GPS-Logger, NMEA-Adapter
+
+Version 2.71 - 30 Jan 2011
+
+fix file import problem while using files with upper case extension on GNU/Linux
+fix problem after switching from secondary monitor to single one
+
+Version 2.70 - 25 Jan 2011
+
+fix value format sync problem digital, analog versus graphics
+enable one click live data gathering (UniLog/LiPoWatch)
+fix value format sync problem digital, analog vs graphics
+fix QC-Copter terminal configuration menu display
+update QC-Copter English help
+fix pan menu item state in menu bar
+add balance curve to LiPoWatch, all eStations and clones -> force update by template XSD V05
+add test to validate device XMLs in workspace
+add capability to remember last used configuration -> force update by device properties XSD V12
+enable progress status indicator in task bar for supporting operating systems
+update SWT.jar for MAC to 3.7M3
+add NMEA Adapter plug-in
+fix errors in compare window
+sync plug-in name to configuration files
+add lov file support for GPS-Logger
+add lov file support for NMEA-Adapter
+adapt the sync record matching algorithm of configurable measurement control to match first part of measurement name string, delimiter is blank
+change log entries to avoid string parameter interpretation in time critical exec path
+add LinkVarioDuo
+WStech devices, add calculation of track length, distance from start, azimuth and direction from start
+create menu tool bar exported kml files in temp directory 
+fix error during cleanup phase while exiting application
+introduce splash screen
+
+Version 2.60 - 01 Dec 2010
+
+add a configuration dialog for GPS/KML velocity limits and colors
+add SM GPS-Logger
+fix scale synchronization problem while nearly identical data
+move package gde.serial to gde.comm
+implement starting point of data input simulation capability
+
+Version 2.50 - 01 Nov 2010
+
+fix handing of file dialog while cancel operation
+update to DeviceProperties XSD V11
+update scale synchronization > 1  measurement type
+fix error setup 18 DataVarioTool/LinkVarioTool
+update data table preparation, value digits depends on measurement
+refine context sensitive help, enabled by an tool button
+enable multiple file selection while CSV import
+sunset Mac carbon version
+introduce 64 bit Mac cocoa
+replace Mac libserial.jnilib with previous version build for 32/64 bit Intel/PCC
+add function to launch Google Earth while exporting KML file
+add ToolItem to launch context sensitive help
+update VC80x to use variable time steps
+update AkkuMaster C4 prevent closing tool box while active
+fix LiPoWatch lov file reader
+add QC-Copter QuadroControl plug-in
+enable velocity limits declaration for KML
+
+Version 2.41 - 05 Sep 2010
+
+fix serial read function timeout for UNIX based systems
+fix status messages VC80X
+fix update of active devices while ClassNotFound occurs for devices where implementation and name does not match 
+
+Version 2.40 - 04 Sep 2010
+
+fix Info.plist for Mac OS
+update UniLog to suport firmeware 1.13 with M-Link configuration
+update WStech online help VarioTool
+fix MAC OS link problem by defining simple link files as workaround
+stabilize GNU/Linux 64 bit serial read
+show delta values during delta measurement
+implement KML and GPX export and enable export using file -> export menu
+fix update problem while changing or updating object key
+enable deep re-naming of object keys (include object meta data and update of all data files)
+refine display of AkkuMaster's total charge/discharge current
+WStechVario add default record name to messages
+update online help / users documentation
+
+Version 2.30		06 Jul 2010
+
+add WStech LinkVario while create extra WStechVario plug-in
+update GNU/Linux application register function
+add sample udev rule files to GNU/Linux binaries
+enhance IDevice interface to allow extra device dependent tabulator
+add WStech DataVario setup tool as additional tabulator
+add WStech LinkVario setup tool as additional tabulator
+
+Version 2.20		30 Mar 2010
+
+fix problem switching enable/disable of port selection within device selection dialog 
+add one-time hint message for Mac OS and GNU/Linux user to care about RXTXcomm requirements
+update statistics properties of DataVario's to use height instead of GPS-height for height sum calculation
+use time stamp of file while importing date from CSV file, if not 2000.01.01
+fix height unit calculation by adding property DataVario
+enable reduce by first/last measurement point by property CSV2SerialAdapter
+fix display update problem moving record set to other configuration CSV2SerialAdapter
+fix bug removing SerialPortType while closing the editor
+update XSD to V10 to make openJDK capable
+fix port selection drop down box problem for Mac OS 
+fix problem not showing SaxParserExceptions which as result disable its describing device
+fix not displaying data in CSV2SerialAdapter while reasonable data are red before an read data error occurs
+update data table to virtual with lazy write, no more cache is required
+
+Version 2.10		02 Mar 2010
+
+fix bugs in device properties editor property type - set name field visible
+fix bugs in device properties editor state type - disable type selection, set name field visible
+harmony with MacOS runtime behavior
+fix bug auto open port to call IDevice.openClosePort()
+fix bug auto open device tool box
+update documentation and online-help
+fix class base level detection menu (TIME)
+fix eStation problem reset time in cycle mode
+update junit tests
+fix problems while importing lov data
+fix bug no asking for really close app while record data are changed
+
+Version 2.00		26 Jan 2010
+
+add Level.TIME to enable time measurements without other logging
+add WStech DataVario support
+add CVS2SerialAdapter device (something similar to LVs OpenFormat)
+enable curves with none constant time step between data points
+add device properties editor to edit / update device properties XML files
+update device properties XML style sheet to V09
+correct behavior to enable statistics countByTrigger at measurements with a triggerReference as it was initial designed 
+show device properties parser exceptions in message box
+fix problem if object key contains blank on Unix
+add reverse operation of object link file creation to enable easy movement of osd files to different system 
+eStation change time step calculation to use nanoTime since currentMillis reports sometimes wrong values
+update serial library for MacOS
+consolidate combo sizes cross dialogs
+adapt to Mac cocoa/carbon 32 Bit
+fix some bugs for Mac OS
+fix bug while removing last selected devices in device dialog
+fix switching object key while switching channel
+update DeviceProperties XSD to V08 (enable serial port less device (LogView OpenFormat))  
+update AkkuMasterC4 plug-in
+fix potential problem exceeding windows path length in WindowsHelper DLL while resolving link path
+fix problem while opening message box and device dialog disposed
+fix minor problem not updating the display of charge/discharge current
+add update of analog modus measurements during live data capture
+fix error for very small measurement sizes LiPoWatch
+enable LiPoWatch live data capturing
+fix bug not updating color after closing the color dialog
+add context menu to all tab windows
+add device name in standard record set comment
+make graphics header to file description + record set name
+move file description to Channel class
+fix minor problem in object scanner
+fix minor problems gambling with known or unknown object keys
+
+Version 1.90		27 September 2009
+
+enhance object key scanner
+implement printing capability
+fix problem always starting device oriented
+implement statistics to clipboard functionality
+implement graphics to clipboard functionality
+fix UniLog A1 modus problem (ArrayIndexOutOfBoundsException: 15)
+rework UniLog life data gathering thread
+UniLog/LiPoWatch add message field to display reading data sets < 2 measurements
+fix bug while dragging a file of none active device
+update LogView device mapping
+reactivate port avilability check in settings dialog
+minor fix using records decimal format
+
+Version 1.81		12 September 2009
+
+implement Windows port enumerator and work around bluetooth problems
+enhance making comments auto persistent (record and file comment)
+fix bug while no device is selected (plain installation)
+fix problem while cutting edges
+correct LiPoWatch config XML
+workaround LiPoWatch problem signal wrong number of cells first measurements 
+
+Version 1.80		08 September 2009
+
+use system property to set "gnu.io.rxtx.SerialPorts" to avoid slow down enumerate serial ports while active Bluetooth radio
+enhance editing in black/white list
+enhance editing file and record comment
+refine context help association
+revert update SWT to version 3.5 due to GNU/Linux file open dialog problem, stay on 3.4
+enhance calculation of scale values
+add simple input validation test to black/white port list
+implement LiPoWatch - SM Modellbau
+introduce Pichler charger devices
+fix problems with compare window
+fix bug editing record comment in second row
+fix problem horizontal grid not aligned while records are displayed with a synced scaled
+expand IDevice interface to enable device specific display values in cell voltage tab
+fix bug adding properties to first record of potential sysncable
+implement LiPoWatch device
+
+Version 1.71		15 August 2009
+
+fix minor problem with scale displaying delta scale value very small
+prevent possible user error end value dialog
+fix problem during open serial port operation
+
+Version 1.70		10 August 2009
+
+update documentation (online help, off-line help, javadoc)
+enhance port selection in setting and device selection dialog
+add serial port black list to enable exclusion of problematic ports and white list to select specific ports only
+fix problem serial DLL crash while closing device selection dialog while auto open check boxes selected
+documentation update (UniLog/Object/misc) 
+add hint in read me pointing to uucp group for GNU/Linux users
+update UniLog to match firmware 1.10 features
+prevent message dialogs covered by active device dialogs
+fix problem switching ports in title bar while global serial port is selected
+fix error displaying ODSE_MSGT006 in save file dialog
+change RecordSet.addPoints interface and change all plug-in updates calls to Display asynchronous calls
+update graphics window implementation as image due to complex update problems on Windows OS
+fix problem auto scale values or rounded in combination with zero
+fix problem with horizontal grid while mixing languages application versus loaded data
+make rounding algorithm value delta and scale dependent
+fix problem missing update while committing axis end values dialog
+enhance cell voltage limits capability while adding NiMh/NiCd values
+fix problem windows link file first line
+fix error selecting 1000 point scope mode
+fix problem while loading graphics template with syncable records
+fix problem missing update after cell voltage limits are individually changed
+make fonts application 	homogeneous and some OS independent
+remove device switch query, since this is user driven and checked for unsaved data
+fix problem loading default graphics template where records with no reasonable data set to visible which prevent syncplaceholder record stayed visible all time
+fix error while cutting edge of record set with potential syncable
+implement object key file scanner and link creation (windows)
+implement object oriented behavior without duplicating data directories nor duplicating files
+
+Version 1.60		23. May. 2009
+
+Windows7 function testing
+help documentation update
+64 Bit support GNU/Linux, Windows
+operating system shell integration using MIME type
+pipe all initialization log into bootstrap.log
+deliver basic/sample GraphicsTemplate files
+
+Version 1.51		14. Apr. 2009
+
+update to support permanently changing LogView format (Bantam devices with time stamp per entry to enable varialble time step)
+add dispose listener check data saved before closing application
+add curve validation while importing LogView data files  
+correct some typos in Info/Help documentation
+fix error loading help pages on GNU/Linux
+
+Version 1.50		5. Apr. 2009
+
+update help pages (menu)
+fix wrong warning message if eStation do not receive data
+fix error while refreshing a already synced record set
+utility which generates semi automatic the help documentation to shorten update cycle
+update help pages (menu)
+add menu entry to load default graphics template
+fix minor zoom problem
+fix problem not displaying syncable records after import from file
+implement zoom to last measurement points during data gathering (scope view)
+update help pages regarding CSV import/export
+modify create record set method signature as preparation for universal device
+rework CSV import/export
+extend junit test for CSV import/export 
+
+Version 1.4			23. Feb. 2009
+
+implement junit test for file I/O
+update main help documentation (statistics window)
+fix problem missing graphics update while loading graphics template with nearly equal properties as actual displayed (scale on different side)
+fix possible save data problem for data using Channels.TYPE_CONFIG
+fix error while creating OSDE properties with null as log level entries
+update RxTxcomm driver to support 64 bit for Windows and GNU/Linux 
+cleanup using record ordinals only
+implement multimeter VC820/VC840 as device plug-in
+
+Version 1.31		30. Jan. 2009
+
+enable class based log level setting
+fix problem getting property while copying to curve compare 
+
+Version 1.3			25. Jan. 2009
+
+make device plugins self sufficient: package device help files into jar and extract helpfiles before loading
+fix problem calculating min/max for trigger range 
+fix problem UniLog update property values after config switch
+fix UniLog table calculation active && displayable -> check all displayale
+performance update data table calculation
+add preset and adjustable values for the cell voltage bar graph to fit different Lithium type cells
+enable background data loading, enhance IDevice interface to enable calculation thread access
+make eStation time step self adjusting by individual device given data rate 
+change file load behavior, to load data only if required by user (switch record set)
+update tool bar while switching outlet/configuration of type outlet, since each outlet, if loaded from file, is different 
+change behavior selecting the first available serial port while selecting device while this configured port is not available (USB)
+fix time scale update not cleaning full number width
+fix problem while statistics calculation while starting data gathering
+add ratio in statistics definition
+change log interface to a more effective one log.log(Level.XXX, ...)
+implement support for synchronized scales for measurements with identical unit
+enable statistics data update for data gathering cycle (eStation, AkkuMaster, Unilog)
+change update behavior for data gather threads, only update gathering record set when it is displayed
+make time line/scale more accurate, change from time format to millliseconds calculation
+
+Version 1.2 	06. Dec 2008
+
+extract device properties files direct from jar
+load device thumbnails direct from device plugin jar
+fine tune statistics table resizing (scroll bars, ..)
+update build process as prerequisite for self-sufficient device plug-ins
+implement workaround: sometimes tabFolder.getClientArea().width returned values greater than screen size ????
+make channel search more tolerant (number or word match) easy NLS switch
+add attribute to display a trigger based time sum in time row of statistics table
+update Picolario device properties XML configuration name and to use sophisticated trigger based statistics on "motor" configuration only
+fix data table update problem while requesting new updates in short sequence
+fix problem multiple progress bar user processes 
+fix problem while calculating data table by better process serialization
+update java source documentation
+add statistics overview tab page (modify device property XSD to enable statistics configuration, NLS support, ....)
+enhance RTF parsing capability of lov import filter
+adapt file input filter to LV stream version 5
+
+Version 1.1 25. Sep 2008
+
+make scales adaptive to available display points of screen
+limit default dialog font size to 10
+add total voltage and capacity to cell voltage tab to make this view more complete
+add drawing of connecting line while in delta measurement mode
+change default value of object key usage in settings to false until it is supported
+fix problem with numCells/prop100W editable values in UniLog dialog
+enable writing Windows program links (DataExplorer.lnk) via JNI to use OLE functions
+fix problem edit record set comment deletes the comment
+disable menu disruptive actions while loading data from file (big files)
+fix problem not displaying active record set data while loading dialog (Picolario, UniLog)
+fix a lot of typos in message files
+fix problem selected settings dialog alpha blending value not taken for device dialogs 
+
+Version 1.0a 13. Aug 2008
+fix problem not creating desktop shortcut on Windows with SteadyState installed
+
+Version 1.0  10. Aug 2008
+
+enable NLS support (de, en)
+tune slope regression calculation (result in only a small difference between curve and linear)
+fix data save error, zoomed -> save, not all data are copied 
+fix slope calculation error linear to curve
+closing device dialog erases status message
+cycle update serial port scan while device selection open
+enable alpha blending of device dialogs for supported platforms
+fix problem UniLog a* selection invalidates power group selected items
+refine serial communication methods away from event handling
+fix problem close blocked device dialogs
+fix problem updating UniLog A1-A3 names via selection buttons
+UniLog disable name and configuration change while life gathering
+refine redraw method to update graphics window
+move open/close serial port to IDevice interface to enable device specific impl
+implement eStation charger support
+add record set unsaved hints to Picolario and UniLog configuration tabs
+
+Version 0.9a  22. Jun 2008
+
+add support for Mozilla xulrunner as help browser 
+fix problem in compare window
+fix double check for saved flag while open new data
+update sample and simulator plugin code sample
+enable UniLog current offset capability and invert capability
+fix problem with UniLog analog channels offset calculation and display
+fix problem file history entries not in sequence
+
+Version 0.9  18. Jun 2008
+
+fix cool bar positioning problem
+fix problems in settings with not obvious logging setting
+enable selection in settings dialog for port availability check during port scan (for slow systems)
+reorg serial port search mechanism by enumeration to make it OS independent, no amount limitation
+fix problem displaying old UniLog dialog data due to missing resource update (SWT.CR), espally GNU/Linux
+fix empty record set problem for UniLog life data gathering
+add method in UnilLog serial port impl to wait for life data to make this more relayable
+check record set modification conditions / give hints for changed properties, like graphics adjustment, calculation base, record names, ...
+add drag support for DataExplorer files and LogView files
+UniLog Firmware-Version + S/N as extra comment / device configuration property ?
+enable suggestion of actual date and object key as leader of file name in save (as) dialog
+implement reading of LogView file formats 1.13 to 1.15, 1.5 PreBeta to 2.0 BETA2, 2.0
+display active file name in title bar
+fix problem applying template which disables some measurements before life gatherer starts
+add apply basics template after loading UniLog data 
+fix problem UniLog time step selection
+fix time step problem in UniLog live gatherer for time steps >= 1 sec.
+fix problem not deleating previous record set data before loading new while loading data from file
+fix problem of nervous analog display by drawing only required display area
+
+Version 0.8  10. Mai 2008
+
+enable a graphics heading within graphics window
+integrate record set comment/description into main graphics window 
+make all message dialoges application modal
+add function to add record set for channel configuration not part of device properties XML
+implement file history functionality
+fix problem switching tab windows using menu
+enhance file comment window displaying all the record comments
+enable direct graphic update while configuration change for UniLog device
+fix problem recalculating slope data (Picolario)
+fix problem using multiple linear regression cycles
+enable on the fly UniLog configuration change
+fix errors in UniLog switching data to other configurations
+implement DataExplorer file format version 1 as plain binary
+enhance IDevice interface (enable file format properties parsing, split make inactive displayable from visual properties)
+
+Version 0.7  11. Apr 2008
+
+fix minor problem zoom -> measure -> zoom again
+enable recalculation of dependent data if configuration is changed (UniLog/Picolario)
+fix problem during zoom in compare window (curves with different time line length)
+fix analog display does not display actual measurement during data gathering
+use file name as record name during CSV import
+add CellVoltageWindow to display LiPo cell voltage
+fix table data calculation error for very small values
+enable/update main help documentation
+fix error revolution display value during life gathering UniLog
+refine curve selector context menu
+fix display and measurement error in compare window
+enable curve selector width scaling to display full record name
+disable tabs and its calculation if not required or disabled
+enable analog displays for live measurements
+enable different configurations using one record set selection and support config, as well as record set switching (Picolario/UniLog)
+enable/update dialog help info for UniLog
+enable/update dialog help info for Picolario
+add check unsaved data during application close
+fix cleanup help browser during application close
+enable dialog close button, enable check for close allowed
+workaround close serial port problem, close function will stick and makes measurements unusable
+fix error not saving slope calculation data in UniLog dialog
+change behavior of PicolarioDialog to open serial port if required
+enable two configurations for Picolario (p.e. subtract first, subtract last)
+Picolario make adaptable slope calculation
+enable configurable application modal device dialogs
+refine device selection functions and error handling if no device selected
+fix problem not displaying status messages
+fix problem do not inform the user about schema changes with follow up directory backup copy
+fix problem not saving active device properties XML after change using device selection dialog
+fix problem in UniLog dialog removing modifications by paint event (Linux)
+refine drawing the grid lines, order to prevent over draw of data curves
+fix error instantiation new device dialog each time the device selection dialog is closed
+
+Version 0.6  24. Feb 2008
+
+enable application and device dialog help 
+make slope calculation adjustable (at least for UniLog enabled)
+enable grid in compare window
+fix error new when compare window is visible 
+implement horizontal/vertical grid
+fix error trying to delete none existing record 
+fix error setting log levels
+refine data table performance
+implement UniLog with double layer filter displaying curves
+fix problem x-offset vertical grid lines
+fix problem reset window if zoom mode requested after pan mode
+enhance XML device property usage, updating to DeviceProperties_v03.xsd
+fix error updating channel and record combo boxes
+
+Version 0.5  20. Jan 2008
+
+Picolario - display actual data set number
+add check mechanism for update installation
+implement pan function
+implement zoom function
+enable progress bar action for table calculation and other
+move active device and port to title bar
+fix error none updating template after manual load
+
+Version 0.45  8. Jan 2008
+
+prepare zooming
+implement measurement
+refine cool item bar
+remove unit while export raw data, make tolerant for import
+enable update selection after Picolario data gather finished
+refine resource manager
+refine data table view and calculation
+refine scale calculation
+fix error applying graphics template in background
+absolute data can now exported as raw
+fix error timer thread not stopped after device switch AkkuMaster
+add warnings for unsaved record sets
+
+first external available version: 29. Dec 2007  Version 0.4
+
+development begin: 3. Oct. 2007

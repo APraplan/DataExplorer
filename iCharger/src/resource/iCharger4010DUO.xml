@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name>iCharger4010DUO</name>
+        <manufacturer>Junsi</manufacturer>
+        <manufacturerURL>http://www.jun-si.com</manufacturerURL>
+        <group>charger</group>
+        <image>iCharger4010DUO.png</image>
+        <usage>false</usage>
+    </Device>
+    <UsbPort>
+        <vendorId>0x0483</vendorId>
+        <productId>0x5751</productId>
+        <productString>Junsi iCharger 4010Duo USB HID</productString>
+        <usbInterface>
+            <interface>0x00</interface>
+            <endPointIn>0x01</endPointIn>
+            <endPointOut>0x81</endPointOut>
+        </usbInterface>
+    </UsbPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="64"/>
+        <format inputType="FILE_IO" formatType="VALUE" size="16"/>
+        <timeUnit>sec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredDataLocation></preferredDataLocation>
+        <preferredFileExtention>*.txt</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_charge" value="1" type="Integer" description="charge operation"/>
+        <property name="state_discharge" value="2" type="Integer" description="discharge operation"/>
+        <property name="state_monitoring" value="3" type="Integer" description="monitoring"/>
+        <property name="state_dry_time" value="4" type="Integer" description="wait for different state"/>
+        <property name="state_precharge" value="5" type="Integer" description="pre-charge operation"/>
+        <property name="state_finish" value="6" type="Integer" description="all operations finished"/>
+        <property name="state_error" value="7" type="Integer" description="error"/>
+        <property name="state_trickle" value="8" type="Integer" description="ni cells trickle state"/>
+        <property name="state_balancing" value="9" type="Integer" description="balancing operation"/>
+        <property name="state_foam_cut" value="10" type="Integer" description="Schaumschneideprogramm"/>
+        <property name="state_info" value="11" type="Integer" description="Informationsanzeige"/>
+        <property name="state_ex_discharge" value="12" type="Integer" description="discharge operation deprecated"/>
+		<property name="state_digit_power" value="30" type="Integer" description="digit power"/>
+    </State>
+    <Channels>
+        <Channel name="type_outlet 1" type="TYPE_OUTLET">
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="10.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>supply_voltage</name>
+                <symbol>Uin</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property description="factor to measurement value" type="Double" value="1000.0" name="factor"/>
+    		</Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature intern</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature extern</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>balance</name>
+                <symbol>Bal</symbol>
+                <unit>mV</unit>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="1000.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 5</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 6</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 7</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 8</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 9</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 10</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+             </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance ∑</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="19" type="Integer" description="Skalasynchronisations Messwertreferenz ala Zahl"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 1</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 2</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 3</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 4</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 5</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 6</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 7</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 8</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 9</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 10</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_outlet 2" type="TYPE_OUTLET">
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="10.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>supply_voltage</name>
+                <symbol>Uin</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property description="factor to measurement value" type="Double" value="1000.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>power</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>energy</name>
+                <symbol>E</symbol>
+                <unit>Wh</unit>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature intern</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature extern</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>balance</name>
+                <symbol>Bal</symbol>
+                <unit>mV</unit>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="factor" value="1000.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 5</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 6</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 7</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 8</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 9</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 10</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>battery_internal_resistance</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+             </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance ∑</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+                <property name="scale_sync_ref_ordinal" value="19" type="Integer" description="Skalasynchronisations Messwertreferenz ala Zahl"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 1</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 2</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 3</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 4</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 5</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 6</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 7</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 8</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 9</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_internal_resistance 10</name>
+                <symbol>r</symbol>
+                <unit>mΩ</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="21" type="Integer"/>
+                <property name="factor" value="100.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="false"/>
+        <property name="voltage_per_cell_tab" value="true" target_reference_ordinal="9"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

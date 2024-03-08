@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<project name="DataExplorer" default="package">
+
+	<property name="build.properties" location="../build/build.properties" />
+
+	<property file="${build.properties}" />
+
+	<!-- this is to have nice message about used build.properties file -->
+	<available property="build.properties.exists" file="${build.properties}" />
+	<echo message="Building using ${build.properties}" />
+	<echo message="Execution OS = ${os.name} ${os.arch} ${sun.arch.data.model}, OS short name = ${build.os.shortname}" />
+	<echo message="compile.classpath = ../build/lib/${build.os.shortname}/${sun.arch.data.model}/touchbar.jar" />
+
+	<property name="module.output" location="classes"/>
+
+	<path id="compile.classpath">
+		<pathelement location="../build/lib/gson.jar" />
+		<pathelement location="../build/lib/RXTXcomm.jar" />
+		<pathelement location="../build/lib/jSerialComm.jar" />
+		<pathelement location="../build/lib/jaxb-api.jar"/>
+		<pathelement location="../build/lib/jaxb-core.jar"/>
+		<pathelement location="../build/lib/jaxb-runtime.jar"/>
+		<pathelement location="../build/lib/istack-commons-runtime.jar"/>
+		<pathelement location="../build/lib/activation.jar"/>
+		<pathelement location="../build/lib/usb4java.jar" />
+		<pathelement location="../build/lib/usb-api.jar" />
+		<pathelement location="../build/lib/usb4java-javax.jar" />
+		<pathelement location="../build/lib/commons-lang3.jar" />
+		<pathelement location="../build/lib/jtouchbar.jar" />
+		<pathelement location="../build/lib/jtouchbar-swt.jar" />
+		<pathelement location="../build/lib/${build.os.shortname}/${sun.arch.data.model}/swt.jar" />
+		<pathelement location="../build/lib/${build.os.shortname}/${sun.arch.data.model}/libusb4java.jar" />
+	</path>
+
+	<target name="compile" description="compile the project">
+		<property name="include.debug.info" value="yes" />
+		<mkdir dir="${module.output}" />
+		<mkdir dir="build" />
+		<javac destdir="${module.output}" classpathref="compile.classpath" release="8" encoding="UTF-8" debug="true" includeantruntime="false">
+			<src path="src" />
+			<compilerarg value="-XDignore.symbol.file"/>
+		</javac>
+		<copy todir="${module.output}">
+			<fileset dir="${basedir}/src/" includes="gde/resource/**/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="gde/messages/*.properties" />
+			<fileset dir="${basedir}/src/" includes="gde/device/resource/*.properties" />
+			<fileset dir="${basedir}/src/" includes="help/**/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="resource/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="META-INF/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="*" excludes="**/.cvsignore" />
+		</copy>
+	</target>
+
+	<target name="package" depends="compile">
+		<echo message="Building using ${os.name} ${os.arch}" />
+		<tstamp>
+		     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+		<manifest file="src/META-INF/MANIFEST.MF">
+    		<attribute name="Implementation-Version" value="${version.num}"/>
+			<attribute name="Created-By" value="${user.name}"/>
+			<attribute name="Built-Date" value="${TODAY}"/> 
+			<attribute name="Main-Class" value="gde.GDE"/>
+			<attribute name="Class-Path" value="java/ext/juniversalchardet.jar java/ext/jaxb-api.jar java/ext/jaxb-core.jar java/ext/jaxb-runtime.jar java/ext/istack-commons-runtime.jar java/ext/activation.jar java/ext/gson.jar java/ext/swt.jar java/ext/jSerialComm.jar java/ext/RXTXcomm.jar java/ext/usb-api.jar java/ext/usb4java-javax.jar java/ext/usb4java.jar java/ext/commons-lang3.jar java/ext/libusb4java.jar java/ext/jtouchbar.jar java/ext/jtouchbar-swt.jar"/>
+   		</manifest>
+ 	    <jar manifest="src/META-INF/MANIFEST.MF" jarfile="build/${ant.project.name}.jar" compress="true" >
+	       	<fileset dir="${module.output}" includes="**/*.class"/>
+ 	    	<fileset dir="src" includes="**/*.properties"/>
+ 	    	<fileset dir="src" includes="**/*.gif"/>
+ 	    	<fileset dir="src" includes="**/*.jpg"/>
+ 	    	<fileset dir="src" includes="**/*.png"/>
+ 	    	<fileset dir="src" includes="**/*.xsd"/>
+ 	    	<fileset dir="src" includes="**/*.dll"/>
+ 	    	<fileset dir="src" includes="**/*.exe"/>
+	    	<fileset dir="src" includes="**/*.html"/>
+	    	<fileset dir="src" includes="**/*.css"/>
+ 	    	<fileset dir="src" includes="**/*.sh"/>
+ 	    	<fileset dir="src" includes="**/*.xml"/>
+ 	    	<fileset dir="src" includes="**/*.reg"/>
+ 	    	<fileset dir="src" includes="**/*.desktop"/>
+ 	    	<fileset dir="src" includes="**/*.directory"/>
+	    </jar>
+	</target>
+
+	<target name="nonui_package" depends="compile">
+		<echo message="Building using ${os.name} ${os.arch}" />
+		<tstamp>
+		     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+		<manifest file="src/META-INF/MANIFEST.MF">
+    		<attribute name="Implementation-Version" value="${version.num}"/>
+			<attribute name="Created-By" value="${user.name}"/>
+			<attribute name="Built-Date" value="${TODAY}"/> 
+			<attribute name="Main-Class" value="gde.GDE"/>
+			<attribute name="Class-Path" value="java/ext/commons-lang3.jar"/>
+   		</manifest>
+ 	    <jar manifest="src/META-INF/MANIFEST.MF" jarfile="build/${ant.project.name}NonUi-${version.num}.jar" compress="true" >
+	       	<fileset dir="${module.output}" includes="**/*.class"/>
+ 	    	<fileset dir="src" includes="**/*.properties"/>
+ 	    	<fileset dir="src" includes="**/*.xsd"/>
+ 	    	<fileset dir="src" includes="**/*.xml"/>
+	    </jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="bin" />
+		<delete dir="classes" />
+	</target>
+</project>

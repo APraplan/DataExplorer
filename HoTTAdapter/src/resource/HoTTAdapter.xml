@@ -1,0 +1,3271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+	<Device>
+		<name implementation="gde.device.graupner.HoTTAdapter">HoTTAdapter</name>
+		<manufacturer>Graupner</manufacturer>
+		<manufacturerURL>https://www.graupner.com</manufacturerURL>
+		<group>logger</group>
+		<image>HoTTAdapter.png</image>
+		<usage>false</usage>
+	</Device>
+	<SerialPort>
+		<port></port>
+		<baudeRate>115200</baudeRate>
+		<dataBits>DATABITS_8</dataBits>
+		<stopBits>STOPBITS_1</stopBits>
+		<parity>PARITY_NONE</parity>
+		<flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+		<isRTS>false</isRTS>
+		<isDTR>false</isDTR>
+	</SerialPort>
+	<TimeBase>
+		<name>time</name>
+		<symbol>t</symbol>
+		<unit>msec</unit>
+		<timeStep>-1.0</timeStep>
+		<UTCdelta>0</UTCdelta>
+	</TimeBase>
+	<DataBlock>
+		<format inputType="FILE_IO" formatType="BYTE" size="64" />
+		<format inputType="SERIAL_IO" formatType="BYTE" size="57" />
+		<timeUnit>msec</timeUnit>
+		<leader>$</leader>
+		<trailer>0D0A</trailer>
+		<preferredDataLocation></preferredDataLocation>
+		<preferredFileExtention>*.bin;*.log</preferredFileExtention>
+	</DataBlock>
+	<State>
+		<property name="state_data_recording" value="01" type="Integer" />
+	</State>
+	<Channels>
+		<Channel name="type_receiver" type="TYPE_CONFIG">
+			<Measurement>
+				<name>Rx-&gt;Tx-PLoss</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<trailDisplay discloseAll="false">
+					<disclosed trail="real_avg" />
+					<disclosed trail="real_max" />
+					<disclosed trail="real_min" />
+					<disclosed trail="suite_real_avg_sd" />
+					<disclosed trail="suite_real_avg_min_max" />
+				</trailDisplay>
+				<label>label_rx_tx_ploss</label>
+			</Measurement>
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>Strength</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_strenght</label>
+			</Measurement>
+			<Measurement>
+				<name>VPack</name>
+				<symbol></symbol>
+				<unit>ms</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_vpack</label>
+			</Measurement>
+			<Measurement>
+				<name>Tx</name>
+				<symbol></symbol>
+				<unit>dBm</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_tx</label>
+			</Measurement>
+			<Measurement>
+				<name>Rx</name>
+				<symbol></symbol>
+				<unit>dBm</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="scale_sync_ref_ordinal" value="4" type="Integer" />
+				<label>label_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_rx</name>
+				<symbol>Urx</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature_rx</name>
+				<symbol>Trx</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_rx_min</name>
+				<symbol>Umin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_voltage_rx_min</label>
+			</Measurement>
+			<Measurement>
+				<name>event Rx</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event Rx</label>
+			</Measurement>
+			<Settlements />
+			<ReferenceGroups />
+			<TransitionGroups />
+			<Transitions />
+			<ScoreGroups>
+				<Scoregroup scoregroupId="0">
+					<name>duration</name>
+					<symbol></symbol>
+					<unit>h</unit>
+					<active>true</active>
+					<score label="duration_mm" value="scorevalue_total" type="String" description="Zeitdauer" />
+					<property name="factor" value="0.01666667" type="Double" description="interne Darstellung in Minuten" />
+					<property name="histo_top_placement" value="true" type="Boolean" />
+					<label>scorelabel_duration</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="1">
+					<name>time_interval</name>
+					<symbol></symbol>
+					<unit>ms</unit>
+					<active>false</active>
+					<score label="averageTimeStep_ms" value="scorevalue_average" type="String" description="Mittelwert" />
+					<score label="minimumTimeStep_ms" value="scorevalue_minimum" type="String" description="Minimum" />
+					<score label="maximumTimeStep_ms" value="scorevalue_maximum" type="String" description="Maximum" />
+					<score label="sigmaTimeStep_ms" value="scorevalue_standard_deviation" type="String" description="Standardabweichung" />
+					<label>scorelabel_time_interval</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="2">
+					<name>measurement_number</name>
+					<symbol></symbol>
+					<unit>Tsd</unit>
+					<active>false</active>
+					<score label="totalReadings" value="scorevalue_readings_count" type="String" description="Anzahl gelesene Werte" />
+					<score label="sampledReadings" value="scorevalue_samples_count" type="String" description="Anzahl Stichprobe" />
+					<score label="totalPackages" value="scorevalue_packages_count" type="String" description="Anzahl Pakete" />
+					<score label="lostPackages" value="scorevalue_lost_packages_count" type="String" description="Verlorene Pakete" />
+					<label>scorelabel_measurement_number</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="3">
+					<name>lost_packages_timespan</name>
+					<symbol></symbol>
+					<unit>ms</unit>
+					<active>true</active>
+					<score label="lostPackagesAvg_ms" value="scorevalue_average" type="String" description="Mittelwert" />
+					<score label="lostPackagesMin_ms" value="scorevalue_minimum" type="String" description="Minimum" />
+					<score label="lostPackagesMax_ms" value="scorevalue_maximum" type="String" description="Maximum" />
+					<score label="lostPackagesSigma_ms" value="scorevalue_standard_deviation" type="String" description="Standardabweichung" />
+					<label>scorelabel_lost_packages_timespan</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="4">
+					<name>lost_packages_number</name>
+					<symbol></symbol>
+					<unit>%</unit>
+					<active>true</active>
+					<score label="lostPackagesPerMille" value="scorevalue_lost_packages_ratio" type="String" description="lostPackages / totalPackages" />
+					<property name="factor" value="0.1" type="Double" />
+					<label>scorelabel_lost_packages_number</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="5">
+					<name>sensor_number</name>
+					<symbol></symbol>
+					<unit></unit>
+					<active>true</active>
+					<score label="sensorCount" value="scorevalue_count" type="String" />
+					<score label="sensorVario" value="scorevalue_vario" type="String" />
+					<score label="sensorGps" value="scorevalue_gps" type="String" />
+					<score label="sensorGam" value="scorevalue_gam" type="String" />
+					<score label="sensorEam" value="scorevalue_eam" type="String" />
+					<score label="sensorEsc" value="scorevalue_esc" type="String" />
+					<score label="sensors" value="scorevalue_sensors" type="String" />
+					<label>scorelabel_sensor_number</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="6">
+					<name>software_version</name>
+					<symbol></symbol>
+					<unit></unit>
+					<active>false</active>
+					<score label="logDataVersion" value="scorevalue_device" type="String" />
+					<score label="logDataExplorerVersion" value="scorevalue_data_explorer" type="String" />
+					<score label="logFileVersion" value="scorevalue_log_file" type="String" />
+					<label>scorelabel_software_version</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="7">
+					<name>file_size</name>
+					<symbol></symbol>
+					<unit>kiB</unit>
+					<active>false</active>
+					<score label="logRecordSetBytes" value="scorevalue_recordset_size" type="String" />
+					<score label="logFileBytes" value="scorevalue_file_size" type="String" />
+					<property name="factor" value="0.9765625" type="Double" description="kiB conversion factor = 1000 / 1024" />
+					<label>scorelabel_file_size</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="8">
+					<name>recordset_number</name>
+					<symbol></symbol>
+					<unit></unit>
+					<active>false</active>
+					<score label="logFileRecordSets" value="scorevalue_count" type="String" />
+					<label>scorelabel_recordset_number</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="9">
+					<name>elapsed_time</name>
+					<symbol></symbol>
+					<unit>ms</unit>
+					<active>false</active>
+					<score label="elapsedHistoRecordSet_ms" value="scorevalue_load_recordset" type="String" />
+					<label>scorelabel_elapsed_time</label>
+				</Scoregroup>
+			</ScoreGroups>
+		</Channel>
+		<Channel name="Vario" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>altitude (relativ)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" sumByTriggerRefOrdinal="2" sumTriggerText="text_trigger_motor_sum" countTriggerText="text_trigger_count" />
+				<property name="reduction" value="500.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_altitude</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 1</name>
+				<symbol>vh</symbol>
+				<unit>m/sec</unit>
+				<active>true</active>
+				<statistics min="false" max="true" avg="false" sigma="false" countByTrigger="true" countTriggerText="text_trigger_count">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<label>label_climb_1</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 3</name>
+				<symbol>vs</symbol>
+				<unit>m/3sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="30000.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_climb_3</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 10</name>
+				<symbol>vs</symbol>
+				<unit>m/10sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="30000.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_climb_10</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_rx</name>
+				<symbol>Urx</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature_rx</name>
+				<symbol>Trx</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="reduction" value="20.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_temperature_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event Vario</label>
+			</Measurement>
+			<Measurement>
+				<name>misc Vario_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc Vario_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc Vario_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc Vario_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc Vario_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Settlements />
+			<ReferenceGroups />
+			<TransitionGroups />
+			<Transitions />
+			<ScoreGroups />
+		</Channel>
+		<Channel name="GPS" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>latitude</name>
+				<symbol></symbol>
+				<unit>° '</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="filter_factor" value="100.0" type="Double" description="Filterfaktor - höherer Wert, stärkerer Filter" />
+			</Measurement>
+			<Measurement>
+				<name>longitude</name>
+				<symbol></symbol>
+				<unit>° '</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="filter_factor" value="25.0" type="Double" description="Filterfaktor - höherer Wert, stärkerer Filter" />
+			</Measurement>
+			<Measurement>
+				<name>altitude (relativ)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" sumByTriggerRefOrdinal="4" sumTriggerText="text_trigger_motor_sum" countTriggerText="text_trigger_count" />
+				<property name="reduction" value="500.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_altitude</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 1</name>
+				<symbol>vh</symbol>
+				<unit>m/sec</unit>
+				<active>true</active>
+				<statistics min="false" max="true" avg="false" sigma="false" countByTrigger="true" countTriggerText="text_trigger_count">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="reduction" value="30000.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_climb_1</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 3</name>
+				<symbol>vh</symbol>
+				<unit>m/3sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="120.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_climb_3</label>
+			</Measurement>
+			<Measurement>
+				<name>velocity</name>
+				<symbol>v</symbol>
+				<unit>km/h</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_velocity</label>
+			</Measurement>
+			<Measurement>
+				<name>distance_start</name>
+				<symbol></symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_distance_start</label>
+			</Measurement>
+			<Measurement>
+				<name>azimuth</name>
+				<symbol></symbol>
+				<unit>°</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="2.0" type="Double" description="factor to measurement value" />
+				<label>label_azimuth</label>
+			</Measurement>
+			<Measurement>
+				<name>trip</name>
+				<symbol></symbol>
+				<unit>km</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_trip</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_rx</name>
+				<symbol>Urx</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature_rx</name>
+				<symbol>Trx</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="reduction" value="20.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_temperature_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>satellites</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_satellites</label>
+			</Measurement>
+			<Measurement>
+				<name>GPS-Fix</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event GPS</label>
+			</Measurement>
+			<Measurement>
+				<name>home_direction</name>
+				<symbol></symbol>
+				<unit>°</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="2.0" type="Double" description="factor to measurement value" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_6</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>misc GPS_7</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>Version</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Settlements />
+			<ReferenceGroups />
+			<TransitionGroups />
+			<Transitions />
+			<ScoreGroups />
+		</Channel>
+		<Channel name="GAM" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>balance</name>
+				<symbol></symbol>
+				<unit>mV</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="factor" value="2.0" type="Double" description="factor to measurement value" />
+				<label>label_balance GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 1</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 1 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 2</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 2 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 3</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 3 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 4</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 4 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 5</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 5 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 6</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 6 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>altitude (relativ)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" sumByTriggerRefOrdinal="2" sumTriggerText="text_trigger_motor_sum" />
+				<property name="reduction" value="500.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_altitude</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 1</name>
+				<symbol>vh</symbol>
+				<unit>m/sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="30000.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_climb_1</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 3</name>
+				<symbol>vh</symbol>
+				<unit>m/3sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="120.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_climb_3</label>
+			</Measurement>
+			<Measurement>
+				<name>fuel</name>
+				<symbol></symbol>
+				<unit>ml</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_fuel</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage S1</name>
+				<symbol>U1</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage_sensor 1 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage S2</name>
+				<symbol>U2</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="17" type="Integer" />
+				<label>label_voltage_sensor 2 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T1</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_sensor 1 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T2</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="19" type="Integer" />
+				<label>label_temperature_sensor 2 GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>speed</name>
+				<symbol>v</symbol>
+				<unit>km/h</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_speed GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage min</name>
+				<symbol>Vcmin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_cell_voltage min GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_number min</name>
+				<symbol>Vcmin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="false" max="false" avg="false" sigma="false" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_number min GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>pressure</name>
+				<symbol>p</symbol>
+				<unit>bar</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_pressure GAM</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event GAM</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="1">
+					<name>r_i_cell 1</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="6" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="2">
+					<name>r_i_cell 2</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="7" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="3">
+					<name>r_i_cell 3</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="8" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="4">
+					<name>r_i_cell 4</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="9" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="5">
+					<name>r_i_cell 5</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="10" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="6">
+					<name>r_i_cell 6</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="11" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="21" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="15">
+					<name>r_i_cells</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="200" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="based on slope and peak transitions - this delivers the best results" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_cells</label>
+				</Settlement>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" description="r_i_cells" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="6" referenceRule="sum" comment="voltage 1">
+					<MeasurementMapping measurementOrdinal="6" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="7" referenceRule="sum" comment="voltage 2">
+					<MeasurementMapping measurementOrdinal="7" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="8" referenceRule="sum" comment="voltage 3">
+					<MeasurementMapping measurementOrdinal="8" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="200" referenceRule="sum" comment="voltage sum cell 1 to 6">
+					<MeasurementMapping measurementOrdinal="6" />
+					<MeasurementMapping measurementOrdinal="7" />
+					<MeasurementMapping measurementOrdinal="8" />
+					<MeasurementMapping measurementOrdinal="9" />
+					<MeasurementMapping measurementOrdinal="10" />
+					<MeasurementMapping measurementOrdinal="11" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="9" referenceRule="sum" comment="voltage 4">
+					<MeasurementMapping measurementOrdinal="9" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="10" referenceRule="sum" comment="voltage 5">
+					<MeasurementMapping measurementOrdinal="10" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="11" referenceRule="sum" comment="voltage 6">
+					<MeasurementMapping measurementOrdinal="11" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<Channel name="EAM" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="false" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="false" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>balance</name>
+				<symbol></symbol>
+				<unit>mV</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="factor" value="2.0" type="Double" description="factor to measurement value" />
+				<label>label_balance EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 1</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 1 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 2</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 2 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 3</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 3 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 4</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 4 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 5</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 5 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 6</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 6 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 7</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 7 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 8</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 8 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 9</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 9 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 10</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 10 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 11</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 11 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 12</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 12 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 13</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 13 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 14</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<property name="factor" value="0.02" type="Double" description="factor to measurement value" />
+				<label>label_cell_voltage 14 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>altitude (relativ)</name>
+				<symbol>h</symbol>
+				<unit>m</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" sumByTriggerRefOrdinal="2" sumTriggerText="text_trigger_motor_sum" />
+				<property name="reduction" value="500.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_altitude</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 1</name>
+				<symbol>vh</symbol>
+				<unit>m/sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="30000.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_climb_1</label>
+			</Measurement>
+			<Measurement>
+				<name>climb 3</name>
+				<symbol>vh</symbol>
+				<unit>m/3sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<property name="reduction" value="120.0" type="Double" description="reduction of measurement value before apply offset and factor" />
+				<label>label_climb_3</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage S1</name>
+				<symbol>U1</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage_sensor 1 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage S2</name>
+				<symbol>U2</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="23" type="Integer" />
+				<label>label_voltage_sensor 2 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T1</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_sensor 1 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T2</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="25" type="Integer" />
+				<label>label_temperature_sensor 2 EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>motor_runtime</name>
+				<symbol>tm</symbol>
+				<unit>sec</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_cell_voltage min EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>speed</name>
+				<symbol>v</symbol>
+				<unit>km/h</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_speed EAM</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event EAM</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="1">
+					<name>r_i_cell 1</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="6" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="2">
+					<name>r_i_cell 2</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="7" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="3">
+					<name>r_i_cell 3</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="8" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="4">
+					<name>r_i_cell 4</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="9" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="5">
+					<name>r_i_cell 5</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="10" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="6">
+					<name>r_i_cell 6</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="11" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="7">
+					<name>r_i_cell 7</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="12" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="8">
+					<name>r_i_cell 8</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="13" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="9">
+					<name>r_i_cell 9</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="14" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="10">
+					<name>r_i_cell 10</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="15" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="11">
+					<name>r_i_cell 11</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="16" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="12">
+					<name>r_i_cell 12</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="17" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="13">
+					<name>r_i_cell 13</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="18" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="14">
+					<name>r_i_cell 14</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="19" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average" />
+					</evaluation>
+					<property name="scale_sync_ref_ordinal" value="28" type="Integer" />
+					<label>settlementlabel_r_i_cell</label>
+				</Settlement>
+				<Settlement settlementId="15">
+					<name>r_i_cells</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="200" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="based on slope and peak transitions - this delivers the best results" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_cells</label>
+				</Settlement>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<property name="scale_sync_ref_ordinal" value="43" type="Integer" description="r_i_cells" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="6" referenceRule="sum" comment="voltage 1">
+					<MeasurementMapping measurementOrdinal="6" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="7" referenceRule="sum" comment="voltage 2">
+					<MeasurementMapping measurementOrdinal="7" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="8" referenceRule="sum" comment="voltage 3">
+					<MeasurementMapping measurementOrdinal="8" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="200" referenceRule="sum" comment="voltage sum cell 1 to 14">
+					<MeasurementMapping measurementOrdinal="6" />
+					<MeasurementMapping measurementOrdinal="7" />
+					<MeasurementMapping measurementOrdinal="8" />
+					<MeasurementMapping measurementOrdinal="9" />
+					<MeasurementMapping measurementOrdinal="10" />
+					<MeasurementMapping measurementOrdinal="11" />
+					<MeasurementMapping measurementOrdinal="12" />
+					<MeasurementMapping measurementOrdinal="13" />
+					<MeasurementMapping measurementOrdinal="14" />
+					<MeasurementMapping measurementOrdinal="15" />
+					<MeasurementMapping measurementOrdinal="16" />
+					<MeasurementMapping measurementOrdinal="17" />
+					<MeasurementMapping measurementOrdinal="18" />
+					<MeasurementMapping measurementOrdinal="19" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="9" referenceRule="sum" comment="voltage 4">
+					<MeasurementMapping measurementOrdinal="9" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="10" referenceRule="sum" comment="voltage 5">
+					<MeasurementMapping measurementOrdinal="10" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="11" referenceRule="sum" comment="voltage 6">
+					<MeasurementMapping measurementOrdinal="11" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="12" referenceRule="sum" comment="voltage 7">
+					<MeasurementMapping measurementOrdinal="12" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="13" referenceRule="sum" comment="voltage 8">
+					<MeasurementMapping measurementOrdinal="13" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="14" referenceRule="sum" comment="voltage 9">
+					<MeasurementMapping measurementOrdinal="14" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="15" referenceRule="sum" comment="voltage 10">
+					<MeasurementMapping measurementOrdinal="15" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="16" referenceRule="sum" comment="voltage 11">
+					<MeasurementMapping measurementOrdinal="16" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="17" referenceRule="sum" comment="voltage 12">
+					<MeasurementMapping measurementOrdinal="17" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="18" referenceRule="sum" comment="voltage 13">
+					<MeasurementMapping measurementOrdinal="18" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="19" referenceRule="sum" comment="voltage 14">
+					<MeasurementMapping measurementOrdinal="19" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<Channel name="type_channels" type="TYPE_CONFIG">
+			<Measurement>
+				<name>FreqCh</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_radio_channel</label>
+			</Measurement>
+			<Measurement>
+				<name>Tx</name>
+				<symbol></symbol>
+				<unit>dBm</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_tx</label>
+			</Measurement>
+			<Measurement>
+				<name>Rx</name>
+				<symbol></symbol>
+				<unit>dBm</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+				<label>label_rx</label>
+			</Measurement>
+			<Measurement>
+				<name>Ch 1</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 2</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 3</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 4</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 5</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 6</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 7</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 8</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 9</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 10</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 11</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 12</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 13</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 14</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 15</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 16</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 17</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 18</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 19</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 20</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 21</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 22</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 23</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 24</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 25</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 26</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 27</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 28</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 29</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 30</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 31</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Ch 32</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="3" type="Integer" />
+			</Measurement>
+			<Measurement>
+				<name>Power Off</name>
+				<symbol>evt</symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_tx_power_off</label>
+			</Measurement>
+			<Measurement>
+				<name>Batt Low</name>
+				<symbol>evt</symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_tx_voltage_alarm</label>
+			</Measurement>
+			<Measurement>
+				<name>Reset</name>
+				<symbol>evt</symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" />
+				<label>label_tx_reset</label>
+			</Measurement>
+			<Measurement>
+				<name>warning</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<statistics min="false" max="false" avg="false" sigma="false" />
+				<property name="is_tokens" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+				</trailDisplay>
+				<label>label_warning</label>
+			</Measurement>
+			<Settlements />
+			<ReferenceGroups />
+			<TransitionGroups />
+			<Transitions />
+			<ScoreGroups />
+		</Channel>
+		<Channel name="ESC" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_fet ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<label>label_temperature_ext ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_min</name>
+				<symbol>U_min</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_voltage_bat_min ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current_max</name>
+				<symbol>I</symbol>
+				<unit>A_max</unit>
+				<active>true</active>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_current_bat_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute_max</name>
+				<symbol>rpm_max</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_rpm_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1_max</name>
+				<symbol>T1_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_fet_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2_max</name>
+				<symbol>T2_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_ext_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_6</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_7</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_8</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_9</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_10</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_11</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_12</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_13</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_14</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_15</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>version</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_version ESC</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<Channel name="ESC2" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_fet ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<label>label_temperature_ext ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_min</name>
+				<symbol>U_min</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_voltage_bat_min ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current_max</name>
+				<symbol>I</symbol>
+				<unit>A_max</unit>
+				<active>true</active>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_current_bat_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute_max</name>
+				<symbol>rpm_max</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_rpm_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1_max</name>
+				<symbol>T1_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_fet_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2_max</name>
+				<symbol>T2_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_ext_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_6</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_7</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_8</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_9</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_10</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_11</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_12</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_13</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_14</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_15</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>version</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_version ESC</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<Channel name="ESC3" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_fet ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<label>label_temperature_ext ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_min</name>
+				<symbol>U_min</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_voltage_bat_min ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current_max</name>
+				<symbol>I</symbol>
+				<unit>A_max</unit>
+				<active>true</active>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_current_bat_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute_max</name>
+				<symbol>rpm_max</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_rpm_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1_max</name>
+				<symbol>T1_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_fet_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2_max</name>
+				<symbol>T2_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_ext_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_6</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_7</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_8</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_9</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_10</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_11</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_12</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_13</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_14</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_15</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>version</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_version ESC</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<Channel name="ESC4" type="TYPE_CONFIG">
+			<Measurement>
+				<name>RXSQ</name>
+				<symbol></symbol>
+				<unit>%</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" />
+				<label>label_rxsq</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_voltage ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" countByTrigger="true" countTriggerText="text_trigger_count" sumTriggerTimeText="text_trigger_time_sum">
+					<trigger level="3000" isGreater="true" minTimeSec="5" comment="comment_trigger_gt_def" isSecondary="false" />
+				</statistics>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<label>label_current ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="false" sigma="false" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_capacity ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="0.01" type="Double" description="factor to measurement value" />
+				<label>label_power ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute</name>
+				<symbol>rpm</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="2" comment="comment_trigger_ref" />
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<label>label_rpm ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<label>label_temperature_fet ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2</name>
+				<symbol>T</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<statistics min="true" max="true" avg="true" sigma="false" />
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<label>label_temperature_ext ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>voltage_min</name>
+				<symbol>U_min</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_voltage_bat_min ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>current_max</name>
+				<symbol>I</symbol>
+				<unit>A_max</unit>
+				<active>true</active>
+				<property name="factor" value="0.1" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_current_bat_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>runs_per_minute_max</name>
+				<symbol>rpm_max</symbol>
+				<unit>1/min</unit>
+				<active>true</active>
+				<property name="factor" value="10.0" type="Double" description="factor to measurement value" />
+				<property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_rpm_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 1_max</name>
+				<symbol>T1_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_fet_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>temperature 2_max</name>
+				<symbol>T2_max</symbol>
+				<unit>°C</unit>
+				<active>true</active>
+				<property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_temperature_ext_max ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>event</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+				<property name="is_bits" value="true" type="Boolean" />
+				<trailDisplay discloseAll="true">
+					<exposed trail="q2" />
+					<exposed trail="avg" />
+					<exposed trail="max" />
+					<exposed trail="min" />
+					<exposed trail="suite_box_plot" />
+					<exposed trail="suite_q0_q2_q4" />
+					<exposed trail="raw_max" />
+					<exposed trail="raw_bits" />
+				</trailDisplay>
+				<label>label_event ESC</label>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_1</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_2</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_3</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_4</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_5</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_6</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_7</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_8</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_9</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_10</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_11</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_12</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_13</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_14</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>misc ESC_15</name>
+				<symbol></symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+			<Measurement>
+				<name>version</name>
+				<symbol></symbol>
+				<unit>#</unit>
+				<active>true</active>
+				<trailDisplay discloseAll="true" defaultTrail="last" />
+				<label>label_version ESC</label>
+			</Measurement>
+			<Settlements>
+				<Settlement settlementId="16">
+					<name>r_i_pack</name>
+					<symbol>Ri</symbol>
+					<unit>mOhm</unit>
+					<active>true</active>
+					<evaluation>
+						<transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="1" leveling="smooth_minmax" referenceGroupIdDivisor="2" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)." />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Permille is milliOhm" />
+					<label>settlementlabel_r_i_pack</label>
+				</Settlement>
+				<Settlement settlementId="17">
+					<name>r_i_time</name>
+					<symbol>t</symbol>
+					<unit>min</unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes" />
+					</evaluation>
+					<property name="factor" value="0.01666667" type="Double" description="Seconds to minutes" />
+					<trailDisplay discloseAll="false">
+						<exposed trail="count" />
+						<disclosed trail="q2" />
+					</trailDisplay>
+					<label>settlementlabel_r_i_time</label>
+				</Settlement>
+				<Settlement settlementId="19">
+					<name>r_i_readings</name>
+					<symbol>Anzahl</symbol>
+					<unit></unit>
+					<active>false</active>
+					<evaluation>
+						<transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen" />
+					</evaluation>
+					<property name="factor" value="1" type="Double" description="Keine Umrechnung" />
+					<trailDisplay discloseAll="true" defaultTrail="count" />
+					<label>settlementlabel_r_i_readings</label>
+				</Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="2" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="2" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+				<TransitionGroup transitionGroupId="0">
+					<TransitionMapping transitionId="0" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="1">
+					<TransitionMapping transitionId="1" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="3">
+					<TransitionMapping transitionId="3" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="4">
+					<TransitionMapping transitionId="4" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="1" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="4" />
+					<TransitionMapping transitionId="6" />
+					<TransitionMapping transitionId="7" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="6">
+					<TransitionMapping transitionId="6" comment="for test only" />
+				</TransitionGroup>
+				<TransitionGroup transitionGroupId="7">
+					<TransitionMapping transitionId="7" comment="for test only" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="1" refOrdinal="2" classType="peak" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="15000" peakMinimumTimeMsec="500" recoveryTimeMsec="1500" comment="Stromspitze mit mindestens dem 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Dauer höchstens 15 Sekunden" />
+				<Transition transitionId="3" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="4" refOrdinal="2" classType="pulse" valueType="deltaFactor" thresholdValue="19.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" recoveryTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert mit Wiederabfall auf wenigstens den zweifachen Wert; Pulsdauer mindestens 1,5 Sekunden" />
+				<Transition transitionId="6" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="-0.95" recoveryValue="-0.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromeinbruch auf wenigstens ein Zwanzigstel; Einbruchschwellwert mindestens 1,5 Sekunden" />
+				<Transition transitionId="7" refOrdinal="2" classType="slope" valueType="deltaFactor" thresholdValue="9.0" recoveryValue="1.05" referenceTimeMsec="1500" thresholdTimeMsec="1500" comment="Stromanstieg auf mindestens den 20-fachen Wert; Anstiegschwellwert mindestens 1,5 Sekunden" />
+			</Transitions>
+			<ScoreGroups />
+		</Channel>
+		<property name="enable_filter" value="true" type="Boolean" />
+		<property name="enable_channel" value="false" type="Boolean" />
+		<property name="text_mode" value="true" type="Boolean" />
+		<property name="outlier_sigma" value="3.29" type="Double" description="3.29 sigma allows 0.1% outliers, i.e. we allow 1 lower and 1 upper outlier for a population of 2000 measurements" />
+		<property name="outlier_range_factor" value="2." type="Double" description="outliers are identified only if they lie beyond the tolerance interval extended by a factor of 2.0" />
+	</Channels>
+	<Desktop>
+		<property name="table_tab" value="true" />
+		<property name="digital_tab" value="true" />
+		<property name="analog_tab" value="false" />
+		<property name="voltage_per_cell_tab" value="false" />
+		<property name="utility_garphics_tab" value="false" description="UTILITY_GARPHICS_TAB" />
+		<property name="utility_device_tab" value="true" description="UTILITY_DEVICE_TAB" />
+	</Desktop>
+</DeviceProperties>

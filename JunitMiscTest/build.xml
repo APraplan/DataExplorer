@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<project name="JunitMiscTest" default="compile">
+
+	<property name="build.properties" location="../build/build.properties" />
+
+	<property file="${build.properties}" />
+
+	<!-- this is to have nice message about used build.properties file -->
+	<available property="build.properties.exists" file="${build.properties}" />
+	<echo message="Building using ${build.properties}" />
+	<echo message="Execution OS = ${os.name} ${os.arch} ${sun.arch.data.model}, OS short name = ${build.os.shortname}" />
+
+	<property name="module.output" location="bin"/>
+
+	<path id="compile.classpath">
+		<pathelement path="../thirdparty/Junit3/junit.jar"/>
+		<pathelement location="../build/lib/jaxb-api.jar" />
+		<pathelement location="../build/lib/usb-api.jar" />
+		<pathelement location="../build/lib/${build.os.shortname}/${sun.arch.data.model}/swt.jar" />
+		<pathelement path="../build/target/${build.os.shortname}_${sun.arch.data.model}/DataExplorer/DataExplorer.jar"/>
+	</path>
+
+	<target name="compile" description="compile the project">
+		<echo message="path=../build/target/${build.os.shortname}_${sun.arch.data.model}/DataExplorer/DataExplorer.jar"/>
+		<property name="include.debug.info" value="yes" />
+		<mkdir dir="${module.output}" />
+		<javac destdir="${module.output}" classpathref="compile.classpath" release="8" encoding="UTF-8" debug="true">
+			<src path="src" />
+		</javac>
+	</target>
+	
+	<target name="clean">
+		<delete dir="bin"/>
+	</target>
+
+</project>

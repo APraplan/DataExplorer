@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/DataExplorer/src/gde/tools/ReverseCorrectMessagesIds.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="gde.tools.ReverseCorrectMessagesIds"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;../GPS-Logger/src/gde/device/smmodellbau/gpslogger/messages.properties&quot;&#13;&#10;&quot;../GPS-Logger/src/gde/device/smmodellbau/gpslogger/MessageIds.java&quot;&#13;&#10;&quot;../GPS-Logger/src/gde/device/smmodellbau/gpslogger/messages_.properties&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="DataExplorer"/>
+</launchConfiguration>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name>Kosmik</name>
+        <manufacturer>Kontronik</manufacturer>
+        <manufacturerURL>https://www.kontronik.de</manufacturerURL>
+        <group>logger</group>
+        <image>Kosmik.jpg</image>
+        <usage>false</usage>
+    </Device>
+    <SerialPort>
+        <port></port>
+        <baudeRate>9600</baudeRate>
+        <dataBits>DATABITS_8</dataBits>
+        <stopBits>STOPBITS_1</stopBits>
+        <parity>PARITY_NONE</parity>
+        <flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+        <isRTS>false</isRTS>
+        <isDTR>false</isDTR>
+    </SerialPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format size="-14" formatType="VALUE" inputType="FILE_IO"/>
+        <format size="-200" formatType="BYTE" inputType="SERIAL_IO"/>
+        <timeUnit>sec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.dat</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_OUTLET" name="Firmware 3.1">
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol>rpm</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+			<Measurement>
+                <name>voltage_battery</name>
+				<symbol>Ubat</symbol>
+				<unit>V</unit>
+				<active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>current_battery</name>
+                <symbol>Ibat</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_battery</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property description="factor to measurement value" type="Double" value="1000.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current_motor</name>
+                <symbol>Imot</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>temperature FET</name>
+                <symbol>Tfet</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>PWM</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+			<Measurement>
+				<name>voltage BEC</name>
+				<symbol>Ubec</symbol>
+				<unit>V</unit>
+				<active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+			</Measurement>
+			<Measurement>
+				<name>current BEC</name>
+				<symbol>Ibec</symbol>
+				<unit>A</unit>
+				<active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>temperature BEC</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="5" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>throttle (in)</name>
+                <symbol>thr</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>throttle (eff)</name>
+                <symbol>thr</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="10" type="Integer" />
+            </Measurement>         									
+            <Measurement>
+                <name>timing</name>
+                <symbol>tmg</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+            </Measurement>
+        </Channel>
+        <Channel type="TYPE_OUTLET" name="Firmware 3.2">
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol>rpm</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+			<Measurement>
+                <name>voltage_battery</name>
+				<symbol>Ubat</symbol>
+				<unit>V</unit>
+				<active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>current_battery</name>
+                <symbol>Ibat</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_battery</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property description="factor to measurement value" type="Double" value="1000.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current_motor</name>
+                <symbol>Imot</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>current_motor(peak)</name>
+                <symbol>Imot</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="2" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>temperature FET</name>
+                <symbol>Tfet</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>PWM</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+            </Measurement>
+			<Measurement>
+				<name>voltage BEC</name>
+				<symbol>Ubec</symbol>
+				<unit>V</unit>
+				<active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+			</Measurement>
+			<Measurement>
+				<name>current BEC</name>
+				<symbol>Ibec</symbol>
+				<unit>A</unit>
+				<active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+			</Measurement>
+            <Measurement>
+                <name>temperature BEC</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="6" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>throttle (in)</name>
+                <symbol>thr</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+            </Measurement>
+            <Measurement>
+                <name>throttle (eff)</name>
+                <symbol>thr</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+                <property name="scale_sync_ref_ordinal" value="11" type="Integer" />
+            </Measurement>         									
+            <Measurement>
+                <name>timing</name>
+                <symbol>tmg</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics sigma="true" avg="true" max="true" min="true"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="false" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

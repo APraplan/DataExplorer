@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>
+-- DataExplorer Measurement Mapping File --
+this file contains the mapping from values to measurement names and unit
+if this file need more mapping just add the mapping and please provide this info to the developer
+</comment>
+  <entry key="Channel1">Channel 1 [-]</entry>
+  <entry key="Channel2">Channel 2 [-]</entry>
+  <entry key="Channel3">Channel 3 [-]</entry>
+  <entry key="Channel4">Channel 4 [-]</entry>
+  <entry key="Channel5">Channel 5 [-]</entry>
+  <entry key="Channel6">Channel 6 [-]</entry>
+  <entry key="Channel7">Channel 7 [-]</entry>
+  <entry key="Channel8">Channel 8 [-]</entry>
+  <entry key="Channel9">Channel 9 [-]</entry>
+  <entry key="Channel10">Channel 10 [-]</entry>
+  <entry key="Channel11">Channel 11 [-]</entry>
+  <entry key="Channel12">Channel 12 [-]</entry>
+  <entry key="Channel13">Channel 13 [-]</entry>
+  <entry key="Channel14">Channel 14 [-]</entry>
+  <entry key="Channel15">Channel 15 [-]</entry>
+  <entry key="Channel16">Channel 16 [-]</entry>
+  
+  <entry key="Volt1">Voltage 1 [V]</entry>
+  <entry key="Volt2">Voltage 2 [V]</entry>
+  <entry key="Volt3">Voltage 3 [V]</entry>
+  <entry key="Volt4">Voltage 4 [V]</entry>
+  
+  <entry key="Temp1(C)">Temperature 1 [°C]</entry>
+  <entry key="Temp2(C)">Temperature 2 [°C]</entry>
+  <entry key="Temp3(C)">Temperature 3 [°C]</entry>
+  <entry key="Temp4(C)">Temperature 4 [°C]</entry>
+  
+  <entry key="Temp1(F)">Temperature 1 [°F]</entry>
+  <entry key="Temp2(F)">Temperature 2 [°F]</entry>
+  <entry key="Temp3(F)">Temperature 3 [°F]</entry>
+  <entry key="Temp4(F)">Temperature 4 [°F]</entry>
+
+  <entry key="Altitude(m)">Altitude [m]</entry>
+  <entry key="Altitude(f)">Altitude [f]</entry>
+  
+  <entry key="Velocity(m/s)">Speed [m/s]</entry>
+  <entry key="Velocity(km/h)">Speed [km/h]</entry>
+  
+  <entry key="Latitude">Latitude [° ']</entry>
+  <entry key="Longitude">Longitude [° ']</entry>
+</properties>
+

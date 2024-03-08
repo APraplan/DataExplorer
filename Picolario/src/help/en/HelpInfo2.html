@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - Picolario2 Device Dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Picolario2 Dialog</I></FONT></FONT></H2>
+</DIV>
+<P>
+The device dialog should be used to configure the visualization of measurements.
+It is possible to update measurement names and symbols. 
+Even if the measurement units are editable it makes less sense to do without adding a measurement factor in respect to the change.
+Unchecked measurement will not be displayed. 
+This will lead to a more clear representation, curves which are hard to be interpreted in two dimensional way, may be blanked out.
+It is possible to import data files using the 'import P2L data files' button as well.
+</BR>
+Curves without reasonable data are not displayed.
+As example, if no GPS is connected the GPS relevant curves doesn't get displayed.
+The GPS data measurement values are the once which have a strict alignment to measurement ordinals to enable a check of reasonable GPS data and diplay export capabilities.
+While GPS data are available it is possible to load and display such data in Google Earth using KMZ files.
+This files can be exported using the file menu or directly launched to an installed Google Earth application.
+How to do so, refer to <A HREF="../../../help/en/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo2_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1"></P>
+<P>At the right hand side of the configuration panel are check boxes which enable a semi automatic scale synchronization.
+While checking measurement name will be compared to previous once and the fitting measurement ordinal will be added to the measurement configuration entry.
+Using scale synchronization will reduce the required space for scales and spend more for the graphics. 
+Overlaying curves in this matter will allow direct comparison without using the curve compare window.
+</P>
+<P><B>Hint: </B>While changing curve names, symbols units or synchronization entries the device configuration file gets changed.
+With a later version of DataExplorer the device properties schema might change (DeviceProperties_Vxy.xsd), 
+in this case a backup copy of the complete device configurations will be created (Devices_Vxy-1.xsd) and your change will remain there.
+The out dated device configuration file can be used as template to update the new version.
+</P>
+</BODY>
+</HTML>

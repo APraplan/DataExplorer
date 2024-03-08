@@ -1,0 +1,18 @@
+#This is manual created Makefile.in March 16 2010 WB
+AUTOMAKE_OPTIONS = foreign
+prefix = @prefix@
+
+all: antBuild
+
+antBuild:
+	ant -f build/build.xml dist
+
+clean:
+	ant -f build/build.xml clean
+    
+install: 
+	ant -Dprefix=${prefix} -f build/build.xml install
+
+#check: 
+#	ant -f build/build.xml check
+	

@@ -1,0 +1,31 @@
+This is AUTHORS  Dec 18 2018
+
+The DataExplorer is written, starting October 2008, to 
+remove frustration by similar available not cross platform 
+usable tools. It gives the capability to display serial 
+captured data in a number of different view for measurement
+and analysis purpose.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+
+This package is not the result of one persons time. No coding but
+evaluation and testing takes place by several peoples not directly
+named here.
+
+Special thanks to Markus Verkoyen 
+	help implementing and testing QC-Copter plug-in
+
+Special thanks to Oliver Petrik 
+	a lot of support regarding MAC OSX 
+
+Special thanks to Thomas Eickert 
+	implementation of history analysis and code renew
+
+Maintainer: Winfried Brügmann <winfried.bruegmann@web.de>
+
+
+
+

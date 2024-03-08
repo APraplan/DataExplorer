@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+	<Device>
+		<name implementation="gde.device.logview.ZeroAdapter">ZeroAdapter</name>
+		<manufacturer>LogView Openformat Zero</manufacturer>
+		<manufacturerURL>http://www.logview.info/lvstudio_doku/header.htm
+		</manufacturerURL>
+		<group>logger</group>
+		<image>LogViewZero.png</image>
+		<usage>false</usage>
+	</Device>
+	<TimeBase>
+		<name>time</name>
+		<symbol>t</symbol>
+		<unit>msec</unit>
+		<timeStep>-1.0</timeStep>
+	</TimeBase>
+	<DataBlock>
+		<format inputType="FILE_IO" formatType="VALUE" size="-100" />
+		<timeUnit>msec</timeUnit>
+		<separator>semicolon</separator>
+		<leader></leader>
+		<preferredFileExtention>*.txt</preferredFileExtention>
+	</DataBlock>
+	<State>
+		<property type="Integer" value="01"
+			name="state_flight_recording" />
+	</State>
+	<Channels>
+		<Channel name="type_config_1" type="TYPE_CONFIG">
+			<Measurement>
+				<name>0????</name>
+				<symbol>-</symbol>
+				<unit></unit>
+				<active>true</active>
+			</Measurement>
+		</Channel>
+	</Channels>
+	<Desktop>
+		<property value="true" name="table_tab" />
+		<property value="true" name="digital_tab" />
+		<property value="false" name="analog_tab" />
+		<property value="false" name="voltage_per_cell_tab" />
+		<property description="UTILITY_GRAPHICS_TAB" value="false"
+			name="utility_garphics_tab" />
+		<property description="UTILITY_DEVICE_TAB" value="false"
+			name="utility_device_tab" />
+	</Desktop>
+</DeviceProperties>

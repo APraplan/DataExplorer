@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Bruegmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H1>The Preferences Dialog</H1>
+<P>The settings dialog is used to configure:
+<UL>
+	<LI>the language to be used
+	<LI>date and time stamps displayed absolutely or relative to the start time
+	<LI>the data path, where the application is locking for and
+	placing the device specific log data files and file links.
+	<LI>the file save dialog might be use the current date and/or object name as leader	of the file name. This will help to find files.
+	<LI>behavior of the device dialogs. A primary modal behavior is
+	some times not handy, if some adjustments are the place in parallel while
+	gathering data. Some times this cost more effort while programming
+	this.
+	<LI>decimal separator and list separator characters. This might
+	be different then the character used from system locale to work together with the spread sheet programs.
+	This adjustment is used for import/export of CSV files, but has no influence while importing <A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A> files.
+<P ALIGN=CENTER><IMG SRC="images/SettingsDialog_1.png" NAME="SettingsDialog_1" ALIGN=CENTER >
+</P>
+	<LI>using black-list or white-list configuration it is possible to configure according personal problematic ports (COM2 COM5 COM18).
+	This configuration is also valid for the device selection dialog, where device individual ports are selected.
+	Configure the black-list will ignore ports declared. On the other hand the white-list will exclusive use the configured ports.
+	Using the white list it is possible to miss ports dynamically configured by the system. 
+	<LI>while it scans for available serial ports
+	and updates the results delayed. The delay can be reduced on slow
+	systems by switching off the availability check. If this is the case
+	used ports are displayed too which might not be used in future. 
+	At UNIX based systems this is not relevant. 
+	This adjustment reflect also to the device selection dialog
+	which also scans for available serial ports.
+	<LI>if system wide only one serial port is available it is
+	possible to configure a global serial port usage, but in most cases the
+	single available port will be found automatically. Activating this check box will start the port update scan.
+</UL>
+</P>
+
+<P>The Tabulator &quot;History&quot; enable history analysis and its configuration.
+Overall, this type of analysis should be used for equal measurements coming through the same device from one object.
+For instance a history analysis doesn't make sense using measurements of all different batteries, LiPo, NiMH and different cell numbers, you ever charge with your charger.
+</P>
+<P align=center><IMG SRC="images/SettingsDialog_H.png" NAME="SettingsDialog_Historie" ALIGN=CENTER></P>
+<P>
+The configuration entries have tool tips to explain its advantages and what to be used for. 
+In most cases you will see the change directly while have a history graphics view in background and modify the configuration settings.
+</BR>
+<B>Hint: </B>Quartiles and smart values are additional statistical calculated values, gives the enhanced selection capability of the curves selector.
+Using this enhanced statistic calculation possible configured <A HREF="HelpInfo_5.html">trigger</A> doesn't get used anymore during history analysis.
+</BR>
+More information related to history analysis you will find at <A HREF="HelpInfo_94.html">history analysis view</A>
+</P>
+
+<P>Using the tabulator "Miscellaneous" it is possible to configure the graphics view.
+Better differentiation between the different curves and their dependent scale the record color can be used.
+</P>
+<P align=center><IMG SRC="images/SettingsDialog_2.png" NAME="SettingsDialog_2" ALIGN=CENTER></P>
+<P>Table optimization in viewpoint of column usage is enabled by the check box to reduce the data table columns to the measurements selected in graphics tabulator.
+This configuration can be performed in data table tabulator directly using the context menu.
+</P>
+<P>As well the behavior how to handle the recorded data can be adjusted for charging devices.
+Some charging devices allow data recording in pauses and after finishing the charging program. 
+This can be switched off.
+In addition the complete charging discharging cycles can be recorded in a single record set.
+</P>
+
+<P>
+The "Maintenance" tabulator contains some buttons to refresh or remove some application related items.
+Pushing the buttons will "Create Desktop Launcher" or "Remove Desktop Launcher" will create or remove such icons.
+The other two buttons enable the DataExplorer MIME type registration to associate the file endings *.osd and *.lov or remove this registration.
+</P>
+<P align=center><IMG SRC="images/SettingsDialog_3.png" NAME="SettingsDialog_3" ALIGN=CENTER></P>
+<P>The button "Create Link Files" will scan all data files under the configured folder and create all missing object directories as well as the associating link files.
+The button "Clean Link File" will delete object related link files but not the object description files nor the object related directories.
+This function helps to move data files to different system/platform or for backup purpose. 
+</BR>
+Defining object keys may turn out as a cumbersome work: Speed up this task by pressing the button "Create Objects"! 
+The system will scan the standard data path (and the import directory and identify 'object folders'. 
+The object folder names are put in the object key list in the menu bar on the main screen which in turn allows you to select the log files more precisely.
+</BR>
+The "Clear Cache" button clears the cache directory which is kept in your user account directory. 
+However, clearing the cache is not necessary as it holds a minimum of aggregated data which is deduced from the original log files.
+</BR>
+Using the button "Resource Consumption" will print the operating system handle usage status to the trace.log files.
+</BR>
+Pushing the button "Clean Settings" the DataExplorer gets configures to remove all application configuration entries from the system while exiting.
+This includes Starter-Icon and other system entries and enable clean application removal or re-starting the application initial configuration.
+</P>
+<P>
+Using the analyze tab only adjustments for problem analysis can
+be found. After a program failure function a trace log entry should
+appear which may help to find the reason for it appearance. Pay
+attention, modifying trace log level away from INFO will result in
+slowed down execution an may lead in unknown side effects. So adjust this
+values using this knowledge. The adjustments are scaled in detail level,
+<UL>
+	<LI>SEVERE writes only program execution errors,
+	<LI>WARNING writing errors and warnings,  (default)
+	<LI>TIME writing errors, warnings and time relevant log statements
+	<LI>INFO writing errors, warnings and some informational,
+	<LI>FINE writing all errors warnings and informational, in
+	addition traces of the level fine,
+	<LI>FINER writing more than FINE
+	<li>FINEST writing more than FINER
+</UL>
+</P>
+<P>The below described part allows to configure the log level class based. 
+To keep the log file content small do not adjust the log level above FINE. 
+Otherwise the amount of log statements is very high.
+<UL>
+	<LI>the global setting of the &quot;trace log&quot; level, is in
+	normal the level INFO
+	<LI>graphical user interface, here all statements are included
+	called during main window execution
+	<LI>devices, all statements called during device relevant
+	execution
+	<LI>data model, all executions involved by the data model itself
+	<LI>utility functions, all the helper functions, drawing curves,
+	calculate check sum, etc.
+	<LI>file I/O, function calls involved in file input/output
+	<LI>serial I/O, will used a memory logger above the level INFO to
+	archive a low performance impact. As logical consequence the memory
+	usage of the application is higher as before. It might be required to
+	start the application using &quot;java -jar -Xmx512m
+	DataExplorer.jar&quot; where the maximal memory usage is
+	limited to 512 Mbyte.
+</UL>
+</P>
+<P ALIGN=CENTER><img src="images/Settingsdialog_4.png" name="Settingsdialog_4" ALIGN=CENTER >
+</P>
+<P>The class based log level allows to set a logging level for selected class(es) which reduce the amount of trace statements and helps analyzing class centric.
+A context menu enables the log level selection.
+Closing the settings dialog will activate the adjusted trace level.
+</P>
+<P>In every case only three level of trace log files are written
+with a limited size. The files in this rolled approach will over write
+after a certain amount of statements.</P>
+<P><B>Hint: </B>In case of error please have a look into the trace
+log files this will give help indicators to fix the problem (refer to  <A HREF="HelpInfo_01.html">Used Directories</A>).</P>
+
+<P ALIGN=LEFT><A HREF="HelpInfo_02.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_2.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

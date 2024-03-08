@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="CSV2SerialAdapter">CSV2Serial2</name>
+        <manufacturer>WB</manufacturer>
+        <manufacturerURL>https://www.nongnu.org/dataexplorer</manufacturerURL>
+        <group>charger</group>
+        <image>CSV2SerialAdapter.png</image>
+        <usage>false</usage>
+    </Device>
+    <SerialPort>
+        <port>-</port>
+        <baudeRate>115200</baudeRate>
+        <dataBits>DATABITS_8</dataBits>
+        <stopBits>STOPBITS_1</stopBits>
+        <parity>PARITY_NONE</parity>
+        <flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+        <isRTS>true</isRTS>
+        <isDTR>true</isDTR>
+        <TimeOut>
+            <ReadTimeOut>390</ReadTimeOut>
+            <ReadStableIndex>5</ReadStableIndex>
+            <WriteCharDelayTime>0</WriteCharDelayTime>
+            <WriteDelayTime>0</WriteDelayTime>
+        </TimeOut>
+        <request>4C4741</request>
+    </SerialPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>1000.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="-57"/>
+        <format inputType="FILE_IO" formatType="VALUE" size="-8"/>
+        <timeUnit>msec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+    </DataBlock>
+    <State>
+        <property name="state_data_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_outlet 1" type="TYPE_OUTLET">
+            <Measurement>
+                <name>voltage S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S1</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S2</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage S3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S3</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage S4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer" />
+            </Measurement>
+            <Measurement>
+                <name>voltage_i_in S4</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.0001" type="Double" description="factor to input value"/>
+                <property name="scale_sync_ref_ordinal" value="1" type="Integer" />
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

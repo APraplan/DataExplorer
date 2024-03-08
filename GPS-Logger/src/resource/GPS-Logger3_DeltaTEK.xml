@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.smmodellbau.GPSLogger3">GPS-Logger3</name>
+        <manufacturer>SM-Modellbau</manufacturer>
+        <manufacturerURL>https://www.sm-modellbau.de</manufacturerURL>
+        <group>logger</group>
+        <image>GPS-Logger3.png</image>
+        <usage>true</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="-52"/>
+        <checkSum type="XOR"/>
+        <timeUnit>msec</timeUnit>
+        <separator>comma</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+        <preferredDataLocation></preferredDataLocation>
+        <preferredFileExtention>*.nmea</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_flight_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="UniLog" type="TYPE_CONFIG">
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude GPS</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>PDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>HDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>VDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>vs</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>trip</name>
+                <symbol>l</symbol>
+                <unit>km</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>distance_start</name>
+                <symbol>d</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>direction_start</name>
+                <symbol>w</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>azimuth</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>glide_ratio</name>
+                <symbol>g</symbol>
+                <unit>m/1</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed_glide_ratio</name>
+                <symbol>vg</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration X</name>
+                <symbol>x</symbol>
+                <unit>X</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration Y</name>
+                <symbol>y</symbol>
+                <unit>Y</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="17" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration Z</name>
+                <symbol>z</symbol>
+                <unit>Z</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="17" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>ENL</name>
+                <symbol></symbol>
+                <unit>ENL</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false">
+                    <trigger level="200000" isGreater="false" minTimeSec="5" comment="comment_trigger_lt_def" isSecondary="true"/>
+                </statistics>
+            </Measurement>
+            <Measurement>
+                <name>impulse</name>
+                <symbol></symbol>
+                <unit>us</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>air_speed</name>
+                <symbol></symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref">
+                    <trigger level="10000" isGreater="true" minTimeSec="10" isSecondary="false" comment="comment_trigger_gt_def"/>
+                </statistics>
+                <property name="scale_sync_ref_ordinal" value="7" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>static_pressure</name>
+                <symbol></symbol>
+                <unit>hPa</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>pressure ∆TEK</name>
+                <symbol></symbol>
+                <unit>hPa</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>climb TEK</name>
+                <symbol></symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_UL</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current_UL</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="is_invert_current" value="false" type="Boolean" description="Bei falsch gekauften Stromsensoren (Stecker) kann es vorkommen, das ein negativer Strom gemessen wird"/>
+                <property name="offset" value="0.0" type="Double" description="Durch BEC Betrieb oder ungenaue Kalibrierung kann ein geringen Stromoffset auftreten"/>
+            </Measurement>
+            <Measurement>
+                <name>power_UL</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute_UL</name>
+                <symbol>rpm</symbol>
+                <unit>rpm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx_UL</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)_UL</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity_UL</name>
+                <symbol>v</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="offset" value="0.0" type="Double" description="offset to measurement value"/>
+                <property name="factor" value="1.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_UL</name>
+                <symbol>c</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="offset" value="0.0" type="Double" description="offset to measurement value"/>
+                <property name="factor" value="1.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature_UL</name>
+                <symbol>t</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="offset" value="0.0" type="Double" description="offset to measurement value"/>
+                <property name="factor" value="1.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx_ML</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LQI_ML</name>
+                <symbol>LQI</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>empty_ML</name>
+                <symbol>x</symbol>
+                <unit>-</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb_ML</name>
+                <symbol>Vs</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature_ML</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity_ML</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>direction_ML</name>
+                <symbol>w</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)_ML</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>distance_start_ML</name>
+                <symbol>d</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>trip_ML</name>
+                <symbol>l</symbol>
+                <unit>km</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current_ML</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_ML</name>
+                <symbol>V</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute_ML</name>
+                <symbol>r</symbol>
+                <unit>rpm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_ML</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)2_ML</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+        <Channel name="UniLog2" type="TYPE_CONFIG">
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude GPS</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>satellites</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>PDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>HDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>VDOP</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>vs</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>trip</name>
+                <symbol>l</symbol>
+                <unit>km</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>distance_start</name>
+                <symbol>d</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>direction_start</name>
+                <symbol>w</symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>azimuth</name>
+                <symbol></symbol>
+                <unit>°</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>glide_ratio</name>
+                <symbol>g</symbol>
+                <unit>m/1</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>speed_glide_ratio</name>
+                <symbol>vg</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="false" max="false" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration X</name>
+                <symbol>x</symbol>
+                <unit>X</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration Y</name>
+                <symbol>y</symbol>
+                <unit>Y</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="17" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>acceleration Z</name>
+                <symbol>z</symbol>
+                <unit>Z</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="17" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>ENL</name>
+                <symbol></symbol>
+                <unit>ENL</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true">
+                    <trigger level="200000" isGreater="false" minTimeSec="5" comment="comment_trigger_lt_def" isSecondary="true"/>
+                </statistics>
+            </Measurement>
+            <Measurement>
+                <name>impulse</name>
+                <symbol></symbol>
+                <unit>us</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>air_speed</name>
+                <symbol></symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref">
+                    <trigger level="10000" isGreater="true" minTimeSec="10" isSecondary="false" comment="comment_trigger_gt_def"/>
+                </statistics>
+                <property name="scale_sync_ref_ordinal" value="7" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>static_pressure</name>
+                <symbol></symbol>
+                <unit>hPa</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>pressure ∆TEK</name>
+                <symbol></symbol>
+                <unit>hPa</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true" triggerRefOrdinal="22" triggerSecondaryRefOrdinal="20" comment="comment_trigger_ref"/>
+            </Measurement>
+            <Measurement>
+                <name>climb TEK</name>
+                <symbol></symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_UL</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current_UL</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="is_invert_current" value="false" type="Boolean" description="Bei falsch gekauften Stromsensoren (Stecker) kann es vorkommen, das ein negativer Strom gemessen wird"/>
+                <property name="offset" value="0.0" type="Double" description="Durch BEC Betrieb oder ungenaue Kalibrierung kann ein geringen Stromoffset auftreten"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_UL</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>power_UL</name>
+                <symbol>P</symbol>
+                <unit>W</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>energy_UL</name>
+                <symbol>E</symbol>
+                <unit>Wmin</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>balance_UL</name>
+                <symbol></symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 1_UL</name>
+                <symbol>U1</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 2_UL</name>
+                <symbol>U2</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="32" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 3_UL</name>
+                <symbol>U3</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="32" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 4_UL</name>
+                <symbol>U4</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="32" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 5_UL</name>
+                <symbol>U5</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="32" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>cell_voltage 6_UL</name>
+                <symbol>U6</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="scale_sync_ref_ordinal" value="32" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute_UL</name>
+                <symbol>n</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics min="false" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>a_1_value_UL</name>
+                <symbol>A1</symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="offset" value="0.0" type="Double"/>
+                <property name="factor" value="1.0" type="Double" description="factor to measurement value"/>
+            </Measurement>
+            <Measurement>
+                <name>a_2_value_UL</name>
+                <symbol>A2</symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="offset" value="0.0" type="Double" description="factor to measurement value"/>
+                <property name="factor" value="1.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>a_3_value_UL</name>
+                <symbol>A3</symbol>
+                <unit>mV</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="offset" value="0.0" type="Double"/>
+                <property name="factor" value="1.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature_intern_UL</name>
+                <symbol></symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+                <property name="offset" value="0.0" type="Double"/>
+                <property name="factor" value="1.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_rx_ML</name>
+                <symbol>Urx</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>LQI_ML</name>
+                <symbol>LQI</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>empty_ML</name>
+                <symbol>x</symbol>
+                <unit>-</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb_ML</name>
+                <symbol>Vs</symbol>
+                <unit>m/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature_ML</name>
+                <symbol>T</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>velocity_ML</name>
+                <symbol>v</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>direction_ML</name>
+                <symbol>w</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)_ML</name>
+                <symbol>h</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>distance_start_ML</name>
+                <symbol>d</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>trip_ML</name>
+                <symbol>l</symbol>
+                <unit>km</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>current_ML</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage_ML</name>
+                <symbol>V</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute_ML</name>
+                <symbol>r</symbol>
+                <unit>rpm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity_ML</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (relativ)2_ML</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

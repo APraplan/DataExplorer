@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>UniLog
+	Device Dialog Introduction</I></FONT></FONT></H2>
+</DIV>
+<P>The UniLog device dialog is to be used to visualize and adjust of
+the UniLog &quot;Settings&quot;. Using the last tabulator &quot;Data
+I/O&quot; the data stored in the device can be read and visualized. To
+manipulate the visualization the four configuration tabs might be
+used. At this place everybody can create there own configuration with
+meaningful names. In initial, as recommendation, there are</P>
+<UL>
+	<LI><P ALIGN=LEFT>Height, simple height measurement with low
+	additional weight for the model plane 
+	<LI><P ALIGN=LEFT>Receiver, additional to the height the receiver
+	supply power can be measured to get reasonable values to estimate
+	required power consumption for the voltage regulator 
+	<LI><P ALIGN=LEFT>Motor, to measure the motor power and efficiency
+	to dimension the motor controller or propeller 
+	<LI><P ALIGN=LEFT>Velocity, influence of the prop to the flight
+	velocity or simple get a feeling for the planes speed 
+	</P>
+</UL>
+<P>Alternative the configurations can be adjusted to fit personal
+requirements or simply model names like Model_1 to Model_4. 
+</P>
+<P>A lot of hints are available by tool tips of the dialog itself and
+make this help nearly obsolete. The tool tips are visible by hovering
+the mouse over the fields of interest. 
+</P>
+<P>The actual implementation fits the firmware version 1.10. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>The „Settings“ Tabulator</I></FONT></FONT></H2>
+<P>Afterwards the serial communication is configured using the device
+selection dialog and the device dialog is opened it is possible to
+query the UniLog internal setting by pushing the button “Read
+UniLog settings”. Such a view with queried settings is shown in
+picture 1.</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image 1" ALT="Image 1">
+</P>
+<P>All analog outlets are to be pre-configured starting with firmware 1.10. 
+By activating the limiter function the signal to the motor controller are reduced reaching the adjusted consumed energy. 
+To enable this functionality the controller signal must go through the UniLog. 
+An activated limiter will also set the time step to 1/16 Second and only one data collection is possible.
+</P>
+
+<P>If settings are modified the button “”Write UniLog settings”
+gets activated. Pushing this buttons will write the modified settings
+data into the UniLog device. 
+</P>
+<P><B>Hint : </B>It is meaningful to read at first UniLog setting
+before modifying, otherwise some dialog defaults will be written into
+the device. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>The „Data I/O“ Tabulator</I></FONT></FONT></H2>
+<P>Initially all buttons are active to read log data from the UniLog.
+With selecting a specific configuration, tabs 2 to 5 will be
+explained next section, this selected configuration will be applied
+to the red data. But it is possible to switch data configurations
+later for each data set individual. 
+</P>
+<P>Only the “delete” button is extra. Pushing this button the
+data are marked for deletion. The deletion gets active next time a
+log operation is started. The data stored within can still be read. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="Image 2" ALT="Image 2">
+</P>
+<P>After pushing “Start reading data” all the data within the
+device are going to be red and the read operation starts immediately and the selected
+configuration is applied.</P>
+<P>Using the button “Start live data recording” a query cycle is
+initiated which reads according the device settings and connected
+sensors and the data are displayed in graphics, as digital and as
+analog displays. If the button “Start” within the UniLog data
+recording group is pushed the UniLog itself will log the data
+internal.</P>
+<P>By pushing start* buttons as reaction the stop* buttons are
+getting activated.</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3.png" NAME="Image 3" ALT="Image 3">
+</P>
+<P>At the end of the read operation the data are displayed. The
+dialog gets back to its initial state. Only the progress bar is
+filled and the number of red data telegrams are displayed.</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_4.png" NAME="Image 4" ALT="Image 4">
+</P>
+<P>The Data I/O Tabulator enables to modify the configuration names.
+To change a configuration name it is required to push at first the
+button “Change name” to activate the change mode. After editing
+the name the operation is committed by the enter button. The new name
+will be displayed in the tabulator changed and will made persistent
+in the device configuration file.</P>
+<H2><A NAME="config_tab"></A><FONT FACE="Arial"><FONT SIZE=4><I>The
+Configuration Tabulators</I></FONT></FONT></H2>
+<P>This complex tabulator is showing all device possible
+measurements. Only the real measurements representing a device sensor
+connection has a check box to enable activation. If a measurement
+gets activated the depended measurements are getting activated too.
+As sample the receiver configuration tab will be explained. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_5.png" NAME="Image 5" ALT="Image 5">
+</P>
+<P>If the measurement “Height” will be selected the dependent
+measurement slope calculation with its two combo boxes gets
+activated.</P>
+<P>For the slope calculation one of two regression types has to be
+selected as well a regression interval time between 1 and 20 seconds.
+</P>
+<P>Each change will be immediate change the data set visualization. A
+change will also activate the “Persist adjustments as default”
+button to make the configuration composition persistent and will be
+used next time data are gets applied to this configuration.
+</P>
+<P>Special are the 3 analog connectors (A1 to A3). All analog outlets are
+pre-configured using the device settings (Settings tab). This will
+adjust UniLog internal measurement adjustment. 
+While reading data this UniLog internal settings are used to adjust name and unit for each analog measurement.
+If required for the connected sensor an offset as well as a factor can
+be used for adaption. A change will activate the “Persist
+adjustments as default” button to enable to persist the change for
+later repeated usage. 
+</P>
+<P>If a data set is just displayed while opening the dialog the dialog
+tab with the matching configuration is displayed on top. Does the
+data set displayed not match the configuration the configuration might
+be adapted or a better matching configuration selecting another tab
+can be selected. By doing this a message box pops up to commit or
+de-commit this operation. 
+</P>
+<P>
+Different configurations enable different statistics data calculation.
+As sample the next screen shot displays a receiver configuration statistics view.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_6.png" NAME="Image 6" ALT="Image 6 displays a statistics view of a receiver measurement" BORDER=0>
+</P>
+<P>
+Below a motor measurement statistics view is displayed. All important calculation data and differences are red circled.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_7.png" NAME="Image 7" ALT="Image 7 displays a statistics view of a motor measurement" BORDER=0>
+</P>
+<P> 
+For later it is planned to enable the adaption of the statistic configuration by a dialog.
+</P>
+<P><B>Hint : </B>If four configurations are to much it can be
+reduced. This requires to comment out channel configuration in
+UniLog.xml (&lt;!-- XML comment --&gt;). More then four
+configurations are possible but the current implementation does not
+support. 
+</P>
+<P>Of course it is possible to activate all measurements in the
+configuration tab and filter using the curve selector.
+</P>
+
+<H2><A NAME="telemetry"></A><FONT FACE="Arial"><FONT SIZE=4><I>„Telemetry“ Tabulator</I></FONT></FONT></H2>
+<P>Using this tab it is possible to adjust all telemetry relevant configurations which are supported by the transmitter/receiver systems involved.
+Actual supported transmitter/receiver systems are Jeti Duplex, Futaba and Multiplex M-Link, since UniLog firmware level 1.12.
+At first the actual UniLog configuration should be red and afterwords, with help of the transmitter/receiver systems manual, change the configuration as required. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_8.png" NAME="Image8" ALT="Image8 Telemetry Tabulator" BORDER=0>
+</P>
+<P>While a configuration will be changed, the button to write the updated configuration into the UniLog, will be enabled.
+</P>
+</BODY>
+</HTML>

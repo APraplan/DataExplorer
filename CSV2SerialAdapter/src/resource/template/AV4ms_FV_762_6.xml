@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>-- DataExplorer GraphicsTemplate --</comment>
+<entry key="0_color">0,0,255</entry>
+<entry key="0_defMaxValue">1.5</entry>
+<entry key="0_defMinValue">1.35</entry>
+<entry key="0_isPositionLeft">true</entry>
+<entry key="0_isRoundOut">false</entry>
+<entry key="0_isStartEndDefined">true</entry>
+<entry key="0_isStartpointZero">false</entry>
+<entry key="0_isVisible">true</entry>
+<entry key="0_lineStyle">1</entry>
+<entry key="0_lineWidth">2</entry>
+<entry key="0_numberFormat">-1</entry>
+<entry key="1_color">255,0,0</entry>
+<entry key="1_defMaxValue">1.5</entry>
+<entry key="1_defMinValue">1.35</entry>
+<entry key="1_isPositionLeft">false</entry>
+<entry key="1_isRoundOut">false</entry>
+<entry key="1_isStartEndDefined">true</entry>
+<entry key="1_isStartpointZero">false</entry>
+<entry key="1_isVisible">true</entry>
+<entry key="1_lineStyle">1</entry>
+<entry key="1_lineWidth">1</entry>
+<entry key="1_numberFormat">-1</entry>
+<entry key="2_color">0,128,0</entry>
+<entry key="2_defMaxValue">1.5</entry>
+<entry key="2_defMinValue">1.35</entry>
+<entry key="2_isPositionLeft">true</entry>
+<entry key="2_isRoundOut">false</entry>
+<entry key="2_isStartEndDefined">true</entry>
+<entry key="2_isStartpointZero">false</entry>
+<entry key="2_isVisible">true</entry>
+<entry key="2_lineStyle">1</entry>
+<entry key="2_lineWidth">2</entry>
+<entry key="2_numberFormat">-1</entry>
+<entry key="3_color">255,128,255</entry>
+<entry key="3_defMaxValue">1.5</entry>
+<entry key="3_defMinValue">1.35</entry>
+<entry key="3_isPositionLeft">false</entry>
+<entry key="3_isRoundOut">false</entry>
+<entry key="3_isStartEndDefined">true</entry>
+<entry key="3_isStartpointZero">false</entry>
+<entry key="3_isVisible">true</entry>
+<entry key="3_lineStyle">1</entry>
+<entry key="3_lineWidth">1</entry>
+<entry key="3_numberFormat">-1</entry>
+<entry key="RecordSet_horizontalGridColor">192,192,192</entry>
+<entry key="RecordSet_horizontalGridLineStyle">2</entry>
+<entry key="RecordSet_horizontalGridType">1</entry>
+<entry key="RecordSet_smoothAtCurrentDrop">false</entry>
+<entry key="RecordSet_timeGridColor">192,192,192</entry>
+<entry key="RecordSet_timeGridLineStyle">3</entry><entry key="RecordSet_horizontalGridRecordOrdinal">0</entry>
+<entry key="RecordSet_timeGridType">1</entry>
+</properties>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.igc.IGCAdapter">IGCAdapter</name>
+        <manufacturer>-</manufacturer>
+        <manufacturerURL>-</manufacturerURL>
+        <group>logger</group>
+        <image>IGCAdapter.png</image>
+        <usage>true</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>sec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="-8"/>
+        <timeUnit>sec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>B</leader>
+        <trailer>0D0A</trailer>
+        <preferredFileExtention>*.igc</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_flight_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_universal" type="TYPE_CONFIG">
+            <Measurement>
+                <name>latitude</name>
+                <symbol>B</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>longitude</name>
+                <symbol>L</symbol>
+                <unit>° '</unit>
+                <active>true</active>
+            </Measurement>
+            <Measurement>
+                <name>altitude (Baro)</name>
+                <symbol>h</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>altitude (GPS)</name>
+                <symbol>hs</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>climb</name>
+                <symbol>vh</symbol>
+                <unit>m/s</unit>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="regression_interval_sec" value="10" type="Integer" description="Regression interval in seconds"/>
+                <property name="regression_type" value="regression_type_curve" type="String" description="Regression arithmetic"/>
+            </Measurement>
+            <Measurement>
+                <name>speed</name>
+                <symbol>v</symbol>
+                <unit>km/h</unit>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>SIU</name>
+                <symbol></symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>GSP</name>
+                <symbol></symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>ENL</name>
+                <symbol></symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>VAT</name>
+                <symbol></symbol>
+                <unit>cm/s</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>RSSI</name>
+                <symbol></symbol>
+                <unit>dBm</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Measurement>
+                <name>LQI</name>
+                <symbol></symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="true"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

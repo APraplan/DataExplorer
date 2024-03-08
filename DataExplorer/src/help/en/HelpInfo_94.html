@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Bruegmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H1><A NAME="history_graphics_window"></A>History Graphics View</H1>
+<P>
+This display tab window presents the log files on a time line – starting with the most recent log file for the selected device and object. 
+<P>
+The analysis uses <A HREF="HelpInfo_B.html">OSD files</A> of your device and selected object.
+Preferably they are accessed via link files in the object directory.
+<P>
+However, if you did not define an object or if you selected 'device oriented', the device folder is browsed.
+This is the reason why it is recommended arranging the log files in <A HREF="HelpInfo_01.html">object folders</A> which are sub-directories in the standard data path (refer to <A HREF="HelpInfo_1.html">Preferences dialog</A> 'Maintenance').
+Having added an object (see last paragraphs <A HREF="HelpInfo_32.html">here</A>) a folder with the object name is created. 
+The system will place a link file in such an <A HREF="HelpInfo_01.html">object folder</A> for future OSD files.
+<P>
+The history graphics view fetches its data whenever you click on the tab. This ensures that the graphics is refreshed whenever you add new log files to the directories.
+<P>
+<B>Hint: </B>Make this tab visible by activating the history in the  <A HREF="HelpInfo_1.html">Preferences dialog</A> 'History'.
+</P>
+<P><IMG SRC="images/History_Graphics_Window.png" NAME="History_Graphics_Window" ALIGN=CENTER></P>
+<P>
+Depending on the selected device and and history settings deviations from the shown picture might be possible.
+The device configuration XML and the actual implementation state will have its influence as well.
+</BR>
+The enhanced <A HREF="HelpInfo_41.html">curve selector</A> enables various statistical values in dependency of the history configuration.
+</BR>
+It makes sense to store <A HREF="HelpInfo_33.html">graphics templates</A> for the history analysis view as well, since they hold different values compared to the standard graphics templates.
+<P>
+Additional capabilities of the graphics area <A HREF="HelpInfo_34.html">context menu</A>:
+<UL>
+	<LI>load a data set into the <A HREF="HelpInfo_4.html">graphics view</A>
+	<LI>delete a file (such as log files caused by tests)
+	<LI>set a file or data set to hidden (e.g. extreme values or outliers)
+	<LI>toggle hiding ('Selective history')
+	<LI>interactive analyses via 'Curve survey' in combination with 'Measurement' (see some way down <A HREF="HelpInfo_41.html">here</A>)
+</UL>
+<P><B>Hint: </B>If a device supports a raw file import  (see item 'Import' <A HREF="HelpInfo_3.html">here</A>) it might be possible to include these files into the analysis.
+This allows you to bypass creating OSD files.
+</P>
+<P ALIGN=LEFT><A HREF="HelpInfo_92.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_A.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.wb.CSV2SerialAdapter">USB-WDE1</name>
+        <manufacturer>ELV GmbH</manufacturer>
+        <manufacturerURL>https://www.elv.de</manufacturerURL>
+        <group>logger</group>
+        <image>USB-WDE1.png</image>
+        <usage>false</usage>
+    </Device>
+    <SerialPort>
+        <port>-</port>
+        <baudeRate>9600</baudeRate>
+        <dataBits>DATABITS_8</dataBits>
+        <stopBits>STOPBITS_1</stopBits>
+        <parity>PARITY_NONE</parity>
+        <flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+        <isRTS>false</isRTS>
+        <isDTR>false</isDTR>
+        <TimeOut>
+            <ReadTimeOut>1000</ReadTimeOut>
+            <ReadStableIndex>5</ReadStableIndex>
+            <WriteCharDelayTime>0</WriteCharDelayTime>
+            <WriteDelayTime>0</WriteDelayTime>
+        </TimeOut>
+    </SerialPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>60000.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="-120"/>
+        <format inputType="FILE_IO" formatType="VALUE" size="-23"/>
+        <timeUnit>msec</timeUnit>
+        <separator>semicolon</separator>
+        <leader>$</leader>
+        <trailer>0D0A</trailer>
+    </DataBlock>
+    <State>
+        <property name="Empfang von Wetterdaten" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_outlet 1" type="TYPE_OUTLET">
+            <Measurement>
+                <name>temperature S1</name>
+                <symbol>Ts1</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S2</name>
+                <symbol>Ts2</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S3</name>
+                <symbol>Ts3</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S4</name>
+                <symbol>Ts4</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S5</name>
+                <symbol>Ts5</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S6</name>
+                <symbol>Ts6</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S7</name>
+                <symbol>Ts7</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature S8</name>
+                <symbol>Ts8</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S1</name>
+                <symbol>Fs1</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S2</name>
+                <symbol>Fs2</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S3</name>
+                <symbol>Fs3</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S4</name>
+                <symbol>Fs4</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S5</name>
+                <symbol>Fs5</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S6</name>
+                <symbol>Fs6</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S7</name>
+                <symbol>Fs7</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte S8</name>
+                <symbol>Fs8</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="9" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature KS</name>
+                <symbol>Tks</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Feuchte KS</name>
+                <symbol>Fks</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Windgeschwindigkeit</name>
+                <symbol>vw</symbol>
+                <unit>km/h</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Wippenschläge</name>
+                <symbol>Ws</symbol>
+                <unit>#</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Regen</name>
+                <symbol>Rg</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>Regenmenge/Zeit</name>
+                <symbol>Rm</symbol>
+                <unit>ml/10min</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="2.95" type="Double" description="factor to input value"/>
+            </Measurement>
+            <Measurement>
+                <name>Tagesregenmenge</name>
+                <symbol>Trm</symbol>
+                <unit>ml</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="factor" value="0.295" type="Double" description="factor to input value"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+        <Channel name="type_outlet 2" type="TYPE_OUTLET">
+            <Measurement>
+                <name>temperature ADC1</name>
+                <symbol>T1</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature ADC2</name>
+                <symbol>T2</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature ADC3</name>
+                <symbol>T3</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature ADC4</name>
+                <symbol>T4</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature ADC5</name>
+                <symbol>T5</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature ADC6</name>
+                <symbol>T6</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="true" sigma="false"/>
+                <property name="scale_sync_ref_ordinal" value="0" type="Integer"/>
+            </Measurement>
+            <Settlements/>
+            <ReferenceGroups/>
+            <TransitionGroups/>
+            <Transitions/>
+            <ScoreGroups/>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

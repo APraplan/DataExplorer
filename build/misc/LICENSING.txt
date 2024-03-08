@@ -1,0 +1,186 @@
+The following image files are all licensed under GPLv3 or any later version.
+Copyright 2008,2009,2010,2011,2012 Winfried Bruegmann
+
+DataExplorere.ico DataExplorer.xpm DataExplorer.icns DevicePropertiesEditor.ico 
+DevicePropertiesEditor.xpm DevicePropertiesEditor.icns DataExplorer.png 
+DataExplorer_ICO_36.png DevicePropertiesEditor_ICO_36.png 
+DevicePropertiesEditor_xpm.png CSV2SerialAdapter.png
+
+ArrowLeftGreen.gif ArrowRightGreen.gif ArrowWhiteGreenFieldLefHot.gif 
+ArrowWhiteGreenFieldLeft.gif ArrowWhiteGreenFieldRight.gif 
+ArrowWhiteGreenFieldRightHot.gif bColor.gif Bold.gif BulletActiveGreen.gif
+BulletActiveRed.gif BulletDisabledGreen.gif BulletDisabledRed.gif 
+BulletHotGreen.gif BulletHotRed.gif Copy.gif CopyHot.gif Cut.gif CutLeft.gif
+CutRight.gif DataExplorer.gif de/ImportActive.gif de/ImportActiveDisabled.gif 
+de/ImportActiveHot.gif de/ImportData.gif de/ImportDataDisabled.gif 
+de/ImportDataHot.gif de/ObjectImage.gif de/PortClose.gif 
+de/PortCloseDisabled.gif de/PortCloseHot.gif de/PortOpen.gif 
+de/PortOpenDisabled.gif de/PortOpenHot.gif de/StartGather.gif 
+de/StartGatherDisabled.gif de/StartGatherHot.gif de/StopGather.gif 
+de/StopGatherDisabled.gif de/StopGatherHot.gif Delete.gif DeleteHot.gif 
+DeviceSelection.gif DeviceSelectionHot.gif Edit.gif EditHot.gif EditObj.gif 
+EditObjHot.gif EditWhite.gif en/ImportActive.gif en/ImportActiveDisabled.gif 
+en/ImportActiveHot.gif en/ImportData.gif en/ImportDataDisabled.gif 
+en/ImportDataHot.gif en/ObjectImage.gif en/PortClose.gif 
+en/PortCloseDisabled.gif en/PortCloseHot.gif en/PortOpen.gif 
+en/PortOpenDisabled.gif en/PortOpenHot.gif en/StartGather.gif 
+en/StartGatherDisabled.gif en/StartGatherHot.gif en/StopGather.gif 
+en/StopGatherDisabled.gif en/StopGatherHot.gif Expand.gif ExpandHot.gif 
+fColor.gif Font.gif Graphics.gif Hand.gif Italic.gif Landscape.gif 
+LandscapeReverse.gif LEDGreen.gif LEDHotGreen.gif Light_Yello.gif 
+LineType1.gif LineType2.gif LineType3.gif LineWidth1.gif LineWidth2.gif 
+LineWidth3.gif Measure.gif MoveH.gif New.gif NewHot.gif NewObj.gif 
+NewObjHot.gif Next.gif NextHot.gif Object.gif Open.gif OpenAdd.gif 
+OpenAddHot.gif OpenHot.gif Pan.gif PanHot.gif Paste.gif Portrait.gif
+Previous.gif PreviousHot.gif Print.gif PrintHot.gif Question.gif 
+RectangleHotGreen.gif RectangleHotRed.gif RectangleRed.gif Redo.gif 
+RemObj.gif RemObjHot.gif Resize.gif ResizeHot.gif Save.gif SaveAs.gif 
+SaveAsHot.gif SaveHot.gif SeparatorHorizontal.gif Settings.gif SettingsHot.gif 
+SmallGraph.gif Statistics.gif Strikeout.gif ToolBox.gif ToolBoxHot.gif
+Tools.gif TriangleGreen.gif TriangleHotGreen.gif TriangleHotRed.gif 
+Underline.gif Undo.gif Unzoom.gif WorkItem.gif Zoom.gif ZoomHot.gif 
+
+DataExplorer/src/help/de/images/Analog_Window.png ApplicationMainWindow.png 
+CellVoltage_Window_1.png CellVoltage_Window_2.png CellVoltage_Window_3.png 
+Compare_Window.png CSV2SerialDataFormat.png CSV_absolute_sample.png 
+CSV_raw_sample.png CurveSelector_ContextMenue.png 
+CurveSelector_ContextMenue_Compare.png 
+CurveSelector_ContextMenue_Deltameasure.png 
+CurveSelector_ContextMenue_Horizontal_Grid.png
+CurveSelector_ContextMenue_Manual.png 
+CurveSelector_ContextMenue_Measure.png 
+CurveSelector_ContextMenue_Measure_Delta.png 
+CurveSelector_ContextMenue_Measure_Pointer.png 
+CurveSelector_ContextMenue_Measure_Value.png
+CurveSelector_ContextMenue_Precision.png CurveSelector_ContextMenue_Scale.png 
+CurveSelector_ContextMenue_Vertical_Grid.png Cut_Operation.png 
+DataExplorerFormat.png DeviceProperties.png 
+DevicePropsEditor_ChannelConfig.png DevicePropsEditor_DataBlock1.png 
+DevicePropsEditor_DataBlock2.png DevicePropsEditor_Desktop.png 
+DevicePropsEditor_Device.png DevicePropsEditor_Image.png
+DevicePropsEditor_Implementation.png DevicePropsEditor_MeasurementProperty.png 
+DevicePropsEditor_MeasurementStatisitcs1.png 
+DevicePropsEditor_MeasurementStatisitcs2.png DevicePropsEditor_MenuBar.png
+DevicePropsEditor_NewDevice.png DevicePropsEditor_SerialPort.png 
+DevicePropsEditor_State.png DevicePropsEditor_TimeBase.png 
+DeviceSelectionDialogLinux_3.png DeviceSelectionDialogWindows_3.png
+DeviceSelectionDialog_1.png DeviceSelectionDialog_2.png 
+DeviceSelectionDialog_4.png DeviceSelectionDialog_4a.png 
+DeviceSelectionDialog_5.png Digital_Window.png FileComment_Window.png
+GraphicsWindow_Pan_1.png GraphicsWindow_Zoom_1.png GraphicsWindow_Zoom_2.png 
+Graphics_Window.png Menuebar_1.png Menuebar_Device.png Menuebar_Edit.png 
+Menuebar_File.png Menuebar_GraphicsTemplates.png Menuebar_Help.png 
+Menuebar_View.png Menuebar_View_Context.png MenueToolBar_Channel.png 
+MenueToolBar_Device.png MenueToolBar_Edit.png MenueToolBar_File.png 
+MenueToolBar_Object_0.png MenueToolBar_Object_1.png MenueToolBar_RecordSet.png 
+Object_Characteristics_Window.png RecordSetComment_Window.png ScopeView50.png 
+Settingsdialog_1.png Settingsdialog_2.png Settingsdialog_3.png 
+Statistic_Window_1.png SynchroniseRecords_1.png SynchroniseRecords_2.png 
+TableWindow.png Analog_Window.png ApplicationMainWindow.png 
+CellVoltage_Window_1.png CellVoltage_Window_2.png CellVoltage_Window_3.png 
+Compare_Window.png CSV2SerialDataFormat.png CSV_absolute_sample.png 
+CSV_raw_sample.png CurveSelector_ContextMenue.png 
+CurveSelector_ContextMenue_Compare.png 
+CurveSelector_ContextMenue_Deltameasure.png 
+CurveSelector_ContextMenue_Horizontal_Grid.png 
+CurveSelector_ContextMenue_Manual.png CurveSelector_ContextMenue_Measure.png 
+CurveSelector_ContextMenue_Measure_Delta.png 
+CurveSelector_ContextMenue_Measure_Pointer.png
+CurveSelector_ContextMenue_Measure_Value.png 
+CurveSelector_ContextMenue_Precision.png CurveSelector_ContextMenue_Scale.png 
+CurveSelector_ContextMenue_Vertical_Grid.png Cut_Operation.png
+DataExplorerFormat.png DeviceProperties.png DevicePropsEditor_ChannelConfig.png 
+DevicePropsEditor_DataBlock1.png DevicePropsEditor_DataBlock2.png 
+DevicePropsEditor_Desktop.png DevicePropsEditor_Device.png
+DevicePropsEditor_Image.png DevicePropsEditor_Implementation.png 
+DevicePropsEditor_MeasurementProperty.png 
+DevicePropsEditor_MeasurementStatisitcs1.png 
+DevicePropsEditor_MeasurementStatisitcs2.png
+DevicePropsEditor_MenuBar.png DevicePropsEditor_NewDevice.png 
+DevicePropsEditor_SerialPort.png DevicePropsEditor_State.png 
+DevicePropsEditor_TimeBase.png DeviceSelectionDialogLinux_3.png
+DeviceSelectionDialogWindows_3.png DeviceSelectionDialog_1.png 
+DeviceSelectionDialog_2.png DeviceSelectionDialog_4.png 
+DeviceSelectionDialog_4a.png DeviceSelectionDialog_5.png Digital_Window.png
+FileComment_Window.png GraphicsWindow_Pan_1.png GraphicsWindow_Zoom_1.png 
+GraphicsWindow_Zoom_2.png Graphics_Window.png Menuebar_1.png Menuebar_Device.png 
+Menuebar_Edit.png Menuebar_File.png Menuebar_GraphicsTemplates.png 
+Menuebar_Help.png Menuebar_View.png Menuebar_View_Context.png 
+MenueToolBar_Channel.png MenueToolBar_Device.png MenueToolBar_Edit.png 
+MenueToolBar_File.png MenueToolBar_Object_0.png MenueToolBar_Object_1.png 
+MenueToolBar_RecordSet.png Object_Characteristics_Window.png 
+RecordSetComment_Window.png ScopeView50.png Settingsdialog_1.png 
+Settingsdialog_2.png Settingsdialog_3.png Statistic_Window_1.png 
+SynchroniseRecords_1.png SynchroniseRecords_2.png TableWindow.png
+
+AkkuMaster/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png 
+HelpInfo_Bild_3.png HelpInfo_Bild_4.png
+AkkuMaster/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png 
+HelpInfo_Image_3.png HelpInfo_Image_4.png
+CSV2SerialAdapter/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png
+CSV2SerialAdapter/src/help/en/HelpInfo_Image_1.png 
+CSV2SerialAdapter/src/help/en/HelpInfo_Image_2.png
+eStation/src/help/de/HelpInfo_Bild_1.png HelpInfo_Image_1.png 
+LiPoWatch/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png 
+HelpInfo_Bild_3.png 
+LiPoWatch/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png 
+HelpInfo_Image_3.png
+Picolario/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png 
+HelpInfo_Bild_3.png HelpInfo_Bild_4.png HelpInfo_Bild_5.png
+Picolario/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png 
+HelpInfo_Image_3.png HelpInfo_Image_4.png HelpInfo_Image_5.png
+Simulator/src/help/de/SimulatorDialog.png 
+Simulator/src/help/en/SimulatorDialog.png
+UniLog/src/rescource/Unilog.jpg 
+UniLog/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png HelpInfo_Bild_3.png 
+HelpInfo_Bild_4.png HelpInfo_Bild_5.png HelpInfo_Bild_6.png HelpInfo_Bild_7.png 
+HelpInfo_Bild_7.png
+UniLog/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png HelpInfo_Image_3.png
+HelpInfo_Image_4.png HelpInfo_Image_5.png HelpInfo_Image_6.png HelpInfo_Image_7.pn
+HelpInfo_Image_8.png
+VC800/src/help/de/HelpInfo_Bild_1.png
+VC800/src/help/en/HelpInfo_Image_1.png
+WStechVario/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png HelpInfo_Bild_3.png
+HelpInfo_Bild_4.png
+WStechVario/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png HelpInfo_Image_3.png
+HelpInfo_Image_4.png
+UltramatUDP/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2_NiMh.png HelpInfo_Bild_4_LiPo.png  
+HelpInfo_Bild_6.png  HelpInfo_Bild_8.png
+HelpInfo_Bild_10.png  HelpInfo_Bild_3_NiMh.png HelpInfo_Bild_5_LiPo.png HelpInfo_Bild_7.png  
+HelpInfo_Bild_9.png
+UltramatUDP/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2_NiMh.png HelpInfo_Image_4_LiPo.png  
+HelpInfo_Image_6.png  HelpInfo_Image_8.png
+HelpInfo_Image_10.png  HelpInfo_Image_3_NiMh.png HelpInfo_Image_5_LiPo.png HelpInfo_Image_7.png  
+HelpInfo_Image_9.png
+UltramatUDP/src/resource/UltraDuoPlus60.jpg  UltraDuoPlus45.jpg  UltraTrioPlus14.jpg  
+UltraTrioPlus16S.jpg  Ultramat12.jpg  Ultramat16S.jpg  Ultramat18.jpg
+HoTTAdapter/src/reseource/HoTTAdapter.png HoTTAdapter2.png
+HoTTAdapter/src/help/de/HelpInfo_Bild_1.png
+HoTTAdapter/src/help/en/HelpInfo_Image_1.png
+FlightRecorder/src/resource/FlightRecorder.png 
+FlightRecorder/src/help/de/HelpInfo_Bild_1.png
+FlightRecorder/src/help/en/HelpInfo_Image_1.png
+JLog2/src/reseource/JLog2.png
+JLog2/src/help/JLog2_Alarm_Lines.png JLog2_GPS_Logger.png JLog2_HiTec_Telemetry_Temperature.png 
+JLog2_Analog_Sensors.png JLog2_HiTec_Telemetry.png JLog2_Telemetry.png JLog2_BID.png 
+JLog2_HiTec_Telemetry_Temperature_HV2BEC.png
+JLog2/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png HelpInfo_Bild_3.png HelpInfo_Bild_4.png 
+HelpInfo_Bild_5.png
+JLog2/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png HelpInfo_Image_3.png HelpInfo_Image_4.png 
+HelpInfo_Image_5.png
+UniLog2/src/reseource/UniLog2.jpg
+UniLog2/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png HelpInfo_Bild_3.png HelpInfo_Bild_4.png 
+UniLog2/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png HelpInfo_Image_3.png HelpInfo_Image_4.png 
+GPS-Logger/src/reseource/GPS-Logger.png
+GPS-Logger/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png HelpInfo_Bild_3.png HelpInfo_Bild_4.png 
+GPS-Logger/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png HelpInfo_Image_3.png HelpInfo_Image_4.png 
+QC-Copter/src/reseource/QC-Copter.png
+QC-Copter/src/help/de/HelpInfo_Bild_1.png HelpInfo_Bild_2.png
+QC-Copter/src/help/en/HelpInfo_Image_1.png HelpInfo_Image_2.png
+NMEA-Adapter/src/reseource/NMEA-Adapter.png
+NMEA-Adapter/src/help/de/HelpInfo_Bild_1.png
+NMEA-Adapter/src/help/en/HelpInfo_Image_1.png
+
+
+The following pictures are provided by extern company and does not underlay GPL3
+FlightRecorder/src/resoiurce/FlightRecorder.png provided by MULTIPLEX Modellsport GmbH & Co. KG

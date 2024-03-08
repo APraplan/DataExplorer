@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - ZeroAdapter</TITLE>
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>ZeroAdapter</I></FONT></FONT></H2>
+</DIV>
+<P>
+The ability to import and evaluate CSV files following the "LogView OpenFormat Zero" is provided by the ZeroAdapter.</P>
+<P>
+Presumably the name ZeroAdapter will not fit the project. 
+Nevertheless, you should read in your CSV files, any file extension, once with the ZeroAdapter. 
+This will set up a device configuration file according to the configuration in the file, matching the data. 
+Now you can quit the program DataExplorer to make further adjustments to your project.
+</P>
+<P>
+Only now you should change the name of the device configuration to match the project. 
+The ZeroAdapter.xml file is located in the folder where the program settings are stored.
+<ul>
+<li>Windows: %APPDATA%\DataExplorer\Devices
+<li>GNU/Linux: /home/Benutzer/.DataExplorer/Devices
+<li>Mac OS X: /Users/Benutzer/Library/Application Support/DataExplore/Devices
+</ul>
+The ZeroAdapter.xml file is renamed to MyZeroDevice.xml if "MyZeroDevice" is the device name to be used for file import and as storage directory. 
+As an example of meaningful changes in the file should serve the following picture:
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1">
+</P>
+<P>
+The places where an adjustment makes sense are highlighted. The device name must match the name of the XML file.
+</P>
+<P>
+If the name of the device, here "MyZeroDevice", is changed, this name will later be displayed in the device selection.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="HelpInfo_Image_2" ALT="HelpInfo_Image_2">
+</P>
+<P>
+If you want to see your own icon when selecting a device, an image file of 235x165 pixels can be copied directly into the folder in which the device configuration file is located.
+Do not forget to adapt the icon file name in device XML.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3.png" NAME="HelpInfo_Image_3" ALT="HelpInfo_Image_3">
+</P>
+<P>
+The device dialog will also follow the naming. 
+The dialog shown serves to configure the display of the data imported. 
+The measurement names, measurement symbols and measurement units could be adapted. 
+But that does not make sense, since these names are given by the configuration within the log file. 
+Only supplements could be made. 
+Are measurement available, such as longitude and latitude, and you do not want to show them in the graph, they can be deselected by the leftmost switch. 
+Unselected measurements then temporarily do not appear in the graphic display. 
+On the other hand, if curves are hidden by missing data, this can be checked by double selection.
+</BR>
+Via a file selection dialog, accessible via "import file", new files can also be imported.
+</BR>
+Curves that contain no meaningful data are automatically hidden.
+</BR>
+While existing GPS coordinates additional export options get displaed. 
+So as example as Google Earth files (KMZ), or KML can be displayed directly in Google-Earth application. 
+For further description see <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_4.png" NAME="HelpInfo_Image_4" ALT="HelpInfo_Image_4"></P>
+<P>
+On the right side of the display configuration is an additional switch that allows semi-automatic synchronization of the scales. 
+If you select here, the measurement name first 4 characters and unit match is checked. 
+While a match is detected, the appropriate property is used in the device configuration file for the measured values. 
+Synchronization reference always to the first measurement match in the list of measurements as ordinal.
+This ordinal value get displayed next to the check box to help identifying the measurement which get referenced.
+This measurement can not reference to itself and therefore can not be selected.
+If this does not work automatically, there is still the possibility to set this manually via the device configuration editor. 
+Scale synchronization increases the available display area and can directly compare sensor values without using the curve comparison.
+</P>
+<P>
+The device properties editor allows you to configure a scale synchronization for any measurement curve.
+But the whole thing only makes sense if the value ranges match.
+</P>
+<P>
+To see the full possibilities of the DataExplorer with the statistical evaluations refer to
+<A HREF="../../../help/de/HelpInfo_5.html">Window &quot;Statistics&quot;</A>.
+</P>
+<P><B>Hint: </B>It doesn't make sense to change measurement names. Measurement name, unit and symbol comes from the configuration of the data record at the beginning of the Openfromat Zero file. 
+If the device configuration file name (DeviceProperties_Vxy.xsd) changes in a later version of DataExplorer, a backup of all existing device configuration files is created (Devices_Vxy-1) and nothing get lost. 
+By simply changing the version number of the schema reference, you can easily copy device configuration files.
+</BR>
+Descriptions to LogView OpenFormat Zero could be find at Internet.
+</P>
+<P>
+</BODY>
+</HTML>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.graupner.GeniusWizard">GeniusWizard</name>
+        <manufacturer>Graupner</manufacturer>
+        <manufacturerURL>https://www.graupner.com</manufacturerURL>
+        <group>logger</group>
+        <image>GeniusWizard.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+        <UTCdelta>0</UTCdelta>
+    </TimeBase>
+    <DataBlock>
+        <format size="51" formatType="BYTE" inputType="FILE_IO"/>
+        <timeUnit>msec</timeUnit>
+        <preferredDataLocation></preferredDataLocation>
+        <preferredFileExtention>*.log</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="01" name="state_data_recording"/>
+    </State>
+    <Channels>
+        <Channel type="TYPE_CONFIG" name="ESC">
+            <Measurement>
+                <name>voltage</name>
+                <symbol>U</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                 <property description="factor to measurement value" type="Double" value="0.1" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>voltage min</name>
+                <symbol>Umin</symbol>
+                <unit>V</unit>
+                <active>true</active>
+                <property  type="Integer" value="0" name="scale_sync_ref_ordinal"/>
+                <property description="factor to measurement value" type="Double" value="0.1" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current</name>
+                <symbol>I</symbol>
+                <unit>A</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property description="factor to measurement value" type="Double" value="0.1" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>current max</name>
+                <symbol>Amax</symbol>
+                <unit>I</unit>
+                <active>true</active>
+                <property  type="Integer" value="2" name="scale_sync_ref_ordinal"/>
+                <property description="factor to measurement value" type="Double" value="0.1" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute</name>
+                <symbol>rpm</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to measurement value" type="Double" value="10.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>runs_per_minute max</name>
+                <symbol>rpmmax</symbol>
+                <unit>1/min</unit>
+                <active>true</active>
+                <property  type="Integer" value="4" name="scale_sync_ref_ordinal"/>
+                <property description="factor to measurement value" type="Double" value="10.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>capacity</name>
+                <symbol>C</symbol>
+                <unit>mAh</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="false"/>
+                <property description="factor to measurement value" type="Double" value="10.0" name="factor"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature</name>
+                <symbol>T</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property description="reduction of measurement value before apply offset and factor" type="Double" value="20.0" name="reduction"/>
+             </Measurement>
+            <Measurement>
+                <name>temperature_max</name>
+                <symbol>Tmax</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <property  type="Integer" value="8" name="scale_sync_ref_ordinal"/>
+                <property description="reduction of measurement value before apply offset and factor" type="Double" value="20.0" name="reduction"/>
+            </Measurement>
+            <Measurement>
+                <name>temperature M</name>
+                <symbol>TM</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="true" max="true" min="true"/>
+                <property description="reduction of measurement value before apply offset and factor" type="Double" value="20.0" name="reduction"/>
+             </Measurement>
+            <Measurement>
+                <name>temperature M_max</name>
+                <symbol>TMmax</symbol>
+                <unit>°C</unit>
+                <active>true</active>
+                <property  type="Integer" value="10" name="scale_sync_ref_ordinal"/>
+                <property description="reduction of measurement value before apply offset and factor" type="Double" value="20.0" name="reduction"/>
+            </Measurement>
+            <Measurement>
+                <name>throttle</name>
+                <symbol>th</symbol>
+                <unit>%</unit>
+                <active>true</active>
+                <statistics sigma="false" avg="false" max="true" min="true"/>
+                <property description="factor to measurement value" type="Double" value="0.1" name="factor"/>
+            </Measurement>
+        </Channel>
+    </Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+        <property description="UTILITY_GRAPHICS_TAB" value="false" name="utility_garphics_tab"/>
+        <property description="UTILITY_DEVICE_TAB" value="true" name="utility_device_tab"/>
+    </Desktop>
+</DeviceProperties>

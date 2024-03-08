@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="20080223;17323053">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18441860">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Picolario
+	Device Dialog Introduction</I></FONT></FONT></H2>
+</DIV>
+<P>The Picolario device dialog is used to read logged data out of the
+device. For later data visualization adaption the two inner
+tabulators enables data configuration according your needs. Depending
+of the available data the configuration requires more or less
+adaption. For adjustment the following options can be used :</P>
+<UL>
+	<LI><P ALIGN=LEFT>Leave height values untouched</P>
+	<LI><P ALIGN=LEFT>Subtract first height value from subsequent (it's
+	the normal case)</P>
+	<LI><P ALIGN=LEFT>Subtract last height value from preceding (late
+	start of data logging)</P>
+	<LI><P ALIGN=LEFT>Height offset</P>
+	<LI><P ALIGN=LEFT>Slope calculation type</P>
+</UL>
+<P>A lot of hints are available by tool tips of the dialog itself and
+make this help nearly obsolete. The tool tips are visible by hovering
+the mouse over the fields of interest. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Usage</I></FONT></FONT></H2>
+<P>Afterwards the serial communication is configured using the device
+selection dialog and this dialog is opened, the only active button
+„Read number records“ must be pushed to read the actual available
+record number from the device (prerequisite is the Picolario is ready
+to transfer data). A sample result is shown in picture 1. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image 1" ALT="Image 1">
+</P>
+<P>In the second step it is possible to adjust the data configuration
+using one of the inner tabs. The visible tab will be used to
+manipulate data for visualization of the current red data. Normally a
+good choice is what is stored as default. If any further adjustment
+is required it can be done after reading the data. 
+</P>
+<P>As third step each single data set can read one after the other by
+select the record number and push the „Read selected record“. A
+better method is to read all the data in series. Depending the amount
+of data this can take a time. It is possible to display each data set
+in the display right after finishing read operation. To achieve this
+behavior the check box „Display data set right after read finished“
+must be checked. To view and manipulate red data sets it is good to
+set the device dialogs not in application modal mode (application
+preferences). 
+</P>
+<P>An active device dialog is shown in next picture. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="Image 2" ALT="Image 2" >
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>The Configuration Tabulators</I></FONT></FONT></H2>
+<P>As mentioned in the introduction section the visualization of the
+data can be adapted as required. Do the height values require an
+offset of an amount what is not offered be combo selection a manual
+overwriting of the entry is possible. <BR>The slope calculation might
+be performed using different algorithm and time intervals. A linear
+regression results in better smoothed curve, but as drawback a phase
+shift against the height curve can be recognized. This drawback is
+eliminated by using the none linear variant of the regression
+calculation, to simplify it's called „curve“. <BR>To get the
+slope value at a point of interest it is possible to measure it by
+context menu selection Curve Selector -&gt; Height -&gt; Context menu
+-&gt; Point difference. <BR>Mainly two variants of curve adaption
+takes place in the daily usage. This is the reason to have the two
+inner tabulators to adjust the two configuration types independent.
+<BR>To permanent use the other adjusted configuration tab values it
+is possible to shift the data set to use the other configuration tab.
+Therefor simply select the different tab according the channel
+configuration selector (the different one which is displayed in front
+after opening the dialog). The application ask if you really want to
+do this and shows the following message box. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3.png" NAME="Image 3" ALT="Image 3">
+</P>
+<P>If the answer is yes, the data set uses the new configuration
+values of the selected tabs. 
+</P>
+<P><B>Note :</B> After each display configuration change the visual
+data are adapted to be displayed using the new values. If new values
+should be used as defaults for the next data gathering operation the
+configuration adjustment can be made persistent by pushing the
+„Persist settings as defaults“. 
+</P>
+<P>The height can be displayed in feet by adapting the following in
+the Picolario.xml device configuration file from <BR>&lt;Property
+description=&quot;Height calculation Feet to Meter (1852 / 6076)&quot;
+type=&quot;Double&quot; value=&quot;<B>0.304806</B>&quot;
+name=&quot;factor&quot;/&gt; to <BR>&lt;Property description=&quot;Height
+calculation Feet to Meter (1852 / 6076)&quot; type=&quot;Double&quot;
+value=&quot;<B>1.0</B>&quot; name=&quot;factor&quot;/&gt; <BR>and the
+section where the unit is given from <BR>&lt;unit&gt;<B>m</B>&lt;/unit&gt;
+to &lt;unit&gt;<B>feet</B>&lt;/unit&gt;. <BR>The file can be found in
+application configurations directory under ../Devices/Picolario.xml. 
+</P>
+<P>The main sense of the configuration tabs will focus on the statistic data.
+This is the reason the tabs are re-named to "Thermal" and "Motor". 
+Using the motor configuration it is tried to filter the parts where a running motor can be assumed.
+The statistic values focus on the filtered areas (refer to the screen shots as example).
+</P> 
+<P ALIGN=CENTER>
+	<IMG SRC="HelpInfo_Image_4.png" NAME="Image 4" ALT="Image 4 showing a sample statistic of the thermal configuration">
+	<IMG SRC="HelpInfo_Image_5.png" NAME="Image 5" ALT="Image 5 showing a sample statistic of the motor configuration">
+</P> 
+<P> 
+Later it is planned, to enable modification of the values needed for the statistic calculation by the dialog.
+</P>
+</BODY>
+</HTML>

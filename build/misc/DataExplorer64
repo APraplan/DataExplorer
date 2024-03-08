@@ -1,0 +1,9 @@
+#!/bin/bash
+# ***** script to launch DataExplorer ** 22 Nov 2023 WB *****
+#fix Ubuntu Unity problem not displaying sliders set LIBOVERLAY_SCROLLBAR to 0
+#export LIBOVERLAY_SCROLLBAR=0
+
+echo java -jar -Xms64m -Xmx3092m $(dirname $0)/DataExplorer.jar
+echo argument $1
+java -jar -Xms64m -Xmx3092m $(dirname $0)/DataExplorer.jar $1
+

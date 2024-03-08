@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - HoTTAdapter/HoTTAdapter2/HoTTAdapterM/HoTTAdapter2M Ger&auml;tedialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>HoTTAdapter, HoTTAdapter2, HoTTAdapterM, HoTTAdapter2M Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "import HoTT Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+Start/Stop Live-Datenaufnahme &uuml;ber den konfigurierten seriellen Port.
+Die Auswahl der &Uuml;bertragungsgeschwindigkeit legt auch das verwendete Protokoll fest. 
+115200 Baud f&uuml;r die mx-12 (#33112), mx-16 (#33116), mx-20 (#33124), mc-32 (#33032), 19200 Baud für mx-12 (#4754), mx-16 (#4755), mc-19,22,24(#33300 Modul, #33301 Modul, #33302 Modul).
+Das 19200 Baud Protokoll unterst&uuml;tzt alte (legacy V3), sowie neue Firmware V4.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+<P><B>Hinweis: </B>Kurven, die lediglich Nullen als Daten enthalten, werden automatisch ausgeblendet. 
+Durch doppelte Selektion einer nicht sichtbaren Kurve kann man diese Kurve trotzdem sichtbar schalten! 
+</P>
+<P><B>Achtung: </B>Ist der Schalter Kan&auml;le in dem HoTTAdapter Ger&auml;tedialog, oder beim HoTTAdapter2, die Konfiguration Kanäle, gew&auml;hlt werden alle Daten eingelesen, also alle zehn Millisekunden. 
+Dann werden hier Pakete angezeigt und ausgewertet, die Rx/Tx = 0 dBm als Wert haben. 
+Diese Pakete werden als verlorene Pakete vom R&uuml;ckkanal bezeichnet und in der Kurve Rx->Tx-PLoss dargestellt.
+Diese Kurve gibt es beim HoTTAdapter nur in den Empf&auml;ngerdaten. 
+Beim HoTTAdapter2 ist sie immer zu sehen, nur die Rx/Tx-Kurven werden beeinflusst.
+Die verlorenen Pakete werden nur unvollst&auml;ndig &uuml;bertragen und werden normalerweise bei der Auswertung &uuml;bersprungen.
+Kanaldaten sind 16 zus&auml;tzliche Zeitwerte, die bei dieser Konfiguration eingelesen werden, das Einlesen dauert hier auch entsprechend l&auml;nger.
+</P>
+<P><B>Tipp: </B>Da der HoTTAdapter GPS-Daten anzeigt und verarbeitet, k&ouml;nnen diese auch als Google Earth-Dateien (KMZ) exportiert bzw. direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+Mit dem HoTTAdapter2 werden alle empfangenen Messwerte auf einer Zeitachse dargestellt. 
+Es gibt verschiedene Anwenderkonfigurationen, mit unterschiedlichen statistischen Auswertungen der eventuell vorhandenen Motorlaufzeit und dadurch entstehender Kapazitätsverbrauch.
+</P>
+<P>&Uuml;ber den Tabulator Dateitransfer ist das transferieren von Dateien über die serielle Verbindung mit dem Sender und deren SD-Karte m&ouml;glich.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2">
+</P>
+<UL>
+<LI>rot: zeigt, dass beim Sichern der aktuellen Modellkonfigurationen direkt aus dem Senderspeicher unter dem selektierten Zielordner ein backup_<sender-typ>-Ordner angelegt wird, um die Dateien dort abzulegen.</LI>
+<LI>blau: &uuml;ber das Kontextmeü k&ouml;nnen Modellkonfigurationen für andere Zielsender konvertiert werden. 
+Hierbei ist aber immer darauf zu achten, dass die Konfiguration auf dem Zielsender genaustens &uuml;berpr&uuml;ft wird. 
+Einige Funktionen können auf Grund fehlender Geber, geringerer Anzahl von Kurvenpunkten oder Flugphasen auf dem Zielsender nicht unterstützt sein. 
+Es wird der Sendertyp erkannt und die m&ouml;glichen Konvertierungen angeboten.</LI>
+<LI>gr&uuml;n: je nachdem wo Dateien selektiert werden, passt sich der Dateitransferknopf an und kann den Transfer ausl&ouml;sen.
+Hierbei ist daran zu denken, dass es sich um eine serielle Verbindung handelt und der Transfer f&uuml;r gro&szlig;e Dateien entsprechend lange dauert.</LI>
+</UL>
+
+<P><B>Hinweis: </B>Serielle Kommunikation mit dem Sender und deren SD-Karte ist nur mit Sendern unterstützt, die 115200 Baud verwenden! 
+Es ist aus Zeitgr&uuml;nden nicht empfehlenswert, gro&szlig;e Dateien auf diesem Weg zu &uuml;bertragen.
+Durch die langsame &Uuml;bertragung wird doch einige Zeit dafür verbraucht, der Sender k&ouml;nnte wegen zu geringer Spannung abschalten.
+</P>
+<P><B>Hinweis: </B>Mikrokopter-GPS-Daten werden in Dezimalgrad abgelegt (Einheit von Breitengrad und L&auml;ngengrad in [°])! 
+Zur Anzeige von Mikrokopter Daten gibt es die HoTTAdapter mit angehängtem 'M', wie Mikrokopter.
+</P>
+</P>
+<P><B>Hinweis: </B>Verlorene Rückkanalpakete Rx->Tx = (8978) 8559 ~2.3 % (min=0.01 sec; max=0.09 sec; avg=0.01 sec; sigma=0.00 sec) Bedeutung:
+Der erste Wert in Klammern ist die Gesamtanzahl der verlorenen Rückkanalpakete des Logs.
+Die zweite Zahl sind die Verlorenen Pakete vor dem Ausschalten des Empfängers mit nachfolgendem Prozentwert und Statistik.
+</P>
+</BODY>
+</HTML>

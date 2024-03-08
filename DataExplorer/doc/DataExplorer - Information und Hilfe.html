@@ -1,0 +1,1621 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Benuterhandbuch</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<H0>DataExplorer - Benuterhandbuch</H0>
+<H1><A CLASS="an" NAME="introduction"></A>Einleitung</H1>
+<P>Der GNU DataExplorer ist ein Werkzeug zum Aufnehmen, Betrachten und Auswerten von Daten aus Geräten,
+die es erlauben Daten entweder über eine serielle Schnittstelle auszulesen oder ihre Daten auf andere 
+Weise zugänglich machen (CSV-Datei, USB Anschluss). 
+Der GNU DataExplorer ist unter vielen Betriebssystemen mit 32 und 64 Bit lauffähig (GNU/Linux, Windows, Mac OS). 
+Sprachenunterstützung ist vorhanden, wobei aktuell Deutsch und Englisch vorhanden sind.
+</P>
+<P>Ein wesentlicher Aspekt für die Entwicklung war der
+systemübergreifende Gedanke. Für nicht Windowsbenutzer soll eine
+ähnliche Funktionalität zur Verfügung gestellt werden, wie es LogView
+für Windowsbenutzer heute schon bietet. Deshalb basiert die
+Implementierung auf Java unter Verwendung der freien jSerialComm/RXTXcomm
+Bibliothek, für die serielle Anbindung und der eclipse SWT Bibliothek
+für die Benutzeroberfläche. Für beide Basisbibliotheken gibt es die
+native Anbindung für Windows, GNU/Linux und Mac OS. Entwickelt wird mit
+einer frei verfügbaren eclipse IDE (integrated development environment)
+und einer Java 6 runtime.</P>
+<P>Wie sind die seriellen Ports auf den verschiedenen
+Betriebssystemen benannt: </BR>
+<IMG SRC="../src/help/de/images/SerialPortAssignements.jpg"></P>
+</BR>
+<H2>Warum freie Software unter der GPL</H2>
+<P>Im wesentlichen gibt es dafür zwei Gründe. 
+Erstmal wird der Gedanke freier Software weitergetragen. 
+Für den GNU DataExplorer sind die Schnittstellen für eine Geräteanbindung und das Datenmodell frei zugänglich. 
+Das ermöglicht Eingriffe in den Anwendungskerncode, um Fehler zu beseitigen oder Funktionserweiterungen einzubringen. 
+Es wird möglich weitere Geräte anzubinden, die mir selbst nicht zur Verfügung stehen. 
+</BR>
+Die gerätespezifischen Komponenten sind als Module extra gehalten und
+werden zu Laufzeit des Programms dynamisch geladen (plug-in). Das
+ermöglicht eine Implementierung der Gerätefunktionalität unabhängig von
+der Kernkomponente. Es gibt offene Beispielimplementierungen an die man
+sich halten kann. Um ein Gerät in die Anwendung einzubinden erfordert
+etwa drei Dinge: das Gerät selbst, Erfahrung mit deren Gebrauch und die
+Spezifikation der Schnittstellenkommunikation (und natürlich
+Programmierkenntnisse).</P>
+</BR>
+<H2>Ein paar Worte zu Java</H2>
+<P>Dadurch, dass ein Javaprogramm in einer eigens dafür gestarteten
+"Virtual Machine" (VM) läuft, ist die Laufzeitumgebung in erster
+Näherung auf allen Systemplattformen gleich. Deshalb kann ein
+Javaprogramm fast überall laufen. Die VM bestimmt auch den zur Verfügung
+gestellten Speicher. Anders als z.B. ein in C geschriebenes Programm
+kann ein Javaprogramm nur auf den Speicher zurückgreifen, der beim Start
+der VM angegeben wurde. Das bedeutet, dass einem Javaprogramm, immer
+beim Starten den Speicherverbrauchsrahmen mitgegeben werden muss
+(-Xms/-Xmx). Gibt man hier nichts an, ist ein maximaler Wert von 128
+MByte eingestellt. Nun hört sich VM, wie ein eigenes System an, aus dem
+man nicht ausbrechen kann. Wäre dem so, gäbe es keine serielle
+Kommunikation und keine Grafikbibliothek, zum flotten Anzeigen. Früher
+war dem auch so, deshalb eilt einem Javaprogramm auch immer der Ruf
+voraus, dass Javaprogramme langsam sind. Durch die "just in time" (JIT)
+Übersetzung beim Start ist dieses Manko schon lange ausgeglichen.
+Javaprogramme stehen anderen direkt in Maschinensprache übersetzten
+Programmen in nichts nach. Durch das "Java Native Interface" kann man
+sozusagen in Java auf die Hardware durchgreifen. Hier sind es dann meist
+auch C-Programme, die hier angesprochen werden. Das ist bei dem
+verwendeten jSerialComm/RXTXcomm und beim SWT der Fall. </BR>
+Wie man sieht bekommt man mit der Programmiersprache Java,
+beziehungsweise der Laufzeitumgebung, eine unglaubliche Anzahl von
+Bibliotheken zur Verfügung gestellt. Des weiteren gibt es unter der GPL
+Lizenz bereitgestellte Bibliotheken, die auch in kommerziellen
+Anwendungen verwendet werden dürfen.</P>
+<H2><A NAME="directories"></A>Verwendete Verzeichnisse</H2>
+<P><B>Hinweis: </B>Bitte verwenden Sie keinen Installationspfad der Umlaute enthält. 
+Java arbeitet mit dem UTF-8 Zeichensatz, beim &Uuml;bersetzen eines Umlautes entstehen kryptische Zeichen, was dann zu Fehlverhalten f&uuml;hrt.
+</P>
+<P>Welche Verzeichnisse bei der Installation verwendet und angelegt werden ist in der README Datei beschrieben. 
+Hier soll es viel mehr um die Verzeichnisse gehen, die das Programm zum Ablegen von Einstellungen, Grafikvorlagen und Tracelogdateien benutzt.</P>
+<P>Als Basisverzeichnis benutzt das Programm</P>
+<UL>
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Windows&nbsp;:&nbsp;%APPDATA%\Benutzer\DataExplorer
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;GNU/Linux&nbsp;:&nbsp;/home/Benutzer/.DataExplorer
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;MAC OS&nbsp;:&nbsp;/Users/Benutzer/Library/Application Support/DataExplorer
+</UL>
+<P>Hier werden die Verzeichnisse</P>
+<UL>
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Devices&nbsp;:&nbsp;f&uuml;r die
+	Ger&auml;tekonfigurationsdateien (XML) und Ger&auml;tebildchen
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;GraphicsTemplates:&nbsp;f&uuml;r die vom Benutzer erzeugten
+	Konfigurationsdateien, welche Kurve sichtbar mit welcher Farbe, ...
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Logs&nbsp;:&nbsp;f&uuml;r die Tracelogdateien die das Programm
+	schreiben kann, nicht zu verwechseln mit den
+	Ger&auml;tedatenaufzeichnungen
+</UL>
+<P>angelegt. Das soll als &Uuml;bersicht reichen. Sp&auml;ter im
+Text wird dann noch genauer auf den Inhalt der Verzeichnisse
+eingegangen.</P>
+<P>Wie sind die Daten organisiert, die die eigentlichen Messwerte enth&auml;lt.
+Es muss ein Stammordner ausgewählt werden (siehe <A href=HelpInfo1.html>Einstellungsdialog</A>), darunter werden für jedes benutzte Ger&auml;t, Ordner angelegt. 
+Die Ger&auml;teordner entsprechen dem ausgew&auml;ltem Ger&auml;tenamen. Zus&auml;tzlich werden Ordner für jedes angelegte Objekt angelegt. 
+Beim sichern einer Datendatein wird ein Dateiname entsprechend der Konfiguration im <A href=HelpInfo1.html>Einstellungsdialog</A> vorgeschlagen.
+Als Beispiel Datum_Objektname.osd. Hat nun die angezeigte Datenaufnahme einen Bezug zu einem Objekt, ein Objekt ist beim sichern angelegt und ausgewählt, 
+wird zus&auml;tzlich zur Datendatei im Ger&auml;teordner ein Dateilink in dem Objektordner abgelegt. 
+Dateilinks brauchen nur sehr wenig Platz, da sie ja nur einen Verweis auf eine andere Datei darstellen. 
+Es gibt keine Duplizierung von Datendateien. 
+Mit der Verwendung von Objekten sieht man beim öffnen einer Datei nur die objektbezogenen Dateien. 
+Dadurch kann man beispielsweise leicht erkennen, wann der Akku des Objektes XY das letzte mal geladen wurde.
+Beispielhaft soll hier mal ein kleiner Ordnerstrukturausschnitt dargestellt werden:
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DataDirectoryStructure.png"	NAME="Data directory structure" ALIGN=MIDDLE></P>
+<P><B>Hinweis: </B>Da Dateilinks betriebssystemspezifisch sind gibt es die M&ouml;glichkeit die Dateilinks zu entfernen und neu zu erstellen (siehe <A href=HelpInfo1.html>Einstellungsdialog</A>). 
+Dadurch ist ein Umzug der Daten auf ein anderes Betriebssysteme ein Kinderspiel.
+</P>
+<H2><A NAME="main_window"></A>Das Anwendungsfenster</H2>
+<P>In der Titelleiste der Anwendung werden neben dem Namen der
+Anwendung das aktuelle Ger&auml;t und die momentan verwendete Kommunikations-Schnittstelle angezeigt. Wie die meisten
+fensterbasierten Programme steht eine Men&uuml;bar und eine Toolbar zur
+Bedienung bereit. Der mittlere Bereich stellt in Tabulatorform die
+Fenster dar, die die eingelesenen Daten aufbereitet anzeigen. Die
+graphische Ansicht, die die Daten in Kurvenform darstellt ist die
+eigentliche Hauptansicht. Die meisten anderen Fenster stellen nur
+Detailansichten der Daten dar.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/ApplicationMainWindow.png"	NAME="graphics1" ALIGN=MIDDLE></P>
+<P>Ganz unten befindet sich eine Statusbar. Hier werden der Zustand
+der Kommunikationsschnittstelle, in diesem Fall die seriellen Schnittstelle, offen, geschlossen, sendend und empfangend,
+angezeigt. Daneben befindet sich eine Fortschrittsanzeige, die bei
+aufwendigen Datenoperationen den Fortschritt der Operation anzeigt. In
+dem Bereich links neben der Fortschrittsanzeige werden Statusmeldungen
+angezeigt. Das k&ouml;nnen Warnungen oder auch Messwerte sein, die beim
+Vermessen der Kurven entstehen.</P>
+<H1><A NAME="settings"></A>Der Einstellungsdialog</H1>
+<P>Der Einstellungsdialog dient zum Einstellen:
+<UL>
+	<LI>des Datenpfades, das Verzeichnis unter dem die
+	ger&auml;tespezifischen Logdatendateien abgelegt werden sollen, hier
+	sucht das Programm entsprechend dem eingestellten Ger&auml;t die
+	Datendateien, sowie die Objektdatendateilinks.</LI>
+	<LI>der Dateisicherungsdialog kann als Anfangsdateiname das
+	aktuelle Datum und/oder einen Objektschl&uuml;ssel vorschlagen. Das erleichtert die Auffindbarkeit von Dateien.</LI>
+	<LI>Verhalten der Ger&auml;tedialoge: Ein programmmodales
+	Verhalten ist manchmal unpraktisch, wenn man parallel zu einer
+	Datensammelaktion Einstellungen vornehmen m&ouml;chte.</LI>
+	<LI>des Dezimalseparator- und Listenseparator-Zeichens, anders als
+	durch die Systemlokalen vorgegeben kann man hier Einstellungen
+	vornehmen um mit eventuell verwendeten Tabellenkalkulationsprogrammen
+	eine Zusammenarbeiten herzustellen. Diese Einstellung wirkt sich auch
+	auf den Export, bzw. Import von CSV Dateien, nicht aber die durch den <A HREF="HelpInfo_C.html">CSV2SerialAdapter Datenformat</A> ausgewerteten, aus.</LI>
+<P align=center><IMG SRC="../src/help/de/images/Settingsdialog_1.png" NAME="graphics 1" ALIGN=CENTER></P>
+	<LI>mit Black-List- bzw. White-List- Einstellungen kann man sein pers&ouml;nliches System, in Bezug auf problematisch Ports, konfigurieren.
+	Diese Einstellungen gelten dann auch für den Ger&auml;teauswahldialog.
+	Die Ausschlussliste ignoriert darin angegebene Ports, w&auml;hrend die Exklusivliste die aufgelisteten Ports ausschlie&szlig;lich anspricht.
+	Hier kann es aber, bei wechselnden Ports durch "Plug And Play" dazu kommen, dass die konfigurierten Ports nicht mehr in der Auswahl erscheinen, da sie vom System automatisch umkonfiguriert wurden.
+	</LI>
+	<LI>wird ein globaler serieller Port ausgew&auml;hlt sucht der Dialog automatisch nach
+	verf&uuml;gbaren seriellen Anschl&uuml;ssen und blendet das Ergebnis
+	m&ouml;glicherweise etwas zeitverz&ouml;gert ein. Diese
+	Zeitverz&ouml;gerung kann man auf langsamen Windows basierten Systemen
+	reduzieren, in dem man die Verf&uuml;gbarkeitsabfrage abschaltet. Dann
+	werden belegte Ports halt auch angezeigt und k&ouml;nnen eventuell
+	sp&auml;ter nicht benutzt werden. Der serielle Port kann daf&uuml;r
+	aber f&uuml;r das Ger&auml;t gesichert werden. Auf UNIX basierten
+	Systemen spielt das, zeitlich gesehen, keinen Rolle. Diese Einstellung
+	wirkt sich auch auf den Ger&auml;teauswahldialog aus, der seinerseits
+	auch nach verf&uuml;gbaren serielle Ports sucht.
+	</BR><B>Hinweis: </B>Bei Windows werden Bluetooth-Ports ausgeblendet, es kommt hier mit dem verwendeten RXTXcomm Paket zu Funktionseinschr&auml;nkungen!</LI>
+	<LI>wenn es systemweit nur einen seriellen Anschluss (Port) gibt,
+	kann man hier die globale Einstellung vornehmen, meist sucht sich das
+	Programm aber selbst den seriellen Port zur Ger&auml;tekommunikation.
+	Der Dialog sucht beim &Ouml;ffnen nach seriellen Anschl&uuml;ssen und
+	blendet das Ergebnis m&ouml;glicherweise etwas zeitverz&ouml;gert ein.
+	Diese Einstellung wirkt sich auch auf den Ger&auml;teauswahldialog aus,
+	der dann die Portauswahl sperrt.</LI>
+</UL>
+</P>
+</P>
+<P>Über den Tabulator für Verschiedenes kann man das Desktop-Starter-Icon erneut erstellen, bzw. entfernen.
+Ebenso kann hier die DataExplorer MIME Typ Assoziation zu den Dateiendungen *.osd und *.lov registriert, bzw. entfernt werden.
+Leider ist das f&uuml;r MAC OS zur Zeit nicht unterst&uuml;tzt.
+</P>
+<P align=center><IMG SRC="../src/help/de/images/Settingsdialog_3.png" NAME="graphics 3" ALIGN=CENTER></P>
+<P>Die Taste "Erstelle Linkdateien" erzeugt von allen OSD Dateien die dazugehörigen, fehlenden Objektverzeichnisse.
+Die Taste "L&ouml;sche Linkdateien" löscht alle Linkdateien in den Objektverzeichnissen.
+Nicht verändert werden dabei die Dateien, die die Objektbeschreibung enthält. 
+Beide Funktionen sind sehr praktisch, wenn man Anwendungsdateien auf eine andere Ausf&uuml;hrungsplattform umziehen oder sichern möchte.</P>
+<P>Über den Analyse Tabulator erreicht man Einstellmöglichkeiten für
+eine Fehleranalyse. Nach einem Programmabsturz sollte in einer trace.log
+Datei eine m&ouml;gliche Erkl&auml;rung zu finden sein. Achtung, alle
+Verstellungen der Loglevel haben einen Einfluss auf die Laufzeit und das
+kann zu nicht absehbaren Nebeneffekten f&uuml;hren. Alle Einstellungen
+sollten mit diesem Wissen vorgenommen werden. Die Werte sind
+entsprechend der Informationsf&uuml;lle gestaffelt, 
+<UL>
+	<LI>SEVERE schreibt nur Programmfehler,
+	<LI>WARNING schreibt Fehler und Warnungen,(ist die Normaleinstellung)
+	<LI>TIME schreibt Fehler, Warnungen und Ausf&uuml;hrungszeiten
+	<LI>INFO schreibt Fehler, Warnungen, Zeit und Informationen 
+	<LI>FINE schreibt Fehler, Warnungen, Zeit, Informationen und Logs des Levels FINE
+	<LI>FINER schreibt noch mehr als FINE
+	<LI>FINEST schreibt noch mehr als FINER
+</UL>
+</P>
+<P>Der untere Abschnitt erm&ouml;glicht die Einstellung der Loglevel auf bestimmte Bereiche oder klassenbasiert. 
+Ohne besonderen Grund sollte man auch hier nicht unbedingt &uuml;ber den Level FINE einstellen, sonst werden die Logdaten un&uuml;bersichtlich.</P>
+<UL>
+	<LI>die globale Einstellung des &quot;trace log&quot; Levels, im
+	Normalfall ist das WARNING
+	<LI>grafische Oberfl&auml;che, hiermit sind alle Programmteile
+	eingeschlossen, die mit den Hauptfenstern des Programms zu tun haben
+	<LI>Ger&auml;te, hiermit sind alle Programmteile gemeint, die
+	&uuml;ber den Ger&auml;tedialog angesprochen werden
+	<LI>Datenmodell, beschreibt den Anteil den Programmcodes, der mit
+	der internen Datenstruktur zu tun hat
+	<LI>allgemeine Funktionen sind die Programmteile die &uuml;berall
+	verwendet werden k&ouml;nnen, also Hilfsfunktionen um Kurven zu
+	zeichnen, wie die Berechnung einer Checksumme oder die
+	Skalierungsteilung von Skalen
+	<LI>f&uuml;r die serielle Schnittstelle, &uuml;ber dem Level INFO,
+	wird ein Memorylogger verwendet, der den geringsten Laufzeiteinfluss
+	hat. Logischerweise steigt dadurch der Speicherverbrauch der Anwendung.
+	Im Bedarfsfall kann das Programm dann etwa mit &quot;java -jar -Xmx512m
+	DataExplorer.jar&quot; gestartet werden, wobei der maximale
+	Speicherverbrauch der Java Virtual Machine auf 512 Megabyte begrenzt
+	ist.
+</UL>
+<P align=center><IMG SRC="../src/help/de/images/Settingsdialog_2.png" NAME="graphics 2" ALIGN=CENTER>
+</P>
+<P>Der klassenbasierte Loglevel erlaubt den logging Level auf ausgew&auml;hlte Klassen zu reduzieren. 
+Hierdurch wir die Ausgabe &uuml;bersichtlicher und erlaubt die Analyse weiter einzuschr&auml;nken.
+Die Selektion des Loglevels wir über ein Kontextmen&uuml; erreicht.
+Erst durch schließen des Dialogs wird die Einstellung wirksam.
+</P>
+<P>In jedem Fall werden immer nur drei Tracelogdateien mit einigen
+Megabyte Gr&ouml;&szlig;e geschrieben. Die Dateien &uuml;berschreiben
+sich dann immer wieder selbst.</P>
+<P><B>Hinweis: </B>Im Fehlerfall immer mal wieder einen Blick in das
+Logs Verzeichnis werfen, hier k&ouml;nnen wertvolle Hinweise zu f&uuml;r
+die Fehleranalyse zu finden sein (siehe <A HREF="HelpInfo_01.html">Verwendete Verzeichnisse</A>).</P>
+<H1><A NAME="device_selection"></A>Der Ger&auml;teauswahldialog</H1>
+<P>Mit dem Ger&auml;teauswahldialog k&ouml;nnen die Ger&auml;te
+ausgew&auml;hlt werden, die der Anwendung zur Verf&uuml;gung stehen
+sollen. In dieser Ansicht findet man alle Ger&auml;te, die eine
+Ger&auml;tekonfigurationsdatei im &quot;Devices&quot; Verzeichnis
+abgelegt haben.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceSelectionDialog_1.png" NAME="graphics1" ALIGN=MIDDLE></P>
+<P>Die eigentliche Auswahl des aktiven Ger&auml;tes passiert
+allerdings auf dem &quot;Einstellungen&quot; Tabulator oder durch die Ger&auml;teanwahl in der Men&uuml;bar oder Toolbar.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceSelectionDialog_2.png" NAME="graphics2" ALIGN=MIDDLE></P>
+<P>Die Auswahl des aktiven Ger&auml;tes kann durch Selektion, direkt
+&uuml;ber der Miniaturansicht geschehen oder durch den Schieber rechts
+daneben. Das Bild des gerade angew&auml;hlten Ger&auml;tes wird
+angezeigt. Als Zusatzinformationen wird neben dem Bildchen der Name des
+Ger&auml;tes und Herstellerinformationen angezeigt. Direkt unter den
+Ger&auml;teinformationen befinden sich zwei Schalter um ein
+ger&auml;tespezifisches Verhalten bez&uuml;glich des seriellen Ports und
+der Ger&auml;te-Dialog einzustellen.</P>
+<P><B>Hinweis: </B>Das aktive Ger&auml;t kann auch &uuml;ber die
+Men&uuml;bar oder Toolbar gewechselt werden.</P>
+<P>Unter dem aktuell gew&auml;hlten Ger&auml;t wir der Kommunikationsport
+ausgew&auml;hlt. Ist nur ein serieller Port am System verf&uuml;gbar,
+w&auml;hlt die Anwendung selbstst&auml;ndig den seriellen Port. Die
+Bilder zeigen eine Portauswahl unter Windows mit COM4 und einmal unter
+GNU/Linux mit einem USB zu Seriell Adapter als /dev/ttyUSB0.</P>
+<P ALIGN=CENTER>
+<IMG SRC="../src/help/de/images/DeviceSelectionDialogWindows_3.png" NAME="graphics3" ALIGN=BOTTOM>
+<IMG SRC="../src/help/de/images/DeviceSelectionDialogLinux_3.png" NAME="graphics4" ALIGN=BOTTOM></P>
+<P><A NAME="device_selection_desktop"></A>Durch den nachfolgenden Bereich des Dialoges kann bestimmt werden
+ob die Tabulatoren mit ihren Inhalten angezeigt werden.
+Bei langsamen System kann hier das Laufzeitverhalten der Anwendung beeinflusst werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceSelectionDialog_4.png" NAME="graphics4" ALIGN=MIDDLE></P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceSelectionDialog_4a.png" NAME="graphics4a" ALIGN=MIDDLE></P>
+<P>Die mittleren Schalter, Digital und Analog, sind vor allem
+f&uuml;r eine Live-Anzeige von Daten w&auml;hrend einer Messung
+vorgesehen und machen bei vielen Ger&auml;ten wenig Sinn. Bietet ein
+angeschlossenes Ger&auml;t keine Live-Datenabfrage werden hier nur die
+Endwerte einer Kurve angezeigt. Eine bemerkbare Zeiteinsparung bei der
+Berechnung der Daten ist hier allerdings nicht gegeben, da ja nur
+Einzelwerte angezeigt werden. 
+Im unteren Bereich sind die Einstellungen Ger&auml;tespezifisch und nicht &uuml;ber diesen Dialog einstellbar.
+Hier muss die Ger&auml;tekonfigurationsdatei bearbeitet werden.
+Beispielhaft die Ansicht der Spannung pro Akkuzelle ist
+auch einen Live-Anzeige und stellt die einzelnen Zellen als
+Balkendiagramm dar. Das gilt aber nur f&uuml;r Ger&auml;te die diese
+Messwerte auch hergeben, also einige Ladeger&auml;te f&uuml;r LiPo Akkus
+oder Balancer.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceSelectionDialog_5.png" NAME="graphics6" ALIGN=MIDDLE></P>
+<P>Im unteren Bereich des Dialoges werden noch die f&uuml;r das
+Ger&auml;t verwendeten Einstellungen des seriellen Ports angezeigt. Eine
+Ver&auml;nderung ist nicht vorgesehen kann aber durch Ver&auml;ndern der
+Ger&auml;tekonfigurationsdatei erreicht werden.</P>
+<H1><A NAME="menue_bar"></A>Men&uuml;- und Tool- Bar</H1>
+<P>Die Men&uuml;bar stellt alle notwendigen Standardelemente zur
+Verf&uuml;gung, um die Anwendung zu steuern. Die Toolbar stellt mit
+Piktogrammen versehene Steuerelemente bereit, die am h&auml;ufigsten
+verwendet werden.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Menuebar_1.png" NAME="graphics1" ALIGN=MIDDLE></P>
+<H2><A NAME="menue_file"></A>&quot;Datei&quot; Men&uuml;</H2>
+<P>Von dem Datei-Men&uuml; aus werden alle Aktionen ausgef&uuml;hrt,
+die eine Datei als Grundlage haben
+<IMG SRC="../src/help/de/images/Menuebar_File.png" NAME="graphics2" ALIGN=RIGHT >
+</P>
+<UL>
+	<LI>&quot;Neu&quot;
+	initialisiert die Anwendung f&uuml;r das eingestellte Ger&auml;t, sind
+	ungesicherte Daten vorhanden wird vor der neuen Initialisierung
+	nachgefragt
+	<LI>&quot;&Ouml;ffnen&quot; &ouml;ffnet einen Dateiauswahldialog
+	um eine Datei, die geladen werden soll auszuw&auml;hlen, unterst&uuml;tzte Datenformate kann man an gewohnter Stelle ausw&auml;hlen, 
+	eventuell wird dabei das Ger&auml;t gewechselt, wenn eine Datei einem anderem Ger&auml;t zugeordnet ist als das momentan aktive
+	<LI>&quot;Speichern&quot; sichert die aktuellen Daten mit dem
+	Bearbeitungsstand, ist noch kein Dateiname vergeben wird nachgefragt,
+	bzw. ein Dateisicherungsdialog ge&ouml;ffnet
+	<LI>&quot;Speichern unter..&quot; &ouml;ffnet ein
+	Dateisicherungsdialog, um die aktuellen Daten unter einem neuen Namen
+	zu sichern
+	<LI>&quot;Historie&quot; zeigt eine Liste der zehn zuletzt
+	ge&ouml;ffneten Dateien, eine Selektion f&uuml;hrt zum Laden der Datei
+	<LI>&quot;Import&quot; bietet die M&ouml;glichkeit &quot;Comma
+	Separated Values&quot; (CSV) Dateien in bearbeiteter Form oder mit
+	Rohdaten zu laden, bitte nicht mit den CSV Daten verwechseln, die durch den <A HREF="HelpInfo_C.html">CSV2SerialAdapter</A> oder abgeleiteten Ger&auml;ten als initialer Ger&auml;tedatenimport eingelesen werden.
+	<LI>&quot;Export&quot; bietet die M&ouml;glichkeit &quot;Comma
+	Separated Values&quot; (CSV) Dateien in bearbeiteter Form oder mit
+	Rohdaten zu sichern. Die Umkehrung, vom darüber beschriebenen Import. 
+	Die Abbildung zeigt beide Varianten als Gegen&uuml;berstellung
+	<P>
+		<IMG SRC="../src/help/de/images/CSV_absolute_sample.png" NAME="CSV_absolute_sample">
+		<IMG SRC="../src/help/de/images/CSV_raw_sample.png" NAME="CSV_raw_sample">	
+	</P>
+	Zus&auml;tzlich gibt es in Abh&auml;ngigkeit des Ger&auml;tes erweiterte Exportm&ouml;glichkeiten, als Beispiel seien hier KML Dateien des Google Earth Formates aufgef&uuml;hrt. 
+	<LI>&quot;Einstellungen&quot; &ouml;ffnet den Einstellungsdialog,
+	um anwendungsweite Einstellungen vorzunehmen
+	<LI>&quot;Drucken&quot; &ouml;ffnet den Druckkonfigurationsdialog
+	<LI>&quot;Exit&quot; beendet die Anwendung (Beim Beenden der Anwendung werden tempor&auml;re Dateien ebenfalls gel&ouml;scht.)
+</UL>
+<P>Die Funktionen aus dem dateiorientierten Bereich sind auch
+&uuml;ber die Toolbar erreichbar.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_File.png" NAME="graphics3" ALIGN=MIDDLE></P>
+<H2><A NAME="menue_edit"></A>&quot;Bearbeiten&quot; Men&uuml;</H2>
+<P>&Uuml;ber dieses Men&uuml; kann der Inhalt vom Grafikfenster
+vergr&ouml;&szlig;ert und verschoben werden. Ebenso sind die wichtigsten Kopieroperationen in die Zwischenablage hier hinterlegt.
+<IMG SRC="../src/help/de/images/Menuebar_Edit.png" NAME="graphics1" ALIGN=RIGHT>
+</P>
+<UL>
+	<LI>&quot;Zoom
+	Grafikfenster aktivieren&quot;, aktiviert die M&ouml;glichkeit die
+	Kurven zu vergr&ouml;&szlig;ern, um Details anzusehen oder zu vermessen	
+	<LI>&quot;Zoom Grafikfenster zur&uuml;cksetzen&quot; setzt den
+	Inhalt des Grafikfensters auf die Ursprungsgr&ouml;&szlig;e zur&uuml;ck
+	<LI>&quot;Inhalt Grafikfenster verschieben&quot; hiermit kann ein
+	vergr&ouml;&szlig;erter Grafikbereich verschoben werden falls die
+	Zoomoperation den interessanten Punkt aus dem Fenster verschoben hat
+	<LI>&quot;Kopiere Tabulatorinhalt&quot; kopiert den gesamten angezeigten Inhalt des sichtbaren Tabulators in die Zwischenablage. 
+	Ist z.B. die Objektcharakteristik sichtbar, dann die Objektcharakteristik, u.s.w.
+	<LI>&quot;Kopiere Grafikdruckbild&quot; kopiert, wenn die Kurvengrafik oder Kurvenvergleichsgrafik sichtbar ist den Grafikinhalt so, wie er gedruckt werden würde, in die Zwischenablage.
+</UL>
+<P><B>Hinweis : </B>Kopieren und &Auml;ndern der Hintergrundfarbe ist f&uuml;r die meisten Fenster über das Tabulatorfenster eigene Kontextmen&uuml; m&ouml;glich (rechte Maustaste)</P>
+<P>Die Funktionen, mit der die graphische Ansicht der Kurven
+ver&auml;ndert werden k&ouml;nnen sind auch &uuml;ber die Toolbar
+erreichbar. Hier gibt es zus&auml;tzlich noch die M&ouml;glichkeit
+Kurven an den Au&szlig;enbereichen zu beschneiden oder die Ansicht auf eine Anzahl von letzten aktiven Punkten zu beschr&auml;nken.
+In der Toolbar werden die Kn&ouml;pfe erst aktiviert, wenn diese Operation auch m&ouml;glich ist.
+</P>
+<P><IMG SRC="../src/help/de/images/MenueToolBar_Edit.png" NAME="graphics2" ALIGN=MIDDLE>
+</P>
+<P>Das Beispiel zeigt die Positionierung des Bereiches, das nach der
+Schneideoperation nicht mehr vorhanden sein soll. Ein Dialog fragt nach
+Best&auml;tigung f&uuml;r die Schneideoperation, die dann eine Kopie des
+Datensatzes anlegt. Der Benutzer kann selbst entscheiden, den
+unbeschnittenen Datensatz zu l&ouml;schen oder zu behalten.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Cut_Operation.png" NAME="graphics3" ALIGN=MIDDLE ></P>
+<P>Beschnittene Datens&auml;tze bekommen am Ende des Namens einen
+Unterstrich.
+Der Originaldatensatz geht dabei nicht verloren.</P>
+<P><B>Hinweis : </B>Datensatznamen k&ouml;nnen nach dr&uuml;cken des
+Editierknopfes ver&auml;ndert werden, so wie es 
+<A HREF="HelpInfo_35.html">hier</A> beschrieben ist.</P>
+<H2><A NAME="menue_devices"></A>&quot;Ger&auml;t&quot; Men&uuml;</H2>
+<P><IMG SRC="../src/help/de/images/Menuebar_Device.png" NAME="graphics1" ALIGN=RIGHT>
+In diese Men&uuml; kann man ger&auml;tespezifische Aktionen ausl&ouml;sen</P>
+<UL>
+	<LI>&quot;Ger&auml;tetoolbox&quot; &ouml;ffnet den Ger&auml;tedialog passend zum aktiven Ger&auml;t
+	<LI>&quot;Port &ouml;ffnen/schlie&szlig;en&quot;; &quot;Start/Stop Aufnahme&quot;; &quot;Importiere Daten&quot; f&uuml;hrt die Funktion aus, die f&uuml;r das Ger&auml;t konfiguriert ist.
+	Der Men&uuml;eintrag &auml;ndert sich also mit dem aktiviertem Ger&auml;t
+	<LI>&quot;Ger&auml;teauswahldialog&quot; &ouml;ffnet den Ger&auml;teauswahldialog
+	<LI>&quot;vorheriges Ger&auml;t&quot; schaltet, falls vorhanden,
+	auf das vorhergehende Ger&auml;t in der Ger&auml;teliste
+	<LI>&quot;n&auml;chstes Ger&auml;t&quot; schaltet, falls vorhanden,
+	auf das nachfolgende Ger&auml;t in der Ger&auml;teliste
+	<LI>&quot;Ger&auml;teeigenschafteneditor&quot; &ouml;ffnet einen Editor der das Anpassen von Ger&auml;teeigenschaften erlaubt (nicht alle Eigenschaften lassen sich dynamisch verändern)
+</UL>
+<P>Die Ger&auml;te spezifischen Funktionen, die man h&auml;ufig
+benutzt, erreicht man ebenfalls &uuml;ber die Toolbar.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_Device.png" NAME="graphics2" ALIGN=MIDDLE></P>
+<P>
+Zus&auml;tzlich gibt es die Möglichkeit Datenaufnahmen nicht nach Ger&auml;ten, sondern als Objekt &uuml;ber die Gesamtheit der Ger&auml;te, zu ordnen.
+Wird "ger&auml;tebezogen" ausgew&auml;hlt bleibt alles wie gehabt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_Object_0.png" NAME="graphics3" ALIGN=MIDDLE></P>
+<P>
+W&auml;hlt man, oder erstellt &uuml;ber den Plusknopf, einen Objektschl&uuml;ssel, wird ein neues Tabulatorfenster, <A HREF="HelpInfo_93.html">Fenster Objektcharakteristik</A>, angezeigt.
+In diesem Tabulatorfenster kann man das Objekt, dessen Schl&uuml;ssel nun ausgew&auml;hlt ist, n&auml;her beschreiben.
+Bei Eingabe oder Wechsel des Objektschl&uuml;ssels wird erfragt, ob dieser Schl&uuml;ssel dem Aktuellen Datensatz zugeordnet werden soll.
+Unabh&auml;ngig, von der Antwort, werden beim Öffnen einer Datei nur noch Dateien angezeigt, die diesen Objektschl&uuml;ssel beinhalten.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_Object_1.png" NAME="graphics4" ALIGN=MIDDLE></P>
+<H2><A NAME="menue_graphicstemplates"></A>&quot;Grafikvorlagen&quot;
+Men&uuml;</H2>
+<P>Im Grafikvorlagenmen&uuml; werden die Vorlagen verwaltet, die das
+Aussehen des Grafikfensters beeinflussen. Falls vorhanden, wird
+entsprechend der Konfiguration oder des Ger&auml;teausgangs die
+Grafikkonfiguration geladen. Grafikvorlagen enthalten die
+Skaleneinteilung, Kurvenfarben, usw.. Die meisten Einstellungen, die
+&uuml;ber das Kurvenselektor-Kontextmen&uuml; eingestellt werden, werden
+in Grafikvorlagen gesichert. Der Pfad zu diesen Dateien ist
+&quot;GraphicTemplates&quot; unter dem Anwendungskonfigurationspfad.
+Gibt es zu einer Datei zur Aktualisierungszeit eine passende
+Grafikvorlage, wird diese automatisch geladen.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Menuebar_GraphicsTemplates.png" NAME="graphics1" ALIGN=MIDDLE></P>
+<UL>
+	<LI>&quot;Standard Grafikvorlage sichern&quot; sichert entsprechend dem
+	Datenkanal oder der Konfiguration die im Moment eingestellten
+	Grafikkonfigurationsdaten (Ger&auml;teNamen_KanalKonfigNr.xml)
+	<LI>&quot;Standard Grafikvorlage laden&quot; l&auml;dt entsprechend dem
+	Datenkanal oder der Konfiguration die im Voraus gesicherten
+	Grafikkonfigurationsdaten (Ger&auml;teNamen_KanalKonfigNr.xml)
+	<LI>&quot;Grafikvorlage sichern unter&quot; &ouml;ffnet einen
+	Dateisicherungsdialog, um eine Grafikvorlage unter beliebigem Namen zu
+	sichern
+	<LI>&quot;Grafikvorlage laden&quot; &ouml;ffnet einen
+	Dateiauswahldialog, um eine Grafikvorlage mit beliebigem Namen zu laden
+</UL>
+<P>Hat man für sich einen Einstellung gefunden, die die Kurven, die man f&uuml;r wichtig h&auml;lt, anzeigt, sollte man diese Grafikkonfiguration als Standard sichern.
+</P>
+<P><B>Hinweis :</B> Die Funktion der Grafikvorlagen erg&auml;nzt sich bei manchen Ger&auml;ten mit der Sichtbarkeitskonfiguration. 
+Sind Messkurven in der Sichtbarkeitskonfiguration ausgeschaltet oder enthalten keine sinnvollen Daten, z.B. nur Nullen, werden sie auch durch Laden der Grafikkonfiguration nicht sichtbar.
+Ger&auml;te mit Messkurven Sichtbarkeitskonfiguration sind CSV2SerialAdapter, WStech, GPS-Logger, NMEA-Adapter, UniLog, und viele andere.
+Mit dem Dialog der Sichtbarkeitskonfiguration, kann man deren Erscheinen aber erzwingen.
+</P>
+<H2><A NAME="menue_view"></A>&quot;Ansicht&quot; Men&uuml;</H2>
+<P>Dieses Men&uuml; blendet den Kurvenselektor des Grafikfensters
+ein oder aus. Des weiteren kann man hier eine &Uuml;berschrift sowie den
+Kommentarbereich des einzelnen Datensatzes ein oder ausblenden.
+Diese Funktion ist auch über das Kontextmen&uuml; der grafischen Anzeige erreichbar</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Menuebar_View.png" NAME="Menuebar_View">&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/Menuebar_View_Context.png" NAME="Menuebar_View_Context"></P>
+</BR>
+<H2><A NAME="menue_help"></A>&quot;Hilfe&quot; Men&uuml;</H2>
+<P>Mit dem Hilfemen&uuml; erreicht man diese Beschreibung und den
+About-Dialog, der die Versionsnummer der Anwendung bekannt gibt. Durch
+die Selektion von Versioncheck erreicht man die Webseite des
+DataExplorers und kann &uuml;berpr&uuml;fen ob eine neuere
+Version des Programms verf&uuml;gbar ist.
+Es werden keine Anwender bezogenen Daten, noch Systemdaten in irgend einer Form weitergeleitet, sondern lediglich eine die URL der Webseite aufgerufen.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Menuebar_Help.png" NAME="Menuebar_Help" ALIGN=MIDDLE>&nbsp;&nbsp;&nbsp;&nbsp;<IMG SRC="images/MenueToolBar_Help.png" NAME="MenueToolBar_Help" ALIGN=MIDDLE></P>
+<H2><A NAME="recordset_tool_bar"></A>Ausgang-, Konfiguration-, Datensatz-Toolbar</H2>
+<P>Die Anwahl des Ger&auml;tedatenanschusses, bzw. der Konfiguration, falls
+f&uuml;r das jeweilige Ger&auml;t vorhanden, w&auml;hlt man &uuml;ber den
+markierten Bereich aus. Die danebenliegenden Pfeilschalter schalten
+einen Anschluss, bzw. eine Konfiguration vor, bzw. zur&uuml;ck.
+Die Anwendung merkt sich welcher Anschluss, bzw. welche Konfiguration als letztes benutzt wurde und stellt diese Auswahl beim n&auml;chsten Starten des Programms ger&auml;teabh&auml;ngig wieder her.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_Channel.png" NAME="graphics1" ALIGN=MIDDLE></P>
+<P>Ein Anschluss entspricht einem Steckeranschluss bei einem Mehrfachladeger&auml;t an dem der Akku angeschlossen wird. 
+Eine Konfiguration macht Sinn bei Ger&auml;ten, mit denen man Messungen in bestimmten Bereichen vornehmen kann, Motorstrom, Versorgungsstrom, ohne Strom. 
+Mit einer Konfiguration ist auch die für den Einsatzzweck verbundene statistische Aufbereitung der Daten verbunden. 
+So zum Beispiel, wie lange die Motorlaufzeit war, welche Leistung dabei verbraucht wurde, welche Gesamth&ouml;he dabei erreicht wurde oder ...
+</P>
+<P>Den Datensatz, der gerade angezeigt werden soll, kann man dann
+&uuml;ber den danebenliegenden Datensatz-Selektor ausw&auml;hlen. Hier
+gibt es analog dazu auch die M&ouml;glichkeit vor oder zum n&auml;chsten
+Datensatz zu schalten</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_RecordSet.png" NAME="graphics2" ALIGN=MIDDLE></P>
+<P>Die in diesem Toolbar-Teilst&uuml;ck, die ganz links liegenden
+Kn&ouml;pfe, dienen zum L&ouml;schen (M&uuml;lleimer) eines Datensatzes,
+bzw. zum Bearbeiten des Datensatznamens. Durch dr&uuml;cken des
+Editiersymbols, kann man den Namen des Datensatzes ver&auml;ndern. Ein
+Druck auf die Entertaste schlie&szlig;t diese Aktion ab.</P>
+<H2><A NAME="google_earth_launcher"></A>Google Earth</H2>
+<P>Wenn der gerade angezeigte Datensatz GPS (Global Positioning System) Daten enth&auml;lt ist es möglich daraus eine 
+KML Datei zu exportieren und mit der Google Earth Anwendung anzuzeigen.
+Der Globusknopf in der Toolbar ver&auml;ndert sein Aussehen und signalisiert damit, ob diese Funktion m&ouml;glich ist.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/MenueToolBar_GoogleEarth.png" NAME="MenueToolBar_GoogleEarth" ALIGN=MIDDLE></P>
+<P><B>Hinweis :</B> Dateien, die &uuml;ber den Globusknopf der Toolbar exportiert und angezeigt werden, landen im tempor&auml;ren Ordner des Dateisystem und werden beim Schliessen der Anwendung gel&ouml;scht.
+M&ouml;chte man diese Dateien aber behalten, sollte man den gerade angesehen Ausschnitt &uuml;ber die Men&uuml;bar - Export - KML 3D Datei oder GPX track an einem beliebigen Platz im Dateisystem sichern.
+</P>
+<P>Als Beispiel ist hier der Flug angezeigt, der mit dem DataVarioDuo mit GPS aufgezeichnet wurde.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/GoogleEarth_Sample_0026.png" NAME="GoogleEarth_Sample_0026" ALIGN=MIDDLE></P>
+<P>Ein durch Zoomen begrenzter Ausschnitt eines Fluges stellt sich dann so dar: </P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/GoogleEarth_Sample_0051.png" NAME="GoogleEarth_Sample_0051" ALIGN=MIDDLE></P>
+<H2><A NAME="google_earth_trail_colors"></A>Pfadfarbenkonfiguration</H2>
+<P>&Uuml;ber den gezeigten Toolsknopf wird der Farb-Geschwindigkeitskonfiguration m&ouml;glich. 
+Die linke Seite dient der Konfiguration der Farben für die drei m&ouml;glichen Geschwindigkeitsbereiche.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/GoogleEarth_Color_Config.png" NAME="GoogleEarth_Color_Config" ALIGN=MIDDLE></P>
+<P>Der Dialog ist zwei mal dargestellt, um die Unterschiede zwischen der Konfiguration vom Mittelwertfaktor zu erkl&auml;ren (blaue Umrandung). 
+Wird der Mittelwertfaktor zu 0 gesetzt werden die Felder zur Minimum und Maximum Konfiguration freigeschaltet und einen Eingabe ermöglicht. 
+Ist der Mittelwertfaktor gr&ouml;&szlig;er als 0, werden daraus Minimum und Maximum als Wert automatisch berechnet. 
+</P>
+<P><B>Tipp:</B> Es lassen sich auch GPS Daten in Form von GPX Dateien exportieren, die dann aber manuell in Google Earth geladen werden müssen.
+Hier gibt aktuell leider keine M&ouml;glichkeit dieses Datenformat automatisch zu &ouml;ffnen.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/GoogleEarth_GPX.png" NAME="GoogleEarth_GPX" ALIGN=MIDDLE></P>
+<H1><A NAME="graphics_Window"></A>Grafisches Anzeigefenster</H1>
+<P>Das graphische Anzeigefenster ist das eigentlich Hauptfenster der
+Anwendung. Hier werden die eingelesenen Daten in Kurvenform dargestellt.
+Durch Selektion der einzelnen Kurvennamen im Kurvenselektor kann die
+Sichtbarkeit der einzelnen Kurve direkt ein- oder aus-geschaltet werden.
+Gleichzeitiges Anzeigen von zu vielen Kurven schr&auml;nkt die
+&Uuml;bersichtlichkeit stark ein (siehe hierzu <A HREF="HelpInfo_33.html">Grafikvorlagen</A>). Deshalb ist dieser Auswahlschalter
+einer der wichtigsten der Anwendung und direkt erreichbar.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Graphics_Window.png" NAME="graphics1" ALIGN=BOTTOM ></P>
+<P>&Uuml;ber den Kurvenselektor sieht man anhand der Farb&uuml;bereinstimmung den Zusammenhang zu den gezeichneten Kurven.
+Der Kurvenselektor repräsentiert die Kurvenlegende und erm&ouml;glicht durch Selektion ein aktiv-, bzw. inaktiv-schalten
+der Kurven.
+</P>
+<P><IMG SRC="../src/help/de/images/Menuebar_View_Context.png" NAME="Menuebar_View_Context"></P>
+<P>Mittels des Kontextmen&uuml;s (eines jeden Tabulators) l&auml;sst sich deren Aussehen anpassen</P>
+<H2><A NAME="curve_selector"></A>Der Kurvenselektor</H2>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue.png" NAME="graphics1" ALIGN=RIGHT>
+Ganz oben im Kontextmen&uuml; befindet sich der Name der Kurve, die man gerade im
+Fokus hat. Alle &Auml;nderungen der Einstellung beziehen sich also auf
+die Darstellungseigenschaften dieser Kurve.</P>
+<P>&Uuml;ber das Kontextmen&uuml; kann man die <B>Kurve sichtbar</B>
+oder unsichtbar schalten. Ist eine Kurve unsichtbar geschaltet und eine
+Ver&auml;nderung der Kurveneigenschaften wird ausgel&ouml;st, wird die
+Kurve automatisch sichtbar geschaltet. Als Beispiel soll eine nicht
+sichtbare Kurve vermessen werden, so werden die Messlinien aktiviert und
+die Kurve, die man vermessen m&ouml;chte sichtbar geschaltet.</P>
+<P>Durch Selektion von <B>Kurvenlinienfarbe</B> wird ein
+Farbauswahldialog gestartet, durch den die Linienfarbe der Kurve
+eingestellt werden kann. Die Farbe wird auch f&uuml;r die Basislinie der
+vertikalen Achse verwendet, um eine leichte optische Zuordnung zu
+erreichen. Au&szlig;erdem wird die Farbe f&uuml;r die Zahlen in der
+Digitalanzeige und die Kreisskalagrundlinie in der Analoganzeige
+verwendet.</P>
+<P>Die Einstellung der <B>Kurvenliniendicke</B> erlaubt ein
+optisches hervorheben einer einzelnen Kurve.</P>
+<P>Die Ver&auml;nderung des <B>Kurvenlinientyps</B> hat nur geringe
+Bedeutung. Da, bei den meisten Kurven, der Abstand zwischen den
+einzelnen Kurvenpunkten gering ist, ist die Wirkung in den meisten
+F&auml;llen nicht gegeben. Hier muss die Wirkung in Abh&auml;ngigkeit
+der Punktabst&auml;nde individuell ausprobiert werden.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Scale.png" NAME="graphics2" ALIGN=LEFT>Der
+n&auml;chste Block im Kontextmen&uuml; konfiguriert die Achsen und damit
+auch die Skalen der jeweiligen Kurve. <B>Automatik</B> nimmt die Minimum
+und Maximum Werte, wie sie in den Kurvendaten vorkommen als
+Endbegrenzung. <B>Gerundet</B>, rundet in Abh&auml;ngigkeit der
+Wertgr&ouml;&szlig;e auf oder im negativen Fall ab. Die Selektion <B>beginnt
+bei 0</B> kann mit &quot;gerundet &quot; oder &quot;automatik&quot; zusammen
+verwendet werden. Der Anfangspunkt der Skala wir auf Null gesetzt.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Manual.png" NAME="graphics3" ALIGN=LEFT>
+W&auml;hlt man <B>manuell</B> &ouml;ffnet sich ein kleiner Dialog der die
+Einstellung der Achsenendwerte erlaubt. Werte k&ouml;nnen nicht nur
+durch Selektion ver&auml;ndert werden, sonder durch Eingabe &uuml;ber
+die Tastatur, also durch &Uuml;berschreiben. Als Dezimalseparator kann
+Punkt oder Komma verwendet werden. Dr&uuml;cken der Entertaste oder
+Selektion des OK Knopfes schlie&szlig;t die Eingabe ab.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Precision.png" NAME="graphics4" ALIGN=RIGHT>
+Mit dem Men&uuml;punkt <B>Achsen-Zahlenformat</B> bestimmt man die Genauigkeit
+der Anzeige. Zu viele Stellen hinter dem Komma suggerieren aber auch
+eine Genauigkeit, die m&ouml;glicherweise durch die Messung oder das
+Messmittel gar nicht gegeben sind. Die Einstellung <B>automatisch</B> passt die Anzahl der Nachkommastellen der Wertegr&ouml;&szlig;e an.</P>
+<P>Mit der <B>Achsen-Position</B> bestimmt man die Seite auf der die
+Achse zu der Kurve mit der Skala dargestellt werden soll. Da wir von
+links nach rechts lesen, sind bei mir die wichtigeren Kurvenachsen
+vorzugsweise links angeordnet.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Vertical_Grid.png" NAME="graphics5" ALIGN=LEFT>Der
+Kontextmen&uuml;-Block zur Einstellung von <B>Gridlinien</B> gibt die
+M&ouml;glichkeit <B>vertikale</B>, also auf der Zeitachse, Gridlinien zu
+zeichnen. Die Einstellung der Farbe der Gridlinien erlaubt, Gridlinien
+im Hintergrund zu belassen. Sonst sieht man vor lauter Gridlinien
+wom&ouml;glich die eigentlichen Kurven nicht mehr. Die Einstellung auf
+&quot;mod 60&quot; bedeutet einen geraden Teiler, je nach dargestellter
+Gesamtzeit 60 Sekunden oder 60 Minuten.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Horizontal_Grid.png" NAME="graphics6" ALIGN=RIGHT>
+Die <B>horizontalen
+Gridlinien</B> haben eine Zuordnung zu einer Kurve. Die Kurve, mit der die
+Einstellung vorgenommen wurde wird angezeigt. Die Einstellung auf
+&quot;jede zweite Zeitmarke&quot; (Hauptskalenteilung) d&uuml;nnt die
+horizontalen Gridlinien etwas aus. Horizontale Gridlinien k&ouml;nnen
+immer nur f&uuml;r eine Kurve angezeigt werden.</P>
+<P>&Uuml;ber den Kontextmen&uuml;punkt <B>Kurven Vermessen</B> kann
+man &uuml;ber ein eingeblendetes Fadenkreuz Kurvenpunkte vermessen. Dazu
+wird im Kontextmen&uuml; <B>Kurvenpunkt messen</B> selektiert. Nachdem
+das Kontextmen&uuml; verschwunden ist wird ein Fadenkreuz aus
+gestrichelten Linien dargestellt. Bewegt man den Mauszeiger unmittelbar
+&uuml;ber der senkrechten Linie, &auml;ndert sich der Mauszeiger, so wie
+im Bild vergr&ouml;&szlig;ert dargestellt. Durch dr&uuml;cken und halten
+der linke Maustaste kann nun der senkrechte Strich verschoben werden,
+wobei der waagerechte Strich automatisch der Kurve folgt. Dabei wird der
+aktuelle Messwert unten in der Statusleiste, rechts neben dem
+Fortschrittsbalken angezeigt.</P>
+<P ALIGN=CENTER>
+<IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Measure.png" NAME="graphics7" ALIGN=BOTTOM>
+<IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Measure_Pointer.png" NAME="graphics8" ALIGN=BOTTOM>
+<IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Measure_Value.png" NAME="graphics9" ALIGN=BOTTOM></P>
+<P>Mit <B>Punktdifferenz messen</B> wird der Differenzwert zwischen
+zwei Kurvenpunkten gemessen. Dabei wird dann auch die Einheit &uuml;ber
+die Zeit gebildet und angezeigt.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Deltameasure.png" NAME="graphics10" ALIGN=BOTTOM></P>
+<P>Als Messfadenkreuz werden ein schwarzes und ein blaues Fadenkreuz
+eingeblendet. Beide werden genau so bewegt, wie bei der
+Einzelpunktvermessung. Besonders sinnvoll sind solche Messungen im
+vergr&ouml;&szlig;ertem Zustand. Hier wird als Zusatzinformation noch
+die Anfangszeit des Kurvenausschnittes angezeigt.</P>
+<P><IMG SRC="../src/help/de/images/CurveSelector_ContextMenue_Compare.png" NAME="graphics11" ALIGN=LEFT >
+Als letzter Block im Kontextmen&uuml; sind die Funktionen zur
+&Uuml;bertragung in das Kurvenvergleichsfenster <B>Kopiere
+Kurvenvergleich</B> und das S&auml;ubern des Kurvenvergleichsfensters <B>L&ouml;sche
+Kurvenvergleich</B> angeordnet. Letzter Punkt, das L&ouml;schen aller Kurven im Vergleichsfensters, wird erst aktiv geschaltet,
+wenn sich mindestens einen Kurve im Vergleichsfenster befindet.
+</P>
+<P><B>Hinweis : </B>Es ist m&ouml;glich Kurven mit identische Einheit gleichzeitig darzustellen. 
+So z.B. Spannungskurven eines Akkus aus verschiedenen Messungen des selben Messger&auml;tes.
+</P>
+<H3><A NAME="curve_sync"></A>Kurvenskalensynchronisation</H3>
+<P>
+Sind innerhalb eines Datensatzes Kurven des selben Typs vorhanden, werden die
+Skalen mit gleichzeitiger Synchronisation der Endwerte zusammengefasst.
+Als Beispiel seien die Einzelspannungskurven von Lithiumzellen genannt.
+Der Vergleich, der beiden nachfolgenden Bilder, soll das Verhalten verdeutlichen.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="../src/help/de/images/SynchroniseRecords_1.png" NAME="graphics10" ALIGN=MIDDLE>
+</P>
+<P>Das spart nicht nur Platz, sondern alle betroffenen Kurven besitzen dadurch die selben Min- und Max-Werte.
+Hierdurch sind die Kurven optisch vergleichbar. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/SynchroniseRecords_2.png" NAME="graphics11" ALIGN=MIDDLE>
+</P>
+<P><B>Hinweis : </B>Die Synchronisation wird &uuml;ber eine Eingenschaft in der Ger&auml;tekonfigurationsdatei eingestellt (siehe hierzu <A HREF="HelpInfo_A1.html#device_properties_measurement">Messwerteeingenschaften</A>).
+</P>
+<H2><A NAME="zoom_function"></A>Zoomen und Positionieren im
+Grafikfenster</H2>
+<P><IMG SRC="../src/help/de/images/GraphicsWindow_Zoom_1.png" NAME="graphics1" ALIGN=LEFT>
+<IMG SRC="../src/help/de/images/GraphicsWindow_Zoom_2.png" NAME="graphics2" ALIGN=RIGHT>
+Wird das Men&uuml; <B>zoomen</B>
+aktiviert &auml;ndert sich der Mauszeiger zu einem kleinen Kreuz, das
+durch dr&uuml;cken der rechten Maustaste einen Eckpunkt des
+Kurvenausschnittes festlegt. Bei gedr&uuml;ckt gehaltener Maustaste kann
+nun ein Ausschnitt gew&auml;hlt werden, der dann nach dem Loslassen der
+Maustaste vergr&ouml;&szlig;ert dargestellt wird. <B>Hinweis : </B>M&ouml;chte
+man ausschlie&szlig;lich in einer Richtung zoomen, kann der Anfangs- und
+End-Punkt des Auswahlbereichs au&szlig;erhalb der Kurvenbegrenzung
+liegen. Dadurch erreicht man, dass das Auswahlrechteck und den
+horizontalen oder vertikalen Begrenzungen beginnt. Auch im bereits
+vergr&ouml;&szlig;ertem Kurvenausschnitt l&auml;sst sich im Bedarfsfall
+weiter hineinzoomen.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/GraphicsWindow_Pan_1.png" NAME="graphics3" ALIGN=BOTTOM></P>
+<P>Die Verschiebefunktion &auml;ndert den Mauszeiger in eine Hand.
+Nun l&auml;sst sich die Kurve bei gedr&uuml;ckter linker Maustaste
+positionieren.</P>
+<P>Das Zur&uuml;cksetzen des vergr&ouml;&szlig;erten
+Kurvenausschnittes erfolgt, wie in der Beschreibung der Men&uuml;s durch
+Selektion der Funktion &quot;Zoom Grafikfenster zur&uuml;cksetzen&quot;.
+</P>
+</BR></BR></BR></BR></BR></BR>
+<H3><A NAME="scope_mode"></A>Oszilloskopemode</H3>
+<P>
+Um w&auml;hrend eines Aufnahmevorgangs laufend einen vergr&ouml;&szlig;erten Ausschnitt, der zuletzt aufgenommenen Werte, zu verfolgen, 
+wird ein Schalter angeboten über den die Anzahl der angezeigten Messpunkte bestimmt werden kann.
+Nun kann man, &auml;hnlich einem Oszilloskop, die Datenaufnahme betrachten.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/ScopeView50.png" NAME="graphics4" ALIGN=BOTTOM>
+</P>
+<P>Oben in der Toolbar ist der Schalter eingekreist. Ausgew&auml;hlt sind aktuell 50 Punkte.
+Unten ist der sich st&auml;ndig verändernde Wert des ausgeblendeten Zeitraums eingekreist. 
+Hier bekommt man die &Uuml;bersicht über die Laufzeit des gesamten Messablaufes.
+Im Beispiel sind vier Spannungskurven von Lithiumzellen gezeigt, die über den Balancer st&auml;ndig korrigiert werden.
+</P>
+<P>Im Gegensatz visualisiert das <A HREF="HelpInfo_9.html#voltage_per_cell_window">Zellenspannung Anzeigefenster</A> nur den letzten Messwert.
+</P>
+	<H1><A NAME="statistics_window"></A>Statistik Fenster</H1>
+	<P>
+	Das Statistikfenster zeigt für alle Messgrößen, die auch grafisch
+	angezeigt werden können, statistische Größen an. Die Anzeige wird
+	durch die aktuell gültige Geräteeigenschaftsdatei bestimmt. Es ist
+	m&ouml;glich eine sogenannten Trigger (Schwellwertschalter) zu konfigurieren. 
+	Fallen Daten in
+	den Triggerbereich, können alle statistischen Werte auf diesen
+	bezogen werden oder es können Maxima aus den Triggerbereichen
+	aufsummiert werden. Wie im gezeigten Beispiel ist das auf die Höhe
+	angewendet worden. Durch einen Kommentar wird der Bezug zum
+	Triggerbereich verdeutlicht.
+	</P>
+	<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Statistic_Window_1.png" NAME="graphics1" ALIGN=BOTTOM BORDER=0></P>
+	<P>
+	Soll die Statistikkonfiguration f&uuml;r einen Messwert angepasst werden, muss der Editor f&uuml;r die Ger&auml;tekonfiguration (<A HREF="HelpInfo_A1.html#device_properties_statistics">DevicePropertiesEditor</A>) &uuml;ber das Men&uuml; oder direkt aufgerufen werden.
+	</P>
+<H1><A CLASS="an" NAME="table_window"></A>Tabellarisches
+Anzeigefenster</H1>
+<P>Die Tabellenansicht zeigt die aktuellen Daten von allen
+Kurvenpunkten an, auch, wenn eine Kurve nicht sichtbar geschaltet ist.
+Je nach Anzahl den Messwerte ergibt sich einen stattliche Anzahl von
+Werten.</P>
+<P ALIGN="center"><IMG SRC="../src/help/de/images/TableWindow.png" /></P>
+<P>Gro&szlig;e Datenmengen machen aber die Tabellenansicht un&uuml;bersichtlich. Deshalb kann man die Anzeige
+f&uuml;r jedes Ger&auml;t im Ger&auml;teauswahldialog stilllegen (<A HREF="HelpInfo_2.html#device_selection_desktop">Desktopkonfiguration</A>).</P>
+<H1><A NAME="digital_window"></A>Digitales Anzeigefenster</H1>
+<P>Das Digitalfenster ist daf&uuml;r gedacht aktuelle Werte in Zahlenform, die im
+Moment aufgenommen wurden anzuzeigen. Wenn, zum Beispiel, ein
+Ladeger&auml;t alle 10 Sekunden eine Messung vornimmt wird der daraus
+resultierende Messwert numerisch angezeigt. Die Farbe der numerischen
+Hauptdarstellung entspricht der eingestellten Kurvenfarbe.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Digital_Window.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Wie schon erw&auml;hnt werden hierf&uuml;r keine Berechnungen
+vorgenommen, sondern nur die Werte, mit der &uuml;ber das
+Kurvenselektor-Kontextmen&uuml; eingestellten Genauigkeit
+(Achsen-Zahlenformat) entsprechend, angezeigt.</P>
+<P>Da diese Anzeige nur w&auml;hrend der Livedatenaufnahme ver&auml;ndernde Werte anzeigt kann man die Anzeige
+f&uuml;r jedes Ger&auml;t im Ger&auml;teauswahldialog stilllegen wenn dieser Tabulator st&ouml;rt (<A HREF="HelpInfo_2.html#device_selection_desktop">Desktopkonfiguration</A>).</P>
+<P><B>Hinweis : </B>Es werden alle aktiven und sichtbaren Messwerte, ausgew&auml;hlt &uuml;ber den Kurvenselektor, mit konfigurierter Nachkommastelle dargestellt.</P>
+<H1><A NAME="analog_window"></A>Analoges Anzeigefenster</H1>
+<P>Das Analogfenster zeigt, so, wie f&uuml;r das Digitalfenster, gew&auml;hlten Messwerte, an. 
+Die Farbe der Skalengrundlinie entspricht der
+eingestellten Farbe f&uuml;r die Messkurve. Damit die Anzeige eine hohe
+Aufl&ouml;sung hat und trotzdem ruhig wirkt, werden f&uuml;r die
+Skalenendwerte gerundete Werte verwendet. Die Rundung entspricht der
+Einstellung f&uuml;r Runden der Skalen im Grafikfenster.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Analog_Window.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Da diese Anzeige nur w&auml;hrend der Livedatenaufnahme ver&auml;ndernde Werte anzeigt kann man die Anzeige
+f&uuml;r jedes Ger&auml;t im Ger&auml;teauswahldialog stilllegen wenn dieser Tabulator st&ouml;rt (<A HREF="HelpInfo_2.html#device_selection_desktop">Desktopkonfiguration</A>).</P>
+<P><B>Hinweis : </B>Es werden alle aktiven und sichtbaren Messwerte, ausgew&auml;hlt &uuml;ber den Kurvenselektor, mit konfigurierter Nachkommastelle dargestellt.
+Bei Skalensynchronisation sind für alle synchronisierten Messwerte die Endwerte gleich.</P>
+<H1><A NAME="voltage_per_cell_window"></A>Zellenspannung
+Anzeigefenster</H1>
+<P>Die Zellen-Einzelspannungsanzeige ist f&uuml;r Ladeger&auml;te gedacht, die Einzelzellenspannungen von Akkuzellen herausgeben,
+ausgelegt und zeigt die Spannungen jeder Zelle numerisch und als Balkendiagramm an.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/CellVoltage_Window_1.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Die Anzeige der Balken wird, in Abh&auml;ngigkeit des Zellentyps, im Beispiel LiPo Zellen, wenn alle Zellenspannungen &uuml;ber
+4,0 Volt liegen, gespreizt, &uuml;ber den Anteil, der &uuml;ber 4 Volt
+liegt, dargestellt. Hat eine Zelle eine Spannung kleiner gleich 2,6 Volt
+oder &uuml;ber 4,20 Volt wird der Balken in rot dargestellt. Bei
+Zellenspannungen zwischen 2,6 und 4,2 Volt zeigt sich der Balken in
+gelb. Betr&auml;gt eine Zellenspannung genau 4,2 Volt f&auml;rbt sich
+der Balken gr&uuml;n.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/CellVoltage_Window_2.png" NAME="graphics2" ALIGN=BOTTOM></P>
+<P>Die Bilder sollen das Verhalten etwas verdeutlichen.</P>
+<P><IMG SRC="../src/help/de/images/CellVoltage_Window_3.png" NAME="graphics3" ALIGN=RIGHT>
+</BR>
+</BR>
+Es ist m&ouml;glich die Spannungsh&ouml;hen der einzelnen Farbfelder an die gebr&auml;uchlichsten Zellentypen anzupassen.
+Gibt ein ein Ger&auml;t Informationen &uuml;ber die verwendeten Zellen aus, folgt die Auswahl automatisch.
+Ist das nicht der Fall, muss hier leider die Auswahl von Hand erfolgen. Eine Kontrolle des H&auml;kchens kann also nicht schaden.
+Wird ein Zellentyp verwendet, der keinem der selektierbaren Typen entspricht ist eine individuelle Einstellung m&ouml;glich.
+Der Dialog, der durch Anwahl von "individuell" erscheint zeigt dann auch die Spannungsh&ouml;hen aller vordefinierten Zellentypen und erm&ouml;glicht deren Ver&auml;nderung.
+</BR>
+</P>
+<H1><A NAME="compare_window"></A>Kurvenvergleich Anzeigefenster</H1>
+<P>Wie der Name schon sagt ist das Kurvenvergleichsfenster dazu da,
+Kurven miteinander zu vergleichen. Im Bild sieht man Spannungskurven von
+einem alten Akku. Die Kurven wurden wiederholt &uuml;ber einen Zeitraum
+aufgenommen. Vergleiche machen nat&uuml;rlich nur Sinn, wenn auch die
+Voraussetzungen, wie die Kurven entstanden sind, m&ouml;glichst gleich
+sind. Allein an Hand der Unterschiede der Ladezeit und der Kurvenform,
+sieht man im Beispiel, dass mit diesem Akku etwas nicht stimmen kann.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/Compare_Window.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Das Vergleichsfenster erlaubt, wie das Grafikfenster, ein Zoomen
+und Vermessen der Kurven.</P>
+<P>Sind Gridlinien im Vergleichsfenster aktiviert, werden Gridlinien
+in gleicher Form beim n&auml;chsten Start der Anwendung wieder
+hergestellt.</P>
+<P><B>Hinweis : </B>Das Programm verhindert Kurven unterschiedlicher Einheit miteinander zu vergleichen.
+Das Vergleichsfenster mit den darin enthaltenen Kurven wird in keiner Form gesichert.
+</BR>
+Der Tabulator selbst wird erst angezeigt, wenn über das <A HREF="HelpInfo_41.html#curve_selector">Kurvenselktorkontextmen&uuml;</A> die erste Kurve in den Kurvenvergleich geladen wird.
+</BR>
+</P>
+<H1><A NAME="voltage_per_cell_window"></A>Datei- und Datensatz-Kommentar Fenster</H1>
+<P><IMG SRC="../src/help/de/images/FileComment_Window.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Im Dateikommentarfenster kann man eine Bemerkung, die f&uuml;r
+alle Datens&auml;tze g&uuml;ltig sind, notieren. Als Anfangswert wird
+das aktuelle Datum, wann die Datensatzsammlung angelegt wurde,
+eingeblendet. Diese Datum kann nat&uuml;rlich &uuml;berschrieben werden,
+wenn z.B. die Daten an einem anderen Tag entstanden sind.</P>
+<P>Das Dateikommentarfenster wird &uuml;ber den Tabulator aktiviert.
+Der Bereich f&uuml;r den Datensatzkommentar wird unten innerhalb des
+graphischen Tabulatorfensters ge&ouml;ffnet.
+</BR>
+<B>Hinweis : </B>Einige Teile des Dateikommentart können auch als Grafik&uuml;berschrift angezeigt werden. 
+Der angezeigte Teil wird durch Komma, Semikolon, Doppelpunkt, Punkt oder Zeilenumbruch separiert und durch einen Bindestrich mit dem Datensatznamen angezeigt.
+Sichern der Eingabe folgt durch weiter schalten auf ein anderen Tabulator!
+</P>
+<P><IMG SRC="../src/help/de/images/RecordSetComment_Window.png" NAME="graphics2" ALIGN=BOTTOM></P>
+<P>Zum Datensatzkommentar, auch hier gilt, die eingeblendete Zeit
+entspricht der Zeit, zu der, der Datensatz eingelesen wurde. Die
+Zeitmarke dient als Anhaltspunkt und kann &uuml;berschrieben werden.
+Dieser Kommentar dient dazu Dinge zu notieren, die Datensatz spezifisch
+sind, z.B. besondere Ereignisse oder Bedingungen, die diesen Datensatz
+von anderen unterscheidet.</P>
+<P><B>Hinweis : </B>Alle Kommentare werden in der gespeicherten
+Datei abgelegt und beim n&auml;chsten Einlesen der Datei wieder
+angezeigt.</P>
+<H1><A NAME="object_characteristics_window"></A>Objektcharakteristik Fenster</H1>
+<P>
+In diesem Fenster kann man Charakteristiken festhalten, die ein Objekt beschreiben zu dem man Daten, bzw. Messkurven festgehalten hat.
+Dieses Tabulatorfenster ist nur sichtbar, wenn man ein Objekt in der Toolbar ausgewählt hat.
+</P>
+<P><IMG SRC="../src/help/de/images/Object_Characteristics_Window.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<P>Der editierte Inhalt wird automatisch bei Wechsel des Objekts oder schlie&szlig;en der Anwendung gesichert.</P>
+<P><B>Hinweis : </B>Die Objektbeschreibung gilt f&uuml;r viele Datendateien und wird deshalb separat in einem Objektverzeichnis gesichert.
+Datendateien werden weiterhin in den zugehörigen Geräteverzeichnissen abgelegt und enthalten lediglich ein Objektschl&uuml;ssel. 
+In den Objektverzeichnissen befinden sich lediglich Dateilinks zu diesen Dateien.
+</P>
+<H1><A NAME="introduction"></A>Ger&auml;tekonfigurationsdateien</H1>
+<P>Ger&auml;tekonfigurationsdateien sind in XML Form angelegt. Durch
+das verwendetet XML style sheet (XSD) ist wird immer die Konsistenz und
+die Schreibweise validiert. Ein demnach ung&uuml;ltige Datei wird schon
+beim Einlesen zur&uuml;ckgewiesen. Zur &Uuml;bersicht ist hier nochmals
+das aktuelle XSD als Bild wiedergegeben.</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DeviceProperties.png" NAME="graphics1" ALIGN=BOTTOM></P>
+<H2><A NAME="device_properties_edit"></A>Ger&auml;teeigenschafteneditor</H2>
+<P>&Uuml;ber das Ger&auml;temen&uuml; oder als eigenst&auml;ndige Anwendung aufgerufen lassen sich neue oder vorhandene Ger&auml;teeigenschaftendateien erstellen oder anpassen.
+Hiermit werden die Ger&auml;te XML Dateien ver&auml;ndert.
+<IMG SRC="../src/help/de/images/DevicePropsEditor_MenuBar.png" NAME="DevicePropsEditor_MenuBar" ALIGN=RIGHT>
+</P>
+<P>
+&Uuml;ber das Men&uuml; kann eine Ger&auml;tedatei direkt ge&ouml;ffnet werden.
+Ist das der Fall, wird die Ger&auml;tedatei des aktuellen Ger&auml;tes geladen und ein &Auml;ndern der Datei ist nun m&ouml;glich.
+Wobei nicht alle ver&auml;nderten Eigenschaften direkt auf aktuell angezeigte Daten wirken.
+Eventuell ist ein erneutes Einlesen der Messdaten n&ouml;tig.
+Wird der DevicePropertiesEditor als eigene Anwendung gestartet kann der Name, falls bekannt kann auch direkt eingegeben werden. Ist der Name der Datei nicht im Ger&auml;teordner enthalten, geht die Anwendung davon aus das eine neue Ger&auml;tedatei angelegt werden soll und fragt danach.
+</BR></BR>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_NewDevice.png" NAME="DevicePropsEditor_NewDevice" ALIGN=LEFT>
+</BR></BR></BR></BR></BR></BR></BR>
+Hierbei wird dann eine Beispieldatei extrahiert, die dann angepasst werden kann.
+Durch Selektion des Knopfes auf der rechten Seite, kann &uuml;ber einen Dateiauswahldialog die Ger&auml;tedatei ge&ouml;ffnet werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DevicePropsEditor_Device.png" NAME="DevicePropsEditor_Device" ALIGN=MIDDLE></P>
+<P>
+Der Ger&auml;t Tabulator zeigt wie man Name und Herstellerangaben eintr&auml;gt.
+</P>
+<P>
+Schaltet man die Implementierung aktiv, muss hier die Ger&auml;teklasse als Klassenname oder mit package.Klassenname, als voll qualifiziert, eingetragen werden. 
+Eine Implementierung kann immer dann verwendet werden, wenn ein Ger&auml;t schon implementiert ist, nur der Name nicht passt. 
+Als Beispiel soll hier der CSV2SerialAdapter genannt werden, Unterschiede bestehen nur in der Spezifikation des Datentextblocks.
+Als weiteres Beispiel k&ouml;nnen die vielen Kopien der Bantam Ladeger&auml;te herangezogen werden, die sich im Aussehen und Namen unterscheiden. 
+Hier m&ouml;chte man die Daten doch unter seinem Ger&auml;tenamen abgelegt vorfinden.
+<IMG SRC="../src/help/de/images/DevicePropsEditor_Implementation.png" NAME="DevicePropsEditor_Implementation" ALIGN=MIDDLE>
+</BR>Gibt man das 'package' nicht an beginnt das 'package' immer mit "gde.device.", gefolgt vom Namen des Herstellers in Kleinbuchstaben umgewandelt, wobei Leerzeichen sowie Bindestriche entfernt werden.
+Aus dem Ger&auml;tenamen wird der Klassenname ebenfalls durch entfernen von Leerzeichen und Bindestrichen berechnet. 
+Die Gro&szlig;-, Klein-Schreibung wird f&uuml;r den Klassennamen allerdings beibehalten.
+<P>
+Der Bildname kann von Hand eingegeben werden, falls auf ein, im Ger&auml;te Plug-in, vorhandenes Bild in der Ger&auml;teauswahl angezeigt werden soll.
+Wird &uuml;ber den Knopf auf der rechten Seite eine Bilddatei ausgew&auml;hlt, wird diese sofort auf die erforderliche Gr&ouml;&szlig;e (225x165) skaliert.
+Hierbei wird auch angeboten, die Bilddatei sofort in das Ger&auml;te Plug-in einzupacken. 
+Dies kann aber nur in einem tempor&auml;ren Ordner geschehen, da nur hier Schreibrechte garantiert sind. 
+Gegebenenfalls muss sp&auml;ter das Plug-in in den Anwendungsordner kopiert werden.
+<IMG SRC="../src/help/de/images/DevicePropsEditor_Image.png" NAME="DevicePropsEditor_Image" ALIGN=MIDDLE>
+</BR>Genaue Anweisungen, wo sich das modifizierte Plug-in befindet und wo es auszutauschen ist, werden als Messagebox angezeigt.
+<P><B>Hinweis : </B>Diese &Auml;nderung geht bei einem Anwendungsupdate verloren.
+Gegebenenfalls selbst für eine Sicherung sorgen.</P>
+</P>
+</P>
+<P><A NAME="device_properties_serial_port"></A>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_SerialPort.png" NAME="DevicePropsEditor_SerialPort" ALIGN=RIGHT>
+F&uuml;r den seriellen Port sind die entsprechenden Konfigurationsparameter einzutragen.
+Da hier alle Auswahlm&ouml;glichkeiten &uuml;ber Auswahldialoge eingestellt werden sind weitere Hinweise nicht n&ouml;tig.
+<P><B>Hinweis : </B>Werden Timeoutzeiten angegeben muss die Implementierung so geschrieben sein, dass diese auch benutzt werden.
+</BR>
+Die Beschreibung der seriellen Schnittstelle ist optional, weil es Ger&auml;te gibt, die ihre Daten nicht &uuml;ber eine serielle Schnittstelle einlesen..
+</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_TimeBase.png" NAME="DevicePropsEditor_TimeBase" ALIGN=RIGHT>
+Die Zeitbasis zu konfigurieren ist einfach. 
+</BR>
+Ein Wert gr&ouml;&szlig;er 0 Millisekunden als Zeitabstand zwischen den Messpunkten wird als konstanter Zeitabstand angenommen. 
+Bei einem Zeitwert kleiner 0 Millisekunden, wird davon ausgegangen, dass das Ger&auml;t die Zeit vorgibt. Das muss nicht hei&szlig;en, dass der Abstand zwischen den Messpunkten konstant ist.
+Vorrangig muss hier die Ger&auml;teimplementierung das Richtige daraus machen.
+</P>
+<P><B>Hinweis : </B>Das UniLog, als Beispiel, hat einen einstellbaren und damit ver&auml;nderlichen aber konstanten Zeitabstand zwischen den Messpunkten.
+Damit ist f&uuml;r die Zeitbasis -1 einzustellen.
+Schlussendlich muss aber auch hier die Ger&auml;teimplementierung f&uuml;r das richtige Verhalten sorgen, den Zeitwert bei jedem Auslesevorgang von Daten ermitteln und f&uuml;r diesen Datensatz konstant verwenden.
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P><A NAME="device_properties_datablock"></A>
+Hier werden 2 verschiedene Datenblockkonfigurationen gegen&uuml;bergestellt. 
+Die UniLog Konfiguration beschreibt bin&auml;re Daten der konstanten Gr&ouml;&szlig;e von 24 Byte.
+Sollte die maximale Anzahl von Datenbytes 24 betragen, k&ouml;nnen als auch mal nur z.B. 20 Bytes zur Verf&uuml;gung stehen, m&uuml;sste hier -24 eingetragen werden.
+Dadurch, dass als Datentyp BINARY gew&auml;hlt ist k&ouml;nnen auch keine Trennzeichen eingegeben werden.
+<IMG SRC="../src/help/de/images/DevicePropsEditor_DataBlock1.png" NAME="DevicePropsEditor_DataBlock1" ALIGN=LEFT>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_DataBlock2.png" NAME="DevicePropsEditor_DataBlock2" ALIGN=RIGHT>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+Ist als Datentype TEXT gew&auml;hlt m&uuml;ssen zus&auml;tzliche Konfigurationsdaten angegeben werden, die zum verwerten der Daten ben&ouml;tigt werden.
+Interessant sind auch die Dateiendung, die die Dateisuche einschr&auml;nkt, sowie der Dateipfad, der ein Standardverzeichnis spezifiziert, wo die Daten erwartet werden.
+Beides sind optionale Angaben, helfen aber, wenn Daten, wie bei dem DataVario von WStech auf einer Speicherkarte angeliefert werden, die beim einstecken in den Computer einen bestimmten Laufwerkspfad annimmt.
+<P><B>Hinweis : </B>Auch diese Konfiguration ist optional, die individuelle Ger&auml;teimplementierung k&ouml;nnte das alles behandeln.</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P><A NAME="device_properties_state"></A>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_State.png" NAME="DevicePropsEditor_State" ALIGN=RIGHT>
+Auf der Zustand-Tabulatorseite werden optional die Zust&auml;nde beschrieben, die ein Ger&auml;t einnehmen kann.
+Diese Beschreibung macht haupts&auml;chlich Sinn, wenn ein Ger&auml;t mehr wie einen Zustand einnehmen kann oder die Daten &uuml;ber eine Textdatei (CSV2SerialDataAdapter) eingelesen werden. 
+Die Ger&auml;teimplementierung bestimmt wie die sequenziell angeordneten Zust&auml;nde anzuwenden sind.
+<P><B>Hinweis : </B>Werden die Daten &uuml;ber eine Textdatei (CSV2SerialDataAdapter) eingelesen, so wird als Zustand 1, wie abgebildet Laden ($1;1;Zeit;Daten;..), und als Zustand 2 Entladen ($1;2;Zeit;Daten;..) verwendet.</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P><A NAME="device_properties_channelConfig"></A>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_ChannelConfig.png" NAME="DevicePropsEditor_Config" ALIGN=RIGHT>
+Die Tabulator mit der Beschriftung "Ausgangskanal/Konfiguration" ist die komplizierteste und umfangreichste Konfigurationsseite.
+Hier werden, wenn erwünscht oder nötig, die Ausg&auml;nge von einem Ger&auml;t (entsprechen einem Datenkanal) beschreiben oder eben verschiedene Konfigurationen, die auf die Datens&auml;tze angewendet werden sollen.
+Es gibt also, wie beschrieben, 2 Ausgangs- Konfigurations- Typen, zwischen den entschieden werden muss. 
+Bei einem Ladeger&auml;t, an dem zu einer Zeit nur ein Akku geladen werden kann, hat auch nur einen Ausgang, an dem der Akku angeschlossen wird.
+Es wird auch nur ein Ausgang als Datenkanal beschrieben. Das ist in nebenstehenden Beispiel beschrieben.
+</BR>
+Unterhalb der Leiste, &uuml;ber die man den Type und den Namen der Ausgang-Konfiguration ausw&auml;hlen kann, befindet sich der Tabulatorbereich, der die einzelnen Messwerte beschreibt.
+Die Messwertbeschreibung und Konfiguration bestimmt deren Anzeige einschlie&szlig;lich der Einheitenberechnung, sowie nimmt Einfluss auf die statistische Auswertung.
+</BR>
+<B>Hinweis : </B>W&auml;hlt man Konfiguration (TYPE_CONFIG) als Type k&ouml;nnen unterschiedliche Konfigurationen auf ein und dieselben Daten angewendet werden. 
+</BR>
+Möchte man Ausgangskanal/Konfigurationen kopieren, um sie zu vervielf&auml;ltigen ist es sinnvoll die zugeh&ouml;rigen Messwerte und deren Beschreibungen vorher zu vervollst&auml;ndigen.
+</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P><A NAME="device_properties_measurement"></A>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_MeasurementProperty.png" NAME="DevicePropsEditor_MeasurementProperty" ALIGN=RIGHT>
+Messwerte beschreibt man mit dem Namen, welche Einheit sie besitzen, welches Symbol verwendet werden soll und  ob sie aktiv aus dem Ger&auml;t ausgelesen werden k&ouml;nnen, oder ob sie durch Berechnung entstehen.
+Des weiteren gibt es optionale Eigenschaften, z.B. &uuml;ber Faktor, Offset und Reduktion die Anzeige der (Roh-)Daten beeinflussen.
+<P><B>Hinweis : </B>Ben&ouml;tigt man weitere Eigenschaften oder Statisikeinstellungen kann man diese durch das Kontextmen&uuml; anfordern.
+Nach der Vervollst&auml;ndigung kann man dann die gerade fertiggestellte Messwertkonfiguration in eine Neue, durch Selektion des +Knopfes, kopieren.
+</BR></BR>
+Zu den Eigenschaften (Properties) ist wenig zu sagen, da hier nur vorbestimmte ausgew&auml;hlt werden k&ouml;nnen und nur noch der Wert entsprechend anzupassen ist.
+</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P><A NAME="device_properties_statistics"></A>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_MeasurementStatisitcs1.png" NAME="DevicePropsEditor_MeasurementStatisitcs1" ALIGN=RIGHT>
+Hier wird ein Statistikbeispiel gezeigt, das nicht nur die zu berechnenden Werte beschreibt, sondern auch einen Schwellwert (Trigger) , der &uuml;ber Gr&ouml;&szlig;e und Zeit einen Auswertebereich festlegt.
+Au&szlig;erdem wird bestimmt, dass die Zeit, an der der eingestellte Schwellwert wirksam wird, aufsummiert werden soll. Hieraus kann dann, wie im Beispiel, die wirkliche Motorlaufzeit berechnet werden.
+Zus&auml;tzlich wird eingestellt, dass die Anzahl der Ereignisse gez&auml;hlt werden soll.
+<P><B>Hinweis : </B>Zu den meisten Schwellwert bezogenen Einstellungen gibt es die M&ouml;glichkeit Kommentare hinzuzuf&uuml;gen. Das ist für die Lesbarkeit von gro&szlig;em Vorteil (<A HREF="HelpInfo_5.html">Fenster Statistik</A>).</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_MeasurementStatisitcs2.png" NAME="DevicePropsEditor_MeasurementStatisitcs2" ALIGN=RIGHT>
+Hier wird gezeigt, wie die Auswertung eines anderen Messwertes durch einen bereits definierten Schwellwert (Trigger) beeinflusst werden kann.
+In dem gezeigten Beispiel wird durch die Anwahl von "sumByTriggerRef" ausschlie&szlig;lich die H&ouml;he aufsummiert, die im definierten Schwellwert gewonnen wurde.
+Jetzt zeigt sich wie gut eine Luftschrauben-, Motor-Anpassung vorgenommen wurde, beziehungsweise es lassen sich jetzt wirkliche nachvollziehbare Vergleiche anstellen.
+</BR>
+Zus&auml;tzlich wird hier gezeigt, wie hier eine Verh&auml;ltnism&auml;&szlig;igkeit gebildet werden kann, die ein Verh&auml;ltnis der verbrauchten Akkukapazit&auml;t zur erreichten H&ouml;he darstellt.
+Auch das erlaubt gewisse Aussagen &uuml;ber die Anpassung der zur Verf&uuml;gung stehenden Leistung zur Ausgenutzten.
+<P><B>Hinweis : </B>Weitere Konfigurationsbeispiele findet man beim UniLog oder DataVario.</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<P>
+<IMG SRC="../src/help/de/images/DevicePropsEditor_Desktop.png" NAME="DevicePropsEditor_Desktop" ALIGN=RIGHT>
+Als letzte fehlt noch die Beschreibung, was mit der Desktopkonfiguration gemeint ist.
+Hier wird initial konfiguriert, welcher Anzeigetabulator aktiv geschaltet werden soll. 
+Aktiv bezieht sich auf die Sichtbarkeit selbst, sowie auf den Zeitbedarf, der zur eigentlichen Anzeige, der auf dem Tabulatorfenster befindlichen Daten, verbraucht wird.
+<P><B>Hinweis : </B>Initiale Konfiguration meint, dass &uuml;ber die DataExplorer Anwendung selbst, im <A HREF="HelpInfo_2.html#device_selection_desktop">Ger&auml;teauswahldialog</A>, diese Konfiguration beeinflusst wird.</P>
+</P>
+</BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR>
+<H1><A NAME="introduction"></A>Dateiformat</H1>
+<P>Das Dateiformat (*.osd) ist als Version 1 und 2 als reines
+Bin&auml;rformat implementiert. Um einer Erweiterbarkeit &uuml;ber einen
+langen Zeitraum zu gew&auml;hrleisten sind die Daten und Eigenschaften
+als Key/Value Paare abgelegt. Dieser Aufbau erm&ouml;glicht,
+&auml;hnlich wie XML, Elemente optional zu halten. 
+</BR>
+Messdaten sind unverf&auml;lscht als ganze Zahlenwerte abgelegt.
+Dadurch sind für alle Ger&auml;te der prinzipielle Aufbau der Datei gleich.
+</BR>
+Beim &Ouml;ffnen einer Datei werden alle Datens&auml;tze angelegt und entsprechend ihrer Eigenschaften aufbereitet.
+Danach werden die Messdaten des ersten Datensatzes eingelesen und zur Anzeige gebracht.
+Anschlie&szlig;end werden, falls vorhanden, weitere Messdaten der noch fehlenden Datens&auml;tze asynchron eingelesen und f&uuml;r die Anzeige vorbereitet.
+</BR>
+Zur &Uuml;bersicht hier noch die grafische Abbildung, wie das Dateiformat aufgebaut ist.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/DataExplorerFormat.png" NAME="graphics1" ALIGN=MIDDLE></P>
+<H1><A NAME="introduction"></A>CSV2SerialAdapter Datenformat</H1>
+<P>Das Textdatenformat, das hier zu Anwendung kommt entspricht weitestgehend einer Standard "Comma Separated Values" CSV-Datei, wie es mit allen Tabellenkalulations-Programmen (Spreadsheet) eingelesen und bearbeitet werden kann.
+Die Anordnung der Daten (Values) entspricht weitestgehend der Form wie sie auch von einigen Ladeger&auml;ten ausgegeben wird.
+Auch das LogView Programm kann derartige Textdaten einlesen und wird hier als "OpenFormat" bezeichnet.
+Wegen des Plattform&uuml;bergreifenden Ansatzes vom DataExplorer, m&uuml;ssen allerdings die Spezifikationen etwas umfangreicher angegangen werden.
+Beispielsweise verwenden anderer Plattformen andere Zeilenumbruchzeichen, wie z.B. Windows &lt;CR&gt;&lt;LF&gt;, beim Anlegen einer Datei. 
+Andererseits muss auch gew&auml;hrleistet sein, dass auf der einen Plattform erzeugten Datendateien mit deren spezifischen Zeilenumbruchzeichen auf der anderen einlesenden Plattform die Datendateien interpretiert werden k&ouml;nnen, z.B. GNU/Linux &lt;LF&gt; oder Mac &lt;CR&gt;. 
+Siehe hierzu auch die Beschreibung des DevicePropertiesEditor <A HREF="HelpInfo_A1.html#device_properties_datablock">Datenblocks</A>.
+</BR>
+Das Bild zeigt die Zuordnung der jeweils zu konfigurierenden Werte in Relation zu den Textdaten.
+</P>
+<P ALIGN=CENTER><IMG SRC="../src/help/de/images/CSV2SerialDataFormat.png" NAME="CSV2SerialDataFormat" ALIGN=MIDDLE></P>
+<H1>Aktuell unterstützte Geräte</H1>
+<H2>AkkuMaster</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>AkkuMaster
+	C4 Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der AkkuMaster C4 Ger&auml;tedialog dient zum Einstellen und
+Auslesen von Lade-Entladevorg&auml;ngen. Es k&ouml;nnen alle vier
+Ausg&auml;nge einzeln konfiguriert und bedient werden. Eine
+Konfiguration, die das Ger&auml;t &uuml;berlastet ist nicht m&ouml;glich.
+Der aus den anwendungsspezifischen Einstellungen resultierende
+Gesamtstrom wird jeweils angezeigt. <BR><B>Hinweis : </B>Ist ein
+Auslesevorgang aktiv, kann der Dialog nicht geschlossen werden (Es
+wird ein entsprechender Hinweis in der Statuszeile ausgegeben). Da
+die Anzeige f&uuml;r alle aktiven Ausg&auml;nge laufend aktualisiert
+wird, ist eine modales Dialogverhalten nicht ratsam. Sonst ist ein
+Umschalten zwischen den Anzeigen der 4 Kan&auml;le nicht m&ouml;glich.
+</P>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Versionsinformation</I></FONT></FONT></H2>
+<P>Nachdem der serielle Schnittstelle &uuml;ber den
+Ger&auml;teauswahldialog eingestellt ist und der Ger&auml;tedialog
+aufgerufen wird der serielle Port im Hintergrund ge&ouml;ffnet und
+die Versionsinformation aktualisiert. Das kann zu einem
+Kommunikationsfehler f&uuml;hren, wenn der Konfigurierte Port nicht
+ge&ouml;ffnet werden kann oder das Ger&auml;t ausgeschaltet ist. Ein
+Dialog mit der aktuellsten EPROM Version des Herstellers ist im Bild
+1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../AkkuMaster/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Steuerung der Aufnahme</I></FONT></FONT></H2>
+<P>Nach der Anwahl eines Ausgangstabulators sind alle, nicht
+ben&ouml;tigten Kn&ouml;pfe, inaktiv geschaltet. Es bleiben als
+einzige Auswahlm&ouml;glichkeit 
+</P>
+<UL>
+	<LI>Nur Datenaufnahme 
+	<LI><P>Selbst konfiguriertes Programm 
+	</P>
+</UL>
+<P>So ein Zustand ist im Bild 2 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../AkkuMaster/src/help/de/HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Nur Datenaufnahme</I></FONT></FONT></H3>
+<P>Wenn wie gewohnt am Ger&auml;t der Ladevorgang gestartet wird,
+wird durch Auswahl von &quot;Nur Datenaufnahme&quot; die Anzeige im
+unteren Bereich mit den aktuell im Ger&auml;t eingestellten Werten
+aktualisiert. Au&szlig;erdem wird der Start-Knopf aktiviert, um eine
+Datenaufnahme zu beginnen (Bild 3). 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../AkkuMaster/src/help/de/HelpInfo_Bild_3.png" NAME="Bild2" ALT="Bild3" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<P>Wird der Start-Kopf gedr&uuml;ckt aktualisiert sich die graphische
+Anzeige zyklisch mit den gemessenen Werten. Der Stopp-Kopf wird
+aktiviert, um die Datenaufnahme gegebenenfalls abzubrechen. 
+</P>
+<P>Datens&auml;tze werden automatisch beim Wechsel des Programms
+angelegt, entladen -&gt; laden. 
+</P>
+<P>Die Datenaufnahme stoppt automatisch, wenn das Ger&auml;t den
+Lade-Entladevorgang als beendet erkl&auml;rt. 
+</P>
+<P><B>Hinweis : </B>Ein stoppen der Datenaufnahme <B>stoppt</B> auch,
+aus Sicherheitsgr&uuml;nden, das laufende Programm im Ger&auml;t ! 
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Selbst konfiguriertes Programm</I></FONT></FONT></H3>
+<P>Wird &quot;Selbst konfiguriertes Programm&quot; angew&auml;hlt
+aktualisiert sich die Anzeige mit den aktuell im Ger&auml;t
+eingestellten Werten. <BR>Nun kann man nach eigenen Vorgaben die
+Werte &uuml;ber den Dialog ver&auml;ndern. <BR>Da ein Programm, das
+im Ger&auml;t ablaufen soll im EPROM verf&uuml;gbar sein muss wird
+das eingestellte Programm in die eingestellte Speicherstelle
+geschrieben. 
+</P>
+<P><B>Hinweis : </B>Leider ist es nicht m&ouml;glich &uuml;ber die
+Kommunikationsschnittstelle eine Speicherstelle auszuw&auml;hlen und
+die dazugeh&ouml;rigen Werte auszulesen. Ich bevorzuge deshalb den
+Weg, das Programm am Ger&auml;t selbst einzustellen und &uuml;ber
+&quot;Nur Datenaufnahme&quot; die auflaufenden Daten aufzunehmen. 
+</P>
+<P>W&auml;hlt man nun einen abweichende Speicherstelle aus, wird zur
+Verdeutlichung der &Auml;nderung die Hintergrundfarbe f&uuml;r dieses
+Feld umgeschaltet. <BR>Bet&auml;tigt man nun den Start-Knopf wird das
+Programm in die gew&auml;hlte Speicherstelle geschrieben und das
+Programm im Ger&auml;t gestartet. So ist es im nachfolgenden Bild
+zusehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../AkkuMaster/src/help/de/HelpInfo_Bild_4.png" NAME="Bild2" ALT="Bild4" ALIGN=BOTTOM WIDTH=440 HEIGHT=590 BORDER=0>
+</P>
+<P>Das Schlie&szlig;en des Dialoges ist nur m&ouml;glich, wenn alle
+Datenaufnahmen beendet sind. Dabei wird dann automatisch auch der
+serielle Port geschlossen. 
+</P>
+<H2>CSV2SerialAdapter</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>CSV2SerialAdapter Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "&ouml;ffne Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+Da der Konfigurationsdialog dynamisch aufgebaut wird, sieht dieser für jede Gerätekonfiguration unterschiedlich aus.
+Beispielhaft sind hier zwei Dialoge gezeigt.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../CSV2SerialAdapter/src/help/de/HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"><IMG SRC="HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2">
+</P>
+<P>Hinweis: Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn über die Kanal/Konfigurations- Auswahl in der Toolbar eine Konfiguration gewählt und dann über "importiere Datei"
+in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+<H2>eStation</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>eStation
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der eStation Ger&auml;tedialog dient zum Auslesen der verf&uuml;gbaren
+Daten, die bei einem Lade- bzw. Entladevorgang gemessen werden. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Bedienung</I></FONT></FONT></H2>
+<P>Nachdem der serielle Schnittstelle &uuml;ber den
+Ger&auml;teauswahldialog eingestellt ist und dieser Ger&auml;tedialog
+aufgerufen wurde, kann durch dr&uuml;cken von „Start“ zyklisch
+Werte aus dem Ger&auml;t abgerufen und angezeigt werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../eStation/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" ALIGN=BOTTOM WIDTH=350 HEIGHT=465 BORDER=0>
+</P>
+<P>Die Umschaltung der Lade- bzw. Entlade-Kurven erfolgt automatisch,
+da die vom Ger&auml;t gelieferten Daten diese Information enthalten.
+Ist das Ger&auml;t &uuml;ber einen gewissen Zeitraum inaktiv, wird
+der serielle Port geschlossen. 
+</P>
+<H2>GPS-Logger</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>SM GPS-Logger Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht, zweidimensional schlecht darstellbare Kurven werden ausgeblendet.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datei", k&ouml;nnen auch neue Dateien Eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../GPS-Logger/src/help/de/HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"></P>
+<P>Hinweis: Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn über die Kanal/Konfigurations- Auswahl in der Toolbar eine Konfiguration gewählt und dann über "importiere Datei"
+in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+<P>
+Wird ein UniLog als Messaufnehmer angeschlossen werden die drei Analogeingänge mit frei konfigurierbarem Namen und Messsymbol angezeigt.
+Die Einheit, wird aus den NMEA Daten &uuml;bernommen.
+Als initiale Vorgaben sind 'Geschwindigkeit', 'Kapazität' und 'Temperatur' eingesetzt, die bei abweichender Einstellung anzupassen sind.
+In der grafischen Anzeige, bzw. dem Kurvenselektor erscheinen die Namen der Messgr&ouml;&szet&en für UniLog Messwerte immer mit angeh&auml;ngtem '_UL'.
+Sind eigene Messaufnehmer angeschlossen k&ouml;nnen &uuml;ber den Ger&auml;tekonfigurationseditor Offset, sowie Faktor angepasst werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../GPS-Logger/src/help/de/HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2"></P>
+<P>
+Werden Multiplex Sensoren angeschlossen, werden die Einheiten aus den NMEA Daten &uuml;bernommen.
+Die Namen und Symbole der Messwerte m&uuml;ssen entsprechend angepasst werden.
+Die initialen Vorgaben sind her nur beispielhaft eingesetzt.
+In der grafischen Anzeige, bzw. dem Kurvenselektor erscheinen die Namen der Messgr&ouml;&szlig;en für M-Link Messwerte immer mit angeh&auml;ngtem '_ML'.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../GPS-Logger/src/help/de/HelpInfo_Bild_3.png" NAME="HelpInfo_Bild_3" ALT="HelpInfo_Bild_3"></P>
+<P>Auf der rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert wird auf Namensgleichheit gepr&uuml;ft, bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende
+Eigenschaft eingesetzt. Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit das manuell &uuml;ber den Geratekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<H3><A NAME="configuration"><FONT FACE="Arial"><FONT SIZE=3><I>Ger&auml;tekonfiguration</I></FONT></FONT></H3>
+<P>Der zweite Tabulator ermöglicht die Ger&auml;tekonfigurationsdatei einzulesen und auch zurückzuschreiben. 
+Beim Wechsel auf diesen Tabulator wird der Dateiauswahldialog angezeigt. Das kann bei Bedarf wiederholt werden oder auch abgebrochen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../GPS-Logger/src/help/de/HelpInfo_Bild_4.png" NAME="HelpInfo_Bild_4" ALT="HelpInfo_Bild_4"></P>
+<P>
+Es k&ouml;nnen die entprechenden Alarme eingestellt und
+bei angeschlossenen Multiplex Sensoren können die R&uuml;ckkanaladressen hier konfiguriert werden.
+</P> 
+<P><B>Hinweis: </B>Ein voreingestellter Verzeichnispfad kann &uuml;ber den Ger&auml;teeigenschafteneditor in der Sektion, Datenblock - Optionale Einst&auml;ge - Datenpfad, eingetellt werden.
+Diese Konfiguration ist dazu gedacht, den Verzeichnispfad einzustellen, der die Datendateien nach dem einstecken der SD-Karte enth&auml;lt. 
+Zum Laden der Setupdatei ist dann das 'SM GPS-Logger setup' auszuw&auml;hlen.
+</P>
+<H2>LiPoWatch</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="Einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>LiPoWatch
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der LiPoWatch Ger&auml;tedialog dient zur Visualisierung der LiPoWatch
+&quot;Einstellungen&quot; und deren Konfiguration. &Uuml;ber den
+letzten Dialogtabulator &quot;Daten I/O&quot; k&ouml;nnen die im
+Ger&auml;t gespeicherten Daten abgeholt und dann angezeigt werden.
+</P>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<P>Die aktuelle Dialogimplementierung entspricht dem LiPoWatch Firmware
+Stand 1.0. 
+</P>
+<H2><A NAME="adjustment"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+„Einstellung“ Tabulator</I></FONT></FONT></H2>
+<P>Nachdem der serielle &uuml;ber den Ger&auml;teauswahldialog
+eingestellt ist und der Eingabedialog aufgerufen ist kann durch
+dr&uuml;cken von „Lese Konfiguration“ die aktuelle LiPoWatch
+Konfiguration ausgelesen werden. Das Resultat ist beispielhaft in
+Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../LiPoWatch/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" BORDER=0>
+</P>
+<P>Werden Einstellungen ver&auml;ndert wird „Sichere Konfiguration“ aktiv. 
+Durch dr&uuml;cken werden die gew&auml;hlten Einstellungen in das LiPoWatch geschrieben. 
+</P>
+<P><B>Hinweis : </B>Es ist sinnvoll vor der &Auml;nderung einer
+Einstellung erst einmal die aktuelle Konfiguration auszulesen. Sonst
+wundert man sich, dass andere Einstellungen auch ver&auml;ndert
+wurden. 
+</P>
+<H2><A NAME="data_io"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+„Daten I/O“ Tabulator</I></FONT></FONT></H2>
+<P>Im initialen Zustand sind alle Kn&ouml;pfe aktiv, die ein Einlesen
+von Daten ausl&ouml;sen. 
+</BR>
+Die Datenliveanzeige und das Fernauslösen der Datenaufzeichnung im Ger&auml;t sind zur Zeit noch nicht implementiert! 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../LiPoWatch/src/help/de/HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2" BORDER=0>
+</P>
+<P>Nach dr&uuml;cken von „Start Daten auslesen“ werden die im
+Ger&auml;t gespeicherten Daten ausgelesen. 
+</P>
+<!--
+<P>&Uuml;ber „Start live Datenabfrage“ werden entsprechend der
+Speicherrateneinstellung zyklisch Daten ausgelesen und in der
+Anwendung angezeigt. Bet&auml;tigt man zus&auml;tzlich den „Start“
+Knopf der UniLog Datenaufnahmegruppe werden ab diesem Zeitpunkt auch
+die Messdaten im UniLog selbst gespeichert. Durch Bet&auml;tigung der
+„Start“-Kn&ouml;pfe werden immer die entsprechenden
+Gegenoperationen aktiviert. 
+</P>
+-->
+<P ALIGN=CENTER><IMG SRC="../../LiPoWatch/src/help/de/HelpInfo_Bild_3.png" NAME="Bild3" ALT="Bild3" BORDER=0>
+</P>
+<P>Am Ende der Daten&uuml;bertragung werden die Messdaten aufbereitet
+und angezeigt. Der Dialog ist dann wieder im initialen Zustand, nur
+der Fortschrittsbalken ist gef&uuml;llt und die Anzahl der
+ausgelesenen Messdaten wird angezeigt. 
+</P>
+<H2>NMEA-Adapter</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>NMEA-Adapter Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "import NMEA Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../NMEA-Adapter/src/help/de/HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+<P>&Uuml;ber die Konfiguration eines Zeitdeltas kann die positionsbezogene Zeitzonenabweichung angepasst werden.
+</P>
+<P><B>Hinweis: </B>Kurven, die lediglich Nullen als Daten enthalten werden ausgeblendet. Durch doppelte Selektion einer eigentlich selektierten Kurve kann man die Kurve trotzdem sichtbar schalten! 
+</P>
+<H2>Picolario</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>Picolario
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der Picolario Ger&auml;tedialog dient zum Auslesen der im Ger&auml;t
+mitgeloggten Daten. Um die Datenanzeige zu beeinflussen, sind die
+zwei mittleren Dialogtabulatoren da. Hier kann jeder selbst in
+Abh&auml;ngigkeit der vorliegenden Daten Konfigurationen ausw&auml;hlen.
+Zur Auswahl stehen 
+</P>
+<UL>
+	<LI><P ALIGN=LEFT>H&ouml;henwerte nicht anpassen</P>
+	<LI><P ALIGN=LEFT>ersten H&ouml;henwert von den Restlichen abziehen
+	(das ist der Normalfall)</P>
+	<LI><P ALIGN=LEFT>letzten H&ouml;henwert von den Restlichen abziehen
+	(wenn der Datensatz zeitlich zu sp&auml;t beginnt)</P>
+	<LI><P ALIGN=LEFT>H&ouml;henwerte um einen bestimmten Wert anpassen</P>
+	<LI><P ALIGN=LEFT>Berechnungsart der Steigungskurve</P>
+</UL>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Bedienung</I></FONT></FONT></H2>
+<P>Nachdem der serielle Schnittstelle &uuml;ber den
+Ger&auml;teauswahldialog eingestellt ist und der Ger&auml;tedialog
+aufgerufen ist kann durch dr&uuml;cken von „Anzahl der
+Aufzeichnungen auslesen“ die aktuelle Anzahl von Aufzeichnungen
+ausgelesen und angezeigt werden (Voraussetzung dazu ist nat&uuml;rlich,
+das der Picolario dazu vorbereitet wurde). Das Resultat ist
+beispielhaft in Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../Picolario/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1">
+</P>
+<P>Im zweiten Schritt kann nun im Vorfeld die auf die auszulesenden
+Daten anzuwendende Konfiguration ver&auml;ndert werden. Das kann aber
+auch nach dem Auslesen der Daten geschehen. 
+</P>
+<P>Als dritten Schritt besteht die M&ouml;glichkeit jeden Datensatz
+&uuml;ber „angew&auml;hlte Aufzeichnung auslesen“ einzeln
+auszulesen. Je nachdem, wie viele Daten gespeichert sind kann das
+Auslesen einige Zeit in Anspruch nehmen. Deshalb empfiehlt sich fast
+immer den Weg &uuml;ber „alle Aufzeichnungen hintereinander
+auslesen“ zu nutzen. Hierbei wird dann, je nach Einstellung, immer
+wenn ein Datensatz vollst&auml;ndig ausgelesen ist, dieser sofort
+angezeigt. Ist der Ger&auml;tedialog nicht modal eingestellt kann man
+durch Selektion des Hauptfensters den Ger&auml;tedialog verbergen.
+Das Abholen der Daten passiert in einem separaten Thread dadurch wird
+die Anwendung selbst nicht beeinflusst. 
+</P>
+<P>Ein aktiver Dialog wird im Bild 2 gezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../Picolario/src/help/de/HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2">
+</P>
+<H2><A NAME="konfiguration"></A><FONT FACE="Arial"><FONT SIZE=4><I>Die
+Konfigurations-Tabulatoren</I></FONT></FONT></H2>
+<P>Wie schon in der Einleitung erw&auml;hnt k&ouml;nnen angezeigte
+Daten durch &Auml;nderung der Konfigurationseinstellung angepasst
+werden. <BR>M&ouml;chte man die H&ouml;henwerte um einen Betrag
+verschieben und das Auswahl bietet nicht den gew&uuml;nschten Wert
+ist auch eine manuelle Eingabe des Wertes m&ouml;glich. <BR>Die
+Steigungsberechnung kann &uuml;ber 2 verschiedene Regressionsarten
+durchgef&uuml;hrt werden. Eine lineare Regression ergibt eine bessere
+Gl&auml;ttung. Leider ergibt sich dadurch auch eine
+Phasenverschiebung zur H&ouml;henlinie. Diesen Nachteil umgeht man
+mit der nicht linearen Regresssionsvariante, hier der Einfachheit
+halber &quot;Kurve&quot; genannt. <BR>M&ouml;chte man an einer
+bestimmten Stelle die Steigung der H&ouml;henlinie wissen besteht
+auch die M&ouml;glichkeit diesen Wert &uuml;ber die Differenzmessung
+zu ermitteln (Kurvenselektor -&gt; H&ouml;he -&gt; Kontextmen&uuml;
+-&gt; Punktdifferenz messen). <BR>Da vermutlich zwei Hauptvarianten
+von Konfigurationen zum Tragen kommen gibt es auch zwei
+Konfigurationstabulatoren, die eine jeweils unabh&auml;ngige
+Einstellung erlauben. <BR>M&ouml;chte man nun dauerhaft, von einem
+eingelesenen Datensatz als Beispiel den letzten H&ouml;henwert von
+der dargestellten Kurve abziehen, selektiert man einfach den
+Tabulator und erh&auml;lt die M&ouml;glichkeit den aktuellen
+Datensatz in die Andere Konfiguration zu &uuml;bertragen. Um die
+&Auml;nderung zu best&auml;tigen bekommt man eine Abfrage angezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../Picolario/src/help/de/HelpInfo_Bild_3.png" NAME="Bild2" ALT="Bild2">
+</P>
+<P>Antwortet man positiv, wird der Datensatz &uuml;bertragen und
+entsprechend aufbereitet. 
+</P>
+<P>Hinweis: bei jeder Ver&auml;nderung der Konfigurationen wird
+unmittelbar eine Neuberechnung initiiert und die Picolario
+Konfigurationsdatei wird gesichert. 
+</P>
+<P>Der wirkliche Sinn hinter den Konfigurationen erschlie&szlig;t sich erst in der Statistikansicht.
+Deshalb sind die Konfigurationen auch umbenannt in Thermik und Motor. 
+In der Motorkonfiguration wird versucht &uuml;ber die Steigungskurve die Teile herauszufiltern, die für einen laufenden Motor sprechen.
+Die statistischen beziehen sich deshalb auch auf die herausgefilterten Bereiche (siehe Bilder).
+</P> 
+<P ALIGN=CENTER>
+	<IMG SRC="../../Picolario/src/help/de/HelpInfo_Bild_4.png" NAME="Bild4" ALT="Bild 4 zeigt did Statistiktansicht für die Thermihkonfiguration">
+	<IMG SRC="../../Picolario/src/help/de/HelpInfo_Bild_5.png" NAME="Bild5" ALT="Bild 5 zeigt did Statistiktansicht für die Motorkonfiguration">
+</P> 
+<P> 
+Für später ist geplant, die Werte, die zur statistischen Berechnung f&uuml;hren &uuml;ber den Dialog einstellbar zu machen.
+</P>
+<H2>QC-Copter</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>QuadroControl Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration, bzw. Synchronisation der Fernsteuerung mit der QuadroControl.
+Entsprechende Ausgaben werden über Terminalfenster sichtbar.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../QC-Copter/src/help/de/HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+
+<P>Der gezeigte Tabulator des Ger&auml;tedialoges dient zur Konfiguration der Anzeige.
+Ausgeblendet werden alle Kurven, die nicht selektiert sind.
+&Auml;nderungen der Anzeigekonfiguration werden durch sichern auch für nachfolgende Datens&auml;tze angewendet.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../QC-Copter/src/help/de/HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+<P><B>Hinweis: </B>Um die angezeigten Kurven möglichst übersichtlich zu halten, werden bei einer laufenden Aufnahme auch Kurven ausgeblendet, obwohl selektiert, die keine sinvollen Daten enthalten, z.B. nur Nullen!
+</P>
+<H2>Simulator</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I><a class="an" name="einleitung">Simulator Ger&auml;tedialog Einleitung</a></I></FONT></FONT></H2>
+</DIV>
+<P>Der Simulator Ger&auml;tedialog dient zur Erzeugen synthetischer Daten für alle m&ouml;glichen Testf&auml;lle.
+Hier ist kein besonderer Anspruch an Sch&ouml;nheit gestellt. 
+Die Funktionalit&auml;t kann von jedermann f&uuml;r seine eigenen Bed&uuml;rfnisse angepasst werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../Simulator/src/help/de/SimulatorDialog.png" ALT="Image 1" ALIGN=CENTER BORDER=0></P>
+<H2>UniLog</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>UniLog
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der UniLog Ger&auml;tedialog dient zur Visualisierung der UniLog
+&quot;Einstellungen&quot; und deren Konfiguration. &Uuml;ber den
+letzten Dialogtabulator &quot;Daten I/O&quot; k&ouml;nnen die im
+Ger&auml;t gespeicherten Daten abgeholt und dann angezeigt werden. Um
+nun die Datenanzeige zu beeinflussen, sind die vier mittleren
+Dialogtabulatoren da. Hier kann jeder selbst sinnvolle
+Konfigurationen zusammenstellen. Im initialen Zustand sind das,
+sozusagen als Vorschlag 
+</P>
+<UL>
+	<LI><P ALIGN=LEFT>H&ouml;he, einfache H&ouml;henmessung mit
+	geringstem Zusatzgewicht f&uuml;rs Flugmodell 
+	<LI><P ALIGN=LEFT>Empf&auml;nger, hier wird zus&auml;tzlich zur H&ouml;he
+	die Empf&auml;ngerversorgung vermessen um B. ben&ouml;tigte
+	Spannungsreglerleistung abzusch&auml;tzen 
+	<LI><P ALIGN=LEFT>Motormessung, hier wird die Motorleistung
+	vermessen, z. B. kann man den Regler optimal einstellen oder
+	Auswirkungen von Luftschraubenvariationen beurteilen 
+	<LI><P ALIGN=LEFT>Geschwindigkeit, Auswirkung von Luftschrauben auf
+	die Geschwindigkeit oder einfach nur die Gleitgeschwindigkeit 
+	</P>
+</UL>
+<P>Alternativ kann man aber die Konfigurationen so ab&auml;ndern, das
+sie z. B. Modell_1 bis Modell_4 abbilden. 
+</P>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<P>Die aktuelle Dialogimplementierung entspricht dem UniLog Firmware
+Stand 1.10. 
+</P>
+<H2><A NAME="adjustment"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+„Einstellung“ Tabulator</I></FONT></FONT></H2>
+<P>Nachdem der serielle &uuml;ber den Ger&auml;teauswahldialog
+eingestellt ist und der Eingabedialog aufgerufen ist kann durch
+dr&uuml;cken von „Einstellungen auslesen“ die aktuelle UniLog
+Konfiguration ausgelesen werden. Das Resultat ist beispielhaft in
+Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" BORDER=0>
+</P>
+<P>Alle analogen Anschl&uuml;sse werden ab Firmware 1.10 vorkonfiguriert. 
+Aktiviert man die Limiter- Funktion werden ab dem eingestellten Leistungsverbrauch das Signal zum Motorregler herunter geregelt. 
+Hierzu muss nat&uuml;rlich der Reglersignal &uuml;ber den UniLog geschleift werden. 
+Bei Limiter- Betrieb wird das Zeitintervall auf 1/16 Sekunde verändert und es ist nur eine Datenaufnahme m&ouml;glich.
+</P>
+<P>Werden Einstellungen ver&auml;ndert wird „Einstellungen
+speichern“ aktiv. Durch dr&uuml;cken werden die gew&auml;hlten
+Einstellungen in das UniLog geschrieben. 
+</P>
+<P><B>Hinweis : </B>Es ist sinnvoll vor der &Auml;nderung einer
+Einstellung erst einmal die aktuelle Konfiguration auszulesen. Sonst
+wundert man sich, dass andere Einstellungen auch ver&auml;ndert
+wurden. 
+</P>
+<H2><A NAME="data_io"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+„Daten I/O“ Tabulator</I></FONT></FONT></H2>
+<P>Im initialen Zustand sind alle Kn&ouml;pfe aktiv, die ein Einlesen
+von Daten ausl&ouml;sen. Durch die Auswahl einer Konfiguration werden
+die eingelesenen Daten direkt zugeordnet. Es besteht die M&ouml;glichkeit
+die Daten sp&auml;ter mit einer anderen Konfiguration zu verkn&uuml;pfen
+oder die Konfiguration individuell f&uuml;r jeden Datensatz
+anzupassen. Nur der „l&ouml;schen“ Knopf bildet hier eine
+Ausnahme. Wie beschrieben wird der Speicher zwar als gel&ouml;scht
+markiert kann aber bis zur n&auml;chsten Datenaufnahme weiterhin
+gelesen werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2" BORDER=0>
+</P>
+<P>Nach dr&uuml;cken von „Start Daten auslesen“ werden die im
+Ger&auml;t gespeicherten Daten ausgelesen und entsprechen der
+gew&auml;hlten Konfiguration aufbereitet. 
+</P>
+<P>&Uuml;ber „Start live Datenabfrage“ werden entsprechend der Einstellung, der
+Speicherrate, zyklisch Daten ausgelesen und in der
+Anwendung angezeigt. Bet&auml;tigt man zus&auml;tzlich den „Start“
+Knopf der UniLog Datenaufnahmegruppe werden ab diesem Zeitpunkt auch
+die Messdaten im UniLog selbst gespeichert. Durch Bet&auml;tigung der
+„Start“-Kn&ouml;pfe werden immer die entsprechenden
+Gegenoperationen aktiviert. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_3.png" NAME="Bild3" ALT="Bild3" BORDER=0>
+</P>
+<P>Am Ende der Daten&uuml;bertragung werden die Messdaten aufbereitet
+und angezeigt. Der Dialog ist dann wieder im initialen Zustand, nur
+der Fortschrittsbalken ist gef&uuml;llt und die Anzahl der
+ausgelesenen Telegramme wird angezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_4.png" NAME="Bild4" ALT="Bild4" BORDER=0>
+</P>
+<P>&Uuml;ber den Daten I/O Tabulator kann man den Konfigurationsnamen
+beliebig anpassen. Durch dr&uuml;cken von „Namen &auml;ndern“
+wird der &Auml;nderungsmode aktiviert und man kann den Namen
+ver&auml;ndern. Nach dr&uuml;cken der Entertaste wird der neue Name
+sofort in der Ger&auml;tekonfiguration persistent gemacht und ist
+aktiv. 
+</P>
+
+<H2><A NAME="config_tab"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+Konfigurationstabulator</I></FONT></FONT></H2>
+<P>Diese ist ein komplexer Tabulator und zeigt alle Ger&auml;teeing&auml;nge
+bzw. Messgr&ouml;&szlig;en als Schalter an. Werden Messgr&ouml;&szlig;en
+ausgew&auml;hlt werden die davon abh&auml;ngigen errechenbaren
+Messgr&ouml;&szlig;en mit aktiviert. Als Beispiele soll hier die
+Konfiguration Empf&auml;nger genommen werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_5.png" NAME="Bild5" ALT="Bild5" BORDER=0>
+</P>
+<P>W&auml;hlt man jetzt die Messgr&ouml;&szlig;e H&ouml;he an wird
+die davon abh&auml;ngige Steigraten ebenfalls aktiviert und die
+Berechnungsauswahl wird ver&auml;nderbar. 
+</P>
+<P>Bei der Berechnung der Steigrate zwei Regressionsverfahren
+angeboten, bei der das Integrationsintervall zwischen 1 und 20
+Sekunden anpassbar ist. 
+</P>
+<P>Jede &Auml;nderung wird sofort f&uuml;r den aktuellen Datensatz
+angewendet und aktiviert den „Einstellungen als Vorgabe &uuml;bernehmen“
+Knopf, mit dem die ge&auml;nderte Konfiguration persistent gemacht
+wird. Die Konfiguration aus der Datei wird bei neu aus dem UniLog
+gelesenen Daten angewendet. 
+</P>
+<P>Nun zu den Analog (A1 bis A3) Anschl&uuml;ssen. Alle Anschl&uuml;sse
+werden &uuml;ber den „Einstellung“ Tabulator vorkonfiguriert.
+Beim Auslesen der Daten, werden entsprechend der UniLog Einstellung, Name und Einheit abgerufen und eingetragen. 
+In Abh&auml;ngigkeit der Einstellung und dem angeschlossenen Sensor muss
+evtl. noch Offset und der Steigungsfaktor angepasst werden. Auch hier
+gilt eine &Auml;nderung aktiviert „Konfiguration speichern“ und
+erm&ouml;glicht das Abspeichern der Konfiguration in der UniLog Konfigurationsdatei, nicht im UniLog selbst. 
+</P>
+<P>Ist beim &Ouml;ffnen des Dialoges ein Datensatz geladen, springt
+der Konfigurationstabulator auf die dem Datensatz entsprechende
+Konfiguration. Passt die Datensatzkonfiguration nicht zu den Daten,
+bekommt man durch Anwahl des gew&uuml;nschten
+Konfigurationstabulators die M&ouml;glichkeit, die Daten in eine
+andere Konfiguration &uuml;berf&uuml;hren. 
+</P>
+<P>
+Hinter den verschiedenen Konfigurationstabulatoren stecken unterschiedliche statistische Berechnungen.
+Als Beispiel wird in den n&auml;chsten Bildern eine Statistik entsprechend der Empf&auml;ngerkonfiguration gezeigt.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_6.png" NAME="Bild6" ALT="Bild 6 zeigt die Statistikansicht für eine Empfängermessung" BORDER=0>
+</P>
+<P>
+Nun folgt ein Beispiel für eine Motormessung, die wichtigsten Daten, bzw. &Auml;nderungen gegen&uuml;ber der Empf&auml;ngermessung sind rot umrandet.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_7.png" NAME="Bild7" ALT="Bild 7 zeigt die Statistikansicht für eine Motormessung" BORDER=0>
+</P>
+<P> 
+Für später ist geplant, die Werte, die zur statistischen Berechnung f&uuml;hren &uuml;ber einen Dialog einstellbar zu machen.
+</P>
+<P><B>Hinweis : </B>Falls vier Konfigurations-Tabulatoren zu viel sind kann man
+durch eine &Auml;nderung der UniLog.xml die Anzahl reduzieren
+(auskommentieren in XML mit &lt;!-- Kommentar --&gt;). Mehr wie vier
+Tabulatoren f&uuml;r noch mehr Konfigurationen ist m&ouml;glich aber
+nicht implementiert. 
+Selbstverst&auml;ndlich ist es auch m&ouml;glich alle Messgr&ouml;&szlig;en
+zu aktivieren und nur &uuml;ber die Schalter im Kurvenselektor zu
+filtern.
+</P>
+
+<H2><A NAME="telemetry"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+„Telemetrie“ Tabulator</I></FONT></FONT></H2>
+<P>&Uuml;ber den Telemetrietabulator lassen sich alle Telemetrieeinstellungen, für die relevanten unterst&uuml;tzten Sender-/Empf&auml;nger-Systeme einstellen.
+Unterst&uuml;tzt sind aktuell Jeti Duplex, Futaba und Multiplex M-Link, seit dem UniLog Firmwarelevel 1.12.
+Als erstes sollte man die im UniLog abgelegten Konfigurationsdaten einlesen und erst dann unter Zuhilfenahme der Sender-/Empf&auml;nger-Telemetriebedienungsanleitung die entsprechende Konfiguratin verändern.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../UniLog/src/help/de/HelpInfo_Bild_8.png" NAME="Bild8" ALT="Bild8 Telemetrietabulator" BORDER=0>
+</P>
+<P>Wird eine Einstellung verändert, wird auch den Knopf freigeschaltet, der ein &Uuml;bertragen der ver&auml;nderten Telemetriekonfiguration in das UniLog  erm&ouml;glicht.
+</P>
+<H2>VC800</H2>
+<DIV TYPE=HEADER>
+	<H2><A NAME="Einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>VC820/VC840
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der VC8x0 Ger&auml;tedialog dient zum entfernten Auslesen der am Ger&auml;t eingestellten Messgr&ouml;&szlig;e. 
+Daten, k&ouml;nnen ausschlie&szlig;lich empfangen werden, wobei das Ger&auml;t mit der eingestellten Messgr&ouml;&szlig;e die Zeit zwischen zwei Messungen bestimmt.
+Zus&auml;tzlich wird der Batteriezustand angezeigt.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Bedienung</I></FONT></FONT></H2>
+<P>Nachdem der serielle Schnittstelle &uuml;ber den
+Ger&auml;teauswahldialog eingestellt ist und dieser Ger&auml;tedialog
+aufgerufen wurde, werden nach dr&uuml;cken von „Start“ zyklisch
+Werte aus dem Ger&auml;t abgerufen und angezeigt. 
+Genauso gut kann auch der "Start Aufnahme" Knopf in der  Toolbar benutzt werden, ohne das diese Dialog ge&ouml;ffnet wird.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../VC800/src/help/de/HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" ALIGN=BOTTOM BORDER=0>
+</P>
+<P>Schaltet man am Ger&auml;t die Messgr&ouml;&szlig;e um, wird automatisch ein neuer Datensatz angelegt.
+</P>
+<P>Durch dr&uuml;cken des "Stop"-Knopfes wird die Datenaufnahme abgebrochen. 
+</P>
+<H2>WStechVario</H2>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>WStechVario Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "&ouml;ffne Datei", k&ouml;nnen auch neue Dateien Eingelesen werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../WStechVario/src/help/de/HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1">
+</P>
+<P>Hinweis: Ist die Anzeige erst einmal konfiguriert, wird diese Anzeigekonfiguration auch angewendet, 
+wenn über die Kanal/Konfigurations- Auswahl in der Toolbar eine Konfiguration gewählt und dann über "importiere Datei"
+in der Toolsleiste der Dateidialog geöffnet und eine Datei eingelesen wird.
+</P>
+
+<H3><FONT FACE="Arial"><FONT SIZE=3>Datenexport im KML bzw. GPX Dateiformat</FONT></FONT></H3>
+<P>&Uuml;ber das Dateimen&uuml; -> Export k&ouml;nnen GPS basierte Daten, soweit vorhanden, in dem Google Earth KML Datenformat,
+sowie dem "global positioning system" (GPS) Austauschformat GPX, exportiert werden.
+</BR>
+Beide Datenformate lassen sich in der Google Earth Anwendung &ouml;ffnen und betrachten.
+Da in der Google Earth Anwendung keine H&ouml;heninformation dargestellt wird der Export immer mit relative H&ouml;he empfohlen.
+Das GPX Format bietet den Vorteil, dass hier Wegpunkte selektiert werden k&ouml;nnen und dabei die Höheninformation und Geschwindigkeit angezeigt werden.
+Bei einer GPX Datei mit relativer H&ouml;he er&uuml;brigt sich das selektieren von "H&ouml;hen an Bodenh&ouml;he anpassen", was die H&ouml;heninformation des Tracks eliminiert.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../WStechVario/src/help/de/HelpInfo_Bild_2.png" NAME="HelpInfo_Bild_2" ALT="HelpInfo_Bild_2">
+</P>
+<P>Bitte sicherstellen, dass die Masseinheiten wie gezeigt eingestellt sind.
+</P>
+<P ALIGN=CENTER><IMG SRC="../../WStechVario/src/help/de/HelpInfo_Bild_3.png" NAME="HelpInfo_Bild_3" ALT="HelpInfo_Bild_3">
+</P>
+<P>
+Bei ausgedehnten Fl&uuml;gen kann man die exportierte Datei manuell in kleinere Einzelst&uuml;cke zerlegen.
+Hiermit wird dann die &Uuml;bersichtlichkeit verbessert, bzw. bleibt erhalten.
+</P>
+
+<H3><FONT FACE="Arial"><FONT SIZE=3>VarioTool - erstellen von Setupdateien</FONT></FONT></H3>
+<P>Dieses Ger&auml;teplug-in enth&auml;lt die Besonderheit eines zus&auml;tzlichen Tabulators im Hauptfenster. 
+Hiermit wird die ger&auml;tespezifische Anwendung zur Erstellung der Ger&auml;tesetupdatei abgebildet und steht dadurch für alle, durch diese Anwendung unterstützen Betriebssysteme, zur Verf&uuml;gung.
+Der Tabulator wird automatisch beim Umschalten auf das Ger&auml;t angelegt, bzw. geschlossen. 
+Als Beispiel sei hier der Tabulator f&uuml;r das LinkVario gezeigt. 
+Der Tabulatorinhalt ist für das DataVario ist entsprechend angepasst. 
+</P>
+<P ALIGN=CENTER><IMG SRC="../../WStechVario/src/help/de/HelpInfo_Bild_4.png" NAME="HelpInfo_Bild_4" ALT="HelpInfo_Bild_4 Ger&auml;te speziefisches Konfigurationswerkzeug">
+</P>
+<P>Das Laden bzw. Speichern der Setup- oder Konfigurations-Datei geschieht &uuml;ber das Kontextmen&uuml;.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="../../WStechVario/src/help/de/HelpInfo_Bild_5.png" NAME="HelpInfo_Bild_5" ALT="HelpInfo_Bild_5 - Kontextmen%uuml; - laden und speichern der Konfiguraitonsdatei">
+</P>

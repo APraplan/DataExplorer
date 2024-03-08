@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.tttronix.QcCopter">QC-Copter</name>
+        <manufacturer>tt-tronix</manufacturer>
+        <manufacturerURL>https://www.qc-copter.de</manufacturerURL>
+        <group>control-unit</group>
+        <image>QC-Copter.png</image>
+        <usage>false</usage>
+    </Device>
+    <SerialPort>
+        <port>-</port>
+        <baudeRate>57600</baudeRate>
+        <dataBits>DATABITS_8</dataBits>
+        <stopBits>STOPBITS_2</stopBits>
+        <parity>PARITY_NONE</parity>
+        <flowControlMode>FLOWCONTROL_HARDWARE</flowControlMode>
+        <isRTS>false</isRTS>
+        <isDTR>false</isDTR>
+    </SerialPort>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>msec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="SERIAL_IO" formatType="BYTE" size="62"/>
+        <checkSum type="ADD" format="BINARY"/>
+    </DataBlock>
+    <State>
+        <property type="Integer" value="1" name="state_flight_recording"/>
+    </State>
+    <Channels>
+	    <Channel type="TYPE_CONFIG" name="type_config_1">
+	        <Measurement>
+	            <name>roll_integral</name>
+	            <symbol></symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>roll_angle</name>
+	            <symbol></symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="0" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>nick_integral</name>
+	            <symbol></symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>nick_angle</name>
+	            <symbol></symbol>
+	            <unit>°</unit>
+	            <active>true</active>
+	            <statistics sigma="false" avg="false" max="true" min="true"/>
+	            <property type="Integer" value="2" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Gyro Roll</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Gyro Nick</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="4" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>gyro_yaw</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="4" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>ACC Roll</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>ACC Nick</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="7" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>ACC Z</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="7" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>battery_voltage</name>
+	            <symbol>U</symbol>
+	            <unit>V</unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property description="Factor to measurement value 12V == 609" type="Double" value="0.0197" name="factor"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Motor VL</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Motor VR</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="11" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Motor HL</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="11" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>Motor HR</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>true</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	            <property type="Integer" value="11" name="scale_sync_ref_ordinal"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 0</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 1</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 2</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 3</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 4</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	        <Measurement>
+	            <name>user_data 5</name>
+	            <symbol></symbol>
+	            <unit></unit>
+	            <active>false</active>
+	            <statistics sigma="true" avg="true" max="true" min="true"/>
+	        </Measurement>
+	    </Channel>
+	</Channels>
+    <Desktop>
+        <property value="true" name="table_tab"/>
+        <property value="true" name="digital_tab"/>
+        <property value="true" name="analog_tab"/>
+        <property value="false" name="voltage_per_cell_tab"/>
+    </Desktop>
+</DeviceProperties>

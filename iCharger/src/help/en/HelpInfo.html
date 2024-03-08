@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>iCharger serial and iCharger USB - battery charger</TITLE>
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>iCharger 106B, iCharger 206B, iCharger 208B, iCharger 306B, iCharger 3010B - battery charger</I></FONT></FONT></H2>
+</DIV>
+<P ALIGN=CENTER>
+<IMG SRC="../../resource/iCharger208B.jpg" NAME="iCharger208B" ALT="iCharger208B">
+<IMG SRC="../../resource/iCharger306B.jpg" NAME="iCharger306B" ALT="iCharger306B">
+</P>
+<P>There is no device dialog for the iChargers which are serial connected. 
+It is only required to establish the serial connection and it will start the live data gathering or start reading data from the device. 
+</P>
+<P><B>Hint: </B>The used Baud rate of 128000 Baud can not be opened if a UNIX derived operating system is used, e.g. Linux or MAC OS X.
+This data rate doesn't have an even divisor. Linux user will have the opportunity to modify the kernel module source. 
+Hints how to do that can be found in the Internet.
+</P>
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>iCharger X6, S6, X8, X12, 406DUO, 308DUO, 4010DUO, DX6, DX8 - battery charger</I></FONT></FONT></H2>
+</DIV>
+<P ALIGN=CENTER>
+<IMG SRC="../../resource/iCharger X6.jpg" NAME="iCharger X6">
+<IMG SRC="../../resource/iCharger406DUO.png" NAME="iCharger406DUO">
+</P>
+<P>
+To gather live data USB connection must be established. 
+Check USB HID is detected and configured successful.
+UNIX derived operating systems may need configuration of udev rules or kernel extensions.
+While selecting an iCharger with USB at device selection dialog more info get displayed.
+</P>
+<P>
+The implementation allows, while device has micro SD-card inserted, to import stored execution logs directly.
+Use menu or "Ctrl+I".
+A file selection dialog gets opened and enable file selection for import.
+Requirement is USB mass storage detected by operating system.
+</P>
+<P>
+Using latest available device firmware (X&S >= 2.0.8, DUO >= 2.19, DX >= 1.0) it is possible to manipulate or create new program memories using a dialog.
+Use the following device dialog:
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.jpg" NAME="HelpInfo_Image_1" ALT="iChargerUsbDialog"></P>
+<P>
+How do I create a new program memory?
+<OL>
+<LI>Select a 'BUILD-IN' entry in drop down combo with target battery type and select "copy" button. This will create a new entry with "<battery-type>_copy".
+<LI>Select the just created program memory and push button "edit" to change the name of the newly created entry to meaningful one.
+<LI>Finish editing with pushing 'Enter' button at keyboard. This will change the entry to red outline and mark it as "CHANGED".
+<LI>Push button "write" to transfer changed program memory to device.
+<LI>Now change all parameter according requirement and push button "write" to transfer changed program memory to device again.
+</OL>
+Basically check buttons to be activated, hoover mouse pointer to display tool tips. 
+<UL>
+<LI>"copy" - copies a 'BUILD_IN' program memory to a 'CUSTOM' program memory with name <battery-type>_copy
+<LI>"edit" - enable change name of a selected 'CUSTOM' program memory 
+</BR>(finalize editing with 'Enter' key at key board, normally a drop down combo enables only entry selection)
+<LI>"write" - will be activated while detecting name or parameter change and write program memory to device
+<LI>"delete" - enable deletion of a selected 'CUSTOM' program memory
+</UL>
+To change program parameter there are several possibilities:
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.jpg" NAME="HelpInfo_Image_2" ALT="iCharger Configuration"></P>
+<OL>
+<LI>Select the slider directly and move until target value is reached
+<LI>Select end point of slider to change value with minimal step
+<LI>Select between end point and slider to change value step times 10
+<LI>Mark a number and overwrite (mark several numbers at once will mostly fail since the first change will immediately reflected slider position)
+</OL>
+Program execution may be started with this dialog using buttons at bottom.
+After device status check the data gathering will be started a well.
+Close dialog manual or stop processing again.
+</P>
+</BODY>
+</HTML>

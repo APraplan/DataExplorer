@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:element name="UltraDuoPlusType">
+		<xs:annotation>
+			<xs:documentation>Ultra Duo Plus Setup</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ChannelData1">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+								<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ChannelData2" minOccurs="0">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+								<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Memory" type="MemoryType" minOccurs="10" maxOccurs="100"/>
+				<xs:element name="TireHeaterData" minOccurs="0" maxOccurs="2">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+								<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MotorRunData" minOccurs="0" maxOccurs="2">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+								<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="IdentifierName" type="xs:string" use="required"/>
+			<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MemoryType">
+		<xs:sequence>
+			<xs:element name="SetupData">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+							<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TraceData" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+							<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CycleData" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+							<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StepChargeData" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+							<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Synced" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="Changed" type="xs:boolean" use="optional" default="false"/>
+	</xs:complexType>
+</xs:schema>

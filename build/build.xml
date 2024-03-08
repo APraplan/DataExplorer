@@ -1,0 +1,1745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<project name="DataExplorerMasterBuild" default="dist" basedir=".." xmlns:if="ant:if" xmlns:unless="ant:unless">
+
+	<target name="echo:build.properties" if="build.properties.exists">
+		<echo message="Building using ${build.properties}" />
+	</target>
+    <!-- Set this property value to your application name -->
+    <property name="app.name" value="DataExplorer"/>
+
+
+	<!-- Main target -->
+	<target name="dist" depends="copy-files">
+		<echo message="Building on system ${os.name} ${os.arch} ${sun.arch.data.model}" />
+		<echo message="Building using Java ${java.version}" />
+	</target>
+
+	<!-- initialize build OS name which set the lib path to swt.jar -->
+	<target name="init_OS">
+		<echo message="Execution OS = ${os.name} ${os.arch} ${sun.arch.data.model}" />
+
+		<condition property="build.os.shortname" value="GNULinux">
+			<os name="Linux" />
+		</condition>
+
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows XP" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows VISTA" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows 2003" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows 7" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows 8" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows 8.1" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows 10" />
+		</condition>
+		<condition property="build.os.shortname" value="Windows">
+			<os name="Windows NT (unknown)" /> <!-- Windows 8 -->
+		</condition>
+
+		<condition property="build.os.shortname" value="MAC">
+			<os name="Mac OS" />
+		</condition>
+		<condition property="build.os.shortname" value="MAC">
+			<os name="Mac OS X" />
+		</condition>
+
+		<echo message="OS short name = ${build.os.shortname}" />
+		
+		<condition property="isWindows">
+			<equals arg1="${build.os.shortname}" arg2="Windows" />
+		</condition>
+		<condition property="isLinux">
+			<equals arg1="${build.os.shortname}" arg2="GNULinux" />
+		</condition>
+		<condition property="isMac">
+			<equals arg1="${build.os.shortname}" arg2="MAC" />
+		</condition>
+	</target>
+
+	<!-- init -->
+	<target name="init" depends="init_OS">
+		<echo if:set="isWindows">running on Windows</echo>
+		<echo unless:set="isWindows">not running on Windows</echo>
+		<echo if:set="isLinux">running on Linux</echo>
+		<echo if:set="isMac">running on MacOS</echo>
+		
+		<property name="build.properties" location="build/build.properties" />
+		<property file="${build.properties}" />
+
+		<!-- this is to have nice message about used build.properties file -->
+		<available property="build.properties.exists" file="${build.properties}" />
+		<antcall target="echo:build.properties" />
+
+		<!-- output directories -->
+		<property name="output.dir" location="build/target" />
+		<property name="build.target.dir" location="build/target/install" />
+		<property name="build.target.nonUI" location="build/target/non_UI" />
+		<!-- create output directory structure -->
+		<mkdir dir="${output.dir}" />
+		<mkdir dir="${build.target.dir}" />
+		<mkdir dir="${build.target.nonUI}" />
+
+		<!-- create src directory varaible -->
+		<property name="source.dir" location="${basedir}" />
+		
+		<antcall target="init-windows" if:set="isWindows" />
+		<antcall target="init-raspbian" unless:set="isWindows" />
+		<antcall target="init-linux" if:set="isLinux" />
+		<antcall target="init-mac" if:set="isMac" />
+	</target>
+
+	<target name="init-windows">
+		<!-- output directories -->
+		<property name="output.windows32" location="${output.dir}/Windows_32" />
+		<property name="output.windows32.program" location="${output.windows32}/DataExplorer" />
+		<property name="output.windows32.program.devices" location="${output.windows32}/DataExplorer/devices" />
+		<property name="output.windows32.java.ext" location="${output.windows32}/DataExplorer/java/ext" />
+
+		<property name="output.windows64" location="${output.dir}/Windows_64" />
+		<property name="output.windows64.program" location="${output.windows64}/DataExplorer" />
+		<property name="output.windows64.program.devices" location="${output.windows64}/DataExplorer/devices" />
+		<property name="output.windows64.java.ext" location="${output.windows64}/DataExplorer/java/ext" />
+
+		<!-- create output directory structure -->
+		<mkdir dir="${output.windows32}" />
+		<mkdir dir="${output.windows32.program}" />
+		<mkdir dir="${output.windows32.program.devices}" />
+		<mkdir dir="${output.windows32.java.ext}" />
+
+		<mkdir dir="${output.windows64}" />
+		<mkdir dir="${output.windows64.program}" />
+		<mkdir dir="${output.windows64.program.devices}" />
+		<mkdir dir="${output.windows64.java.ext}" />
+	</target>
+
+	<target name="init-raspbian">
+		<!-- output directories -->
+		<property name="output.raspbian32" location="${output.dir}/Raspbian_32" />
+		<property name="output.raspbian32.program" location="${output.raspbian32}/DataExplorer" />
+		<property name="output.raspbian32.program.devices" location="${output.raspbian32}/DataExplorer/devices" />
+		<property name="output.raspbian32.java.ext" location="${output.raspbian32}/DataExplorer/java/ext" />
+
+		<property name="output.raspbian64" location="${output.dir}/Raspbian_64" />
+		<property name="output.raspbian64.program" location="${output.raspbian64}/DataExplorer" />
+		<property name="output.raspbian64.program.devices" location="${output.raspbian64}/DataExplorer/devices" />
+		<property name="output.raspbian64.java.ext" location="${output.raspbian64}/DataExplorer/java/ext" />
+
+		<!-- create output directory structure -->
+		<mkdir dir="${output.raspbian32}" />
+		<mkdir dir="${output.raspbian32.program}" />
+		<mkdir dir="${output.raspbian32.program.devices}" />
+		<mkdir dir="${output.raspbian32.java.ext}" />
+		
+		<mkdir dir="${output.raspbian64}" />
+		<mkdir dir="${output.raspbian64.program}" />
+		<mkdir dir="${output.raspbian64.program.devices}" />
+		<mkdir dir="${output.raspbian64.java.ext}" />
+	</target>
+
+	<target name="init-linux">
+		<!-- output directories -->
+		<property name="output.gnulinux32" location="${output.dir}/GNULinux_32" />
+		<property name="output.gnulinux32.program" location="${output.gnulinux32}/DataExplorer" />
+		<property name="output.gnulinux32.program.devices" location="${output.gnulinux32}/DataExplorer/devices" />
+		<property name="output.gnulinux32.java.ext" location="${output.gnulinux32}/DataExplorer/java/ext" />
+
+		<property name="output.gnulinux64" location="${output.dir}/GNULinux_64" />
+		<property name="output.gnulinux64.program" location="${output.gnulinux64}/DataExplorer" />
+		<property name="output.gnulinux64.program.devices" location="${output.gnulinux64}/DataExplorer/devices" />
+		<property name="output.gnulinux64.java.ext" location="${output.gnulinux64}/DataExplorer/java/ext" />
+
+		<!-- create output directory structure -->
+		<mkdir dir="${output.gnulinux32}" />
+		<mkdir dir="${output.gnulinux32.program}" />
+		<mkdir dir="${output.gnulinux32.program.devices}" />
+		<mkdir dir="${output.gnulinux32.java.ext}" />
+
+		<mkdir dir="${output.gnulinux64}" />
+		<mkdir dir="${output.gnulinux64.program}" />
+		<mkdir dir="${output.gnulinux64.program.devices}" />
+		<mkdir dir="${output.gnulinux64.java.ext}" />
+	</target>
+
+	<target name="init-mac">
+		<!-- output directories -->
+		<property name="output.mac32" location="${output.dir}/Mac_32" />
+		<property name="output.mac32.app" location="${output.mac32}/DataExplorer.app" />
+		<property name="output.mac32.bundle" location="${output.mac32}/DataExplorer.app/Contents" />
+		<property name="output.mac32.bundle.bin" location="${output.mac32.bundle}/MacOS" />
+		<property name="output.mac32.program" location="${output.mac32.bundle}/Resources" />
+		<property name="output.mac32.program.devices" location="${output.mac32.program}/devices" />
+		<property name="output.mac32.java.ext" location="${output.mac32.program}/java/ext" />
+
+		<property name="output.mac64" location="${output.dir}/Mac_64" />
+		<property name="output.mac64.app" location="${output.mac64}/DataExplorer.app" />
+		<property name="output.mac64.bundle" location="${output.mac64}/DataExplorer.app/Contents" />
+		<property name="output.mac64.bundle.bin" location="${output.mac64.bundle}/MacOS" />
+		<property name="output.mac64.program" location="${output.mac64.bundle}/Resources" />
+		<property name="output.mac64.program.devices" location="${output.mac64.program}/devices" />
+		<property name="output.mac64.java.ext" location="${output.mac64.program}/java/ext" />
+
+		<!-- create output directory structure -->
+		<mkdir dir="${output.mac32}" />
+		<mkdir dir="${output.mac32.bundle}" />
+		<mkdir dir="${output.mac32.bundle.bin}" />
+		<mkdir dir="${output.mac32.program}" />
+		<mkdir dir="${output.mac32.program.devices}" />
+		<mkdir dir="${output.mac32.java.ext}" />
+
+		<mkdir dir="${output.mac64}" />
+		<mkdir dir="${output.mac64.bundle}" />
+		<mkdir dir="${output.mac64.bundle.bin}" />
+		<mkdir dir="${output.mac64.program}" />
+		<mkdir dir="${output.mac64.program.devices}" />
+		<mkdir dir="${output.mac64.java.ext}" />
+	</target>
+
+	<!-- cleanup -->
+	<target name="clean" depends="init">
+		<delete dir="${output.dir}" />
+
+		<ant antfile="build.xml" target="clean" dir="DataExplorer" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Picolario" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="AkkuMaster" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Simulator" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="UniLog" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="eStation" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="VC800" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="LiPoWatch" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="CSV2SerialAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="WStechVario" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="QC-Copter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="GPS-Logger" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="NMEA-Adapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="UltramatUDP" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="HoTTAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="UniLog2" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="iCharger" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="FlightRecorder" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="JLog2" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="S32" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="JetiAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="IGCAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="GPXAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="IISI Cockpit V2" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="FutabaTelemetry" inheritall="true" />
+		<!-- ant antfile="build.xml" target="clean" dir="PowerLab" inheritall="true" / -->
+		<ant antfile="build.xml" target="clean" dir="Polaron" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="OpenTxTelemetry" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Akkumatik" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="GigaLogger" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="SkyRC" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Weatronic-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="UniTrend" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Pulsar" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Devo-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="CSVImportAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="ArduPilot" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="LogView-Zero" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Robbe" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Spektrum-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Triangoli" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="Core-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="nextGen" inheritall="true" />
+		<ant antfile="build.xml" target="clean" dir="PeakTech" inheritall="true" />
+		<!-- add new device here -->
+	</target>
+
+	<!-- install target -->
+	<target name="install" depends="copy-files">
+		<echo message="Execution OS = ${os.name} ${os.arch} ${sun.arch.data.model}" />
+
+		<condition property="isGNULinux">
+			<os name="Linux" />
+		</condition>
+		<antcall target="GNULinux" />
+		<condition property="isWindows">
+			<os name="Windows XP" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows VISTA" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows 2003" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows 7" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows 8" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows 8.1" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows 10" />
+		</condition>
+		<condition property="isWindows">
+			<os name="Windows NT (unknown)" /> <!-- Windows 8 -->
+		</condition>
+		<antcall target="Windows" />
+		<condition property="isMAC">
+			<os name="Mac OS" />
+		</condition>
+		<condition property="isMAC">
+			<os name="Mac OS X" />
+		</condition>
+		<antcall target="MAC" />
+
+		<echo message="OS short name = ${build.os.shortname}" />
+	</target>
+
+	<target name="Windows" if="isWindows">
+		<echo message="${os.name} ${os.arch} ${sun.arch.data.model}" />
+		<antcall target="WindowsDefault" />
+		<antcall target="WindowsPrefix" />
+	</target>
+	<target name="WindowsDefault" unless="prefix">
+		<echo message="installing to ${install.dir.windows}" />
+		<!-- unzip src="${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_x86_${sun.arch.data.model}.zip" dest="${install.dir.windows}" overwrite="true" / -->
+		<copy toDir="${install.dir.windows}/${app.name}">
+			<fileset file="${output.dir}/Windows_${sun.arch.data.model}/${app.name}/**" />
+		</copy>
+	</target>
+	<target name="WindowsPrefix" if="prefix">
+		<echo message="installing to ${prefix}" />
+		<!-- unzip src="${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_x86_${sun.arch.data.model}.zip" dest="${prefix}" overwrite="true" / -->
+		<copy toDir="${prefix}">
+			<fileset file="${output.dir}/Windows_${sun.arch.data.model}/**" />
+		</copy>
+	</target>
+
+	<target name="GNULinux" if="isGNULinux">
+		<echo message="${os.name} ${os.arch} ${sun.arch.data.model}" />
+		<antcall target="GNULinuxDefault" />
+		<antcall target="GNULinuxPrefix" />
+	</target>
+	<target name="GNULinuxDefault" unless="prefix">
+		<echo message="installing to ${install.dir.gnulinux}" />
+		<!-- exec command="tar -xzf ${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_x86_${sun.arch.data.model}.tar.gz" dir="${install.dir.gnulinux}" / -->
+	    <exec executable="chmod" os="Linux" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/GNULinux_${sun.arch.data.model}/${app.name}/DataExplorer"/>
+	    </exec>
+	    <exec executable="chmod" os="Linux" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/GNULinux_${sun.arch.data.model}/${app.name}/DevicePropertiesEditor"/>
+	    </exec>
+		<copy toDir="${install.dir.linux}/${app.name}">
+			<fileset file="${output.dir}/GNULinux_${sun.arch.data.model}/${app.name}/**" />
+		</copy>
+	</target>
+	<target name="GNULinuxPrefix" if="prefix">
+		<echo message="installing to ${prefix}" />
+		<!-- exec command="tar -xzf ${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_x86_${sun.arch.data.model}.tar.gz" dir="${prefix}" / -->
+	    <exec executable="chmod" os="Linux" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/GNULinux_${sun.arch.data.model}/${app.name}/DataExplorer"/>
+	    </exec>
+	    <exec executable="chmod" os="Linux" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/GNULinux_${sun.arch.data.model}/${app.name}/DevicePropertiesEditor"/>
+	    </exec>
+		<copy toDir="${prefix}">
+			<fileset file="${output.dir}/GNULinux_${sun.arch.data.model}/**" />
+		</copy>
+	</target>
+
+	<target name="MAC" if="isMAC">
+		<echo message="${os.name} ${os.arch} ${sun.arch.data.model}" />
+		<antcall target="MacDefault" />
+		<antcall target="MacPrefix" />
+	</target>
+	<target name="MacDefault" unless="prefix">
+		<echo message="installing to ${install.dir.mac}" />
+		<!-- unzip src="${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_${sun.arch.data.model}_cocoa.zip" dest="${install.dir.mac}" overwrite="true" / -->
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/Contents/MacOS/DataExplorerMac64"/>
+	    </exec>
+	    <!-- exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/Contents/MacOS/DevicePropertiesEditorMac64"/>
+	    </exec -->
+		<copy toDir="${install.dir.mac}/${app.name}.app">
+			<fileset file="${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/**" />
+		</copy>
+		<echo message="chmod ${install.dir.mac}/${app.name}.app/Contents/Resources/runtime/bin" />
+		<chmod perm="+x" failonerror="true">
+			<fileset dir="${install.dir.mac}/${app.name}.app/Contents/Resources/runtime/bin" />
+		</chmod>
+	</target>
+	<target name="MacPrefix" if="prefix">
+		<echo message="installing to ${prefix}" />
+		<!-- unzip src="${build.target.dir}/dataexplorer-${version.num}-bin_${build.os.shortname}_${sun.arch.data.model}_cocoa.zip" dest="${prefix}" overwrite="true" / -->
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/Contents/MacOS/DataExplorerMac64"/>
+	    </exec>
+	    <!-- exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/Contents/MacOS/DevicePropertiesEditorMac64"/>
+	    </exec -->
+		<copy toDir="${prefix}">
+			<fileset file="${output.dir}/Mac_${sun.arch.data.model}/**" />
+		</copy>
+		<chmod perm="+x" failonerror="true">
+			<fileset dir="${prefix}/${output.dir}/Mac_${sun.arch.data.model}/${app.name}.app/Contents/Resources/runtime/bin" />
+		</chmod>
+	</target>
+
+	<target name="check_prefix">
+		<condition property="isPrefix">
+			<not>
+				<equals arg1="prefix" arg2="" />
+			</not>
+		</condition>
+	</target>
+
+	<!-- Package -->
+	<target name="package" depends="init">
+		<ant antfile="build.xml" target="package" dir="DataExplorer" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Picolario" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="AkkuMaster" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Simulator" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="UniLog" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="eStation" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="VC800" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="LiPoWatch" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="CSV2SerialAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="WStechVario" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="QC-Copter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="GPS-Logger" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="NMEA-Adapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="UltramatUDP" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="HoTTAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="UniLog2" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="iCharger" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="FlightRecorder" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="JLog2" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="S32" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="JetiAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="IGCAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="GPXAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="IISI Cockpit V2" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="FutabaTelemetry" inheritall="true" />
+		<!-- ant antfile="build.xml" target="package" dir="PowerLab" inheritall="true" / -->
+		<ant antfile="build.xml" target="package" dir="Polaron" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="OpenTxTelemetry" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Akkumatik" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="GigaLogger" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="SkyRC" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Weatronic-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="UniTrend" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Pulsar" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Devo-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="CSVImportAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="ArduPilot" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="LogView-Zero" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Robbe" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Spektrum-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Triangoli" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="Core-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="nextGen" inheritall="true" />
+		<ant antfile="build.xml" target="package" dir="PeakTech" inheritall="true" />
+		<!-- add new device here -->
+	</target>
+	
+	<!-- none UI Package -->
+	<target name="non_ui_package" depends="init">
+		<ant antfile="build.xml" target="nonui_package" dir="DataExplorer" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Picolario" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="AkkuMaster" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Simulator" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniLog" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="eStation" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="VC800" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="LiPoWatch" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="CSV2SerialAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="WStechVario" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="QC-Copter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="GPS-Logger" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="NMEA-Adapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="UltramatUDP" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="HoTTAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniLog2" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="iCharger" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="FlightRecorder" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="JLog2" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="S32" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="JetiAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="IGCAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="GPXAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="IISI Cockpit V2" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="FutabaTelemetry" inheritall="true" />
+		<!-- ant antfile="build.xml" target="nonui_package" dir="PowerLab" inheritall="true" / -->
+		<ant antfile="build.xml" target="nonui_package" dir="Polaron" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="OpenTxTelemetry" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Akkumatik" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="GigaLogger" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="SkyRC" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Weatronic-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="UniTrend" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Pulsar" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Devo-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="CSVImportAdapter" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="ArduPilot" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="LogView-Zero" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Robbe" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Spektrum-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Triangoli" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="Core-Telemetry" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="nextGen" inheritall="true" />
+		<ant antfile="build.xml" target="nonui_package" dir="PeakTech" inheritall="true" />
+		<!-- add new device here -->
+	</target>
+
+	<fileset dir="${basedir}">
+		<patternset id="DE_PLUGIN_JARS">
+			<include name="Picolario/build/*.jar" />
+			<include name="AkkuMaster/build/*.jar" />
+			<include name="Simulator/build/*.jar" />
+			<include name="UniLog/build/*.jar" />
+			<include name="eStation/build/*.jar" />
+			<include name="VC800/build/*.jar" />
+			<include name="LiPoWatch/build/*.jar" />
+			<include name="CSV2SerialAdapter/build/*.jar" />
+			<include name="WStechVario/build/*.jar" />
+			<include name="QC-Copter/build/*.jar" />
+			<include name="GPS-Logger/build/*.jar" />
+			<include name="NMEA-Adapter/build/*.jar" />
+			<include name="UltramatUDP/build/*.jar" />
+			<include name="HoTTAdapter/build/*.jar" />
+			<include name="UniLog2/build/*.jar" />
+			<include name="iCharger/build/*.jar" />
+			<include name="FlightRecorder/build/*.jar" />
+			<include name="JLog2/build/*.jar" />
+			<include name="S32/build/*.jar" />
+			<include name="JetiAdapter/build/*.jar" />
+			<include name="IGCAdapter/build/*.jar" />
+			<include name="GPXAdapter/build/*.jar" />
+			<include name="IISI Cockpit V2/build/*.jar" />
+			<include name="FutabaTelemetry/build/*.jar" />
+			<!-- include name="PowerLab/build/*.jar" / -->
+			<include name="OpenTxTelemetry/build/*.jar" />
+			<include name="Polaron/build/*.jar" />
+			<include name="Akkumatik/build/*.jar" />
+			<include name="GigaLogger/build/*.jar" />
+			<include name="SkyRC/build/*.jar" />
+			<include name="Weatronic-Telemetry/build/*.jar" />
+			<include name="UniTrend/build/*.jar" />
+			<include name="Pulsar/build/*.jar" />
+			<include name="Devo-Telemetry/build/*.jar" />
+			<include name="CSVImportAdapter/build/*.jar" />
+			<include name="ArduPilot/build/*.jar" />
+			<include name="LogView-Zero/build/*.jar" />
+			<include name="Robbe/build/*.jar" />
+			<include name="Spektrum-Telemetry/build/*.jar" />
+			<include name="Triangoli/build/*.jar" />
+			<include name="Core-Telemetry/build/*.jar" />
+			<include name="nextGen/build/*.jar" />
+			<include name="PeakTech/build/*.jar" />
+			<!-- add new device here -->
+		</patternset>
+	</fileset>
+
+	<fileset dir="${basedir}">
+		<patternset id="DE_PLUGIN_NON_UI_JARS">
+			<include name="DataExplorer/build/*NonUi*.jar" />
+			<include name="Picolario/build/*NonUi*.jar" />
+			<include name="AkkuMaster/build/*NonUi*.jar" />
+			<include name="Simulator/build/*NonUi*.jar" />
+			<include name="UniLog/build/*NonUi*.jar" />
+			<include name="eStation/build/*NonUi*.jar" />
+			<include name="VC800/build/*NonUi*.jar" />
+			<include name="LiPoWatch/build/*NonUi*.jar" />
+			<include name="CSV2SerialAdapter/build/*NonUi*.jar" />
+			<include name="WStechVario/build/*NonUi*.jar" />
+			<include name="QC-Copter/build/*NonUi*.jar" />
+			<include name="GPS-Logger/build/*NonUi*.jar" />
+			<include name="NMEA-Adapter/build/*NonUi*.jar" />
+			<include name="UltramatUDP/build/*NonUi*.jar" />
+			<include name="HoTTAdapter/build/*NonUi*.jar" />
+			<include name="UniLog2/build/*NonUi*.jar" />
+			<include name="iCharger/build/*NonUi*.jar" />
+			<include name="FlightRecorder/build/*NonUi*.jar" />
+			<include name="JLog2/build/*NonUi*.jar" />
+			<include name="S32/build/*NonUi*.jar" />
+			<include name="JetiAdapter/build/*NonUi*.jar" />
+			<include name="IGCAdapter/build/*NonUi*.jar" />
+			<include name="GPXAdapter/build/*NonUi*.jar" />
+			<include name="IISI Cockpit V2/build/*NonUi*.jar" />
+			<include name="FutabaTelemetry/build/*NonUi*.jar" />
+			<!-- include name="PowerLab/build/*NonUi*.jar" / -->
+			<include name="OpenTxTelemetry/build/*NonUi*.jar" />
+			<include name="Polaron/build/*NonUi*.jar" />
+			<include name="Akkumatik/build/*NonUi*.jar" />
+			<include name="GigaLogger/build/*NonUi*.jar" />
+			<include name="SkyRC/build/*NonUi*.jar" />
+			<include name="Weatronic-Telemetry/build/*NonUi*.jar" />
+			<include name="UniTrend/build/*NonUi*.jar" />
+			<include name="Pulsar/build/*NonUi*.jar" />
+			<include name="Devo-Telemetry/build/*NonUi*.jar" />
+			<include name="CSVImportAdapter/build/*NonUi*.jar" />
+			<include name="ArduPilot/build/*NonUi*.jar" />
+			<include name="LogView-Zero/build/*NonUi*.jar" />
+			<include name="Robbe/build/*NonUi*.jar" />
+			<include name="Spektrum-Telemetry/build/*NonUi*.jar" />
+			<include name="Triangoli/build/*NonUi*.jar" />
+			<include name="Core-Telemetry/build/*NonUi*.jar" />
+			<include name="nextGen/build/*NonUi*.jar" />
+			<include name="PeakTech/build/*NonUi*.jar" />
+			<!-- add new device here -->
+		</patternset>
+	</fileset>
+	
+	<target name="copy-non-UI-files" depends="non_ui_package">
+		<!-- programm directory -->
+		<copy todir="${build.target.nonUI}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_NON_UI_JARS" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- create internal temporay file structure -->
+	<target name="copy-files" depends="package,create_HoTTMdlViewer_lib">
+		<antcall target="copy-files-windows" if:set="isWindows" />
+		<antcall target="copy-files-raspbian" unless:set="isWindows" />
+		<antcall target="copy-files-linux" if:set="isLinux" />
+		<antcall target="copy-files-mac" if:set="isMac" />
+	</target>
+
+	<target name="copy-files-windows" depends="init-windows">
+		<!-- programm directory -->
+		<copy file="build/misc/DataExplorer32.exe" tofile="${output.windows32.program}/DataExplorer.exe" />
+		<copy file="build/misc/DataExplorer32.cmd" tofile="${output.windows32.program}/DataExplorer.cmd" />
+		<copy todir="${output.windows32.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" excludes="**/*NonUi*.jar" />
+			<fileset file="build/misc/DevicePropertiesEditor.exe" />
+			<!--
+            <fileset file="build/misc/DataExplorer.ico" />
+            <fileset file="build/misc/DevicePropertiesEditor.ico" />
+            -->
+			<fileset file="RXTXcomm/src/win32/rxtxSerial.dll" />
+			<fileset file="DataExplorer/src/WinHelper32.dll" />
+		</copy>
+		<copy todir="${output.windows32.program.devices}" flatten="yes">
+			<fileset dir="${basedir}" excludes="**/*NonUi*.jar">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<copy file="build/misc/DataExplorer64.exe" tofile="${output.windows64.program}/DataExplorer.exe" />
+		<copy file="build/misc/DataExplorer64.cmd" tofile="${output.windows64.program}/DataExplorer.cmd" />
+		<copy todir="${output.windows64.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" excludes="**/*NonUi*.jar" />
+			<fileset file="build/misc/DevicePropertiesEditor.exe" />
+			<!--
+            <fileset file="build/misc/DataExplorer.ico" />
+            <fileset file="build/misc/DevicePropertiesEditor.ico" />
+            -->
+			<fileset file="RXTXcomm/src/win64/rxtxSerial.dll" />
+			<fileset file="DataExplorer/src/WinHelper64.dll" />
+		</copy>
+		<copy todir="${output.windows64.program.devices}" flatten="yes">
+			<fileset dir="${basedir}" excludes="**/*NonUi*.jar">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+		
+		<!-- java extenssions -->
+		<copy todir="${output.windows32.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/Windows/32/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />		
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/Windows/32/libusb4java.jar" />
+		</copy>
+		<copy todir="${output.windows64.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/Windows/64/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/Windows/64/libusb4java.jar" />
+		</copy>
+		
+		<!-- launcher scripts, README -->
+		<copy todir="${output.windows32}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+		<copy todir="${output.windows64}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+	</target>
+	
+	<target name="copy-files-raspbian" depends="init-raspbian">
+		<copy file="build/misc/DataExplorer32" tofile="${output.raspbian32.program}/DataExplorer" />
+		<copy todir="${output.raspbian32.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer-mime.xml" />
+			<fileset file="build/misc/DevicePropertiesEditor.xpm" />
+			<fileset file="build/misc/DataExplorer.xpm" />
+			<fileset file="build/misc/DataExplorerSplash.png" />
+			<fileset file="build/misc/DataExplorer.desktop" />
+			<fileset file="build/misc/DevicePropertiesEditor" />
+			<fileset file="build/misc/DevicePropertiesEditor.desktop" />
+			<fileset file="RXTXcomm/src/arm32/librxtxSerial.so" />
+		</copy>
+		<copy todir="${output.raspbian32.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<copy file="build/misc/DataExplorer64" tofile="${output.raspbian64.program}/DataExplorer" />
+		<copy todir="${output.raspbian64.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer-mime.xml" />
+			<fileset file="build/misc/DevicePropertiesEditor.xpm" />
+			<fileset file="build/misc/DataExplorer.xpm" />
+			<fileset file="build/misc/DataExplorerSplash.png" />
+			<fileset file="build/misc/DataExplorer.desktop" />
+			<fileset file="build/misc/DevicePropertiesEditor" />
+			<fileset file="build/misc/DevicePropertiesEditor.desktop" />
+			<!-- fileset file="RXTXcomm/src/arm64/librxtxSerial.so" / -->
+		</copy>
+		<copy todir="${output.raspbian64.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<!-- java extenssions -->
+		<copy todir="${output.raspbian32.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/Raspbian/32/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/Raspbian/32/libusb4java.jar" />
+		</copy>
+		
+		<copy todir="${output.raspbian64.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/Raspbian/64/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/Raspbian/64/libusb4java.jar" />
+		</copy>
+		
+		<!-- launcher scripts, README -->
+		<copy todir="${output.raspbian32}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+		
+		<copy todir="${output.raspbian64}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+	</target>
+
+	<target name="copy-files-linux" depends="init-linux">
+		<copy file="build/misc/DataExplorer32" tofile="${output.gnulinux32.program}/DataExplorer" />
+		<copy todir="${output.gnulinux32.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer-mime.xml" />
+			<fileset file="build/misc/DevicePropertiesEditor.xpm" />
+			<fileset file="build/misc/DataExplorer.xpm" />
+			<fileset file="build/misc/DataExplorerSplash.png" />
+			<fileset file="build/misc/DataExplorer.desktop" />
+			<fileset file="build/misc/DevicePropertiesEditor" />
+			<fileset file="build/misc/DevicePropertiesEditor.desktop" />
+			<fileset file="RXTXcomm/src/lnx32/librxtxSerial.so" />
+		</copy>
+		<copy todir="${output.gnulinux32.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<copy file="build/misc/DataExplorer64" tofile="${output.gnulinux64.program}/DataExplorer" />
+		<copy todir="${output.gnulinux64.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer-mime.xml" />
+			<fileset file="build/misc/DevicePropertiesEditor.xpm" />
+			<fileset file="build/misc/DataExplorer.xpm" />
+			<fileset file="build/misc/DataExplorerSplash.png" />
+			<fileset file="build/misc/DataExplorer.desktop" />
+			<fileset file="build/misc/DevicePropertiesEditor" />
+			<fileset file="build/misc/DevicePropertiesEditor.desktop" />
+			<fileset file="RXTXcomm/src/lnx64/librxtxSerial.so" />
+		</copy>
+		<copy todir="${output.gnulinux64.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+		
+		<!-- java extenssions -->
+		<copy todir="${output.gnulinux32.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/GNULinux/32/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/GNULinux/32/libusb4java.jar" />
+		</copy>
+		<copy todir="${output.gnulinux64.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/GNULinux/64/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/GNULinux/64/libusb4java.jar" />
+		</copy>
+
+		<!-- launcher scripts, README -->
+		<copy todir="${output.gnulinux32}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+		<copy todir="${output.gnulinux64}/DataExplorer" flatten="yes">
+			<fileset file="build/misc/README.*" />
+		</copy>
+	</target>
+
+	<target name="copy-files-mac" depends="init-mac">
+		<copy todir="${output.mac32.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer.icns" />
+			<!-- fileset file="build/misc/DevicePropertiesEditor.icns" / -->
+			<fileset file="RXTXcomm/src/mac/librxtxSerial.jnilib" />
+		</copy>
+		<copy todir="${output.mac32.bundle}" flatten="yes">
+			<fileset file="build/lib/MAC/32/Info.plist" />
+			<fileset file="build/misc/PkgInfo" />
+			<fileset file="build/misc/version.plist" />
+		</copy>
+		<copy todir="${output.mac32.bundle.bin}" flatten="yes">
+			<fileset file="build/misc/DataExplorerMac32" />
+			<!-- fileset file="build/misc/DevicePropertiesEditorMac32" / -->
+		</copy>
+		<copy todir="${output.mac32.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<copy todir="${output.mac64.program}" flatten="yes">
+			<fileset file="DataExplorer/build/*.jar" />
+			<fileset file="build/misc/DataExplorer.icns" />
+			<!-- fileset file="build/misc/DevicePropertiesEditor.icns" / -->
+			<fileset file="RXTXcomm/src/mac/librxtxSerial.jnilib" />
+		</copy>
+		<copy todir="${output.mac64.bundle}" flatten="yes">
+			<fileset file="build/lib/MAC/64/Info.plist" />
+			<fileset file="build/misc/PkgInfo" />
+			<fileset file="build/misc/version.plist" />
+		</copy>
+		<copy todir="${output.mac64.bundle.bin}" flatten="yes">
+			<fileset file="build/misc/DataExplorerMac64" />
+			<!-- fileset file="build/misc/DevicePropertiesEditorMac64" / -->
+		</copy>
+		<copy todir="${output.mac64.program.devices}" flatten="yes">
+			<fileset dir="${basedir}">
+				<patternset refid="DE_PLUGIN_JARS" />
+			</fileset>
+		</copy>
+
+		<!-- java extenssions -->
+		<copy todir="${output.mac32.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/MAC/32/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="build/misc/*.README" />		
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/MAC/32/libusb4java.jar" />
+		</copy>
+		<copy todir="${output.mac64.java.ext}" flatten="yes">
+			<fileset file="build/lib/RXTXcomm.jar" />
+			<fileset file="build/lib/jSerialComm.jar" />
+			<fileset file="build/lib/MAC/64/swt.jar" />
+			<fileset file="build/misc/*.LICENSE" />
+			<fileset file="${basedir}/HoTTMdlViewer/lib/HoTTMdlViewer.jar" />
+			<fileset file="build/lib/gson.jar" />
+			<fileset file="build/lib/juniversalchardet.jar" />
+			<fileset file="build/lib/jaxb-api.jar" />
+			<fileset file="build/lib/jaxb-core.jar" />
+			<fileset file="build/lib/jaxb-runtime.jar" />
+			<fileset file="build/lib/istack-commons-runtime.jar" />
+			<fileset file="build/lib/activation.jar" />
+			<fileset file="build/lib/usb4java.jar" />
+			<fileset file="build/lib/usb-api.jar" />
+			<fileset file="build/lib/usb4java-javax.jar" />
+			<fileset file="build/lib/commons-lang3.jar" />
+			<fileset file="build/lib/jtouchbar.jar" />
+			<fileset file="build/lib/jtouchbar-swt.jar" />
+			<fileset file="build/lib/tlmreader.jar" />
+			<fileset file="build/lib/MAC/64/libusb4java.jar" />
+		</copy>
+
+		<!-- launcher scripts, README -->
+		<!-- 
+		<copy todir="${output.mac32.app}" flatten="yes">
+			<fileset file="build/misc/README.*" />
+			<fileset file="build/misc/RXTX_Post-Install_MacOS.sh" />
+		</copy>
+		<copy todir="${output.mac64.app}" flatten="yes">
+			<fileset file="build/misc/README.*" />
+			<fileset file="build/misc/RXTX_Post-Install_MacOS.sh" />
+		</copy>
+		-->
+	</target>
+	
+	<!-- build java runtime using jlink MAC OS Intel -->
+	<target name="jlink_mac_intel" depends="init-mac">		
+		<exec executable="jlink" dir="${output.mac64.program}">
+			<arg value="--compress=2" />
+			<arg value="--no-header-files" />
+			<arg value="--no-man-pages" />
+			<arg value="--strip-debug" />
+			<arg value="--output" />
+			<arg value="runtime" />
+			<arg value="--module-path" />
+			<arg value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/jmods" />
+			<arg value="--add-modules" />
+			<arg value="java.se,jdk.xml.dom" />
+		</exec>
+	</target>
+	
+	<!-- build java runtime using jlink MAC OS Intel -->
+	<target name="jlink_win_intel" depends="init-windows">		
+		<exec executable="jlink" dir="${output.windows64.program}">
+			<arg value="--compress=2" />
+			<arg value="--no-header-files" />
+			<arg value="--no-man-pages" />
+			<arg value="--strip-debug" />
+			<arg value="--output" />
+			<arg value="runtime" />
+			<arg value="--module-path" />
+			<arg value="C:\Program Files\Java\jdk-17\jmods" />
+			<arg value="--add-modules" />
+			<arg value="java.se,jdk.xml.dom" />
+		</exec>
+	</target>
+	
+	<!-- package, build Windows installer, MAC OS disk image, tar for GNULinux -->
+	<target name="binary_package" depends="copy-files">		
+	    <antcall target="build_Windows_NSIS_installer" description="building NSIS Windows installer" if:set="isWindows" />		
+		<antcall target="binary_package-raspbian" description="build raspbian tarball" unless:set="isWindows" />
+		<antcall target="binary_package-linux" description="build Linux tarball" if:set="isLinux" />
+		<antcall target="build_Mac_install_dmg" description="build Mac disk images, replaces building zip archives" if:set="isMac" />
+	</target>
+	
+	<target name="binary_package-raspbian" depends="init-raspbian">
+		<echo message="tar Raspbian Linux 32 bit files" />
+		<tar destfile="${build.target.dir}/dataexplorer-${version.num}-bin_RaspbianLinux_ARM_32.tar.gz" compression="gzip">
+			<tarfileset dir="${output.raspbian32}" casesensitive="true" mode="755">
+				<include name="*/DataExplorer" />
+				<include name="*/DevicePropertiesEditor" />
+			</tarfileset>
+			<tarfileset dir="${output.raspbian32}" casesensitive="true" mode="766">
+				<include name="*/DataExplorer.desktop" />
+				<include name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+			<tarfileset dir="${output.raspbian32}" casesensitive="true" mode="644">
+				<include name="**" />
+				<exclude name="*/DataExplorer" />
+				<exclude name="*/DevicePropertiesEditor" />
+				<exclude name="*/DataExplorer.desktop" />
+				<exclude name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+		</tar>		
+	
+		<echo message="tar Raspbian Linux 64 bit files" />
+		<tar destfile="${build.target.dir}/dataexplorer-${version.num}-bin_RaspbianLinux_ARM_64.tar.gz" compression="gzip">
+			<tarfileset dir="${output.raspbian64}" casesensitive="true" mode="755">
+				<include name="*/DataExplorer" />
+				<include name="*/DevicePropertiesEditor" />
+			</tarfileset>
+			<tarfileset dir="${output.raspbian64}" casesensitive="true" mode="766">
+				<include name="*/DataExplorer.desktop" />
+				<include name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+			<tarfileset dir="${output.raspbian64}" casesensitive="true" mode="644">
+				<include name="**" />
+				<exclude name="*/DataExplorer" />
+				<exclude name="*/DevicePropertiesEditor" />
+				<exclude name="*/DataExplorer.desktop" />
+				<exclude name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+		</tar>		
+	</target>
+	
+	<target name="binary_package-linux" depends="init-linux">
+		<echo message="tar GNULinux 32 bit files" />
+		<tar destfile="${build.target.dir}/dataexplorer-${version.num}-bin_GNULinux_x86_32.tar.gz" compression="gzip">
+			<tarfileset dir="${output.gnulinux32}" casesensitive="true" mode="755">
+				<include name="*/DataExplorer" />
+				<include name="*/DevicePropertiesEditor" />
+			</tarfileset>
+			<tarfileset dir="${output.gnulinux32}" casesensitive="true" mode="766">
+				<include name="*/DataExplorer.desktop" />
+				<include name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+			<tarfileset dir="${output.gnulinux32}" casesensitive="true" mode="644">
+				<include name="**" />
+				<exclude name="*/DataExplorer" />
+				<exclude name="*/DevicePropertiesEditor" />
+				<exclude name="*/DataExplorer.desktop" />
+				<exclude name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+		</tar>
+
+		<echo message="tar GNULinux 64 bit files" />
+		<tar destfile="${build.target.dir}/dataexplorer-${version.num}-bin_GNULinux_x86_64.tar.gz" compression="gzip">
+			<tarfileset dir="${output.gnulinux64}" casesensitive="true" mode="755">
+				<include name="*/DataExplorer" />
+				<include name="*/DevicePropertiesEditor" />
+			</tarfileset>
+			<tarfileset dir="${output.gnulinux64}" casesensitive="true" mode="766">
+				<include name="*/DataExplorer.desktop" />
+				<include name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+			<tarfileset dir="${output.gnulinux64}" casesensitive="true">
+				<include name="**" />
+				<exclude name="*/DataExplorer" />
+				<exclude name="*/DevicePropertiesEditor" />
+				<exclude name="*/DataExplorer.desktop" />
+				<exclude name="*/DevicePropertiesEditor.desktop" />
+			</tarfileset>
+		</tar>
+	</target>
+
+	<target name="backupDataFilesWindows" description="pack personal data files">
+		<tar destfile="F:/DataExplorerFiles.tar.gz" compression="gzip">
+			<tarfileset dir="D:/Documents/Person" casesensitive="true">
+				<include name="DataExplorer/**" />
+				<include name="DataExplorer/**/*.zip" />
+				<exclude name="DataExplorer/**/*.pdf" />
+				<exclude name="DataExplorer/**/*.gz" />
+				<exclude name="DataExplorer/**/*.bak" />
+				<include name="LogView/**" />
+				<exclude name="LogView/**/*.bak" />
+				<exclude name="LogView/**/*.BAK" />
+				<exclude name="LogView/**.zip" />
+				<exclude name="LogView/**.pdf" />
+				<include name="LogViewOBJ/**" />
+				<exclude name="LogViewOBJ/**/*.bak" />
+				<exclude name="LogViewOBJ/**/*.BAK" />
+			</tarfileset>
+		</tar>
+	</target>
+
+	<target name="clean_source">
+		<delete file="${build.target.dir}/dataexplorer-${version.num}-src.zip" />
+	</target>
+
+	<target name="create_HoTTMdlViewer_lib" unless="${basedir}/HoTTMdlViewer/lib">
+		<mkdir dir="${basedir}/HoTTMdlViewer/lib" />
+	</target>
+	
+	<target name="source_package" depends="init,create_HoTTMdlViewer_lib" description="builds the source distribution package to run configure and make">
+		<tar destfile="${build.target.dir}/dataexplorer-${version.num}-src.tar.gz" compression="gzip">
+			<tarfileset dir="${basedir}" casesensitive="true" prefix="dataexplorer-${version.num}" filemode="644">
+				<include name="**/src/**" />
+				<include name="**/build.xml" />
+				<exclude name="**/CVS/**" />
+				<include name="build/lib/**" />
+				<include name="build/ant/**" />
+				<include name="build/misc/**" />
+				<exclude name="build/misc/MAC_OS*/**" />
+				<include name="build/build.properties" />
+				<include name="WindowsHelper/**" />
+				<!-- exclude sample files for testing purpose unless test target is broken 
+				<include name="thirdparty/**" />
+				<exclude name="**/_SupplementObjectDirs/**" />
+				<exclude name="**/_ET_Exzerpt/**" />
+				<include name="DataFilesTestSamples/**" />
+				-->
+				<include name="**/lib/HoTTMdlViewer.jar" />
+				<exclude name="jSerialComm/**" />
+				<exclude name="*Decoder/**" />
+				<exclude name="*Config/**" />
+				<exclude name="HoTT-**/src/**" />
+				<exclude name="parent*/**" />
+				<exclude name="binding*/**" />
+				<exclude name="Test*/**" />
+				<exclude name="web*/**" />
+				<exclude name="lwjgl-2.5/**" />
+				<exclude name="Swt*/**" />
+				<exclude name="SWT*/**" />
+				<exclude name="launch4j/**" />
+				<exclude name="COPYING" />
+				<exclude name="READ*" />
+				<exclude name="*.LICENSE" />
+				<exclude name="AUTHORS" />
+				<exclude name="Changelog" />
+				<exclude name="NEWS" />
+				<exclude name="Backlog" />
+				<exclude name="PROBLEMS" />
+				<exclude name="Makefile.in" />
+				<exclude name="configure" />
+				<exclude name="install-sh" />
+				<exclude name="build/misc/GNU*" />
+				<exclude name="build/misc/MAC*" />
+				<exclude name="build/misc/maintain*" />
+				<exclude name="build/misc/*.LICENSE" />
+				<exclude name="build/misc/*.pdf" />
+				<exclude name="build/misc/Url*" />
+				<exclude name="**/Thumbs.db" />
+				<exclude name="SWT*/**" />
+				<exclude name="JAXB*/**" />
+				<exclude name="launch4j/**" />
+				<exclude name="Port*/**" />
+				<exclude name="Print*/**" />
+				<include name="RXTXcomm/**" />
+				<include name="jSerialComm/**" />
+				<exclude name="X-Tools/**" />
+			</tarfileset>
+			<tarfileset dir="${basedir}/build/misc" casesensitive="true" prefix="dataexplorer-${version.num}" filemode="444">
+				<include name="COPYING" />
+				<include name="READ*" />
+				<include name="LICENSING.txt" />
+				<include name="*.LICENSE" />
+				<include name="AUTHORS" />
+				<include name="INSTALL" />
+				<include name="Changelog" />
+				<include name="NEWS" />
+				<include name="Backlog" />
+				<include name="PROBLEMS" />
+				<include name="configure.ac" />
+				<include name="Makefile.in" />
+			</tarfileset>
+			<tarfileset dir="${basedir}/build/misc" casesensitive="true" prefix="dataexplorer-${version.num}" filemode="744">
+				<include name="configure" />
+				<include name="install-sh" />
+			</tarfileset>
+			<tarfileset dir="${basedir}/DataExplorer/doc" casesensitive="true" prefix="dataexplorer-${version.num}" filemode="444">
+				<include name="*.odt" />
+				<include name="*.pdf" />
+				<include name="design/*.pdf" />
+			</tarfileset>
+		</tar>
+	</target>
+
+	<target name="check" depends="init,copy-files" description="assumes DataExplorer has been started and data directory is configured">
+		<ant antfile="build.xml" target="compile" dir="JunitMiscTest" inheritall="true" />
+
+		<echo message="path=${basedir}/build/target/${build.os.shortname}_${sun.arch.data.model}/DataExplorer/DataExplorer.jar" />
+		<junit printsummary="yes" haltonfailure="no" showoutput="true">
+			<classpath>
+				<pathelement path="${java.home}/bin/rt.jar" />
+				<pathelement path="${basedir}/thirdparty/Junit5/junit.jar" />
+				<pathelement path="${basedir}/build/lib/${build.os.shortname}/${sun.arch.data.model}/swt.jar" />
+				<pathelement path="${basedir}/build/lib/RXTXcomm.jar" />
+				<pathelement path="${basedir}/build/lib/jSerialComm.jar" />
+				<pathelement path="${basedir}/build/target/${build.os.shortname}_${sun.arch.data.model}/DataExplorer/DataExplorer.jar" />
+				<pathelement location="${basedir}/JunitMiscTest/bin" />
+			</classpath>
+			<formatter type="plain" />
+			<batchtest fork="yes">
+				<fileset dir="${basedir}/JunitMiscTest/src">
+					<include name="**/AllTests.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<fileset dir="${basedir}/build/ant"/>
+		</classpath>
+	</taskdef>
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<fileset dir="${basedir}/build/ant"/>
+		</classpath>
+	</taskdef>
+
+	<target name="copy_docu" description="copy docu pdfs to build/target/install" depends="init" >
+		<copy todir="${build.target.dir}" overwrite="true">
+			<fileset dir="DataExplorer/doc" >
+				<include name="*.pdf" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="copy_misc" description="copy misc files to build/target/install" depends="init" >
+		<copy todir="${build.target.dir}" overwrite="true">
+			<fileset dir="build/misc" >
+				<include name="*USB_HID_KEXT.zip" />
+				<include name="*UDEV*/*" />
+				<include name="GNULinux_cp210x/*" />
+				<include name="udev_rules/*" />
+				<include name="HowToCreateDevicePlugin" />
+				<include name="HowToSetupEclipseWorkspace" />
+				<include name="README.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="signature" description="create and verify gpg signature" depends="copy_docu, copy_misc">
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**/*.sig,**/*.md5" />
+			</path>
+			<sequential>
+				<delete file="@{file}" />
+			</sequential>
+		</for>
+		<!-- find . -name "*" -type f -exec gpg -b - -use-agent {} \; -->
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**" excludes="**/*.sig" />
+			</path>
+			<sequential>
+				<echo message="signing: @{file}" />
+				<exec executable="bash" dir="${basedir}/build/target/install">
+					<arg value="-c" />
+					<arg value="/usr/local/bin/gpg --batch -b --use-agent '@{file}'" />
+				</exec>
+			</sequential>
+		</for>
+		<!-- find . -name "*.sig" -type f -exec gpg - -verify {} \; -->
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**/*.sig" />
+			</path>
+			<sequential>
+				<echo message="verify: @{file}" />
+				<exec executable="/usr/local/bin/gpg" dir="${basedir}/build/target/install">
+					<arg value="--verify" />
+					<arg value="@{file}" />
+				</exec>
+			</sequential>
+		</for>
+	</target>
+
+	<target name="md5" description="create and verify md5 checksum" depends="signature">
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**/*.md5" />
+			</path>
+			<sequential>
+				<delete file="@{file}" />
+			</sequential>
+		</for>
+		<!-- find . -name "*" -type f -exec md5sum {} \; -->
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**" excludes="**/*.md5,**/*.sig" />
+			</path>
+			<sequential>
+				<echo message="build md5 @{file}" />
+				<exec executable="bash" dir="${basedir}/build/target/install">
+					<arg value="-c" />
+					<arg value="/usr/local/bin/md5sum '@{file}' > '@{file}'.md5" />
+				</exec>
+			</sequential>
+		</for>
+		<!-- find . -name "*.md5" -type f -exec md5sum -c {} \; -->
+		<for param="file">
+			<path>
+				<fileset dir="${basedir}/build/target/install" includes="**/*.md5" />
+			</path>
+			<sequential>
+				<echo message="verify: @{file}" />
+				<exec executable="/usr/local/bin/md5sum" dir="${basedir}/build/target/install">
+					<arg value="-c" />
+					<arg value="@{file}" />
+				</exec>
+			</sequential>
+		</for>
+	</target>
+
+	<target name="rsync" description="copy new release content while deleting old once">
+		<echo>rsync -vr brueg@dl.sv.nongnu.org:/releases/dataexplorer/</echo>
+		<exec executable="bash" dir="${basedir}/build/target/install/">
+			<arg value="-c" />
+			<arg value="rsync -vr ${basedir}/build/target/install/* brueg@dl.sv.nongnu.org:/releases/dataexplorer/" />
+		</exec>
+	</target>
+
+	<target name="rsync_delete" description="copy new release content while deleting old once">
+		<echo>rsync -vr --delete install/ brueg@dl.sv.nongnu.org:/releases/dataexplorer/</echo>
+		<exec executable="bash" dir="${basedir}/build/target/">
+			<arg value="-c" />
+			<arg value="rsync -vr --delete install/ brueg@dl.sv.nongnu.org:/releases/dataexplorer/" />
+		</exec>
+	</target>
+
+	<!-- =====================================================
+            Windows NSIS Installer
+	====================================================== -->
+    <target name="build_Windows_NSIS_installer" description="Creates the installer">
+
+    	<!-- temporary call jlink to build self contained JRE -->
+	    <antcall target="jlink_win_intel" description="building java runtime" />		
+
+   	    <property file="build/build.nsis.properties" />
+
+    	<!-- 
+        v1.2 allows to specify the path to makensis, but does not work properly.
+        Therefore, you have to have the makensis folder on your path.
+        As the languages.nsh is UTF-8 encoded, this target also needs the unicode
+        variant of makensis (s. https://www.scratchpaper.com)
+        -->
+        <taskdef name="nsis" classname="net.sf.nsisant.Task" classpath="build/lib/nsisant-1.2.jar" />
+
+           <nsis script="build/installer.nsi" verbosity="3">
+               <define name="VERSION" value="${nsis.version}" />
+               <define name="DISTDIR" value="${nsis.dist32}" />
+               <define name="OUTDIR" value="${nsis.outputdir}" />
+               <define name="OUTFILENAME" value="${nsis.outputfilename}_win32.exe" />
+               <define name="EXEFILENAME" value="${launch4j.outputfilename}" />
+           	<!--- do not define 64bit here -->
+           </nsis>
+           
+           <nsis script="build/installer.nsi" verbosity="3">
+               <define name="VERSION" value="${nsis.version}" />
+               <define name="DISTDIR" value="${nsis.dist64}" />
+               <define name="OUTDIR" value="${nsis.outputdir}" />
+               <define name="OUTFILENAME" value="${nsis.outputfilename}_win64.exe" />
+               <define name="EXEFILENAME" value="${launch4j.outputfilename}" />
+               <define name="64BIT" value="defined" />
+           </nsis>
+           
+    </target>
+
+    <!-- build MAC OS disk image - this only works on MacOSX (requires hdiutil)  -->
+    <target name="build_Mac_install_dmg" description="creates MAC OS disk image for install purpose">
+        <antcall target="build_dmg_32"/>
+        <antcall target="build_dmg_64"/>
+    </target>
+    
+    <target name="build_dmg_32" depends="init-mac" description="creates MAC OS disk image 32 bit">
+	    <property name="mountdir" value="${build.target.dir}"/>
+	    <property name="targetDmgPath" value="${build.target.dir}/${app.name}-${version.num}_Mac_32.dmg"/>
+	    <property name="tmpDmgPath" value="${mountdir}/${app.name}_32-tmp.dmg"/>
+	    	    	
+	   	<!-- Delete previously created DMG -->
+	    <delete file="${targetDmgPath}" quiet="yes" failonerror="false"/>
+	    <!-- Delete the temporary image -->
+	    <delete file="${tmpDmgPath}" quiet="yes" failonerror="false"/>
+    	
+    	<!-- sign app -->
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-f"/>
+		  <arg value="-s"/>
+		  <arg value="D9D82CX2Z9"/>
+		  <arg value="--timestamp"/>
+	      <arg value="--verbose"/>
+	      <arg value="${output.mac32}/${app.name}.app"/>
+	    </exec>
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-vvv"/>
+		  <arg value="--deep"/>
+		  <arg value="--strict"/>
+		  <arg value="--display"/>
+		  <arg value="--entitlements"/>
+		  <arg value=":-"/>
+	      <arg value="${output.mac32}/${app.name}.app"/>
+	    </exec>
+	    	
+   	    <!-- Create a temporary Disk Image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="create"/>
+		  <arg value="-fs"/>
+		  <arg value="HFS+"/>
+	      <arg value="-srcfolder"/>
+	      <arg value="${output.mac32}/${app.name}.app"/>
+	      <arg value="-volname"/>
+	      <arg value="${app.name}"/>
+	      <arg value="-ov"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-format"/>
+	      <arg value="UDRW"/>
+	    </exec>
+	
+	    <!-- Attach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="attach"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-mountroot"/>
+	      <arg value="${mountdir}/"/>
+	    </exec>
+		    
+	    <!-- make starter scripts executable -->
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/${app.name}.app/Contents/MacOS/DataExplorerMac32"/>
+	    </exec>
+	    <!-- exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/${app.name}.app/Contents/MacOS/DevicePropertiesEditorMac32"/>
+	    </exec -->
+	    
+	    <!-- Copy the background, the volume icon and DS_Store files -->
+	    <mkdir dir="${mountdir}/${app.name}/.background"/>
+	    <copy file="${basedir}/build/misc/dmg_background.png"
+	          tofile="${mountdir}/${app.name}/.background/background.png"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/DataExplorerDmg.icns"
+	          tofile="${mountdir}/${app.name}/.VolumeIcon.icns"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/DS_Store"
+	          tofile="${mountdir}/${app.name}/.DS_Store"
+	          overwrite="true"/>
+	
+	    <!-- Indicate that we want a custom icon -->
+	    <exec executable="/usr/bin/SetFile" os="Mac OS X">
+	      <arg value="-a"/>
+	      <arg value="C"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+	
+	    <!-- Add a symbolic link to the Applications directory -->
+	    <symlink link="${mountdir}/${app.name}/Applications" resource="/Applications/"/>
+	
+	    <!-- Add a readme files and RXTX_Post-Install.sh to the Applications directory -->
+	    <copy file="${basedir}/build/misc/README.de"
+	          tofile="${mountdir}/${app.name}/README_de.txt"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/README.en"
+	          tofile="${mountdir}/${app.name}/README_en.txt"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/RXTX_Post-Install_MacOS.sh"
+	          tofile="${mountdir}/${app.name}/RXTX_Post-Install"
+	          overwrite="true"/>
+	   
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/RXTX_Post-Install"/>
+	    </exec>
+	    	
+	    <!-- Detach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="detach"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+	
+	    <!-- Compress it to a new image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="convert"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-format"/>
+	      <arg value="UDZO"/>
+	      <arg value="-o"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+    	
+    	<!-- sign dmg -->
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-f"/>
+		  <arg value="-s"/>
+		  <arg value="D9D82CX2Z9"/>
+		  <arg value="-i"/>
+		  <arg value="gde.DataExplorer"/>
+		  <arg value="--timestamp"/>
+	      <arg value="--verbose"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-vvv"/>
+		  <arg value="--deep"/>
+		  <arg value="--strict"/>
+		  <arg value="--display"/>
+		  <arg value="--entitlements"/>
+		  <arg value=":-"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+	
+	    <!-- Delete the temporary image -->
+	    <delete file="${tmpDmgPath}" quiet="yes" failonerror="false"/>
+    </target>
+    
+    <target name="build_dmg_64" depends="init-mac" description="creates MAC OS disk image 64 bit">
+    	<!-- temporary call jlink to build self contained JRE -->
+	    <antcall target="jlink_mac_intel" description="building java runtime" />		
+		<echo message="chmod ${output.mac64.program}/runtime/bin" />
+		<chmod perm="+x" failonerror="true">
+			<fileset dir="${output.mac64.program}/runtime/bin" />
+		</chmod>
+
+	    <!-- Set this property value to your application name -->
+	    <property name="app.name" value="DataExplorer"/>
+	
+	    <property name="mountdir" value="${build.target.dir}"/>
+	    <property name="targetDmgPath" value="${build.target.dir}/${app.name}-${version.num}_Mac_64.dmg"/>
+	    <property name="tmpDmgPath" value="${mountdir}/${app.name}_64-tmp.dmg"/>
+	    	
+	    <!-- Delete previously created DMG -->
+	    <delete file="${targetDmgPath}" quiet="yes" failonerror="false"/>
+	    <!-- Delete the temporary image -->
+	    <delete file="${mountdir}/${app.name}-tmp.dmg" quiet="yes" failonerror="false"/>
+    	
+    	<!-- sign app -->
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-f"/>
+		  <arg value="-s"/>
+		  <arg value="D9D82CX2Z9"/>
+		  <arg value="--timestamp"/>
+	      <arg value="--verbose"/>
+	      <arg value="${output.mac64}/${app.name}.app"/>
+	    </exec>
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-vvv"/>
+		  <arg value="--deep"/>
+		  <arg value="--strict"/>
+		  <arg value="--display"/>
+		  <arg value="--entitlements"/>
+		  <arg value=":-"/>
+	      <arg value="${output.mac64}/${app.name}.app"/>
+	    </exec>
+	    	
+   	    <!-- Create a temporary Disk Image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="create"/>
+		  <arg value="-fs"/>
+		  <arg value="HFS+"/>
+	      <arg value="-srcfolder"/>
+	      <arg value="${output.mac64}/${app.name}.app"/>
+	      <arg value="-volname"/>
+	      <arg value="${app.name}"/>
+	      <arg value="-ov"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-format"/>
+	      <arg value="UDRW"/>
+	    </exec>
+	
+	    <!-- Attach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="attach"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-mountroot"/>
+	      <arg value="${mountdir}/"/>
+	    </exec>
+	    
+	    <!-- make starter scripts executable -->
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/${app.name}.app/Contents/MacOS/DataExplorerMac64"/>
+	    </exec>
+	    <!-- exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/${app.name}.app/Contents/MacOS/DevicePropertiesEditorMac64"/>
+	    </exec -->
+	    	    	    	    	    	    	
+	    <!-- Copy the background, the volume icon and DS_Store files -->
+	    <copy file="${basedir}/build/misc/DS_Store"
+	          tofile="${mountdir}/${app.name}/.DS_Store"
+	          overwrite="true"/>
+	    <mkdir dir="${mountdir}/${app.name}/.background"/>
+	    <copy file="${basedir}/build/misc/dmg_background.png"
+	          tofile="${mountdir}/${app.name}/.background/background.png"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/DataExplorerDmg.icns"
+	          tofile="${mountdir}/${app.name}/.VolumeIcon.icns"
+	          overwrite="true"/>
+	
+	    <!-- Indicate that we want a custom icon -->
+	    <exec executable="/usr/bin/SetFile" os="Mac OS X">
+	      <arg value="-a"/>
+	      <arg value="C"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+	
+	    <!-- Add a symbolic link to the Applications directory -->
+	    <symlink link="${mountdir}/${app.name}/Applications" resource="/Applications/"/>
+	
+	    <!-- Add a readme files and RXTX_Post-Install.sh to the Applications directory -->
+	    <copy file="${basedir}/build/misc/README.de"
+	          tofile="${mountdir}/${app.name}/README_de.txt"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/README.en"
+	          tofile="${mountdir}/${app.name}/README_en.txt"
+	          overwrite="true"/>
+	    <copy file="${basedir}/build/misc/RXTX_Post-Install_MacOS.sh"
+	          tofile="${mountdir}/${app.name}/RXTX_Post-Install"
+	          overwrite="true"/>
+	   
+	    <exec executable="chmod" os="Mac OS X" failonerror="true">
+	      <arg value="+x"/>
+	      <arg value="${mountdir}/${app.name}/RXTX_Post-Install"/>
+	    </exec>
+    	
+
+	    <!-- Detach the temporary image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="detach"/>
+	      <arg value="${mountdir}/${app.name}"/>
+	    </exec>
+	
+	    <!-- Compress it to a new image -->
+	    <exec executable="/usr/bin/hdiutil" os="Mac OS X" failonerror="true">
+	      <arg value="convert"/>
+	      <arg value="${tmpDmgPath}"/>
+	      <arg value="-format"/>
+	      <arg value="UDZO"/>
+	      <arg value="-o"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+    	<!-- sign dmg -->
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-f"/>
+		  <arg value="-s"/>
+		  <arg value="D9D82CX2Z9"/>
+		  <arg value="-i"/>
+		  <arg value="gde.DataExplorer"/>
+		  <arg value="--timestamp"/>
+	      <arg value="--verbose"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+	    <exec executable="/usr/bin/codesign" os="Mac OS X" failonerror="true">
+	      <arg value="-vvv"/>
+		  <arg value="--deep"/>
+		  <arg value="--strict"/>
+		  <arg value="--display"/>
+		  <arg value="--entitlements"/>
+		  <arg value=":-"/>
+	      <arg value="${targetDmgPath}"/>
+	    </exec>
+	
+	    <!-- Delete the temporary image -->
+	    <delete file="${tmpDmgPath}" quiet="yes" failonerror="false"/>
+    </target>
+</project>

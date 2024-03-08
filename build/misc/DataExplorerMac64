@@ -1,0 +1,13 @@
+#!/bin/sh
+# ***** script to launch DataExplorer ** 27 Apr 2009 WB *****
+
+# determine and switch to the resource directory of the application bundle
+GDE_DIR="$(dirname ${0})/../Resources"
+cd ${GDE_DIR}
+
+export PATH="${GDE_DIR}"/runtime/bin:$PATH
+echo $PATH
+
+echo java -XstartOnFirstThread -Xdock:name=DataExplorer -jar -Xms64m -Xmx3092m ./DataExplorer.jar "$@"
+java -XstartOnFirstThread -Xdock:name=DataExplorer -jar -Xms64m -Xmx3092m ./DataExplorer.jar "$@"
+

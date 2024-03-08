@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=DataExplorer - explore your measurement data
+Comment[en_US]=DevicePropertiesEditor - edit your DataExplorer device properties
+Comment[de_DE]=DevicePropertiesEditor - bearbeite die DataExplorer Geräteeigenschaften
+Encoding=UTF-8
+Exec=java -Dfile.encoding=UTF-8 -Xms32m -Xmx256m -classpath @GDE_DIR@DataExplorer.jar gde.ui.dialog.edit.DevicePropertiesEditor
+GenericName=DevicePropertiesEditor
+Icon=@GDE_DIR@DevicePropertiesEditor.xpm
+Name=DevicePropertiesEditor
+Path=@GDE_DIR@
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GTK;Utility;Application;

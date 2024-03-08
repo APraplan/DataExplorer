@@ -1,0 +1,29 @@
+This file contains a list of regression test to be executed before release new version
+
+Entry criteria is all junit tests executed without errors
+
+1) rename DataExplorer configuration directory before start, go through configuration steps
+2) open a OSD file, close it, open it using history in file menu
+3) scan object keys, check to open files for different objects
+4) create a new object
+	a) fill out main characteristics
+	b) add an image
+	c) exchange an image
+	d) add comment text
+	e) switch forth and back, change something
+5) remove a the created object
+6) rename an existing object
+	a) let update all existing files to the new object and remove old object directory 
+7) open a file and print the graphics
+	a) without header and comment
+	b) with header and comment
+8) open two different battery charge files and copy the voltage curves to curve compare
+	a) switch to curve compare
+	b) activate grid lines
+	c) measure the curve which is shorter regarding time line
+	d) zoom and measure again
+	e) print compare window content
+	
+9) Windows 10
+	a) update virus definition and check build binaries
+	b) install DataExplorer and check installation folder

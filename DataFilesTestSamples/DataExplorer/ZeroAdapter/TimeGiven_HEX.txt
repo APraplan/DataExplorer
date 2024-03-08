@@ -1,0 +1,10 @@
+$N$;My Data 2
+$C$;Temp 1 [°C,T];Voltage[V] 
+$T$;0;ddHHmmss
+$V$;HEX
+$28160001;A;CC 
+$28160002;1A;C5 
+$L$;My Logtext 2 
+$28160005;2B;C7 
+$28160007;5F;C0 
+$28160010;FFF;CF

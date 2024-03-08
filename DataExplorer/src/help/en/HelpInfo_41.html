@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Brügmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H2>The Curve Selector Context Menu</H2>
+<P><IMG SRC="images/CurveSelector_ContextMenue.png" NAME="graphics1" ALIGN=RIGHT>
+The curve selector
+context menu gets activated by selecting a curve name with the right
+mouse button. On top of the context menu the name of the selected curve
+is written which is in focus. All adjustments and visualization changes
+are applied to just this curve.</P>
+<P>Using the context menu <B>Curve visible</B> the curve can made
+visible or invisible. While the curve is invisible and some properties
+gets changed it will be visible afterwards. As sample a invisible curve
+should be measured, the curve gets visible and the measurement point are
+displayed.</P>
+<P>Selecting <B>Curve line color</B> a color selection dialog
+pops up to chose the curve color. The selected color gets also used
+drawing the base line of the vertical scale of this particular curve to
+get easy color match. This color is used to display the digital numbers
+and the circle base line of the analog display.</P>
+<P>Adjusting <B>Curve line width</B> the curve gets differentiated
+from the others.</P>
+<P>Changing the <B>Curve line type</B> will only small change the
+visibility. Since the most curves has such small difference between data
+points there are only small impression changes. This has to be tested
+individually.</P>
+<P>Some battery chargers will drop the charge current for measurement purpose.
+This might result in bad curve visualization. 
+To make curves more clear it is possible to activate <B>Smooth current drop</B> function.
+Since the smoothing result depends on curves itself it can be activated or de-activated on demand.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Smooth.png" NAME="Smooth curves at current drop" ALIGN=CENTER>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Scale.png" NAME="graphics2" ALIGN=LEFT>
+The next block <B>Axis end values</B> manipulates the scales. <B>Automatic</B>
+uses the real minimum and maximum values of the curve. <B>Rounded</B>,
+rounds depending of the values in use. The selection of <B>starts at
+0</B> can be used together with “rounded” or “automatic”. The starting point
+of the scale is set to zero.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Manual.png" NAME="graphics3" ALIGN=LEFT>
+While selecting <B>manual</B> a small dialog gets active to enable adjustment
+of the end values. Values can not only changed by combo box selection it
+can be overwritten as well. Pushing the OK button or hit the enter
+button of the keyboard will close the dialog and make the changes
+active.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Precision.png" NAME="graphics4" ALIGN=RIGHT>
+With the menu <B>Axis number format</B> the precision of the displayed values gets
+adjusted. To many digits might suggest a precision what is not real by
+means of the measurement device itself.
+Selecting <B>automatic</B> will adjust this according to the actual displayed value range.</P>
+<P><B>Axis position</B> defines the side where the scale of this
+measurement is displayed.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Vertical_Grid.png" NAME="graphics5" ALIGN=LEFT>
+The context menu to adjust grid lines enables displaying vertical, time line
+and horizontal, for the measurement. The color adjustments enables to
+leaf the grid lines in background. For <B>vertical grid lines</B>, time
+line related, the “mod 60” reduces the grid lines to minutes (60 sec) or
+hours(60 min) depending on the time line scale.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Horizontal_Grid.png" NAME="graphics6" ALIGN=RIGHT>
+<B>Horizontal grid lines</B> are bound to only one measurement. The curve name used to
+adjust this will be displayed. Each second will only draw a grid line
+each second major scale mark.</P>
+<P>The context menu <B>Measurement</B> it is possible to measure
+curve points with snapping crossing hairlines. To do this select the
+menu <B>measure curve point</B>. To move the hairlines position the
+mouse pointer direct over the vertical line. While the mouse pointer
+changes to arrows push the mouse button and move the hairlines to the
+point of interest. Meanwhile the measured value is displayed in the
+status bar.
+If the data set description is visible, use context menu, all values of selected measurement values get displayed in table form while measuring.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure.png" NAME="graphics7" ALIGN=MIDDLE>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure_Pointer.png" NAME="graphics8" ALIGN=MIDDLE>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure_Value.png" NAME="graphics9" ALIGN=MIDDLE>
+</P>
+<P>To <B>measure point difference</B> the difference between
+two point are measured using two different crossed hairlines. The delta
+value and unit gets displayed in the status bar.</P>
+<P ALIGN=CENTER><IMG SRC="images/CurveSelector_ContextMenue_Deltameasure.png" NAME="graphics10" ALIGN=MIDDLE></P>
+<P>As measurement hairlines black and blue hairlines are displayed.
+Adjust both as described before to measure a single curve point value.
+Especially in zoomed curved this makes sense. As additional information
+the starting point of the zoomed area is displayed.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Compare.png" NAME="graphics11" ALIGN=LEFT>
+The last sections in the context menu are used to copy selected curves into
+the compare window <B>Copy to curve compare</B>. The last entry allows
+to clean the curve compare view by selecting <B>Clean curve compare</B>.
+This entry gets active when at least one curve is within this area.
+</P>
+<P><B>Hint : </B>The actual release allows comparing curves of same measurement unit, like measurements from a battery tken over the year. 
+It is senseless to compare voltage with height as example.
+In case of none matching curves the application will display a warning message.
+</P>
+<H3><A NAME="curve_sync"></A>Curve scale synchronization</H3>
+<P>
+If there are curves of similar type an extra selectable entry within the curve-selector will be displayed.
+Selecting this entry the scales of the curves will be merged while synchronizing the end values. 
+As sample voltage curves of Lithium cells are named.
+The comparison of the two following screen shots should make this more clear.
+</P>
+<P ALIGN=CENTER><IMG SRC="images/SynchroniseRecords_1.png" NAME="graphics10" ALIGN=MIDDLE>
+</P>
+<P>This will make more room for the curve display itself and the minimum and maximum values are the same.
+Through this the curves are easy comparable and a manual adjustment using the context menu is obsolete.
+</P>
+<P ALIGN=CENTER><IMG SRC="images/SynchroniseRecords_2.png" NAME="graphics11" ALIGN=MIDDLE>
+</P>
+<P><B>Hint : </B>The synchronization  of curves needs to be configured using the device properties editor
+(refer to <A HREF="HelpInfo_A1.html#device_properties_measurement">measurement properties</A>).
+</P>
+<P ALIGN=LEFT><A HREF="HelpInfo_4.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_42.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

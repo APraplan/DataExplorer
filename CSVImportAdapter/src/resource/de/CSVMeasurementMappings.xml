@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+  <comment>
+-- DataExplorer Messwert Mapping Datei --
+diese Datei enthaelt Mappings zwischen Wert aus dem Logfile zu Messwertnamen und Einheit
+fehlende Mappings einfach ergaenzen, bitte informieren Sie den Entwickler
+</comment>
+  <entry key="Batterie Spannung">Batterie Spannung [V]</entry>
+  <entry key="Batterie Strom">Batterie Strom [A]</entry>
+  <entry key="Batterie Leistung">Batterie Leistung [W]</entry>
+  <entry key="DC-DC Strom">DC-DC Strom [A]</entry>
+  <entry key="DC-DC Spannung">DC-DC Spannung [V]</entry>
+  <entry key="DC-DC input Leistung">DC-DC Leistung in [W]</entry>
+  <entry key="DC-DC output Leistung">DC-DC Leistung out [W]</entry>
+  <entry key="Fr drive Leistung max">Fr drive Leistung_max [W]</entry>
+  <entry key="Rr regen Leistung max">Rr regen Leistung_max [W]</entry>
+  <entry key="Rr drive Leistung max">Rr drive Leistung_max [W]</entry>
+  <entry key="Nominal Voll">Nominal Voll [-]</entry>
+  <entry key="Nominal remaining">Nominal Rest [-]</entry>
+  <entry key="Energy buffer">Energie Puffer [Wh]</entry>
+  <entry key="SOC">SOC [-]</entry>
+  <entry key="Usable Voll">Nutzbar Voll [-]</entry>
+  <entry key="Usable remaining">Nutzbar Rest [-]</entry>
+  <entry key="DC Ladung">DC Ladung [Wh]</entry>
+  <entry key="AC Ladung">AC Ladung [Wh]</entry>
+  <entry key="Ladung">Ladung [Wh]</entry>
+  <entry key="DisLadung">Entladung [Wh]</entry>
+  <entry key="Regen total">Regen total [Wh]</entry>
+  <entry key="Entladung cycles">Entladung cycles [#]</entry>
+  <entry key="Charge cycles">Charge cycles [#]</entry>
+  <entry key="Batterie odometer">Batterie odometer [%]</entry>
+  <entry key="Max Entladung Leistung">Entlade Leistung_max [W]</entry>
+  <entry key="Max regen Leistung">Regen Leistung_max [W]</entry>
+  <entry key="Rated range">Nominaler Bereich [%]</entry>
+  <entry key="Typical range">Typischer Bereich [%]</entry>
+  <entry key="Full rated range">Voll_Nominal Bereich [%]</entry>
+  <entry key="Full typical range">Voll_Typischer Bereich [%]</entry>
+  <entry key="Zelle Temp min">Zelle Temp min [%]</entry>
+  <entry key="Zelle Temp avg">Zelle Temp avg [%]</entry>
+  <entry key="Zelle Temp max">Zelle Temp max [%]</entry>
+  <entry key="Zelle Temp diff">Zelle Temp diff [%]</entry>
+  <entry key="Zelle min">Zelle Spannung min [V]</entry>
+  <entry key="Zelle avg">Zelle Spannung avg [V]</entry>
+  <entry key="Zelle max">Zelle Spannung max [V]</entry>
+  <entry key="Zelle diff">Zelle Spannung diff [V]</entry>
+  <entry key="LQI">LQI [%]</entry>
+  <entry key="Audio files">Audio files [#]</entry>
+  <entry key="Jeti">Jeti [-]</entry>
+  <entry key="RSSI">RSSI [dBm]</entry>
+  <entry key="HOPPING">HOPPING [-]</entry>
+  <entry key="Altitude">Höhe [m]</entry>
+  <entry key="Distance">Distanz [m]</entry>
+</properties>

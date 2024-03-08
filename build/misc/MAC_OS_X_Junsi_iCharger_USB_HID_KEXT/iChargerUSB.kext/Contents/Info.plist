@@ -1,0 +1,45 @@
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <!-- This is a kernel extension which binds to Junsi iCharger X6/X8/308Duo/4010Duo/406Duo USB-HID interface  -->
+    <!-- contains no actual code; its only purpose is to     -->
+    <!-- prevent Apple's USB-HID driver from exclusively     -->
+    <!-- opening the device.                                 -->
+    <plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleIconFile</key>
+        <string></string>
+        <key>CFBundleIdentifier</key>
+        <string>com.junsi.driver.iChargerUSB</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundlePackageType</key>
+        <string>KEXT</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>CFBundleVersion</key>
+        <string>1.0.0d1</string>
+        <key>IOKitPersonalities</key>
+        <dict>
+            <!-- The Junsi iCharger X6/X8/308Duo/4010Duo/406Duo USB-HID interface -->
+            <key>iChargerUSB</key>
+            <dict>
+                <key>CFBundleIdentifier</key>
+                <string>com.apple.kpi.iokit</string>
+                <key>IOClass</key>
+                <string>IOService</string>
+                <key>IOProviderClass</key>
+                <string>IOUSBInterface</string>
+				<key>bConfigurationValue</key>
+                <integer>1</integer>
+                <key>bInterfaceNumber</key>
+                <integer>0</integer>
+                <key>idProduct</key>
+                <integer>22353</integer>
+                <key>idVendor</key>
+                <integer>1155</integer>
+            </dict>
+        </dict>
+    </dict>
+</plist>

@@ -1,0 +1,4 @@
+Put all available device specific documentation in this folder. 
+- description
+- manuals
+- specifications

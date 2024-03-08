@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<project name="GPS-Logger" default="compile">
+
+	<property name="build.properties" location="../build/build.properties" />
+
+	<property file="${build.properties}" />
+
+	<!-- this is to have nice message about used build.properties file -->
+	<available property="build.properties.exists" file="${build.properties}" />
+	<echo message="Building using ${build.properties}" />
+	<echo message="Execution OS = ${os.name} ${os.arch} ${sun.arch.data.model}" />
+
+	<property name="module.output" location="classes"/>
+
+	<path id="compile.classpath">
+		<pathelement location="../DataExplorer/build/DataExplorer.jar" />
+		<pathelement location="../build/lib/jaxb-api.jar" />
+		<pathelement location="../build/lib/usb-api.jar" />
+		<pathelement location="../build/lib/${build.os.shortname}/${sun.arch.data.model}/swt.jar" />
+	</path>
+
+	<target name="compile" description="compile the project">
+		<property name="include.debug.info" value="no" />
+		<mkdir dir="${module.output}" />
+		<mkdir dir="build" />
+		<javac destdir="${module.output}" classpathref="compile.classpath" release="8" encoding="UTF-8" debug="true" includeantruntime="false" >
+			<src path="src" />
+		</javac>
+		<copy todir="${module.output}">
+			<fileset dir="${basedir}/src/" includes="**/*.properties" />
+			<fileset dir="${basedir}/src/" includes="help/**/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="resource/**/*" excludes="**/.cvsignore" />
+			<fileset dir="${basedir}/src/" includes="META-INF/*" excludes="**/.cvsignore" />
+		</copy>
+	</target>
+
+	<target name="package" depends="compile">
+		<echo message="Building using ${os.name} ${os.arch}" />
+		<tstamp>
+		     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+		<java classname="gde.tools.ExportServiceBuilder" outputproperty="export.services">
+		    <arg value="${basedir}"/>
+		    <classpath>
+		        <pathelement location="../DataExplorer/build/DataExplorer.jar"/>
+		    </classpath>
+		</java>
+		<manifest file="src/META-INF/MANIFEST.MF">
+    		<attribute name="Implementation-Version" value="${version.num}"/>
+			<attribute name="Created-By" value="${user.name}"/>
+			<attribute name="Built-Date" value="${TODAY}"/> 
+    		<attribute name="Bundle-Version" value="${version.num}"/>
+    		<attribute name="Bundle-SymbolicName" value="${ant.project.name}"/>
+    		<attribute name="Bundle-Description" value="Implementation for NMEA CSV as input data"/>
+    		<attribute name="Export-Service" value="${export.services}"/>
+    	</manifest>
+	    <jar manifest="src/META-INF/MANIFEST.MF" jarfile="build/${ant.project.name}.jar" compress="true" index="true" >
+	       	<fileset dir="${module.output}" includes="**/*.class"/>
+	    	<fileset dir="src" includes="**/*.xml"/>
+	    	<fileset dir="src" includes="**/*.jpg"/>
+	    	<fileset dir="src" includes="**/*.gif"/>
+	    	<fileset dir="src" includes="**/*.png"/>
+	    	<fileset dir="src" includes="**/*.properties"/>
+	    	<fileset dir="src" includes="**/*.html"/>
+	    	<fileset dir="src" includes="**/*.css"/>
+	    </jar>
+	</target>
+
+	<target name="nonui_package" depends="compile">
+		<echo message="Building using ${os.name} ${os.arch}" />
+		<tstamp>
+		     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+		<java classname="gde.tools.ExportServiceBuilder" outputproperty="export.services">
+		    <arg value="${basedir}"/>
+		    <classpath>
+		        <pathelement location="../DataExplorer/build/DataExplorer.jar"/>
+		    </classpath>
+		</java>
+		<manifest file="src/META-INF/MANIFEST.MF">
+    		<attribute name="Implementation-Version" value="${version.num}"/>
+			<attribute name="Created-By" value="${user.name}"/>
+			<attribute name="Built-Date" value="${TODAY}"/> 
+    		<attribute name="Bundle-Version" value="${version.num}"/>
+    		<attribute name="Bundle-SymbolicName" value="${ant.project.name}"/>
+    		<attribute name="Bundle-Description" value="Implementation for NMEA CSV as input data"/>
+    		<attribute name="Export-Service" value="${export.services}"/>
+    	</manifest>
+	    <jar manifest="src/META-INF/MANIFEST.MF" jarfile="build/${ant.project.name}NonUi-${version.num}.jar" compress="true" >
+	       	<fileset dir="${module.output}" includes="**/*.class"/>
+	    	<fileset dir="src" includes="**/*.xml"/>
+	    	<fileset dir="src" includes="**/*.properties"/>
+	    </jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="bin" />
+		<delete dir="classes" />
+	</target>
+</project>

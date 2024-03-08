@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="20080223;17323053">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080722;9443057">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>LiPoWatch
+	Device Dialog Introduction</I></FONT></FONT></H2>
+</DIV>
+<P>The LiPoWatch device dialog is to be used to visualize and adjust of
+the LiPoWatch &quot;Settings&quot;. Using the last tabulator &quot;Data
+I/O&quot; the data stored in the device can be read and visualized.
+</P>
+<P>A lot of hints are available by tool tips of the dialog itself and
+make this help nearly obsolete. The tool tips are visible by hovering
+the mouse over the fields of interest. 
+</P>
+<P>The actual implementation fits the firmware version 1.0. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>The „Configuration“ Tabulator</I></FONT></FONT></H2>
+<P>Afterwards the serial communication is configured using the device
+selection dialog and the device dialog is opened it is possible to
+query the LiPoWatch internal setting by pushing the button “Read
+Configuration”. Such a view with queried settings is shown in
+picture 1.</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image 1" ALT="Image 1">
+</P>
+<P>If configuration settings are modified the button “Save Configuration”
+gets activated. Pushing this buttons will write the modified settings
+data into the LiPoWatch device. 
+</P>
+<P><B>Hint : </B>It is meaningful to read at first LiPoWatch configuration
+before modifying, otherwise some dialog defaults will be written into
+the device. 
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>The „Data I/O“ Tabulator</I></FONT></FONT></H2>
+<P>Initially all buttons are active to read log data from the LiPoWatch.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="Image 2" ALT="Image 2">
+</P>
+<P>After pushing “Start data gathering” all the data within the
+device gets red.
+</BR>
+The live data visualization is not yet implemented!
+</P>
+<!--
+<P>Using the button “Start live data recording” a query cycle is
+initiated which reads according the device settings and connected
+sensors and the data are displayed in graphics, as digital and as
+analog displays. If the button “Start” within the UniLog data
+recording group is pushed the UniLog itself will log the data
+internal.</P>
+-->
+<P>By pushing start* buttons as reaction the stop* buttons are
+getting activated.</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3.png" NAME="Image 3" ALT="Image 3">
+</P>
+<P>At the end of the read operation the data are displayed. The
+dialog gets back to its initial state. Only the progress bar is
+filled and the number of red measurements are displayed.</P>
+</BODY>
+</HTML>

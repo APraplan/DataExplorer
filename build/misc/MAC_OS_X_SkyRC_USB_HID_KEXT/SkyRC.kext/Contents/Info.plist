@@ -1,0 +1,45 @@
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <!-- This is a kernel extension which binds to SKYRC devices -->
+    <!-- contains no actual code; its only purpose is to     -->
+    <!-- prevent Apple's USB HID driver from exclusively     -->
+    <!-- opening the device.                                 -->
+    <plist version="1.0">
+    <dict>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleIconFile</key>
+        <string></string>
+        <key>CFBundleIdentifier</key>
+        <string>com.skyrc.driver.SkyRC</string>
+        <key>CFBundleInfoDictionaryVersion</key>
+        <string>6.0</string>
+        <key>CFBundlePackageType</key>
+        <string>KEXT</string>
+        <key>CFBundleSignature</key>
+        <string>????</string>
+        <key>CFBundleVersion</key>
+        <string>1.0.0d1</string>
+        <key>IOKitPersonalities</key>
+        <dict>
+            <!-- The SkyRC MC3000/Q200 USB interface -->
+            <key>SkyRC</key>
+            <dict>
+                <key>CFBundleIdentifier</key>
+                <string>com.apple.kpi.iokit</string>
+                <key>IOClass</key>
+                <string>IOService</string>
+                <key>IOProviderClass</key>
+                <string>IOUSBInterface</string>
+				<key>bConfigurationValue</key>
+                <integer>1</integer>
+                <key>bInterfaceNumber</key>
+                <integer>0</integer>
+                <key>idProduct</key>
+                <integer>0001</integer>
+                <key>idVendor</key>
+                <integer>0000</integer>
+            </dict>
+        </dict>
+    </dict>
+</plist>

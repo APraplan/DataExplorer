@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Bruegmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H2>Used Directories</H2>
+<P><B>HINT: </B>Please do not use an installation path containing special characters like mutated vowel. 
+Java use as standard UTF-8 character encoding, while translating special characters can lead into an error situation.
+</P>
+<P>Which directories are created during installation are described
+in the README file. More important are the directories used during
+runtime of the application storing settings, log files and graphics
+templates.</P>
+<P>As base directory the application is using:</P>
+<UL>
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Windows&nbsp;:&nbsp;%APPDATA%\username\DataExplorer
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;GNU/Linux&nbsp;:&nbsp;/home/username/.DataExplorer
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;MAC OS&nbsp;:&nbsp;/Users/username/Library/Application/DataExplorer
+</UL>
+<P>At this start point for directories the following is used and
+created</P>
+<UL>
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Devices&nbsp;:&nbsp;for device properties (XML) and device pictures
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;GraphicsTemplates&nbsp;:&nbsp;for files describing the graphical properties like line color, number format, etc.
+	<LI>&nbsp;&nbsp;&nbsp;&nbsp;Logs&nbsp;:&nbsp;for trace log files, do not mix with the device log data files
+</UL>
+<P>This should enough as overview. Later in this document we will dive deeper in details.</P>
+<P>How get the data organized which contains the measurement values.
+A root folder or directory needs to be defined (refer to <A href=HelpInfo1.html>preferences dialog</A>), underneath each used device get its own data files folder.
+The device folder are the same as the chosen device names. In addition folder gets created for each created object.
+While saving the data an file name proposal according the configuration in <A href=HelpInfo1.html>preferences dialog</A> will be displayed.
+As example Date_Object_Name.osd. Is there an relation of the saved to an object, an object is selected while saving, an file link gets created in the object folder pointing to
+the file in the device folder. 
+File links only needs a few bytes disk space, since its only a relation to the data file.
+There is no duplication of data files.
+While opening object related files only this object files are visible.
+As example you will find the battery of object XY when its last time charged.
+A simple folder structure should give an better overview :
+</P>
+<P ALIGN=CENTER><IMG SRC="images/DataDirectoryStructure.png"	NAME="Data directory structure" ALIGN=MIDDLE></P>
+<P><B>Hint: </B>Since file links are operating system specific ther is a capability to clean up and re-create all file links (refer to <A href=HelpInfo1.html>preferences dialog</A>). 
+Moving your data to an different operating system is easy now.
+</P>
+<P ALIGN=LEFT><A HREF="HelpInfo.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_02.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

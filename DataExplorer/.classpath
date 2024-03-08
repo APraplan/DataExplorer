@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/build/lib/jaxb-api.jar"/>
+	<classpathentry kind="lib" path="/build/lib/jaxb-core.jar"/>
+	<classpathentry kind="lib" path="/build/lib/jaxb-runtime.jar"/>
+	<classpathentry kind="lib" path="/build/lib/istack-commons-runtime.jar"/>
+	<classpathentry kind="lib" path="/build/lib/activation.jar"/>
+	<classpathentry kind="var" path="SWT_JAR_PATH" sourcepath="/SWT_SOURCE_PATH"/>
+	<classpathentry kind="lib" path="/build/lib/jSerialComm.jar" sourcepath="/jSerialComm"/>
+	<classpathentry kind="lib" path="/build/lib/RXTXcomm.jar" sourcepath="/RXTXcomm/src"/>
+	<classpathentry kind="lib" path="/build/lib/usb4java.jar"/>
+	<classpathentry kind="lib" path="/build/lib/commons-lang3.jar"/>
+	<classpathentry kind="var" path="USB4JAVA_PATH"/>
+	<classpathentry kind="lib" path="/build/lib/usb-api.jar"/>
+	<classpathentry kind="lib" path="/build/lib/usb4java-javax.jar"/>
+	<classpathentry kind="lib" path="/build/lib/gson.jar"/>
+	<classpathentry kind="lib" path="/build/lib/tlmreader.jar"/>
+	<classpathentry kind="lib" path="/build/lib/jtouchbar.jar"/>
+	<classpathentry kind="lib" path="/build/lib/jtouchbar-swt.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

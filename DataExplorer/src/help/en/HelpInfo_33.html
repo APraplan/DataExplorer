@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information and Help</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Bruegmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="en-US">
+
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information and Help</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information and Help</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Introduction</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Used directories</A>
+</BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Main window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Preferences dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Device selection dialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menu- and Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"File"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Edit"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Device"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Graphics templates"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"View"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Help"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Outlet-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Configuration-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Data Set-Toolbar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Shortcuts</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Graphical view</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Curve selector</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoom- and positioning</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Statistics Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Table Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Digital Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Analog Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Cell Voltage Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Curve Compare Window</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">File and Data Set Comment</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Object Characteristics</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">History Graphics View</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">History Table View</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Device properties files</A> </BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">DevicePropertiesEditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">File format</A> </BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Data Format</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H2><A NAME="menue_graphicstemplates"></A>&quot;Graphics
+Templates&quot; Menu</H2>
+<P>Using this menu graphics templates are managed. Graphics
+templates contains graphics visualization properties.</P>
+<P>If available and applicable a graphics template will applied
+according the device and channel configuration. Graphics templates
+contains properties regarding the once adjusted by the context menu of
+the curve selector, like line color, number format, ... The directory to
+the graphic template files &quot;GraphicsTemplates&quot; under the
+application configuration path. 
+</P>
+<P><IMG SRC="images/Menuebar_GraphicsTemplates.png" NAME="graphics1"></P>
+<UL>
+	<LI>&quot;Save Default Graphics Template&quot;, stores a template according
+	channel configuration and device (DeviceName_ChannelConfigurationNumber.xml)
+	<LI>&quot;Load Default Graphics Template&quot; loads a template according
+	channel configuration and device (DeviceName_ChannelConfigurationNumber.xml)
+	<LI>&quot;Save Graphics Template as...&quot; opens a file save
+	dialog to save a graphics template with a given name, where the selected folder will not be recognized
+	<LI>&quot;Load Graphics Template&quot; opens a open file dialog to
+	select a graphics template to be applied
+</UL>
+<P>If there is a reasonable configuration displaying all your important curves found, go ahead and save such graphics configuration as default.
+</BR>
+The graphic templates contains definitions to adjust scale end values.
+Using devices which support live data gathering this could be important to judge the curves.
+Keep in mind, while displaying curves always the complete scale values margin will be used to display curves if not other specified.
+In cases curves with minimal deviation values could be displayed very similar to curves with ten times of the values. 
+Only the scale end values will change.
+In similar case it would be advisable to configure a graphics template which have the maximum scale end values configured.
+Loading this graphics template at the beginning of live data gathering, the scale end values keep the same as configured until end of measurement.
+As sample a live data gathering of the QuadroControl. The QuadroControl will drive counteraction according to movement direction and force using its tri-axial accelerometer.
+To keep this in mind is important using the <A HREF="HelpInfo_42.html#scope_mode">oscilloscope mode</A>, were only a smaller part of the curve remains visible.
+</P>
+<P ALIGN=CENTER><IMG SRC="images/Menuebar_GraphicsTemplates_QuadroControl.png" NAME="Menuebar_GraphicsTemplates_QuadroControl" ALIGN=MIDDLE></P>
+<P><B>Hints : </B>THe apply function of graphics templates overlay with visibility configuration for some devices.
+If there are some curves switched invisible using the visibility configuration of the certain device, they will not be visible by applying the graphics template.
+Some devices switch curves invisible automatically in cases where no real data are contained.
+Devices with visibility configuration are as example CSV2SerialAdapter, WStech Varios, GPS-Logger, NMEA-Adapter, UniLog and some others.
+Using the visibility configuration dialog such curves can be made visible again even if they do not contain reasonable data.
+</P>
+<P ALIGN=LEFT><A HREF="HelpInfo_32.html">&lt;&lt;== previous</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_34.html">next ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

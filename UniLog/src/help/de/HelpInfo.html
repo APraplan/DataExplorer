@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>UniLog-Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der UniLog-Ger&auml;tedialog dient zur Visualisierung der UniLog
+&quot;Einstellungen&quot; und deren Konfiguration. &Uuml;ber den
+letzten Dialogtabulator &quot;Daten I/O&quot; k&ouml;nnen die im
+Ger&auml;t gespeicherten Daten abgeholt und dann angezeigt werden. Um
+nun die Datenanzeige zu beeinflussen, sind die vier mittleren
+Dialogtabulatoren da. Hier kann jeder selbst sinnvolle
+Konfigurationen zusammenstellen. Im initialen Zustand sind das,
+sozusagen als Vorschlag 
+</P>
+<UL>
+	<LI><P ALIGN=LEFT>H&ouml;he, einfache H&ouml;henmessung mit
+	geringstem Zusatzgewicht f&uuml;rs Flugmodell 
+	<LI><P ALIGN=LEFT>Empf&auml;nger, hier wird zus&auml;tzlich zur H&ouml;he
+	die Empf&auml;ngerversorgung vermessen, um z. B. ben&ouml;tigte
+	Spannungsreglerleistung abzusch&auml;tzen 
+	<LI><P ALIGN=LEFT>Motormessung, hier wird die Motorleistung
+	vermessen, z. B. kann man den Regler optimal einstellen oder
+	Auswirkungen von Luftschraubenvariationen beurteilen 
+	<LI><P ALIGN=LEFT>Geschwindigkeit, Auswirkung von Luftschrauben auf
+	die Geschwindigkeit oder einfach nur die Gleitgeschwindigkeit 
+	</P>
+</UL>
+<P>Alternativ kann man aber die Konfigurationen so ab&auml;ndern, das
+sie z. B. Modell_1 bis Modell_4 abbilden. 
+</P>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<P>Die aktuelle Dialogimplementierung entspricht dem UniLog Firmware
+Stand 1.19. 
+</P>
+<H2><A NAME="adjustment"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der Tabulator „Einstellung“</I></FONT></FONT></H2>
+<P>Nachdem die serielle Schnittstelle &uuml;ber den Ger&auml;teauswahldialog
+eingestellt ist und der Eingabedialog aufgerufen ist, kann durch
+dr&uuml;cken von „Einstellungen auslesen“ die aktuelle UniLog-Konfiguration ausgelesen werden. 
+Das Resultat ist beispielhaft in Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" BORDER=0>
+</P>
+<P>Alle analogen Anschl&uuml;sse werden ab Firmware 1.10 vorkonfiguriert. 
+Aktiviert man die &quot;Limiter&quot;-Funktion wird ab dem eingestellten Leistungsverbrauch das Signal zum Motorregler heruntergeregelt. 
+Hierzu muss nat&uuml;rlich der Reglersignal &uuml;ber den UniLog geschleift werden. 
+Bei &quot;Limiter&quot;-Betrieb wird das Zeitintervall auf 1/16 Sekunde verändert und es ist nur eine Datenaufnahme m&ouml;glich.
+</P>
+<P>Werden Einstellungen ver&auml;ndert, wird „Einstellungen im UniLog speichern“ aktiv. 
+Durch dr&uuml;cken werden die gew&auml;hlten Einstellungen in das UniLog geschrieben. 
+</P>
+<P><B>Hinweis: </B>Es ist sinnvoll vor der &Auml;nderung einer
+Einstellung erst einmal die aktuelle Konfiguration auszulesen. Sonst
+wundert man sich, dass andere Einstellungen auch ver&auml;ndert
+wurden. 
+</P>
+<H2><A NAME="data_io"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der Tabulator „Daten I/O“</I></FONT></FONT></H2>
+<P>Im initialen Zustand sind alle Kn&ouml;pfe aktiv, die ein Einlesen
+von Daten ausl&ouml;sen. Durch die Auswahl einer Konfiguration werden
+die eingelesenen Daten direkt zugeordnet. Es besteht die M&ouml;glichkeit,
+die Daten sp&auml;ter mit einer anderen Konfiguration zu verkn&uuml;pfen
+oder die Konfiguration individuell f&uuml;r jeden Datensatz
+anzupassen. Nur der „l&ouml;schen“-Knopf bildet hier eine
+Ausnahme. Wie beschrieben wird der Speicher zwar als gel&ouml;scht
+markiert, kann aber bis zur n&auml;chsten Datenaufnahme weiterhin gelesen werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2" BORDER=0>
+</P>
+<P>Nach dr&uuml;cken von „Start Daten auslesen“ werden die im
+Ger&auml;t gespeicherten Daten ausgelesen und entsprechend der
+gew&auml;hlten Konfiguration aufbereitet. 
+</P>
+<P>&Uuml;ber „Start live Datenabfrage“ werden entsprechend der Einstellung der
+Speicherrate, zyklisch Daten ausgelesen und in der
+Anwendung angezeigt. Bet&auml;tigt man zus&auml;tzlich den „Start“-Knopf 
+der UniLog-Datenaufnahmegruppe, werden ab diesem Zeitpunkt auch
+die Messdaten im UniLog selbst gespeichert. Durch Bet&auml;tigung der
+„Start“-Kn&ouml;pfe werden immer die entsprechenden
+Gegenoperationen aktiviert. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3.png" NAME="Bild3" ALT="Bild3" BORDER=0>
+</P>
+<P>Am Ende der Daten&uuml;bertragung werden die Messdaten aufbereitet
+und angezeigt. Der Dialog ist dann wieder im initialen Zustand, nur
+der Fortschrittsbalken ist gef&uuml;llt und die Anzahl der
+ausgelesenen Telegramme wird angezeigt. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_4.png" NAME="Bild4" ALT="Bild4" BORDER=0>
+</P>
+<P>&Uuml;ber den Tabulator &quot;Daten I/O&quot; kann man den Konfigurationsnamen
+beliebig anpassen. Durch dr&uuml;cken von „Name &auml;ndern“
+wird der &Auml;nderungsmode aktiviert und man kann den Namen
+ver&auml;ndern. Nach dr&uuml;cken der Entertaste wird der neue Name
+sofort in der Ger&auml;tekonfiguration persistent gemacht und ist
+aktiv. 
+</P>
+
+<H2><A NAME="config_tab"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der
+Konfigurationstabulator</I></FONT></FONT></H2>
+<P>Dies ist ein komplexer Tabulator und zeigt alle Ger&auml;teeing&auml;nge
+bzw. Messgr&ouml;&szlig;en als Schalter an. Werden Messgr&ouml;&szlig;en
+ausgew&auml;hlt, werden die davon abh&auml;ngigen errechenbaren
+Messgr&ouml;&szlig;en mit aktiviert. Als Beispiel soll hier die
+Konfiguration &quot;Empf&auml;nger&quot; genommen werden. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_5.png" NAME="Bild5" ALT="Bild5" BORDER=0>
+</P>
+<P>W&auml;hlt man jetzt die Messgr&ouml;&szlig;e H&ouml;he an, wird
+die davon abh&auml;ngige Steigrate ebenfalls aktiviert und die
+Berechnungsauswahl wird ver&auml;nderbar. 
+</P>
+<P>Bei der Berechnung der Steigrate werden zwei Regressionsverfahren
+angeboten, bei der das Integrationsintervall zwischen einer und 20
+Sekunden anpassbar ist. 
+</P>
+<P>Jede &Auml;nderung wird sofort f&uuml;r den aktuellen Datensatz
+angewendet und aktiviert den „Einstellungen als Vorgabe &uuml;bernehmen“-Knopf, 
+mit dem die ge&auml;nderte Konfiguration persistent gemacht wird. 
+Die Konfiguration aus der Datei wird, bei neu aus dem UniLog gelesenen Daten, angewendet
+</P>
+<P>Nun zu den Analoganschl&uuml;ssen (A1 bis A3). Alle Anschl&uuml;sse
+werden &uuml;ber den Tabulator &quot;Einstellung&quot; vorkonfiguriert.
+Beim Auslesen der Daten werden, entsprechend der UniLog Einstellung, Name und Einheit abgerufen und eingetragen. 
+In Abh&auml;ngigkeit der Einstellung und dem angeschlossenen Sensor muss
+eventuell noch Offset und der Steigungsfaktor angepasst werden. Auch hier
+gilt, eine &Auml;nderung aktiviert „Konfiguration speichern“ und
+erm&ouml;glicht das Abspeichern der Konfiguration in der UniLog Konfigurationsdatei, nicht im UniLog selbst. 
+</P>
+<P>Ist beim &Ouml;ffnen des Dialoges ein Datensatz geladen, springt
+der Konfigurationstabulator auf die dem Datensatz entsprechende
+Konfiguration. Passt die Datensatzkonfiguration nicht zu den Daten,
+bekommt man durch Anwahl des gew&uuml;nschten
+Konfigurationstabulators die M&ouml;glichkeit, die Daten in eine
+andere Konfiguration zu &uuml;berf&uuml;hren. 
+</P>
+<P>
+Hinter den verschiedenen Konfigurationstabulatoren stecken unterschiedliche statistische Berechnungen.
+Als Beispiel wird in den n&auml;chsten Bildern eine Statistik entsprechend der Empf&auml;ngerkonfiguration gezeigt.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_6.png" NAME="Bild6" ALT="Bild 6 zeigt die Statistikansicht für eine Empfängermessung" BORDER=0>
+</P>
+<P>
+Nun folgt ein Beispiel für eine Motormessung, die wichtigsten Daten bzw. &Auml;nderungen gegen&uuml;ber der Empf&auml;ngermessung sind rot umrandet.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_7.png" NAME="Bild7" ALT="Bild 7 zeigt die Statistikansicht für eine Motormessung" BORDER=0>
+</P>
+<P><B>Hinweis: </B>Falls vier Konfigurations-Tabulatoren zu viel sind kann man
+durch eine &Auml;nderung der UniLog.xml die Anzahl reduzieren
+(auskommentieren in XML mit &lt;!-- Kommentar --&gt;). Mehr wie vier
+Tabulatoren f&uuml;r noch mehr Konfigurationen ist m&ouml;glich, aber
+nicht implementiert. 
+Selbstverst&auml;ndlich ist es auch m&ouml;glich alle Messgr&ouml;&szlig;en
+zu aktivieren und nur &uuml;ber die Schalter im Kurvenselektor zu
+filtern.
+</P>
+
+<H2><A NAME="telemetry"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der Tabulator „Telemetrie“</I></FONT></FONT></H2>
+<P>&Uuml;ber den Telemetrietabulator lassen sich alle Telemetrieeinstellungen, für die relevanten unterst&uuml;tzten Sender-/Empf&auml;nger-Systeme einstellen.
+Unterst&uuml;tzt sind aktuell Jeti Duplex, Futaba und Multiplex M-Link, seit dem UniLog-Firmware-Level 1.12.
+Als erstes sollte man die im UniLog abgelegten Konfigurationsdaten einlesen und erst dann unter Zuhilfenahme der Sender-, Empf&auml;ngertelemetriebedienungsanleitung die entsprechende Konfiguratin ver&auml;ndern.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_8.png" NAME="Bild8" ALT="Bild8 Telemetrietabulator" BORDER=0>
+</P>
+<P>Wird eine Einstellung verändert, wird auch der Knopf freigeschaltet, der ein &Uuml;bertragen der ver&auml;nderten Telemetriekonfiguration in das UniLog  erm&ouml;glicht.
+</P>
+</BODY>
+</HTML>

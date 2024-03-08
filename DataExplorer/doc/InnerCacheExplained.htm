@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <meta charset="utf-8">
+  
+  <title>Synchronous Cache Explained</title>
+
+    <div id="wiki-body" class="wiki-body gollum-markdown-content instapaper_body">
+        <div class="markdown-body">
+
+<h1>
+Example</h1>
+<pre><code>LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumSize(1000)
+       .expireAfterWrite(10, TimeUnit.MINUTES)
+       .removalListener(MY_LISTENER)
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) throws AnyException {
+               return createExpensiveGraph(key);
+             }
+           });
+</code></pre>
+
+<h1>
+Applicability</h1>
+<p>Caches are tremendously useful in a wide variety of use cases.  For 
+example, you should consider using caches when a value is expensive to 
+compute or retrieve, and you will need its value on a certain input more
+ than once.</p>
+<p>A <code>Cache</code> is similar to a <code>HashMap</code>, but not quite the same.  
+The most fundamental difference is that a <code>HashMap</code> persists all elements 
+that are added to it until they are explicitly removed. A <code>Cache</code>
+on the other hand is generally configured to evict entries 
+automatically, in order to constrain its memory footprint. In some cases
+a <code>LoadingCache</code> can be useful even if it doesn't evict entries, due to its automatic cache loading.</p>
+<p>Generally, the caching utilities are applicable whenever:</p>
+<ul>
+<li>You are willing to spend some memory to improve speed.</li>
+<li>You expect that keys will sometimes get queried more than once.</li>
+<li>Your cache will not need to store more data than what would fit in RAM.  (This cache is <strong>local</strong>
+ to a single run of your application.  It does not store data in files, 
+or on outside servers.  If this does not fit your needs, consider a tool
+ like <a href="https://memcached.org/">Memcached</a>.)</li>
+</ul>
+<p>If each of these apply to your use case, then this synchronous caching utilities could be right for you!</p>
+<p>Obtaining a <code>Cache</code> is done using the <code>CacheBuilder</code> builder pattern 
+as demonstrated by the example code above, but customizing your cache is the interesting part.</p>
+<p><em>Note:</em> If you do not need the features of a <code>Cache</code>, <code>ConcurrentHashMap</code> 
+is more memory-efficient -- but it is extremely difficult or impossible to duplicate most <code>Cache</code> 
+features with any old <code>ConcurrentMap</code>.</p>
+
+<h1>
+Comparison to <a href="https://github.com/google/guava/wiki/CachesExplained"><small>Guava</small></a> 
+cache implementations</h1>
+<p>Changes to the Guava implementation:                                 
+<ul>                                                                    
+<li>Is based on Guava, but uses specific functions to a minimum extent. 
+<li>Very small code base campared to the Guava library (which has 2.5 MB) 
+<li>NO:  thread-safe implementation                            
+<li>NO:  time-based expiration of entries                               
+<li>NO:  keys automatically wrapped in weak references                  
+<li>NO:  values automatically wrapped in weak or soft references        
+</ul>                                                                   
+
+<h1>
+Population</h1>
+<p>The first question to ask yourself about your cache is: is there some <em>sensible default</em> function to load or compute a value associated with a key?  If so, you should use a <code>CacheLoader</code>.
+  If not, or if you need to override the default, but you still want 
+atomic "get-if-absent-compute" semantics, you should pass a <code>Callable</code> into a <code>get</code> call.  Elements can be inserted directly, using <code>Cache.put</code>, but automatic cache loading is preferred as it makes it easier to reason about consistency across all cached content.</p>
+
+<h3>
+From a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheLoader.html"><small>CacheLoader</small></a>
+</h3>
+<p>Please use Guava instead.</p>
+
+<h3>
+From a <a href="https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html"><small>Callable</small></a>
+</h3>
+<p>This cache implementation supports the method <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#get%28java.lang.Object,java.util.concurrent.Callable%29"><code>get(K, Callable&lt;V&gt;)</code></a>.  This method returns the value associated with the key in the cache, or computes it from the specified <code>Callable</code>
+ and adds it to the cache.  No observable state associated with this 
+cache is modified until loading completes. This method provides a simple
+ substitute for the conventional "if cached, return; otherwise create, 
+cache and return" pattern.</p>
+<pre><code>Cache&lt;Key, Value&gt; cache = CacheBuilder.newBuilder()
+    .maximumSize(1000)
+    .build(); // look Ma, no CacheLoader
+...
+try {
+  // If the key wasn't in the "easy to compute" group, we need to
+  // do things the hard way.
+  cache.get(key, new Callable&lt;Value&gt;() {
+    @Override
+    public Value call() throws AnyException {
+      return doThingsTheHardWay(key);
+    }
+  });
+} catch (ExecutionException e) {
+  throw new OtherException(e.getCause());
+}
+</code></pre>
+
+<h3>
+Inserted Directly</h3>
+<p>Values may be inserted into the cache directly with <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#put%28K,%20V%29"><code>cache.put(key, value)</code></a>.  This overwrites any previous entry in the cache for the specified key.  Changes can also be made to a cache using any of the <code>ConcurrentMap</code> methods exposed by the <code>Cache.asMap()</code> view. Note that no method on the <code>asMap</code>
+ view will ever cause entries to be automatically loaded into the cache.
+ Further, the atomic operations on that view operate outside the scope 
+of automatic cache loading, so <code>Cache.get(K, Callable&lt;V&gt;)</code> should always be preferred over <code>Cache.asMap().putIfAbsent</code> in caches which load values using either <code>CacheLoader</code> or <code>Callable</code>.</p>
+
+<h1>
+Eviction</h1>
+<p>The cold hard reality is that we almost <em>certainly</em> don't have
+ enough memory to cache everything we could cache.  You must decide: 
+when is it not worth keeping a cache entry? In general, there are three basic 
+types of eviction: size-based eviction, time-based eviction, and 
+reference-based eviction.</p>
+
+<h2>
+Size-based Eviction</h2>
+<p>If your cache should not grow beyond a certain size, just use <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheBuilder.html#maximumSize%28long%29"><code>CacheBuilder.maximumSize(long)</code></a>.  The cache will try to evict entries that haven't been used recently or very often.
+<p><em>Warning</em>: the cache may evict entries before this limit is exceeded -- typically when the cache size is approaching the limit.</p>
+<p>Alternately, if different cache entries have different "weights" -- 
+for example, if your cache values have radically different memory 
+footprints -- you may specify a weight function with <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheBuilder.html#weigher%28com.google.common.cache.Weigher%29"><code>CacheBuilder.weigher(Weigher)</code></a> and a maximum cache weight with <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheBuilder.html#maximumWeight%28long%29"><code>CacheBuilder.maximumWeight(long)</code></a>.  In addition to the same caveats as <code>maximumSize</code> requires, be aware that weights are computed at entry creation time, and are static thereafter.</p>
+<pre><code>LoadingCache&lt;Key, Graph&gt; graphs = CacheBuilder.newBuilder()
+       .maximumWeight(100000)
+       .weigher(new Weigher&lt;Key, Graph&gt;() {
+          public int weigh(Key k, Graph g) {
+            return g.vertices().size();
+          }
+        })
+       .build(
+           new CacheLoader&lt;Key, Graph&gt;() {
+             public Graph load(Key key) { // no checked exception
+               return createExpensiveGraph(key);
+             }
+           });
+</code></pre>
+
+<h2>
+Timed Eviction</h2>
+<p>Please use Guava instead.</p>
+
+<h3>
+Testing Timed Eviction</h3>
+<p>Testing timed eviction doesn't have to be painful...and doesn't 
+actually have to take you two seconds to test a two-second expiration.  
+Use the <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/base/Ticker.html">Ticker</a> interface and the <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheBuilder.html#ticker%28com.google.common.base.Ticker%29"><code>CacheBuilder.ticker(Ticker)</code></a> method to specify a time source in your cache builder, rather than having to wait for the system clock.</p>
+
+<h2>
+Reference-based Eviction</h2>
+<p>Please use Guava instead.</p>
+
+<h2>
+Explicit Removals</h2>
+<p>At any time, you may explicitly invalidate cache entries rather than waiting for entries to be evicted.  This can be done:</p>
+<ul>
+<li>individually, using <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#invalidate%28java.lang.Object%29"><code>Cache.invalidate(key)</code></a>
+</li>
+<li>in bulk, using <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#invalidateAll%28java.lang.Iterable%29"><code>Cache.invalidateAll(keys)</code></a>
+</li>
+<li>to all entries, using <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#invalidateAll%28%29"><code>Cache.invalidateAll()</code></a>
+</li>
+</ul>
+
+<h2>
+Removal Listeners</h2>
+<p>You may specify a removal listener for your cache to perform some operation when an entry is removed, via <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheBuilder.html#removalListener%28com.google.common.cache.RemovalListener%29"><code>CacheBuilder.removalListener(RemovalListener)</code></a>.  The <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/RemovalListener.html"><code>RemovalListener</code></a> gets passed a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/RemovalNotification.html"><code>RemovalNotification</code></a>, which specifies the <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/RemovalCause.html"><code>RemovalCause</code></a>, key, and value.</p>
+<p>Note that any exceptions thrown by the <code>RemovalListener</code> are logged (using <code>Logger</code>) and swallowed.</p>
+<pre><code>CacheLoader&lt;Key, DatabaseConnection&gt; loader = new CacheLoader&lt;Key, DatabaseConnection&gt; () {
+  public DatabaseConnection load(Key key) throws Exception {
+    return openConnection(key);
+  }
+};
+RemovalListener&lt;Key, DatabaseConnection&gt; removalListener = new RemovalListener&lt;Key, DatabaseConnection&gt;() {
+  public void onRemoval(RemovalNotification&lt;Key, DatabaseConnection&gt; removal) {
+    DatabaseConnection conn = removal.getValue();
+    conn.close(); // tear down properly
+  }
+};
+
+return CacheBuilder.newBuilder()
+  .expireAfterWrite(2, TimeUnit.MINUTES)
+  .removalListener(removalListener)
+  .build(loader);
+</code></pre>
+<p><strong>Warning</strong>: removal listener operations are executed 
+synchronously by default, and since cache maintenance is normally 
+performed during normal cache operations, expensive removal listeners 
+can slow down normal cache function! If you have an expensive removal 
+listener, use <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/RemovalListeners.html#asynchronous%28com.google.common.cache.RemovalListener,%20java.util.concurrent.Executor%29"><code>RemovalListeners.asynchronous(RemovalListener, Executor)</code></a> to decorate a <code>RemovalListener</code> to operate asynchronously.</p>
+
+<h2>
+When Does Cleanup Happen?</h2>
+<p>Caches built with <code>CacheBuilder</code> evict values "automatically".  
+<p>It performs small amounts of
+ maintenance during write operations, or during occasional read 
+operations if writes are rare.</p>
+
+<h2>
+Refresh</h2>
+<p>Please use Guava instead.</p>
+
+<h1>
+Features</h1>
+<h2>
+Statistics</h2>
+<p>By using <a href="https://google.github.io/guava/releases/12.0/api/docs/com/google/common/cache/CacheBuilder.html#recordStats%28%29"><code>CacheBuilder.recordStats()</code></a>, you can turn on statistics collection for Guava caches. The <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/Cache.html#stats%28%29"><code>Cache.stats()</code></a> method returns a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheStats.html"><code>CacheStats</code></a> object, which provides statistics such as</p>
+<ul>
+<li>
+<a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheStats.html#hitRate%28%29"><code>hitRate()</code></a>, which returns the ratio of hits to requests</li>
+<li>
+<a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheStats.html#averageLoadPenalty%28%29"><code>averageLoadPenalty()</code></a>, the average time spent loading new values, in nanoseconds</li>
+<li>
+<a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/cache/CacheStats.html#evictionCount%28%29"><code>evictionCount()</code></a>, the number of cache evictions</li>
+</ul>
+<p>and many more statistics besides.  These statistics are critical in 
+cache tuning, and we advise keeping an eye on these statistics in 
+performance-critical applications.</p>
+
+<h2>
+<code>asMap</code>
+</h2>
+<p>You can view any <code>Cache</code> as a <code>ConcurrentMap</code> using its <code>asMap</code> view, but how the <code>asMap</code> view interacts with the <code>Cache</code> requires some explanation.</p>
+<ul>
+<li>
+<code>cache.asMap()</code> contains all entries that are <em>currently loaded</em> in the cache.  So, for example, <code>cache.asMap().keySet()</code> contains all the currently loaded keys.</li>
+<li>
+<code>asMap().get(key)</code> is essentially equivalent to <code>cache.getIfPresent(key)</code>, and never causes values to be loaded.  This is consistent with the <code>Map</code> contract.</li>
+<li>Access time is reset by all cache read and write operations (including <code>Cache.asMap().get(Object)</code> and <code>Cache.asMap().put(K, V)</code>), but not by <code>containsKey(Object)</code>, nor by operations on the collection-views of <code>Cache.asMap()</code>.  So, for example, iterating through <code>cache.entrySet()</code> does not reset access time for the entries you retrieve.</li>
+</ul>
+
+<h1>
+Interruption</h1>
+<p>Please refer to the Guava documents instead.</p>
+
+        </div>
+    </div>
+    </div>
+
+</html>

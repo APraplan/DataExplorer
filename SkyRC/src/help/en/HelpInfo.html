@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - SkyRC MC3000 Device Dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>SkyRC MC3000</I></FONT></FONT></H2>
+</DIV>
+<P>
+The MC3000 is providing two device descriptions. 
+A <B>MC3000-Set</B> is storing all collected data sets in a single file. 
+It makes sense to choose continuous record set in settings. 
+This will help to keep track of the slot to data set relation. 
+In such a case four simultaneously processed batteries will result in one record set per battery and all four record sets will be stored in a single file. 
+</BR>
+A <B>MC3000</B> treat each slot independent of the other. 
+Each slot has a separate sequence of record sets. 
+This will result in one file for each slot and battery since each battery does not have a relation to the others.
+</P>
+<DIV TYPE=HEADER>
+	<H3><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Device Dialog</I></FONT></FONT></H2>
+</DIV>
+<P>The device dialog enables the user to configure the four slots with temporary programs (set) which were once stored programs on the device themselves and subsequently backed up with this very dialog. It makes sense to make a backup of the device programs because they can get overwritten by other users or erased by a device reset or a firmware update. DataExplorer automatically creates an internal database allocating up to 30 spots for memorizing or backing up device programs, which are likewise automatically available in a direct manner as soon as the device dialog is launched (read all). Most of the widgets in this dialog have a tool tip to help the user understand their functionality.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image1" ALT="Image1">
+</P>
+
+<P>For every slot, the most essential parameters of the program which is currently available to the user are displayed in short form below the drop-down menu. He then can assign this program to one of the 30 backup spots and also rename it along the way, or transfer it for the temporary overwriting in the slot (set), or simply have a detailed look at the complete set of program settings. 
+The latter, the detail list, can be viewed in form of a tool tip, whenever the mouse pointer hovers over that short form. 
+Or, it can also be copied to the clipboard (clipboard). 
+By pasting clipboard contents systematically into a separate text file, one could build one's own database of programs and supplement it with more detailed titles and descriptions for personal use. 
+For the renaming or description of the programs to be stored, up to 35 characters can be used. After entering new program titles, one should not forget to save the changes (Save). It certainly is useful and sensible for one's own organization to assign the very same program number in the database under which the program was saved on the device.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2.png" NAME="HelpInfo_Image_2" ALT="HelpInfo_Image_2">
+</P>
+<P><B>Note: </B>The (reset all) button will retrieve the initial program settings, which were loaded automatically upon launching the dialog, and also transfer them back to the slots (set). 
+In general, it is hard to make out whether a particular program has been transferred to the slot successfully indeed. 
+After the transfer one could see bits and pieces of the temporary program, possibly a short form depending on the device settings, if the battery was already inserted in the respective slot (ready slot). 
+A complete visual check of the transferred program settings can be done through this dialog only (clipboard). 
+To gain a better overview the tool tip is shorten in respect of the not changeable parameters compared to the clipboard.
+Unfortunately, on the device itself, there is not another possibility of a complete check. 
+After closing the dialog (Close), it is the user's responsibility to insert the correct batteries matching the program settings in the slots, before starting the program and the data capturing (Start gathering). Once the programs have started running, the device would display the operation of the slots as usual.
+</P>
+</BODY>
+</HTML>

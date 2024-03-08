@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+<TITLE>DataExplorer - Information und Hilfe</TITLE>
+<META NAME="AUTHOR" CONTENT="Winfried Brügmann">
+<LINK HREF="../HelpInfo.css" REL="STYLESHEET" TYPE="text/css">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV ID="Header">DataExplorer&nbsp;&nbsp;-&nbsp;&nbsp;Information und Hilfe</DIV>
+
+<DIV ID="Menu"><A HREF="HelpInfo.html">Information und Hilfe</A></BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo.html">Einleitung</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_01.html">Verwendete Verzeichnisse</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_02.html">Das Anwendungsfenster</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_1.html">Der Einstellungsdialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_2.html">Der Geräteauswahldialog</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_3.html">Menü- und Tool- Bar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_3.html">"Datei"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_31.html">"Bearbeiten"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_32.html">"Gerät"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_33.html">"Grafikvorlagen"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Ansicht"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_34.html">"Hilfe"</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Ausgangswahl-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Konfigurationswahl-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_35.html">Datensatzauswahl-ToolBar</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_36.html">Google Earth</A> </BR>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_38.html">Tastaturk&uuml;rzel</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_4.html">Grafische Anzeige</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_41.html">Der Kurvenselektor</A></BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_42.html">Zoomen und Positionieren</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_5.html">Fenster Statistik</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_6.html">Fenster Tabelle</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_7.html">Fenster Digitalanzeige</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_8.html">Fenster Analoganzeige</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_9.html">Fenster Zellenspannung</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_91.html">Fenster Kurvenvergleich</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_92.html">Datei- und Datensatz-Kommentar</A> </BR>
+
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_93.html">Fenster Objektcharakteristik</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_94.html">Fenster Historiengrafik</A> </BR>
+</BR>
+&nbsp;&nbsp;<A HREF="HelpInfo_95.html">Fenster Historientabelle</A> </BR>
+</BR>
+<A HREF="HelpInfo_A.html">Gerätekonfigurationsdateien</A> </BR>
+&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="HelpInfo_A1.html">Ger&auml;teeigenschafteneditor</A> </BR>
+</BR>
+<A HREF="HelpInfo_B.html">Dateiformat</A></BR>
+</BR>
+<A HREF="HelpInfo_C.html">CSV2SerialAdapter Datenformat</A>
+</DIV>
+
+<DIV ID="Content" DIR="LTR">
+<H2><A NAME="curve_selector"></A>Der Kurvenselektor</H2>
+<P><IMG SRC="images/CurveSelector_ContextMenue.png" NAME="graphics1" ALIGN=RIGHT>
+Ganz oben im Kontextmen&uuml; befindet sich der Name der Kurve, die man gerade im
+Fokus hat. Alle &Auml;nderungen der Einstellung beziehen sich also auf
+die Darstellungseigenschaften dieser Kurve.</P>
+<P>&Uuml;ber das Kontextmen&uuml; kann man die <B>Kurve sichtbar</B>
+oder unsichtbar schalten. Ist eine Kurve unsichtbar geschaltet und eine
+Ver&auml;nderung der Kurveneigenschaften wird ausgel&ouml;st, wird die
+Kurve automatisch sichtbar geschaltet. Als Beispiel soll eine nicht
+sichtbare Kurve vermessen werden, so werden die Messlinien aktiviert und
+die Kurve, die man vermessen m&ouml;chte sichtbar geschaltet.</P>
+<P>Durch Selektion von <B>Kurvenlinienfarbe</B> wird ein
+Farbauswahldialog gestartet, durch den die Linienfarbe der Kurve
+eingestellt werden kann. Die Farbe wird auch f&uuml;r die Basislinie der
+vertikalen Achse verwendet, um eine leichte optische Zuordnung zu
+erreichen. Au&szlig;erdem wird die Farbe f&uuml;r die Zahlen in der
+Digitalanzeige und die Kreisskalagrundlinie in der Analoganzeige
+verwendet.</P>
+<P>Die Einstellung der <B>Kurvenliniendicke</B> erlaubt ein
+optisches hervorheben einer einzelnen Kurve.</P>
+<P>Die Ver&auml;nderung des <B>Kurvenlinientyps</B> hat nur geringe
+Bedeutung. Da, bei den meisten Kurven, der Abstand zwischen den
+einzelnen Kurvenpunkten gering ist, ist die Wirkung in den meisten
+F&auml;llen nicht gegeben. Hier muss die Wirkung in Abh&auml;ngigkeit
+der Punktabst&auml;nde individuell ausprobiert werden.</P>
+<P>Bei einigen Ladeger&auml;ten wird der Ladestrom f&uuml;r Messzwecke immer wieder abgesenkt, was bei entsprechend langer Ladezeit zu un&uuml;bersichtlichen Kurvendarstellung f&uuml;hrt.
+Um diesen Darstellungseffekt auszugleichen, kann man die <B>Kurvengl&auml;ttung Stromeinbruch</B> einschalten.
+Da die Gl&auml;ttung unterschiedlich gut funktioniert, kann man sie bei Bedarf ein- oder ausschalten.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Smooth.png" NAME="Kurvengl&auml;ttung Stromeinbruch" ALIGN=CENTER>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Scale.png" NAME="graphics2" ALIGN=LEFT>
+Der n&auml;chste Block im Kontextmen&uuml; konfiguriert die Achsen und damit
+auch die Skalen der jeweiligen Kurve. <B>Automatik</B> nimmt die Minimum-
+und Maximumwerte, wie sie in den Kurvendaten vorkommen, als
+Endbegrenzung. <B>Gerundet</B> rundet in Abh&auml;ngigkeit der
+Wertgr&ouml;&szlig;e auf oder im negativen Fall ab. Die Selektion <B>beginnt
+bei 0</B> kann mit &quot;gerundet&quot; oder &quot;automatik&quot; zusammen
+verwendet werden. Der Anfangspunkt der Skala wir auf Null gesetzt.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Manual.png" NAME="graphics3" ALIGN=LEFT>
+W&auml;hlt man <B>manuell</B>, &ouml;ffnet sich ein kleiner Dialog, der die
+Einstellung der Achsenendwerte erlaubt. Werte k&ouml;nnen nicht nur
+durch Selektion ver&auml;ndert werden, sondern durch Eingabe &uuml;ber
+die Tastatur, also durch &Uuml;berschreiben. Als Dezimalseparator kann
+Punkt oder Komma verwendet werden. Dr&uuml;cken der Entertaste oder
+Selektion des OK-Knopfes schlie&szlig;t die Eingabe ab.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Precision.png" NAME="graphics4" ALIGN=RIGHT>
+Mit dem Men&uuml;punkt <B>Achsen-Zahlenformat</B> bestimmt man die Genauigkeit
+der Anzeige. Zu viele Stellen hinter dem Komma suggerieren aber auch
+eine Genauigkeit, die m&ouml;glicherweise durch die Messung oder das
+Messmittel gar nicht gegeben sind. Die Einstellung <B>automatisch</B> passt die Anzahl der Nachkommastellen der Wertegr&ouml;&szlig;e an.</P>
+<P>Mit der <B>Achsen-Position</B> bestimmt man die Seite, auf der die
+Achse zu der Kurve mit der Skala dargestellt werden soll. Da wir von
+links nach rechts lesen, sind bei mir die wichtigeren Kurvenachsen
+vorzugsweise links angeordnet.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Vertical_Grid.png" NAME="graphics5" ALIGN=LEFT>Der
+Kontextmen&uuml;block zur Einstellung von <B>Gridlinien</B> gibt die
+M&ouml;glichkeit <B>vertikale,</B> also auf der Zeitachse, Gridlinien zu
+zeichnen. Die Einstellung der Farbe der Gridlinien erlaubt, Gridlinien
+im Hintergrund zu belassen. Sonst sieht man vor lauter Gridlinien
+wom&ouml;glich die eigentlichen Kurven nicht mehr. Die Einstellung auf
+&quot;mod 60&quot; bedeutet einen geraden Teiler, je nach dargestellter
+Gesamtzeit 60 Sekunden oder 60 Minuten.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Horizontal_Grid.png" NAME="graphics6" ALIGN=RIGHT>
+Die <B>horizontalen
+Gridlinien</B> haben eine Zuordnung zu einer Kurve. Die Kurve, mit der die
+Einstellung vorgenommen wurde, wird angezeigt. Die Einstellung auf
+&quot;jede zweite Zeitmarke&quot; (Hauptskalenteilung) d&uuml;nnt die
+horizontalen Gridlinien etwas aus. Horizontale Gridlinien k&ouml;nnen
+immer nur f&uuml;r eine Kurve angezeigt werden.</P>
+<P>&Uuml;ber den Kontextmen&uuml;punkt <B>Kurven vermessen</B> kann
+man &uuml;ber ein eingeblendetes Fadenkreuz Kurvenpunkte vermessen. Dazu
+wird im Kontextmen&uuml; <B>Kurvenpunkt messen</B> selektiert. Nachdem
+das Kontextmen&uuml; verschwunden ist, wird ein Fadenkreuz aus
+gestrichelten Linien dargestellt. Bewegt man den Mauszeiger unmittelbar
+&uuml;ber der senkrechten Linie, &auml;ndert sich der Mauszeiger, so wie
+im Bild vergr&ouml;&szlig;ert dargestellt. Durch dr&uuml;cken und halten
+der linken Maustaste kann nun der senkrechte Strich verschoben werden,
+wobei der waagerechte Strich automatisch der Kurve folgt. Dabei wird der
+aktuelle Messwert unten in der Statusleiste, rechts neben dem
+Fortschrittsbalken angezeigt.
+Ist der Datensatzkommentar sichtbar geschaltet, &uuml;ber das Kontextmenü, so werden beim Vermessen für alle selektierten Messwerte der aktuelle Wert in Tabellenform angezeigt.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure.png" NAME="graphics7" ALIGN=BOTTOM>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure_Pointer.png" NAME="graphics8" ALIGN=BOTTOM>
+<IMG SRC="images/CurveSelector_ContextMenue_Measure_Value.png" NAME="graphics9" ALIGN=BOTTOM></P>
+<P>Mit <B>Punktdifferenz messen</B> wird der Differenzwert zwischen
+zwei Kurvenpunkten gemessen. Dabei wird dann auch die Einheit &uuml;ber
+die Zeit gebildet und angezeigt.</P>
+<P ALIGN=CENTER><IMG SRC="images/CurveSelector_ContextMenue_Deltameasure.png" NAME="graphics10" ALIGN=BOTTOM></P>
+<P>Als Messfadenkreuz werden ein schwarzes und ein blaues Fadenkreuz
+eingeblendet. Beide werden genau so bewegt, wie bei der
+Einzelpunktvermessung. Besonders sinnvoll sind solche Messungen im
+vergr&ouml;&szlig;ertem Zustand. Hier wird als Zusatzinformation noch
+die Anfangszeit des Kurvenausschnittes angezeigt.</P>
+<P><IMG SRC="images/CurveSelector_ContextMenue_Compare.png" NAME="graphics11" ALIGN=LEFT >
+Als letzter Block im Kontextmen&uuml; sind die Funktionen zur
+&Uuml;bertragung in das Kurvenvergleichsfenster <B>Kopiere in
+Kurvenvergleich</B> und das S&auml;ubern des Kurvenvergleichsfensters <B>L&ouml;sche
+Kurvenvergleich</B> angeordnet. Letzter Punkt, das L&ouml;schen aller Kurven im Vergleichsfensters, wird erst aktiv geschaltet,
+wenn sich mindestens einen Kurve im Vergleichsfenster befindet.
+</P>
+<P><B>Hinweis: </B>Es ist m&ouml;glich, Kurven mit identische Einheit gleichzeitig darzustellen. 
+So z.B. Spannungskurven eines Akkus aus verschiedenen Messungen des selben Messger&auml;tes.
+</P>
+<H3><A NAME="curve_sync"></A>Kurvenskalensynchronisation</H3>
+<P>
+Sind innerhalb eines Datensatzes Kurven des selben Typs vorhanden, werden die
+Skalen mit gleichzeitiger Synchronisation der Endwerte zusammengefasst.
+Als Beispiel seien die Einzelspannungskurven von Lithiumzellen genannt.
+Der Vergleich, der beiden nachfolgenden Bilder, soll das Verhalten verdeutlichen.
+</P>
+<P ALIGN=CENTER>
+<IMG SRC="images/SynchroniseRecords_1.png" NAME="graphics10" ALIGN=MIDDLE>
+</P>
+<P>Das spart nicht nur Platz, sondern alle betroffenen Kurven besitzen dadurch die selben Min- und Max-Werte.
+Hierdurch sind die Kurven optisch vergleichbar. 
+</P>
+<P ALIGN=CENTER><IMG SRC="images/SynchroniseRecords_2.png" NAME="graphics11" ALIGN=MIDDLE>
+</P>
+<P><B>Hinweis: </B>Die Synchronisation wird &uuml;ber eine Eingenschaft in der Ger&auml;tekonfigurationsdatei eingestellt (siehe hierzu <A HREF="HelpInfo_A1.html#device_properties_measurement">Messwerteeingenschaften</A>).
+</P>
+<P ALIGN=LEFT><A HREF="HelpInfo_4.html">&lt;&lt;== zur&uuml;ck</A></P>
+<P ALIGN=RIGHT><A HREF="HelpInfo_42.html">weiter ==&gt;&gt;</A></P>
+</DIV>
+</BODY>
+</HTML>

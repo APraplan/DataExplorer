@@ -1,0 +1,98 @@
+How to develop a new plug-in for the DataExplorer
+
+Refer to HowToSetupEclipseWorkspace prior to read further.
+
+Check out all projects from CVS
+
+Search for a similar device project and disconnect from CVS
+
+Refactor this project to fit your requirements
+- project name
+- package
+- class names
+- device picture file in resource directory
+- device configuration file in resorce/de and resource/en directory, change the name of the device "<name implementation="gde.device.manufacturer.NewDevice">My New Device</name>"
+	implementation="gde.device.manufacturer.NewDevice" is only required if device implementation class name does not match the device name 
+	(do not forget to re-build clean dist and removing properties.xml, if there are required changes)
+- graphics template file in resource/template directory
+
+Edit the build.xml
+- project name
+- Bundle-Description
+- property export.services
+
+Edit the javadoc.xml
+- package names
+
+Query and register message range (DataExplorer/gde/messages)
+
+Create launcher to build message IDs and reverse create message IDs by copy and rename, update parameter (package) in DataExplorer project
+Change message numbers in copied message files, check for message which can be reused and try previous created launcher. Now reduce messages expect the message which can be reused 
+and clean the copied class code to the part which might be reused. Make at least compile error free. Do not care about functional implementation for this moment.
+
+Add the new device to the build/build.xml (3 sections where it need to be added, search for <!-- add new device here -->)
+Run a build (clean dist from external tools launcher) and check build/target/*/DataExplorer/devices/ directory for you new device.jar file
+
+Launch DataExplorer and check boot log for "gde.GDE.getClassLoader() - using class loader URL" where an entry for your new device must exist like 
+"file:/F:/workspaces/gnu/<new device project>/classes/"
+Check in operating system specific application configuration directory *DataExplorer/Devices/ if your new device property.xml exist. If not check, why this is not packaged during build.
+The property file name must match the generated MAINIFEST.MF Export-Service: gde.device.graupner.MyNewDevice to MyNewDevice.xml, which is configured in the device build.xml
+If changes are required, do not forget to rebuild clean dist before start DataExplorer.
+After DataExplorer is accessible open device selection dialog and select your new device which should be listed in the list of devices.
+Switch to the active device selection tab and select the new device as active device. If an error occurs correct the properties.xml, re-build, remove from Devices directory and so on.
+
+If the new create device can be activated without error open the device properties editor and update all the entries required for the new device. 
+Keep in mind to have de and en version in sync.
+
+Implement getData() method in serial port implementation class, include checksum.
+Write or update data gatherer thread implementation to at lease log out the received data, take care for data cycle time
+Implement open_closeSerialPort method if required and test it while implementing data gatherer.
+
+Implement IDevice.convertDataBytes method to have the capability to translate received data from raw to integer as is without any change. If value adaption 
+is required for display purpose, add offset, factor to measurement in device properties file. 
+At this point it should be possible to capture data from the device.
+Test data gathering for cycle, delay, switch, data channel, visibility, ......
+
+Externalize strings according the message range from time to time.
+
+Save data file and restore while implement or adapt addDataBufferAsRawDataPoints method;
+
+Start implementing a dialog if required and add write/read methods according device requirements and capabilities.
+
+Externalize strings according the message range again.
+
+Clean source files and release the plugin.
+
+
+
+
+
+
+
+
+
+
+
+
+Beim Starten der Anwendung wird in der plugin.jar/meta-inf/manifest.mf Datei nach den Services gesucht, die das Plug.in zur Verf�gung stellt, deshalb ist diese Zeile in der build.xml wichtig:
+<attribute name="Export-Service" value="gde.device.bantam.eStation902,  gde.device.bantam.eStationBC6,   gde.device.bantam.eStationBC610,   gde.device.bantam.eStationBC8"/>
+Das sind die Ger�te, die das Plug-in implementiert und matched 1:1 zu der Ger�teimplementierungsklasse und den DeviceProperties.xml Dateien, die es in allen unterst�tzten Sprachen geben muss (gde/resource/de/eStationBC6.xml, ...).
+Die Ger�te XML Dateien werden dann entsprechend der angew�hlten Sprache beim Start der Anwendung �berpr�ft und ausgepackt.
+
+Die Ger�teklassen werden dynamisch geladen, hierbei Berechnet sich der Klassenname folgenderma�en:
+        String selectedDeviceName = this.selectedActiveDeviceConfig.getDeviceImplName().replace(OSDE.STRING_BLANK, OSDE.STRING_EMPTY).replace(OSDE.STRING_DASH, OSDE.STRING_EMPTY);
+        //getDeviceImplName gibt den Namen des Services ohne package zur�ck und entspricht dem Ger�tenamen der in der XML angegeben ist
+        String className = "gde.device." + this.selectedActiveDeviceConfig.getManufacturer().toLowerCase().replace(OSDE.STRING_BLANK, OSDE.STRING_EMPTY).replace(OSDE.STRING_DASH, OSDE.STRING_EMPTY) + "." + selectedDeviceName; //$NON-NLS-1$
+        //getManufacturer gibt den Herstelleramen aus der XML zur�ck
+
+Im Ger�teklassenkonstruktor entscheidet der Aufruf von this.configureSerialPortMenu(DeviceSerialPort.ICON_SET_START_STOP), dar�ber, ob ein Aufnahmevorgang direkt aus der Men�leiste gestartet werden kann oder nur der Port ge�ffnet wird und/oder ein Ger�tedialog zu bedienen ist.
+
+F�r die Anbindung von Ladeger�ten sind die Implementierung folgender Klassen und Methoden wichtig:
+Ger�tSerialPort.getData() ist die Standartmethode, um Daten vom Ger�t abzuholen, die dann in einem Thread, entweder timergesteuert, oder datengesteuert in den Rekords des angelegten Rekord Sets abgelegt werden (das Datenmodell findest du auf meiner Internetseite) Der eStation Lader ist datengesteuert und wartet auf der seriellen Schnittstelle auf ankommende Daten. Es wird also kein Timer verwendet, der regelm��ig Daten aus dem Ger�t abholt.
+Ger�t.openCloseSerialPort() entscheidet dar�ber, was passiert, wenn man den den Knopf in der Toolbar dr�ckt.
+Ger�t.addDataBufferAsRawDataPoints() bereitet den Datenpuffer am St�ck auf (aus Datei.osd)
+Ger�t.convertDataBytes() macht aus diesen bytes Zahlen und wird �berall wenn n�tig benutzt
+Ger�t.translateValue() und Ger�t.reversetranslateValue() wird benutzt um in der Anzeige die Skalen zu zeichnen, bzw die Tabellendaten zu berechnen. Die ausgelesenen Daten bleiben immer unver�ndert und werden nur mit 1000 multipliziert, um 3 Nachkommastellen zu erm�glichen.
+
+Um den National Language Support (NLS) brauchst du dich erst mal nicht k�mmern, das kann man sp�ter machen, du brauchst dann auch noch einen Bereich, wo du die Messages ablegen kannst, damit es keine Doppelbenutzung gibt.
+Die online-Hilfe Geschichten kann man auch nach hinten schieben, es gilt erst mal die Funktion hinzu bekommen.

@@ -1,0 +1,15 @@
+GNU DataExplorer - News - comes with Version 3.8.5 - 5 Mar 2024
+
+Generic changes/fixes 
+	* fix startup problem after clean new install
+	
+Device specific changes/fixes
+	* HoTTAdapter* - *.log reader, use block sequence number to track log time step
+	* PeakTech* - correct device XML names
+	
+Allgemeine Änderungen/Korrekturen
+	* Korrektur zur Behebung des Startproblemes nach Neuinstallation
+	  
+Gerätespezifische Änderungen/Korrekturen
+	* HoTTAdapter* - *.log nutze Block-Sequenz-Nummer zum Zeitschrittverlauf
+	* PeakTech* - Korrektur der Geräte XML Namen

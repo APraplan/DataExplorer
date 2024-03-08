@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18402165">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Ultra Duo Plus Device Dialog Introduction</I></FONT></FONT></H2>
+</DIV>
+<P>With the Ultra Duo Plus device dialog you are able to configure device identification name, button sound, etc..
+The main configuration tasks are the naming from battery memories and its battery type, capacity and charge, discharge and cycle parameter.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Usage</I></FONT></FONT></H2>
+<P>If the serial communication port is selected using the device selection dialog, 
+the port will be automatically opened while opening the dialog and some configuration data will be gathered from the device.
+To select the battery memories the drop down gets used.
+The adjustment of the parameter values can be done by using the slider on right hand side or when value field has white background by typing.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Image1" ALT="Image1">
+</P>
+<P><B>Hint : </B>It is important to specify a device identifier name. Since this name is used as identifier for a data cache.
+The data cache gets created during first opening of the configuration dialog.
+Therefore the first open takes a few seconds longer than afterward.
+If the cache is filled and in sync with the device data can be seen by activating the backup/restore buttons.
+</P>
+<P>The following pictures displays charge, discharge and cycle parameters for a NiMH battery.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_2_NiMh.png" NAME="Image2 charge parameter NiMH" ALT="Image2 charge parameter NiMH">
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3_NiMh.png" NAME="Image3 discharge parameter NiMH" ALT="Image3 discharge parameter NiMH">
+</P></P>
+<P>The following picture displays the step charge parameters tabulator, which is only enabled for a NiMH battery.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_3a_NiMh.png" NAME="Image3a step charge parameter NiMH" ALT="Image3a step charge parameter NiMH">
+</P>
+</P>
+<P>The following pictures displays charge, discharge and cycle parameters for a LiPo sample battery.
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_4_LiPo.png" NAME="Image4 charge parameter LiPo" ALT="Image4 charge parameter LiPo">
+</P>
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_5_LiPo.png" NAME="Image5 discharge parameter LiPo" ALT="Image5 discharge parameter LiPo">
+</P>
+<P><B>Hint : </B>Only parameters gets displayed for configuration purpose which has a relevance for the selected cell type.
+The configuration of step charge parameters are actually not possible and is part of future release.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Data gathering</I></FONT></FONT></H2>
+<P>To start data capturing simply push the "start gathering" button.
+Do this while the charger is prepared, charge process configured, battery connected.
+Right after starting the gathering process at the DataExplorer start the charge process at device.
+Only this sequence guarantees that the complete charging process gets captured.
+Switching between charge, discharge and other curve types is enabled automatically by values received from the device.
+While a new curve gets created the graphical visualization switches to this data set at the certain outlet data channel.
+The picture below showing a graph of a linked charged LiPo battery with 8 cells.
+Only curves gets displayed which contain data. Therefore there is a skip in CellVoltage numbers between 4 and 8. 
+This relates to the balancer outlets where the batteries are connected.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_6.png" NAME="Image6 charge process LiPo LINK" ALT="Image6 charge process LiPo LINK">
+</P>
+<P>
+If the device is inactive for a certain time frame the serial communication port gets closed.
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Automatic Object Selection</I></FONT></FONT></H3>
+<P>Charging devices which are capable to manage battery memories forwards this possibility to automatic object key selection.
+</BR>As pre-requisite the configuration dialog must be used to configure the battery memories.
+During the configuration activity a configuration file gets created and is used as data cache.
+The configured device name is part of the file identifier.
+While the data gathering gets started the device identifier name will be read. Afterwards the normal gathering will begin.
+Receiving the first data from the device, the process memory number is known.
+With the battery memory number the memory name can be looked up.
+The battery name is now used to find a best match from object key list.
+If a good match can be found the object key gets selected while creating the first data set.
+</P>
+<P>How to match the object name while there is no complete containment ?
+</BR>The battery memory name gets split at blank, hyphen and under bar.
+The name fragments are now used to find partially matches.
+The object name which has the most containment hits get selected.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_7.png" NAME="Image7 Battery memory - object match" ALT="Image7 Battery memory - object match">
+</P>
+<P><B>Hint : </B>To have good matching results, name battery memories as well as object key names accordingly.
+Both names battery memory name as well as object key name can be renamed if required
+</P>
+<H3><FONT FACE="Arial"><FONT SIZE=4><I>Battery Cycle Data History</I></FONT></FONT></H3>
+<P>Using the Battery Data tab of the UltraDuoPlus dialog it is possible to query battery history data, cycle data.
+Doing this result in a new utility graphics tab, called Battery History, in the main application window. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_8.png" NAME="Image8 Battery Cycle Data" ALT="Image8 Battery Cycle Data"></P>
+<P><B>Hint : </B>Only data gets displayed which are taken within the last two years of the selected battery memory.
+</P>
+<P>Through device date miss adjustment it is possible to collect wrong data in respect of time stamp. 
+If such a time stamp will be detected a small dialog gets opened to enable correction.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_9.png" NAME="Image9 Correction Dialog" ALT="Image9 Correction Dialog"></P>
+<P>How it is possible to correlate such entries regarding the time stamps?
+Just skip all the correction dialogs and have a brief look at the table which now contains all the entries red from device.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_10.png" NAME="Image10 Dialog Battery History" ALT="Image10 Dialog Battery History"></P>
+<P>Using saved DataExplorer files of the selected battery, statistics tab, you will find which entries have a mismatch.
+Afterwards just run the history query again and correct the entries where a matching file was found. 
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CREATED" CONTENT="20080223;17323053">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18580692">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Brügmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>LiPoWatch
+	Ger&auml;tedialog Einleitung</I></FONT></FONT></H2>
+</DIV>
+<P>Der LiPoWatch-Ger&auml;tedialog dient zur Visualisierung der LiPoWatch-&quot;Einstellungen&quot; und deren Konfiguration. 
+&Uuml;ber den letzten Dialogtabulator &quot;Daten I/O&quot; k&ouml;nnen die im
+Ger&auml;t gespeicherten Daten abgeholt und dann angezeigt werden.
+</P>
+<P>Viele Felder sind mit Hilfetexten hinterlegt und sollten diese
+Beschreibung f&uuml;r den weiteren Gebrauch weitestgehend &uuml;berfl&uuml;ssig
+machen. Die Texte werden durch den dar&uuml;ber gehaltenen Mauszeiger
+sichtbar. 
+</P>
+<P>Die aktuelle Dialogimplementierung entspricht dem LiPoWatch Firmware
+Stand 1.0. 
+</P>
+<H2><A NAME="adjustment"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der Tabulator „Einstellung“</I></FONT></FONT></H2>
+<P>Nachdem die serielle Schnittstelle &uuml;ber den Ger&auml;teauswahldialog
+eingestellt ist und der Eingabedialog aufgerufen ist kann durch
+dr&uuml;cken von „Lese Konfiguration“ die aktuelle LiPoWatch-Konfiguration ausgelesen werden. 
+Das Resultat ist beispielhaft in Bild 1 zu sehen. 
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="Bild1" ALT="Bild1" BORDER=0>
+</P>
+<P>Werden Einstellungen ver&auml;ndert, wird „Sichere Konfiguration“ aktiv. 
+Durch dr&uuml;cken werden die gew&auml;hlten Einstellungen in das LiPoWatch geschrieben. 
+</P>
+<P><B>Hinweis : </B>Es ist sinnvoll, vor der &Auml;nderung einer
+Einstellung erst einmal die aktuelle Konfiguration auszulesen. Sonst
+wundert man sich, dass andere Einstellungen auch ver&auml;ndert wurden. 
+</P>
+<H2><A NAME="data_io"></A><FONT FACE="Arial"><FONT SIZE=4><I>Der Tabulator „Daten I/O“</I></FONT></FONT></H2>
+<P>Im initialen Zustand sind alle Kn&ouml;pfe aktiv, die ein Einlesen
+von Daten ausl&ouml;sen. 
+</BR>
+Die Live-Datenanzeige kann bei geschlossenem Dialog direkt aud der Toolsleiste heraus gestartet werden.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_2.png" NAME="Bild2" ALT="Bild2" BORDER=0>
+</P>
+<P>Durch dr&uuml;cken von „Startet den Ausleseprozess“ werden die im
+Ger&auml;t gespeicherten Daten ausgelesen. 
+</P>
+<!--
+<P>&Uuml;ber „Start live Datenabfrage“ werden entsprechend der
+Speicherrateneinstellung zyklisch Daten ausgelesen und in der
+Anwendung angezeigt. Bet&auml;tigt man zus&auml;tzlich den „Start“
+Knopf der UniLog Datenaufnahmegruppe werden ab diesem Zeitpunkt auch
+die Messdaten im UniLog selbst gespeichert. Durch Bet&auml;tigung der
+„Start“-Kn&ouml;pfe werden immer die entsprechenden
+Gegenoperationen aktiviert. 
+</P>
+-->
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_3.png" NAME="Bild3" ALT="Bild3" BORDER=0>
+</P>
+<P>Am Ende der Daten&uuml;bertragung werden die Messdaten aufbereitet
+und angezeigt. Der Dialog ist dann wieder im initialen Zustand, nur
+der Fortschrittsbalken ist gef&uuml;llt und die Anzahl der
+ausgelesenen Messdaten wird angezeigt. 
+</P>
+</BODY>
+</HTML>

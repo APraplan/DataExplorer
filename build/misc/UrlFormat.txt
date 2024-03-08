@@ -1,0 +1,71 @@
+The classic URL file format is pretty simple; it has a format similar to an INI file:
+[InternetShortcut] URL=http://www.someaddress.com/ WorkingDirectory=C:\WINDOWS\ ShowCommand=7 IconIndex=1 IconFile=C:\WINDOWS\SYSTEM\url.dll Modified=20F06BA06D07BD014D HotKey=1601
+
+The syntax of the file format is like the following:
+[Group\Section] Field=Value Field=Value . .
+
+Each line terminates with CR and LF characters, and uses ANSI as it?s character set. The files can be manipulated using basic file I\O or the GetPrivateProfileString, GetPrivateProfileSection, WritePrivateProfileSection, WritePrivateProfileSring API functions provided by Windows.
+
+URL
+
+The URL field is self-explanatory. It?s the address location of the page to load. It should be a fully qualifying URL with the format protocol://server/page. A URL file is not restricted to the HTTP protocol. In general, at least, whatever that can be saved as a favorite is a valid URL.
+
+WorkingDirectoy
+
+It?s the ?working folder? that your URL file uses. The working folder is possibly the folder to be set as the current folder for the application that would open the file. However Internet Explorer does not seem to be affected by this field. This setting does not seem to appear in some versions of Internet Explorer/Windows.
+
+IconIndex
+
+The Icon Index within the icon library specified by IconFile. In an icon library, which can be generally be either a ICO, DLL or EXE file, the icons are indexed with numbers. The first icon index starts at 0.
+
+IconFile
+
+Specifies the path of the icon library file. Generally the icon library can be an ICO, DLL or EXE file. The default icon library used tends to be the URL.DLL library on the system?s Windows\System directory
+
+Modified
+
+This field is generally the most cryptic of all the fields. Modified=20F06BA06D07BD014D I?m not aware exactly how the date is encoded in the URL file format. However the code is clearly in a hexadecimal and is a counter, counting from a specific year, month and day. It also appears to be divided in 9 words. With some experimentation I was able to see the following:
+Changes at a fast pace 	Changes slowly 	?
+20 	F0 	6B 	A0 	6D 	07 	BD 	01 	4D
+
+The second character of the first word also never changes: possibly the resolution of the timer does not go this deep in detail. However the count is deep enough that it?s smaller than a microsecond (or it seems). To be useful, the words above have to have it?s order reversed, possibly the ninth can be removed. Therefore:
+20 	F0 	6B 	A0 	6D 	07 	BD 	01 	4D
+Invert 	Rem.
+01 	BD 	07 	6D 	A0 	6B 	F0 	20 	
+
+Then convert the first 4 words (most significant) from hex to a double precision number, do the same with the 4 last hex values (least significant), and apply the following formula:
+MostSignificant = HexToDec(?01BD076D?) LeastSignificant = HexToDec(?A06BF020?) BDN = MostSignificant * 4294967295 + LeastSignificant
+
+The following functions can be used as a ?poor man?s? date approximation tool:
+Year = 1600 + Int(BDN / k / 1000 / 1000 / 60 / 60 / 24 / 356.25) Month = Int(BDN / k / 1000 / 1000 / 60 / 60 / 24 / 30 Modulus 12)
+
+The k constant here is ?guessed? as 10.2215, as it gave somewhat acceptably close months from 1995 to 2002. However it is far from being correct. While these functions are definitely crude, it provides a bit of insight how the Modified field was probably constructed. Creating your own functions to process these dates is recommended.
+
+ShowCommand
+
+    * Nothing
+
+      (Normal)
+    * 7
+
+      Minimized
+    * 3
+
+      Maximized
+
+This setting does not seem to appear in some versions of Internet Explorer/Windows.
+
+HotKey
+
+The HotKey field specifies what is the shortcut key used to automatically launch the Internet shortcut. The field uses a number to specify what hotkey is used.
+833 ? Ctrl + Shift + A 834 ? Ctrl + Shift + B 835 ? Ctrl + Shift + C . . 1345 ? Shift + Alt + A 1346 ? Shift + Alt + B 1347 ? Shift + Alt + C . . 1601 ? Ctrl + Alt + A 1602 ? Ctrl + Alt + B 1603 ? Ctrl + Alt + C Refer to Complete HotKey Code Reference.
+
+Settings not stored in the .url format
+
+Visits, "Make this page available offline?, Synchronization settings, Download Settings and Schedule Settings are not kept in .url files.
+
+Issues about using the .url format
+
+It seems that Microsoft wants to hide the structure of the file format, even make it seem like it isn?t even a file at all. The URL file in the newer Microsoft Windows operating systems behaves almost like a LNK file. For example, in Microsoft Windows 2000 Professional, the URL file is treated like a shortcut, even in Windows Notepad, making the file format harder to be revealed and viewed. In order to view a file in these operating systems, use the DOS EDIT.EXE program. By typing EDIT in a command prompt window.
+
+Read more about creating and maintaining URL files using IshellLink related Windows interfaces http://msdn.microsoft.com/library/psdk/shellcc/shell/Internet_Shortcuts.htm

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - Core-Telemetry Device dialog</TITLE>
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="Introduction"></A><FONT FACE="Arial"><FONT SIZE=4><I>Core-Telemetry Dialog</I></FONT></FONT></H2>
+</DIV>
+<P>
+The below device dialog should be used to configure the visualization of measurements.
+It is possible to update measurement names and symbols. 
+Even if the measurement units are editable it makes less sense to do without adding a measurement factor in respect to the change.
+The measurement names and units are contained within the log data and get overwritten while reading.
+Unchecked measurement will not be displayed. 
+Curves without reasonable data are not displayed either.
+This will lead to a more clear representation.
+Curves which are hard to be interpreted in two dimensional way, may be blanked out.
+As example, if no GPS is connected the GPS relevant curves doesn't get displayed.
+</BR>
+It is possible to import data files using the 'open input file' button as well.
+</BR></BR>
+The GPS data measurements which are needed to display tracks in Google Earth or to export KMZ/KML do not have a fixed ordinal due to the way the log data are recorded.
+Latitude, Longitude and the absolute altitude (GPS altitude) are detected as far as possible by naming.
+While GPS data are available and detected it is possible to load and display such data in Google Earth using KMZ files.
+This files can be exported using the file menu or directly launched to an installed Google Earth application.
+How to do so, refer to <A HREF="../../../help/en/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="HelpInfo_Image_1" ALT="HelpInfo_Image_1"></P>
+<P>
+There are two prepared measurement set configurations to be used for different sensor sets.
+The above screen shot showing the dialog of a loaded log and here you see its reduced to the available measurement set.
+Using the device properties editor it would be possible to add some more or simply re-name the configuration set, if this is really required.
+</BR>
+<B>Hint: </B>To enable a history evaluation, this relies on a constant "sensor imprint",
+it makes sense to create a separate configuration for each sensor set and to always select this before import in the log files of a model.
+For this reason it is also necessary to save the imported logs as an OSD file.
+An OSD file can include multiple logs, such as those from the previous month.
+</P>
+<P>
+At the right hand side of the configuration panel are check boxes which enable a semi-automatic scale synchronization.
+While checking measurement name will be compared to previous once and the fitting measurement ordinal will be added to the measurement configuration entry.
+Using scale synchronization will reduce the required space for scales and spend more for the graphics. 
+Overlaying curves in this matter will allow direct comparison without using the curve compare window.
+</P>
+<P>
+The names of curves should be unique for this sensor set if possible, sample CurrentMotor, CurrentRx, VoltageMotor, VoltageRx.
+Please choose the curve names, in case of scale synchronization, in a way that the names starts with the same word, 
+sample Current synchronized to <I>Current</I>Motor, <I>Current</I>Rx, <I>Current</I>Motor2.
+This is the algorithm the semi-automatic synchronization works.
+Using the DevicePropertiesEditor it is possible to synchronize almost every curve to another by configuration.
+Sure, this makes only sense for curves where use somehow matching range of values.
+While the curves and data match it is possible to select the synchronization check boxes.
+</BR>
+To archive all capabilities of DataExplorer's statistical calculations refer to <A HREF="../../../help/en/HelpInfo_5.html">Statistic View Window</A>.
+</P>
+<P><B>Hint: </B>While changing curve names, symbols units or synchronization entries the device configuration file gets changed.
+With a later version of DataExplorer the device properties schema might change (DeviceProperties_Vxy.xsd), 
+in this case a backup copy of the complete device configurations will be created (Devices_Vxy-1.xsd) and your change will remain there.
+The out dated device configuration file can be used as template to update the new version.
+</P>
+</BODY>
+</HTML>

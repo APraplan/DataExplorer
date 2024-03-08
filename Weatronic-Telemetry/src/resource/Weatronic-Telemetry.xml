@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+    <Device>
+        <name implementation="gde.device.weatronic.WeatronicAdapter">Weatronic-Telemetry</name>
+        <manufacturer>Weatronic</manufacturer>
+        <manufacturerURL>https://www.weatronic.com</manufacturerURL>
+        <group>logger</group>
+        <image>Weatronic-Telemetry.png</image>
+        <usage>false</usage>
+    </Device>
+    <TimeBase>
+        <name>time</name>
+        <symbol>t</symbol>
+        <unit>sec</unit>
+        <timeStep>-1.0</timeStep>
+    </TimeBase>
+    <DataBlock>
+        <format inputType="FILE_IO" formatType="VALUE" size="-1536"/>
+        <preferredDataLocation></preferredDataLocation>
+        <preferredFileExtention>*.log</preferredFileExtention>
+    </DataBlock>
+    <State>
+        <property name="state_flight_recording" value="01" type="Integer"/>
+    </State>
+    <Channels>
+        <Channel name="type_config_1" type="TYPE_CONFIG">
+            <Measurement>
+                <name>Rx_GPS_IsValid</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="1.0" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>Rx_GPS_Altitude</name>
+                <symbol>-</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_config_2" type="TYPE_CONFIG">
+            <Measurement>
+                <name>Rx_GPS_IsValid</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="1.0" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>Rx_GPS_Altitude</name>
+                <symbol>-</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_config_3" type="TYPE_CONFIG">
+            <Measurement>
+                <name>Rx_GPS_IsValid</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="1.0" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>Rx_GPS_Altitude</name>
+                <symbol>-</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+        </Channel>
+        <Channel name="type_config_4" type="TYPE_CONFIG">
+            <Measurement>
+                <name>Rx_GPS_IsValid</name>
+                <symbol>-</symbol>
+                <unit></unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="1.0" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+            <Measurement>
+                <name>Rx_GPS_Altitude</name>
+                <symbol>-</symbol>
+                <unit>m</unit>
+                <active>true</active>
+                <statistics min="true" max="true" avg="false" sigma="false"/>
+                <property name="factor" value="0.1" type="Double"/>
+                <property name="offset" value="0.0" type="Double"/>
+            </Measurement>
+        </Channel>
+        <property name="text_mode" value="true" type="Boolean"/>
+        <property name="enable_channel" value="true" type="Boolean"/>
+        <property name="enable_filter" value="true" type="Boolean"/>
+    </Channels>
+    <Desktop>
+        <property name="table_tab" value="true"/>
+        <property name="digital_tab" value="true"/>
+        <property name="analog_tab" value="true"/>
+        <property name="voltage_per_cell_tab" value="false"/>
+        <property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB"/>
+        <property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB"/>
+    </Desktop>
+</DeviceProperties>

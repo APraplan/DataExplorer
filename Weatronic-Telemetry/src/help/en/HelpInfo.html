@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="AUTHOR" CONTENT="Winfried Br&uuml;gmann">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><A NAME="einleitung"></A><FONT FACE="Arial"><FONT SIZE=4><I>Weatronic device dialog</I></FONT></FONT></H2>
+</DIV>
+<P>The Weatronic device dialog displays measurement names to get an overview. In addition it is used to set the filter properties.
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>Usage</I></FONT></FONT></H2>
+<P>There are four configurations which can be used in combination with the DevicePropertiesEditor to configure trigger for special events.
+This can not prepared initially since it depends on the used sensors.
+For instance the motor climbs can be counted, motor run time, archived high during motor runtime...
+Please refer to the main documentation to get familiar with this feature.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Image_1.png" NAME="Bild1" ALT="Bild1" ALIGN=BOTTOM BORDER=0>
+</P>
+<H2><FONT FACE="Arial"><FONT SIZE=4><I>How to synchronize measurements to use a single scale</I></FONT></FONT></H2>
+<P>Below the system application properties directory you will find /DataExplorer/Mappings directory.
+Here you will find a XML-File which needs to be edited according your needs.
+There are key value pairs, build using the actual measurement names to direct the synchronization.
+Please refer to the following sample: 
+</BR></BR>
+	&lt;entry key="RXSub1_UBatt_1"&gt;RXSub1_UBatt_0&lt;/entry&gt;
+</BR>
+	&lt;entry key="RXSub2_UBatt_0"&gt;RXSub1_UBatt_0&lt;/entry&gt;
+</BR>
+	&lt;entry key="RXSub2_UBatt_1"&gt;RXSub1_UBatt_0&lt;/entry&gt;
+</P>
+
+</BODY>
+</HTML>

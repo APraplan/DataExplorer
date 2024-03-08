@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DataExplorer"/>
+	<classpathentry kind="lib" path="/build/lib/jaxb-api.jar"/>
+	<classpathentry kind="var" path="SWT_JAR_PATH" sourcepath="/SWT_SOURCE_PATH"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

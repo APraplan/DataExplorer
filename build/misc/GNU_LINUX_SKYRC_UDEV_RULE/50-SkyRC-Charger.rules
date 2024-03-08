@@ -1,0 +1,5 @@
+# udev rule to make SkyRC Charger USB HID device usable by users of group dialout 
+# which is required for serial communication as well              
+SUBSYSTEM=="usb", ATTRS{idVendor}=="0000", ATTRS{idProduct}=="0001", MODE="0666", GROUP="dialout"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="0000", ATTRS{idProduct}=="0001", MODE="0666", GROUP="dialout"
+#SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device",SYSFS{idVendor}=="0000" , SYSFS{idProduct}=="0001", MODE="0666", GROUP="dialout"

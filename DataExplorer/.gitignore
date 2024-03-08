@@ -1,0 +1,8 @@
+.settings
+build
+bin
+classes
+*.dll
+.DS_Store
+*/**/.DS_Store
+/hs_err_*.log

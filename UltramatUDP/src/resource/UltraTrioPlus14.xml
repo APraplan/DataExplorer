@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeviceProperties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xsi:noNamespaceSchemaLocation="DeviceProperties_V48.xsd">
+	<Device>
+		<name implementation="gde.device.graupner.UltraTrioPlus14">UltraTrioPlus14</name>
+		<manufacturer>Graupner</manufacturer>
+		<manufacturerURL>https://www.graupner.com</manufacturerURL>
+		<group>charger</group>
+		<image>UltraTrioPlus14.jpg</image>
+		<usage>false</usage>
+	</Device>
+	<SerialPort>
+		<port>-</port>
+		<baudeRate>9600</baudeRate>
+		<dataBits>DATABITS_8</dataBits>
+		<stopBits>STOPBITS_1</stopBits>
+		<parity>PARITY_NONE</parity>
+		<flowControlMode>FLOWCONTROL_NONE</flowControlMode>
+		<isRTS>false</isRTS>
+		<isDTR>false</isDTR>
+	</SerialPort>
+	<TimeBase>
+		<name>time</name>
+		<symbol>t</symbol>
+		<unit>msec</unit>
+		<timeStep>1000.0</timeStep>
+	</TimeBase>
+	<DataBlock>
+		<format inputType="SERIAL_IO" formatType="BYTE" size="106" />
+		<checkSum type="ADD" format="BINARY" />
+	</DataBlock>
+	<Channels>
+		<Channel type="TYPE_OUTLET" name="type_outlet 1">
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>energy</name>
+				<symbol>E</symbol>
+				<unit>Wh</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>supply_voltage</name>
+				<symbol>Uin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>balance</name>
+				<symbol>Bal</symbol>
+				<unit>mV</unit>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 1</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 2</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 3</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 4</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 5</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 6</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Settlements>
+                <Settlement settlementId="1">
+                    <name>r_i_cell 1</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="7" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="factor" value="1" type="Double" description="Permille is milliOhm"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="2">
+                    <name>r_i_cell 2</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="8" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="scale_sync_ref_ordinal" value="13" type="Integer"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="3">
+                    <name>r_i_cell 3</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="9" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="scale_sync_ref_ordinal" value="13" type="Integer"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="4">
+                    <name>r_i_cell 4</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="10" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="scale_sync_ref_ordinal" value="13" type="Integer"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="5">
+                    <name>r_i_cell 5</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="11" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="scale_sync_ref_ordinal" value="13" type="Integer"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="6">
+                    <name>r_i_cell 6</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="12" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Voltage delta devided by current delta, based on the smoothed reference ad recovery levels average"/>
+                    </evaluation>
+                    <property name="scale_sync_ref_ordinal" value="13" type="Integer"/>
+                    <label>settlementlabel_r_i_cell</label>
+                </Settlement>
+                <Settlement settlementId="15">
+                    <name>r_i_cells</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>true</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="200" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="based on slope and peak transitions - this delivers the best results"/>
+                    </evaluation>
+                    <property name="factor" value="1" type="Double" description="Permille is milliOhm"/>
+                    <label>settlementlabel_r_i_cells</label>
+                </Settlement>
+                <Settlement settlementId="16">
+                    <name>r_i_pack</name>
+                    <symbol>Ri</symbol>
+                    <unit>mOhm</unit>
+                    <active>true</active>
+                    <evaluation>
+                        <transitionCalculus transitionGroupId="100" calculusType="ratio_permille" unsigned="true" referenceGroupId="0" leveling="smooth_minmax" referenceGroupIdDivisor="1" divisorLeveling="smooth_minmax" deltaBasis="bothAvg" comment="Divide the voltage peak value by the current peak value. Determine the peak value by comparing the smoothed threshold extremum value with the smoothed reference value (and recovery extremum value in case of peaks and pulses)."/>
+                    </evaluation>
+                    <property name="factor" value="1" type="Double" description="Permille is milliOhm"/>
+                    <property name="scale_sync_ref_ordinal" value="19" type="Integer" description="r_i_cells"/>
+                    <property name="beyond_limit" value="1111.1" type="Double" description="Discard Ri values bigger or equal"/>
+                    <label>settlementlabel_r_i_pack</label>
+                </Settlement>
+                <Settlement settlementId="17">
+                    <name>r_i_time</name>
+                    <symbol>t</symbol>
+                    <unit>min</unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionFigure transitionGroupId="100" figureType="time_step_sec" comment="Startzeitpunkt der Messung des Schwellwertes"/>
+                    </evaluation>
+                    <property name="factor" value="0.01666667" type="Double" description="Seconds to minutes"/>
+                    <trailDisplay discloseAll="false">
+                        <exposed trail="count"/>
+                        <disclosed trail="q2"/>
+                    </trailDisplay>
+                    <label>settlementlabel_r_i_time</label>
+                </Settlement>
+                <Settlement settlementId="19">
+                    <name>r_i_readings</name>
+                    <symbol>Anzahl</symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <evaluation>
+                        <transitionFigure transitionGroupId="100" figureType="time_sum_sec" comment="Anzahl von Messungen"/>
+                    </evaluation>
+                    <property name="factor" value="1" type="Double" description="Keine Umrechnung"/>
+                    <trailDisplay discloseAll="true" defaultTrail="count"/>
+                    <label>settlementlabel_r_i_readings</label>
+                </Settlement>
+			</Settlements>
+			<ReferenceGroups>
+				<ReferenceGroup referenceGroupId="0" referenceRule="sum" comment="voltage">
+					<MeasurementMapping measurementOrdinal="0" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="1" referenceRule="sum" comment="current">
+					<MeasurementMapping measurementOrdinal="1" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="7" referenceRule="sum" comment="voltage 1">
+					<MeasurementMapping measurementOrdinal="7" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="8" referenceRule="sum" comment="voltage 2">
+					<MeasurementMapping measurementOrdinal="8" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="9" referenceRule="sum" comment="voltage 3">
+					<MeasurementMapping measurementOrdinal="9" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="10" referenceRule="sum" comment="voltage 4">
+					<MeasurementMapping measurementOrdinal="10" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="11" referenceRule="sum" comment="voltage 5">
+					<MeasurementMapping measurementOrdinal="11" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="12" referenceRule="sum" comment="voltage 6">
+					<MeasurementMapping measurementOrdinal="12" />
+				</ReferenceGroup>
+				<ReferenceGroup referenceGroupId="200" referenceRule="sum" comment="voltage sum cell 1 to 6">
+					<MeasurementMapping measurementOrdinal="7" />
+					<MeasurementMapping measurementOrdinal="8" />
+					<MeasurementMapping measurementOrdinal="9" />
+					<MeasurementMapping measurementOrdinal="10" />
+					<MeasurementMapping measurementOrdinal="11" />
+					<MeasurementMapping measurementOrdinal="12" />
+				</ReferenceGroup>
+			</ReferenceGroups>
+			<TransitionGroups>
+                <TransitionGroup transitionGroupId="0">
+                    <TransitionMapping transitionId="0" comment="for test only"/>
+                </TransitionGroup>
+                <TransitionGroup transitionGroupId="3">
+                    <TransitionMapping transitionId="3" comment="for test only"/>
+                </TransitionGroup>
+                <TransitionGroup transitionGroupId="6">
+                    <TransitionMapping transitionId="6" comment="for test only"/>
+                </TransitionGroup>
+				<TransitionGroup transitionGroupId="100" comment="R_i transitions based on current values">
+					<TransitionMapping transitionId="0" />
+					<TransitionMapping transitionId="3" />
+					<TransitionMapping transitionId="6" />
+				</TransitionGroup>
+			</TransitionGroups>
+			<Transitions>
+				<Transition transitionId="0" refOrdinal="1" classType="peak" valueType="deltaFactor"
+					thresholdValue="-0.5" recoveryValue="-0.1" referenceTimeMsec="5000" thresholdTimeMsec="7000"
+					recoveryTimeMsec="5000" peakMinimumTimeMsec="2000"
+					comment="Stromeinbruch auf wenigstens die Hälfte mit Wiederanstieg auf mindestens 90%; Dauer höchstens 7 Sekunden" />
+				<Transition transitionId="3" refOrdinal="1" classType="pulse" valueType="deltaFactor"
+					thresholdValue="-0.5" recoveryValue="-0.1" referenceTimeMsec="5000" thresholdTimeMsec="3000"
+					recoveryTimeMsec="5000"
+					comment="Stromeinbruch auf wenigstens die Hälfte mit Wiederanstieg auf mindestens 90%; Pulsdauer mindestens 3 Sekunden" />
+				<Transition transitionId="6" refOrdinal="1" classType="slope" valueType="deltaFactor"
+					thresholdValue="-0.5" referenceTimeMsec="5000" thresholdTimeMsec="3000"
+					comment="Stromeinbruch auf wenigstens die Hälfte; Einbruchdauer mindestens 3 Sekunden" />
+			</Transitions>
+			<ScoreGroups>
+				<Scoregroup scoregroupId="0">
+                    <name>duration</name>
+                    <symbol></symbol>
+                    <unit>h</unit>
+                    <active>true</active>
+                    <score label="duration_mm" value="scorevalue_total" type="String" description="Zeitdauer"/>
+                    <property name="factor" value="0.01666667" type="Double" description="interne Darstellung in Minuten"/>
+                    <property name="histo_top_placement" value="true" type="Boolean"/>
+                    <label>scorelabel_duration</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="2">
+                    <name>measurement_number</name>
+                    <symbol></symbol>
+                    <unit>Tsd</unit>
+                    <active>false</active>
+                    <score label="totalReadings" value="scorevalue_readings_count" type="String" description="Anzahl gelesene Werte"/>
+                    <score label="sampledReadings" value="scorevalue_samples_count" type="String" description="Anzahl Stichprobe"/>
+				</Scoregroup>
+                <Scoregroup scoregroupId="6">
+                    <name>software_version</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logDataVersion" value="scorevalue_device" type="String"/>
+                    <score label="logDataExplorerVersion" value="scorevalue_data_explorer" type="String"/>
+                    <score label="logFileVersion" value="scorevalue_log_file" type="String"/>
+                    <label>scorelabel_software_version</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="7">
+                    <name>file_size</name>
+                    <symbol></symbol>
+                    <unit>kiB</unit>
+                    <active>false</active>
+                    <score label="logRecordSetBytes" value="scorevalue_recordset_size" type="String"/>
+                    <score label="logFileBytes" value="scorevalue_file_size" type="String"/>
+                    <property name="factor" value="0.9765625" type="Double" description="kiB conversion factor = 1000 / 1024"/>
+                    <label>scorelabel_file_size</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="8">
+                    <name>recordset_number</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logFileRecordSets" value="scorevalue_count" type="String"/>
+                    <label>scorelabel_recordset_number</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="9">
+                    <name>elapsed_time</name>
+                    <symbol></symbol>
+                    <unit>ms</unit>
+                    <active>false</active>
+                    <score label="elapsedHistoRecordSet_ms" value="scorevalue_load_recordset" type="String"/>
+                    <label>scorelabel_elapsed_time</label>
+                </Scoregroup>
+			</ScoreGroups>
+		</Channel>
+		<Channel type="TYPE_OUTLET" name="type_outlet 2">
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>energy</name>
+				<symbol>E</symbol>
+				<unit>Wh</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>supply_voltage</name>
+				<symbol>Uin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>balance</name>
+				<symbol>Bal</symbol>
+				<unit>mV</unit>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 1</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 2</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 3</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Settlements/>
+			<ReferenceGroups/>
+			<TransitionGroups/>
+			<Transitions/>
+			<ScoreGroups>
+				<Scoregroup scoregroupId="0">
+                    <name>duration</name>
+                    <symbol></symbol>
+                    <unit>h</unit>
+                    <active>true</active>
+                    <score label="duration_mm" value="scorevalue_total" type="String" description="Zeitdauer"/>
+                    <property name="factor" value="0.01666667" type="Double" description="interne Darstellung in Minuten"/>
+                    <property name="histo_top_placement" value="true" type="Boolean"/>
+                    <label>scorelabel_duration</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="2">
+                    <name>measurement_number</name>
+                    <symbol></symbol>
+                    <unit>Tsd</unit>
+                    <active>false</active>
+                    <score label="totalReadings" value="scorevalue_readings_count" type="String" description="Anzahl gelesene Werte"/>
+                    <score label="sampledReadings" value="scorevalue_samples_count" type="String" description="Anzahl Stichprobe"/>
+				</Scoregroup>
+                <Scoregroup scoregroupId="6">
+                    <name>software_version</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logDataVersion" value="scorevalue_device" type="String"/>
+                    <score label="logDataExplorerVersion" value="scorevalue_data_explorer" type="String"/>
+                    <score label="logFileVersion" value="scorevalue_log_file" type="String"/>
+                    <label>scorelabel_software_version</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="7">
+                    <name>file_size</name>
+                    <symbol></symbol>
+                    <unit>kiB</unit>
+                    <active>false</active>
+                    <score label="logRecordSetBytes" value="scorevalue_recordset_size" type="String"/>
+                    <score label="logFileBytes" value="scorevalue_file_size" type="String"/>
+                    <property name="factor" value="0.9765625" type="Double" description="kiB conversion factor = 1000 / 1024"/>
+                    <label>scorelabel_file_size</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="8">
+                    <name>recordset_number</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logFileRecordSets" value="scorevalue_count" type="String"/>
+                    <label>scorelabel_recordset_number</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="9">
+                    <name>elapsed_time</name>
+                    <symbol></symbol>
+                    <unit>ms</unit>
+                    <active>false</active>
+                    <score label="elapsedHistoRecordSet_ms" value="scorevalue_load_recordset" type="String"/>
+                    <label>scorelabel_elapsed_time</label>
+                </Scoregroup>
+			</ScoreGroups>
+		</Channel>
+		<Channel type="TYPE_OUTLET" name="type_outlet 3">
+			<Measurement>
+				<name>voltage</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>current</name>
+				<symbol>I</symbol>
+				<unit>A</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>capacity</name>
+				<symbol>C</symbol>
+				<unit>mAh</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>power</name>
+				<symbol>P</symbol>
+				<unit>W</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>energy</name>
+				<symbol>E</symbol>
+				<unit>Wh</unit>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>supply_voltage</name>
+				<symbol>Uin</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>balance</name>
+				<symbol>Bal</symbol>
+				<unit>mV</unit>
+				<statistics sigma="true" avg="true" max="true" min="true" />
+				<property description="factor to measurement value" type="Double" value="1000.0"
+					name="factor" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 1</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 2</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Measurement>
+				<name>cell_voltage 3</name>
+				<symbol>U</symbol>
+				<unit>V</unit>
+				<active>true</active>
+				<statistics sigma="false" avg="false" max="true" min="true" />
+				<property type="Integer" value="7" name="scale_sync_ref_ordinal" />
+			</Measurement>
+			<Settlements/>
+			<ReferenceGroups/>
+			<TransitionGroups/>
+			<Transitions/>
+			<ScoreGroups>
+				<Scoregroup scoregroupId="0">
+                    <name>duration</name>
+                    <symbol></symbol>
+                    <unit>h</unit>
+                    <active>true</active>
+                    <score label="duration_mm" value="scorevalue_total" type="String" description="Zeitdauer"/>
+                    <property name="factor" value="0.01666667" type="Double" description="interne Darstellung in Minuten"/>
+                    <property name="histo_top_placement" value="true" type="Boolean"/>
+                    <label>scorelabel_duration</label>
+				</Scoregroup>
+				<Scoregroup scoregroupId="2">
+                    <name>measurement_number</name>
+                    <symbol></symbol>
+                    <unit>Tsd</unit>
+                    <active>false</active>
+                    <score label="totalReadings" value="scorevalue_readings_count" type="String" description="Anzahl gelesene Werte"/>
+                    <score label="sampledReadings" value="scorevalue_samples_count" type="String" description="Anzahl Stichprobe"/>
+				</Scoregroup>
+                <Scoregroup scoregroupId="6">
+                    <name>software_version</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logDataVersion" value="scorevalue_device" type="String"/>
+                    <score label="logDataExplorerVersion" value="scorevalue_data_explorer" type="String"/>
+                    <score label="logFileVersion" value="scorevalue_log_file" type="String"/>
+                    <label>scorelabel_software_version</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="7">
+                    <name>file_size</name>
+                    <symbol></symbol>
+                    <unit>kiB</unit>
+                    <active>false</active>
+                    <score label="logRecordSetBytes" value="scorevalue_recordset_size" type="String"/>
+                    <score label="logFileBytes" value="scorevalue_file_size" type="String"/>
+                    <property name="factor" value="0.9765625" type="Double" description="kiB conversion factor = 1000 / 1024"/>
+                    <label>scorelabel_file_size</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="8">
+                    <name>recordset_number</name>
+                    <symbol></symbol>
+                    <unit></unit>
+                    <active>false</active>
+                    <score label="logFileRecordSets" value="scorevalue_count" type="String"/>
+                    <label>scorelabel_recordset_number</label>
+                </Scoregroup>
+                <Scoregroup scoregroupId="9">
+                    <name>elapsed_time</name>
+                    <symbol></symbol>
+                    <unit>ms</unit>
+                    <active>false</active>
+                    <score label="elapsedHistoRecordSet_ms" value="scorevalue_load_recordset" type="String"/>
+                    <label>scorelabel_elapsed_time</label>
+                </Scoregroup>
+			</ScoreGroups>
+		</Channel>
+		<property name="outlier_sigma" value="3" type="Integer" description="3600 measurements per hour do not allow a higher value, i.e. we allow 1 lower and 1 upper outlier for a log with 13 minutes" />
+        <property name="outlier_range_factor" value="2." type="Double" description="outliers are identified only if they lie beyond the tolerance interval extended by a factor of 2.0"/>
+	</Channels>
+	<Desktop>
+		<property name="table_tab" value="true" />
+		<property name="digital_tab" value="true" />
+		<property name="analog_tab" value="true" />
+		<property name="voltage_per_cell_tab" value="true" target_reference_ordinal="7" />
+		<property name="utility_garphics_tab" value="false" description="UTILITY_GRAPHICS_TAB" />
+		<property name="utility_device_tab" value="false" description="UTILITY_DEVICE_TAB" />
+	</Desktop>
+</DeviceProperties>

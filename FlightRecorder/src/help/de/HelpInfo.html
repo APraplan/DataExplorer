@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!-- 
+*************************************************************************************
+  	This file is part of GNU DataExplorer.
+
+    GNU DataExplorer is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    GNU DataExplorer is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with GNU DataExplorer.  If not, see <https://www.gnu.org/licenses/>.
+    
+    Copyright (c) 2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024 Winfried Bruegmann
+************************************************************************************** 
+-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DataExplorer - FlightRecorder Ger&auml;tedialog</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Win32)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGEDBY" CONTENT="Winfried Br&uuml;gmann">
+	<META NAME="CHANGED" CONTENT="20080718;18455985">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<DIV TYPE=HEADER>
+	<H2><FONT FACE="Arial"><FONT SIZE=4><I>Multiplex FlightRecorder-Ger&auml;tedialog</I></FONT></FONT></H2>
+</DIV>
+<P>Der gezeigte Ger&auml;tedialog dient zur Konfiguration der Anzeige der ausgelesenen Daten.
+Es k&ouml;nnen die Messwertnamen und Messwertsymbole angepasst werden. 
+Die Messwerteinheiten sind ebenfalls &auml;nderbar, es ist aber wenig sinnvoll hier etwas anzufassen, wenn nicht auch ein passender Messwertfaktor angelegt wird.
+Man muss daran denken, dass die Einheiten aus dem Aufzeichnungslog selbst kommen und sie beim Auslesen &uuml;berschrieben werden.
+Nicht selektierte Messgr&ouml;&szlig;en erscheinen dadurch nicht in der grafischen Anzeige. 
+Dadurch wird die &Uuml;bersichtlichkeit stark erh&ouml;ht.
+Kurven, wie Längengrad und Breitengrad, die zweidimensional dargestellt wenig Sinn ergeben, k&ouml;nnen ausgeblendet werden.
+&Uuml;ber einen Dateiauswahldialog, erreichbar &uuml;ber "importiere Datei", k&ouml;nnen auch neue Dateien eingelesen werden.
+</BR>
+Kurven, die keine sinnvollen Daten enthalten, werden automatisch ausgeblendet. 
+Ist z. B. kein GPS angeschlossen, werden die GPS-relevanten Daten nicht zur Anzeige angeboten.
+Die GPS-Daten sind als einzige am Anfang festgelegt, da nur über eine feste Zuordnung festgestellt werden kann, ob GPS-Daten anliegen und die dadurch resultierenden
+Exportmöglichkeiten eingeblendet werden können. So z. B. als Google Earth-Dateien (KMZ) exportiert bzw. ob sie direkt angezeigt werden.
+N&auml;here Beschreibung dazu siehe <A HREF="../../../help/de/HelpInfo_36.html">Toolbar -> Google Earth</A>.
+</P>
+<P ALIGN=CENTER><IMG SRC="HelpInfo_Bild_1.png" NAME="HelpInfo_Bild_1" ALT="HelpInfo_Bild_1"></P>
+<P>
+Multiplex-Sensoren werden über Adressen konfiguriert, die Adresse erscheint als Messwertsymbol, die Einheiten werden entsprechend übernommen.
+Der Dialog erlaub zwar die Änderung der Symbole, das ist aber nicht nötig.
+Die Namen müssen allerdings vergeben werden.
+Ist diese Zuordnung erledigt, und die Sensoradressen unverändert, bleiben die Messwertnamen erhalten.
+Es gibt zwei vorbereitete Messwertkonfigurationen, die für zwei verschiedene Sensorsets benutzt werden können.
+&Uuml;ber den Ge&auml;teeigenschafteneditor k&ouml;nnen auch nachtr&auml;glich weitere Konfigurationen hinzugef&uuml;gt werden, sollte das einmal erforderlich sein.
+</P>
+<P>Auf dem rechten Rand der Anzeigenkonfiguration befindet sich ein zus&auml;tzlicher Schalter, der eine halbautomatische Synchronisation der Skalen erm&ouml;glicht. 
+Wird hier selektiert, wird auf Namensgleichheit gepr&uuml;ft, bei entsprechender &Uuml;bereinstimmung wird in der Ger&auml;tekonfigurationsdatei bei den Messwerten die entsprechende
+Eigenschaft eingesetzt. Funktioniert das nicht automatisch, bleibt immer noch die M&ouml;glichkeit, das manuell &uuml;ber den Ger&auml;tekonfigurationseditor einzustellen.
+Durch Skalensynchronisation wird die verf&uuml;gbare Anzeigefl&auml;che vergr&ouml;&szlig;ert und es k&ouml;nnen Messwertaufnehmer direkt verglichen werden ohne den Kurvenvergleich zu benutzen.
+</P>
+<P>
+Sinnvoll ist es, sich die Sensorenreihenfolge und deren Verwendungszweck (Beispiel: Spannung/Strom/Kapazit&auml;t - Antriebsakku) zu &uuml;berlegen,
+bevor man Daten damit aufnimmt. 
+Namen der Kurven sollten m&ouml;glichst eindeutig sein, zum Beispiel Strom Antrieb, Strom Rx, Spannung Antrieb, Spannung Rx.
+Die Kurvennamen sollen so gew&auml;hlt sein, dass im Falle eine gew&uuml;nschten Skalensynchronisation, die Namen mit den gleichen Wort anfangen 
+wie die Kurve auf die synchronisiert werden soll, zum Beispiel <I>Strom</I> synchronisiert mit <I>Storm</I> Antrieb, <I>Strom</I> Rx, <I>Strom</I> Antrieb 2).
+Darauf basiert die halbautomatische Synchronisation. 
+&Uuml;ber den Ger&auml;teeigenschafteneditor kann man bei beliebigen Messkurven eine Skalensynchronisation konfigurieren.
+Sinn macht das Ganze aber nur, wenn die Wertebereiche zusammenpassen. 
+Stimmen die Messwerte aus den Sensoren mit den Kurvennamen und Einheiten &uuml;berien, kann mit der Checkbox auf der rechten Seite auf Skalensynchronisation gepr&uuml;ft werden.
+Abschliessend die Konfiguration nochmals sichern.
+</BR>
+Um die vollen Möglichkeiten des DataExplorers mit den statistischen Auswertungen auszuschöpfen siehe <A HREF="../../../help/de/HelpInfo_5.html">Fenster &quot;Statistik&quot;</A>.
+</P>
+<P><B>Hinweis: </B>Werden Messwertnamen ge&auml;ndert, f&uuml;hrt das in der Ger&auml;tekonfigurationsdatei zu einer &Auml;nderung.
+&Auml;ndert sich in einer sp&auml;teren DataExplorer-Version das Ger&auml;tekonfigurationsdateischema (DeviceProperties_Vxy.xsd), 
+wird eine Sicherung aller vorhandenen Ger&auml;tekonfigurationsdateien angelegt (Devices_Vxy-1) und geht nicht verloren.
+Die veraltete Ger&auml;tekonfigurationsdatei kann dann als Vorlage f&uuml;r die neue verwendet werden.
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/JAXB Generator/jaxb-ri-20070917/lib/jaxb-xjc.jar"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.debug.core.appendEnvironmentVariables" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.sun.tools.xjc.XJCFacade"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="JAXB Generator"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;/Users/brueg/Documents/workspace/gnu/SkyRC/src/resource/MC3000_V01.xsd&quot; &#13;&#10;-d &quot;/Users/brueg/Documents/workspace/gnu/SkyRC/src&quot; &#13;&#10;-p gde.device.skyrc"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="JAXB Generator"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DJAXB_HOME=&quot;/Users/brueg/Documents/workspace/gnu/JAXB Generator/jaxb-ri-20070917&quot;"/>
+</launchConfiguration>
