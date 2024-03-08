@@ -19,7 +19,7 @@ _$*
 *.olb
 *.o
 *.obj
-*.so
+# *.so
 *.exe
 *.Z
 *.elc
