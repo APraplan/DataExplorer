@@ -53,10 +53,10 @@ import java.util.stream.Stream;
 
 import javax.xml.bind.JAXBException;
 
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
-import org.xml.sax.SAXException;
+// import org.eclipse.swt.graphics.Color;
+// import org.eclipse.swt.graphics.Point;
+// import org.eclipse.swt.graphics.Rectangle;
+// import org.xml.sax.SAXException;
 
 import gde.Analyzer;
 import gde.DataAccess;
